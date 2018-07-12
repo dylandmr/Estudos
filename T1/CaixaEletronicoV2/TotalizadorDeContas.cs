@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronicoV2
 {
-    public class TotalizadorDeContas
+    /*public <- Se descomentar, a classe produzirá um erro.*/ class TotalizadorDeContas
     {
         public double Saldo { get; private set; }
         public void Adiciona(Conta c)
