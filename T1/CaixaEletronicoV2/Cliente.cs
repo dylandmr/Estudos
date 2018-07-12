@@ -18,6 +18,11 @@ namespace CaixaEletronicoV2
         {
             this.Nome = nome;
         }
+
+        public Cliente()
+        {
+            //Réplica do construtor default, tornando o primeiro construtor OPCIONAL.
+        }
         public bool MaiordeIdade
         {
             get

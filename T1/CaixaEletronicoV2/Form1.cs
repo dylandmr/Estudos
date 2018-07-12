@@ -20,7 +20,7 @@ namespace CaixaEletronicoV2
         private void button1_Click(object sender, EventArgs e)
         {
             Conta novaconta = new Conta();
-            Cliente novocliente = new Cliente("Cliente Genérico");
+            Cliente novocliente = new Cliente();
 
             novaconta.Titular = novocliente;
 
@@ -53,6 +53,12 @@ namespace CaixaEletronicoV2
             MessageBox.Show(umaConta.Saca(350.0) ? "Saque realizado com sucesso.\nNovo saldo: R$" 
                 + umaConta.Saldo.ToString("n2") 
                 : "Saldo insuficiente para o saque.");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Cliente maisUmCliente = new Cliente() { Rg = "6653359", Cpf = "096.387.469-12" };
+            MessageBox.Show("RG: " + maisUmCliente.Rg + "\nCPF: " + maisUmCliente.Cpf);
         }
     }
 }
