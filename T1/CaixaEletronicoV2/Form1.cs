@@ -20,7 +20,7 @@ namespace CaixaEletronicoV2
         private void button1_Click(object sender, EventArgs e)
         {
             Conta novaconta = new Conta();
-            Cliente novocliente = new Cliente();
+            Cliente novocliente = new Cliente("Cliente Genérico");
 
             novaconta.Titular = novocliente;
 
@@ -36,14 +36,14 @@ namespace CaixaEletronicoV2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente();
+            Cliente cliente = new Cliente("Cliente Genérico");
             cliente.Idade = 17;
             MessageBox.Show(cliente.MaiordeIdade ? "É maior de idade." : "É menor de idade."); 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Cliente umCliente = new Cliente();
+            Cliente umCliente = new Cliente("Cliente Genérico");
             umCliente.Idade = 18;
 
             Conta umaConta = new Conta();

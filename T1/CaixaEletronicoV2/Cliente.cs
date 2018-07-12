@@ -14,6 +14,10 @@ namespace CaixaEletronicoV2
         public string Cpf { get; set; }
         public int Idade { get; set; }
 
+        public Cliente(string nome) //Construtor! Convenção: Nome do parâmetro é o mesmo nome da propriedade.
+        {
+            this.Nome = nome;
+        }
         public bool MaiordeIdade
         {
             get
