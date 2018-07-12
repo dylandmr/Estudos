@@ -13,9 +13,15 @@ namespace CaixaEletronicoV2
         public int agencia;
         public Cliente titular;
 
-        public void Saca(double valor)
+        public bool Saca(double valor)
         {
-            if (valor <= this.saldo && valor > 0) this.saldo -= valor;
+
+            if (valor <= this.saldo && valor > 0)
+            {
+                if (!titular.MaiordeIdade() && valor > 200.0) this.saldo -= 200.0;
+                else this.saldo -= valor;
+                return true;
+            } else return false;
         }
 
         public void Deposita(double valor)

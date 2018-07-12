@@ -40,5 +40,19 @@ namespace CaixaEletronicoV2
             cliente.idade = 17;
             MessageBox.Show(cliente.MaiordeIdade() ? "É maior de idade." : "É menor de idade."); 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Cliente umCliente = new Cliente();
+            umCliente.idade = 17;
+
+            Conta umaConta = new Conta();
+            umaConta.titular = umCliente;
+            umaConta.saldo = 1000.0;
+
+            MessageBox.Show(umaConta.Saca(350.0) ? "Saque realizado com sucesso.\nNovo saldo: R$" 
+                + umaConta.saldo.ToString("n2") 
+                : "Saldo insuficiente para o saque.");
+        }
     }
 }
