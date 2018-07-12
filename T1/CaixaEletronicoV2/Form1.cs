@@ -38,13 +38,13 @@ namespace CaixaEletronicoV2
         {
             Cliente cliente = new Cliente();
             cliente.Idade = 17;
-            MessageBox.Show(cliente.MaiordeIdade() ? "É maior de idade." : "É menor de idade."); 
+            MessageBox.Show(cliente.MaiordeIdade ? "É maior de idade." : "É menor de idade."); 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Cliente umCliente = new Cliente();
-            umCliente.Idade = 17;
+            umCliente.Idade = 18;
 
             Conta umaConta = new Conta();
             umaConta.Titular = umCliente;

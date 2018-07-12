@@ -14,10 +14,13 @@ namespace CaixaEletronicoV2
         public string Cpf { get; set; }
         public int Idade { get; set; }
 
-        public bool MaiordeIdade()
+        public bool MaiordeIdade
         {
-            //return idade >= 18 ? true : false; <- Minha solução, não eficiente. Solução do professor:
-            return this.Idade >= 18;
+            get
+            {
+                //return idade >= 18 ? true : false; <- Minha solução, não eficiente. Solução do professor:
+                return this.Idade >= 18;
+            }
         }
     }
 }

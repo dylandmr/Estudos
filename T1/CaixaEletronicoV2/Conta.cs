@@ -18,7 +18,7 @@ namespace CaixaEletronicoV2
 
             if (valor <= this.Saldo && valor > 0)
             {
-                if (!Titular.MaiordeIdade() && valor > 200.0) this.Saldo -= 200.0;
+                if (!Titular.MaiordeIdade && valor > 200.0) this.Saldo -= 200.0;
                 else this.Saldo -= valor;
                 return true;
             } else return false;
