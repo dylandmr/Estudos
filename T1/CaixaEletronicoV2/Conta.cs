@@ -8,25 +8,25 @@ namespace CaixaEletronicoV2
 {
     class Conta
     {
-        public int numero;
-        public double saldo;
-        public int agencia;
-        public Cliente titular;
+        public int Numero { get; set; }
+        public double Saldo { get; private set; }
+        public int Agencia { get; set; }
+        public Cliente Titular { get; set; }
 
         public bool Saca(double valor)
         {
 
-            if (valor <= this.saldo && valor > 0)
+            if (valor <= this.Saldo && valor > 0)
             {
-                if (!titular.MaiordeIdade() && valor > 200.0) this.saldo -= 200.0;
-                else this.saldo -= valor;
+                if (!Titular.MaiordeIdade() && valor > 200.0) this.Saldo -= 200.0;
+                else this.Saldo -= valor;
                 return true;
             } else return false;
         }
 
         public void Deposita(double valor)
         {
-            if (valor > 0) this.saldo += valor;
+            if (valor > 0) this.Saldo += valor;
         }
 
         public void Transfere(double valor, Conta destino)
@@ -37,9 +37,9 @@ namespace CaixaEletronicoV2
 
         public double RendimentoAnual()
         {
-            double saldoprevisto = this.saldo;
+            double saldoprevisto = this.Saldo;
             for (int i = 0; i < 12; i++) saldoprevisto *= 1.007;
-            return (saldoprevisto - this.saldo);
+            return (saldoprevisto - this.Saldo);
         }
     }
 }

@@ -8,16 +8,16 @@ namespace CaixaEletronicoV2
 {
     class Cliente
     {
-        public string nome;
-        public string rg;
-        public string endereço;
-        public string cpf;
-        public int idade;
+        public string Nome { get; set; }
+        public string Rg { get; set; }
+        public string Endereço { get; set; }
+        public string Cpf { get; set; }
+        public int Idade { get; set; }
 
         public bool MaiordeIdade()
         {
             //return idade >= 18 ? true : false; <- Minha solução, não eficiente. Solução do professor:
-            return this.idade >= 18;
+            return this.Idade >= 18;
         }
     }
 }

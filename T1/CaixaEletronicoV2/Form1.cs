@@ -22,36 +22,36 @@ namespace CaixaEletronicoV2
             Conta novaconta = new Conta();
             Cliente novocliente = new Cliente();
 
-            novaconta.titular = novocliente;
+            novaconta.Titular = novocliente;
 
-            novocliente.rg = "6653359";
+            novocliente.Rg = "6653359";
 
-            novaconta.titular.cpf = "096.387.469-12";
+            novaconta.Titular.Cpf = "096.387.469-12";
 
-            novaconta.saldo = 10000.0;
+            novaconta.Deposita(10000.0);
 
-            MessageBox.Show("RG: " + novocliente.rg + "\nCPF: " + novaconta.titular.cpf);
+            MessageBox.Show("RG: " + novocliente.Rg + "\nCPF: " + novaconta.Titular.Cpf);
             //Tanto novaconta.cliente.<campo> quanto cliente.<campo> referenciam o MESMO objeto.
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente();
-            cliente.idade = 17;
+            cliente.Idade = 17;
             MessageBox.Show(cliente.MaiordeIdade() ? "É maior de idade." : "É menor de idade."); 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Cliente umCliente = new Cliente();
-            umCliente.idade = 17;
+            umCliente.Idade = 17;
 
             Conta umaConta = new Conta();
-            umaConta.titular = umCliente;
-            umaConta.saldo = 1000.0;
+            umaConta.Titular = umCliente;
+            umaConta.Deposita(1000.0);
 
             MessageBox.Show(umaConta.Saca(350.0) ? "Saque realizado com sucesso.\nNovo saldo: R$" 
-                + umaConta.saldo.ToString("n2") 
+                + umaConta.Saldo.ToString("n2") 
                 : "Saldo insuficiente para o saque.");
         }
     }
