@@ -8,9 +8,16 @@ namespace AplicacaoCaixaEletronico
 {
     class ContaCorrente : Conta
     {
+        public static int TotalDeContas { get; private set; }
+
+        public static int ProximaConta()
+        {
+            return ContaCorrente.TotalDeContas + 1;
+        }
         public ContaCorrente(Cliente titular) : base(titular)
         {
             this.Titular = titular;
+            ContaCorrente.TotalDeContas++;
         }
 
         public override bool Saca(double valor)

@@ -170,5 +170,35 @@ namespace AplicacaoCaixaEletronico
             this.banco.Contas[comboContas.SelectedIndex].Transfere(Convert.ToDouble(textoValor.Text), this.banco.Contas[destinoDaTransferencia.SelectedIndex]);
             this.AtualizaTexto();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ContaPoupanca cp = new ContaPoupanca(new Cliente());
+            cp.Deposita(100);
+            ContaInvestimento ci = new ContaInvestimento(new Cliente());
+            ci.Deposita(203);
+            SeguroDeVida sv = new SeguroDeVida();
+
+            GerenciadorDeImposto gerenciador = new GerenciadorDeImposto();
+            gerenciador.Adiciona(cp);
+            gerenciador.Adiciona(ci);
+            gerenciador.Adiciona(sv);
+
+            //gerenciador.Adiciona(new ContaCorrente(new Cliente())); 
+            //^ Não compila, pois ContaCorrente não é ITributavel!
+
+            MessageBox.Show("Total de impostos: R$" + gerenciador.Total.ToString("n2") + ".");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ContaCorrente cc = new ContaCorrente(new Cliente());
+            MessageBox.Show(ContaCorrente.TotalDeContas + "ª conta corrente criada com sucesso.");
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(ContaCorrente.TotalDeContas + " contas criadas. \nPróxima conta: " + ContaCorrente.ProximaConta() + ".");
+        }
     }
 }

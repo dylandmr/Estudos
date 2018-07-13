@@ -46,6 +46,9 @@
             this.destinoDaTransferencia = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textoTitular
@@ -208,11 +211,44 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Lista de contas:";
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(46, 454);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(186, 23);
+            this.button8.TabIndex = 19;
+            this.button8.Text = "Interfaces - Gerenciar Impostos";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(46, 483);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(86, 23);
+            this.button9.TabIndex = 20;
+            this.button9.Text = "Nova Conta";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(136, 483);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(96, 23);
+            this.button10.TabIndex = 21;
+            this.button10.Text = "Total de Contas";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 469);
+            this.ClientSize = new System.Drawing.Size(275, 544);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.destinoDaTransferencia);
@@ -259,6 +295,9 @@
         private System.Windows.Forms.ComboBox destinoDaTransferencia;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }
 
