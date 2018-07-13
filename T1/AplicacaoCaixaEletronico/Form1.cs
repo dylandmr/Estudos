@@ -90,5 +90,34 @@ namespace AplicacaoCaixaEletronico
             MessageBox.Show("Saldo total: R$" + totalizador.SaldoTotal.ToString("n2"));
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Cliente generico = new Cliente("Genérico");
+            Conta[] contas = new Conta[10]; // <- Arrays em C# - Sintaxe.
+
+            contas[0] = new Conta(generico);            //
+            contas[1] = new ContaPoupanca(generico);    // POLIMORFISMO se aplica.
+            contas[2] = new ContaCorrente(generico);    //
+
+            int i;
+
+            for (i = 3; i < 10; i++) contas[i] = new Conta(generico); // <- Populando array automaticamente.
+
+            //MÉTODOS PARA PERCORRER:
+
+            for (i = 0; i < contas.Length; i++ ) // <- .Length retorna o tamanho da array.
+            {
+                contas[i].Deposita((i+1)*100);
+            }
+
+            //ou FOREACH:
+            i = 0;
+            foreach (Conta conta in contas)
+            {
+                i++;
+                MessageBox.Show("Saldo da conta "+ i + ": R$" + conta.Saldo.ToString("n2"));
+            }
+        }
     }
 }
