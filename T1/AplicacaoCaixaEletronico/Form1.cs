@@ -118,6 +118,8 @@ namespace AplicacaoCaixaEletronico
                 i++;
                 MessageBox.Show("Saldo da conta "+ i + ": R$" + conta.Saldo.ToString("n2"));
             }
+
+            int[] listadeInteiros = new int[] { 1, 2, 3, 4, 5, 6, 7 }; // Auto implementa uma array!!! Atalho C#
         }
     }
 }
