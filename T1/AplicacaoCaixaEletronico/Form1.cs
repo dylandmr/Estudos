@@ -23,9 +23,14 @@ namespace AplicacaoCaixaEletronico
         //Correção professor, para evitar repetição de códigos, cria-se o método AtualizaTexto()
         private void AtualizaTexto()
         {
-            textoTitular.Text = conta.Titular.Nome;
-            textoSaldo.Text = conta.Saldo.ToString("n2");
-            textoNumero.Text = conta.Numero.ToString();
+            textoTitular.Text = banco.Contas[comboContas.SelectedIndex].Titular.Nome;
+            textoNumero.Text = banco.Contas[comboContas.SelectedIndex].Numero.ToString();
+            textoSaldo.Text = "R$" + banco.Contas[comboContas.SelectedIndex].Saldo.ToString("n2");
+
+            //Deprecado - Código de exercícios anteriores:
+            //textoTitular.Text = conta.Titular.Nome;
+            //textoSaldo.Text = conta.Saldo.ToString("n2");
+            //textoNumero.Text = conta.Numero.ToString();
         }
 
         public Form1()
@@ -149,9 +154,7 @@ namespace AplicacaoCaixaEletronico
 
         private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textoTitular.Text = banco.Contas[comboContas.SelectedIndex].Titular.Nome;
-            textoNumero.Text = banco.Contas[comboContas.SelectedIndex].Numero.ToString();
-            textoSaldo.Text = "R$" + banco.Contas[comboContas.SelectedIndex].Saldo.ToString("n2");
+            this.AtualizaTexto();
         }
     }
 }
