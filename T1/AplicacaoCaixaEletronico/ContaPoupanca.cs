@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AplicacaoCaixaEletronico
 {
-    class ContaPoupanca : Conta
+    class ContaPoupanca : Conta, ITributavel
     {
         public ContaPoupanca(Cliente titular) : base(titular)
         {
@@ -27,6 +27,11 @@ namespace AplicacaoCaixaEletronico
         public override void Deposita(double valor)
         {
             if (valor > 0) this.Saldo += valor - 0.1;
+        }
+
+        public double CalculaTributos()
+        {
+            return this.Saldo * 0.02;
         }
     }
 }
