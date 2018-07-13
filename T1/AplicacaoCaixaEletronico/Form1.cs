@@ -69,5 +69,26 @@ namespace AplicacaoCaixaEletronico
             this.contaPoupanca.Saca(10);
             MessageBox.Show("Saldo após saque: R$" + contaPoupanca.Saldo.ToString("n2"));
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //POLIMORFISMO: Método Adiciona da classe TotalizadorDeContas recebe uma Conta de referência
+            //Porém aceita também ContaPoupanca e ContaCorrente, por serem filhas de Conta.
+
+            TotalizadorDeContas totalizador = new TotalizadorDeContas();
+
+            Conta c = new Conta(this.cliente);
+            c.Deposita(100);
+            totalizador.Adiciona(c);
+            ContaPoupanca cp = new ContaPoupanca(this.cliente);
+            cp.Deposita(200);
+            totalizador.Adiciona(cp);
+            ContaCorrente cc = new ContaCorrente(this.cliente);
+            cc.Deposita(300);
+            totalizador.Adiciona(cc);
+
+            MessageBox.Show("Saldo total: R$" + totalizador.SaldoTotal.ToString("n2"));
+
+        }
     }
 }
