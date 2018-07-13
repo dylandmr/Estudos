@@ -40,6 +40,13 @@ namespace AplicacaoCaixaEletronico
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //VARIÁVEIS IMPLÍCITAS - Tipo "var":
+            var tamanho = 5; // <- Inteira;
+            var nome = "teste"; // <- String;
+            var umcliente = new Cliente(); // <- Funciona com objetos
+            //var qualquer;    <- NÃO COMPILA | Pois a variável implícita requer atribuição de valor 
+            //var nula = null; <- NÃO COMPILA | na declaração.
+
             this.banco = new Banco();
 
             for (int i = 0; i < 10; i++)
