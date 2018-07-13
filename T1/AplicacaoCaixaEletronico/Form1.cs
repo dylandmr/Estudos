@@ -12,6 +12,7 @@ namespace AplicacaoCaixaEletronico
 {
     public partial class Form1 : Form
     {
+        Banco banco;
         //Conta conta = new Conta();
         //Cliente cliente = new Cliente("Victor");
         //Correção professor - só precisa declarar o atributo, não é necessário inicializá-lo:
@@ -33,7 +34,21 @@ namespace AplicacaoCaixaEletronico
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {   
+        {
+            this.banco = new Banco();
+
+            for (int i = 0; i < 10; i++)
+            {
+                banco.Adiciona(new Conta(new Cliente("Titular " + (i+1))));
+                banco.Contas[i].Deposita((i + 1) * 1000);
+                banco.Contas[i].Numero = i + 1;
+            }
+
+            foreach (Conta conta in banco.Contas)
+            {
+                comboContas.Items.Add(conta.Titular.Nome);
+            }
+
             this.cliente = new Cliente("Victor");
             this.conta = new Conta(this.cliente);
             this.contaPoupanca = new ContaPoupanca(this.cliente);
@@ -41,11 +56,6 @@ namespace AplicacaoCaixaEletronico
             this.conta.Titular.Idade = 15;
             conta.Deposita(250.0);
             conta.Numero = 1;
-
-            //textoTitular.Text = conta.Titular.Nome;
-            //textoSaldo.Text = conta.Saldo.ToString("n2");
-            //textoNumero.Text = conta.Numero.ToString();
-            this.AtualizaTexto();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -133,6 +143,13 @@ namespace AplicacaoCaixaEletronico
             }
 
             foreach (Conta conta in banco.Contas) MessageBox.Show(conta.Saldo.ToString("n2"));
+        }
+
+        private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textoTitular.Text = banco.Contas[comboContas.SelectedIndex].Titular.Nome;
+            textoNumero.Text = banco.Contas[comboContas.SelectedIndex].Numero.ToString();
+            textoSaldo.Text = "R$" + banco.Contas[comboContas.SelectedIndex].Saldo.ToString("n2");
         }
     }
 }
