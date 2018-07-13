@@ -51,13 +51,13 @@ namespace AplicacaoCaixaEletronico
 
             for (int i = 0; i < 10; i++)
             {
-                banco.Adiciona(new Conta(new Cliente("Titular " + (i+1))));
+                banco.Adiciona(new ContaCorrente(new Cliente("Titular " + (i+1))));
                 banco.Contas[i].Deposita((i + 1) * 1000);
                 banco.Contas[i].Numero = i + 1;
             }
 
             this.cliente = new Cliente("Victor");
-            this.conta = new Conta(this.cliente);
+            this.conta = new ContaCorrente(this.cliente);
             banco.Contas[0] = this.conta;
             this.contaPoupanca = new ContaPoupanca(new Cliente("Cliente Poupança"));
             banco.Contas[1] = this.contaPoupanca;
@@ -102,7 +102,7 @@ namespace AplicacaoCaixaEletronico
 
             TotalizadorDeContas totalizador = new TotalizadorDeContas();
 
-            Conta c = new Conta(this.cliente);
+            Conta c = new ContaCorrente(this.cliente);
             c.Deposita(100);
             totalizador.Adiciona(c);
             ContaPoupanca cp = new ContaPoupanca(this.cliente);
@@ -121,13 +121,13 @@ namespace AplicacaoCaixaEletronico
             Cliente generico = new Cliente("Genérico");
             Conta[] contas = new Conta[10]; // <- Arrays em C# - Sintaxe.
 
-            contas[0] = new Conta(generico);            //
+            contas[0] = new ContaCorrente(generico);            //
             contas[1] = new ContaPoupanca(generico);    // POLIMORFISMO se aplica.
             contas[2] = new ContaCorrente(generico);    //
 
             int i;
 
-            for (i = 3; i < 10; i++) contas[i] = new Conta(generico); // <- Populando array automaticamente.
+            for (i = 3; i < 10; i++) contas[i] = new ContaCorrente(generico); // <- Populando array automaticamente.
 
             //MÉTODOS PARA PERCORRER:
 
@@ -153,7 +153,7 @@ namespace AplicacaoCaixaEletronico
 
             for (int i = 0; i < 10; i++)
             {
-                banco.Adiciona(new Conta(new Cliente()));
+                banco.Adiciona(new ContaCorrente(new Cliente()));
                 banco.Contas[i].Deposita((i + 1) * 1000);
             }
 

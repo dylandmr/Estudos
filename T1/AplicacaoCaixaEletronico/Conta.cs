@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AplicacaoCaixaEletronico
 {
-    class Conta
+    abstract class Conta
     {
         public int Numero { get; set; }
         public double Saldo { get; protected set; }
@@ -18,15 +18,7 @@ namespace AplicacaoCaixaEletronico
             this.Titular = titular;
         }
 
-        public virtual bool Saca(double valor)
-        {
-            if (valor <= this.Saldo && valor > 0)
-            {
-                if (!Titular.MaiordeIdade && valor > 200.0) this.Saldo -= 200.0;
-                else this.Saldo -= valor;
-                return true;
-            } else return false;
-        }
+        public abstract bool Saca(double valor);
 
         public virtual void Deposita(double valor)
         {
