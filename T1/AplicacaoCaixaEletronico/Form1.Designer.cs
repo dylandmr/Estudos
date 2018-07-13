@@ -45,11 +45,12 @@
             this.comboContas = new System.Windows.Forms.ComboBox();
             this.destinoDaTransferencia = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textoTitular
             // 
-            this.textoTitular.Location = new System.Drawing.Point(110, 103);
+            this.textoTitular.Location = new System.Drawing.Point(102, 95);
             this.textoTitular.Name = "textoTitular";
             this.textoTitular.Size = new System.Drawing.Size(100, 20);
             this.textoTitular.TabIndex = 0;
@@ -57,7 +58,7 @@
             // labelTitular
             // 
             this.labelTitular.AutoSize = true;
-            this.labelTitular.Location = new System.Drawing.Point(63, 106);
+            this.labelTitular.Location = new System.Drawing.Point(55, 98);
             this.labelTitular.Name = "labelTitular";
             this.labelTitular.Size = new System.Drawing.Size(39, 13);
             this.labelTitular.TabIndex = 2;
@@ -65,14 +66,14 @@
             // 
             // textoSaldo
             // 
-            this.textoSaldo.Location = new System.Drawing.Point(110, 129);
+            this.textoSaldo.Location = new System.Drawing.Point(102, 121);
             this.textoSaldo.Name = "textoSaldo";
             this.textoSaldo.Size = new System.Drawing.Size(100, 20);
             this.textoSaldo.TabIndex = 3;
             // 
             // textoNumero
             // 
-            this.textoNumero.Location = new System.Drawing.Point(110, 155);
+            this.textoNumero.Location = new System.Drawing.Point(102, 147);
             this.textoNumero.Name = "textoNumero";
             this.textoNumero.Size = new System.Drawing.Size(100, 20);
             this.textoNumero.TabIndex = 4;
@@ -80,7 +81,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 132);
+            this.label1.Location = new System.Drawing.Point(57, 124);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 5;
@@ -89,7 +90,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 158);
+            this.label2.Location = new System.Drawing.Point(47, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 6;
@@ -97,14 +98,14 @@
             // 
             // textoValor
             // 
-            this.textoValor.Location = new System.Drawing.Point(110, 211);
+            this.textoValor.Location = new System.Drawing.Point(102, 203);
             this.textoValor.Name = "textoValor";
             this.textoValor.Size = new System.Drawing.Size(100, 20);
             this.textoValor.TabIndex = 7;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(144, 266);
+            this.button1.Location = new System.Drawing.Point(136, 258);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -115,7 +116,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(68, 214);
+            this.label3.Location = new System.Drawing.Point(60, 206);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 9;
@@ -123,7 +124,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(63, 266);
+            this.button2.Location = new System.Drawing.Point(55, 258);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -174,7 +175,7 @@
             // comboContas
             // 
             this.comboContas.FormattingEnabled = true;
-            this.comboContas.Location = new System.Drawing.Point(63, 51);
+            this.comboContas.Location = new System.Drawing.Point(55, 43);
             this.comboContas.Name = "comboContas";
             this.comboContas.Size = new System.Drawing.Size(156, 21);
             this.comboContas.TabIndex = 15;
@@ -183,25 +184,36 @@
             // destinoDaTransferencia
             // 
             this.destinoDaTransferencia.FormattingEnabled = true;
-            this.destinoDaTransferencia.Location = new System.Drawing.Point(63, 295);
+            this.destinoDaTransferencia.Location = new System.Drawing.Point(55, 287);
             this.destinoDaTransferencia.Name = "destinoDaTransferencia";
             this.destinoDaTransferencia.Size = new System.Drawing.Size(156, 21);
             this.destinoDaTransferencia.TabIndex = 16;
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(63, 322);
+            this.button7.Location = new System.Drawing.Point(55, 314);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(156, 23);
             this.button7.TabIndex = 17;
             this.button7.Text = "Transferir";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(89, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Lista de contas:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(275, 469);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.destinoDaTransferencia);
             this.Controls.Add(this.comboContas);
@@ -246,6 +258,7 @@
         private System.Windows.Forms.ComboBox comboContas;
         private System.Windows.Forms.ComboBox destinoDaTransferencia;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label4;
     }
 }
 

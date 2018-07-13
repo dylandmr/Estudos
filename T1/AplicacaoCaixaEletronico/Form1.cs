@@ -62,6 +62,7 @@ namespace AplicacaoCaixaEletronico
             foreach (Conta conta in banco.Contas)
             {
                 comboContas.Items.Add(conta.Titular.Nome);
+                destinoDaTransferencia.Items.Add(conta.Titular.Nome);
             }
         }
 
@@ -154,6 +155,12 @@ namespace AplicacaoCaixaEletronico
 
         private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.AtualizaTexto();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.banco.Contas[comboContas.SelectedIndex].Transfere(Convert.ToDouble(textoValor.Text), this.banco.Contas[destinoDaTransferencia.SelectedIndex]);
             this.AtualizaTexto();
         }
     }
