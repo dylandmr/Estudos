@@ -23,9 +23,8 @@ namespace AplicacaoCaixaEletronico
 
         }
 
-        public bool Saca(double valor)
+        public virtual bool Saca(double valor)
         {
-
             if (valor <= this.Saldo && valor > 0)
             {
                 if (!Titular.MaiordeIdade && valor > 200.0) this.Saldo -= 200.0;
