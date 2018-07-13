@@ -28,7 +28,7 @@ namespace AplicacaoCaixaEletronico
             } else return false;
         }
 
-        public void Deposita(double valor)
+        public virtual void Deposita(double valor)
         {
             if (valor > 0) this.Saldo += valor;
         }

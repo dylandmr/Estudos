@@ -23,5 +23,10 @@ namespace AplicacaoCaixaEletronico
             }
             else return false;
         }
+
+        public override void Deposita(double valor)
+        {
+            if (valor > 0) this.Saldo += valor - 0.1;
+        }
     }
 }

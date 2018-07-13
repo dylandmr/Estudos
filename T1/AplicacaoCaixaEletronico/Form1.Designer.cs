@@ -127,9 +127,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(37, 270);
+            this.button3.Location = new System.Drawing.Point(24, 270);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 48);
+            this.button3.Size = new System.Drawing.Size(100, 36);
             this.button3.TabIndex = 11;
             this.button3.Text = "Saque Conta Poupança";
             this.button3.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(148, 348);
+            this.ClientSize = new System.Drawing.Size(148, 319);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
