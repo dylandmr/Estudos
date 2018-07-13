@@ -8,6 +8,11 @@ namespace AplicacaoCaixaEletronico
 {
     class ContaPoupanca : Conta
     {
+        public ContaPoupanca(Cliente titular) : base(titular)
+        {
+            this.Titular = titular;
+        }
+
         public override bool Saca(double valor)
         {
             if (valor <= this.Saldo && valor > 0)

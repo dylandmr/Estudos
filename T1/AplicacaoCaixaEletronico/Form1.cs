@@ -58,5 +58,15 @@ namespace AplicacaoCaixaEletronico
             if (conta.Saca(Convert.ToDouble(textoValor.Text))) this.AtualizaTexto();
             else MessageBox.Show("Saldo insuficiente.");
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Cliente clientePoupanca = new Cliente("Teste");
+            ContaPoupanca contaPoupanca = new ContaPoupanca(clientePoupanca);
+            contaPoupanca.Titular.Idade = 20;
+            contaPoupanca.Deposita(100);
+            contaPoupanca.Saca(10);
+            MessageBox.Show("Novo saldo: R$" + contaPoupanca.Saldo.ToString("n2"));
+        }
     }
 }

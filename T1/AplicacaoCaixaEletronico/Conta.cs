@@ -18,11 +18,6 @@ namespace AplicacaoCaixaEletronico
             this.Titular = titular;
         }
 
-        public Conta()
-        {
-
-        }
-
         public virtual bool Saca(double valor)
         {
             if (valor <= this.Saldo && valor > 0)
