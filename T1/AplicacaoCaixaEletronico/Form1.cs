@@ -67,14 +67,14 @@ namespace AplicacaoCaixaEletronico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conta.Deposita(Convert.ToDouble(textoValor.Text));
+            this.banco.Contas[comboContas.SelectedIndex].Deposita(Convert.ToDouble(textoValor.Text));
             //textoSaldo.Text = conta.Saldo.ToString("n2");
             this.AtualizaTexto();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (this.conta.Saca(Convert.ToDouble(textoValor.Text))) this.AtualizaTexto();
+            if (this.banco.Contas[comboContas.SelectedIndex].Saca(Convert.ToDouble(textoValor.Text))) this.AtualizaTexto();
             else MessageBox.Show("Saldo insuficiente.");
         }
 
