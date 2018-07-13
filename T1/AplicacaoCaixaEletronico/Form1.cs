@@ -121,5 +121,18 @@ namespace AplicacaoCaixaEletronico
 
             int[] listadeInteiros = new int[] { 1, 2, 3, 4, 5, 6, 7 }; // Auto implementa uma array!!! Atalho C#
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Banco banco = new Banco();
+
+            for (int i = 0; i < 10; i++)
+            {
+                banco.Adiciona(new Conta(new Cliente()));
+                banco.Contas[i].Deposita((i + 1) * 1000);
+            }
+
+            foreach (Conta conta in banco.Contas) MessageBox.Show(conta.Saldo.ToString("n2"));
+        }
     }
 }
