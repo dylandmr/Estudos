@@ -35,7 +35,8 @@ namespace AplicacaoCaixaEletronico
         {   
             this.cliente = new Cliente("Victor");
             this.conta = new Conta(this.cliente);
-            
+
+            this.conta.Titular.Idade = 15;
             conta.Deposita(250.0);
             conta.Numero = 1;
 
@@ -50,6 +51,12 @@ namespace AplicacaoCaixaEletronico
             conta.Deposita(Convert.ToDouble(textoValor.Text));
             //textoSaldo.Text = conta.Saldo.ToString("n2");
             this.AtualizaTexto();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (conta.Saca(Convert.ToDouble(textoValor.Text))) this.AtualizaTexto();
+            else MessageBox.Show("Saldo insuficiente.");
         }
     }
 }
