@@ -44,18 +44,20 @@ namespace AplicacaoCaixaEletronico
                 banco.Contas[i].Numero = i + 1;
             }
 
-            foreach (Conta conta in banco.Contas)
-            {
-                comboContas.Items.Add(conta.Titular.Nome);
-            }
-
             this.cliente = new Cliente("Victor");
             this.conta = new Conta(this.cliente);
-            this.contaPoupanca = new ContaPoupanca(this.cliente);
+            banco.Contas[0] = this.conta;
+            this.contaPoupanca = new ContaPoupanca(new Cliente("Cliente Poupança"));
+            banco.Contas[1] = this.contaPoupanca;
 
             this.conta.Titular.Idade = 15;
             conta.Deposita(250.0);
             conta.Numero = 1;
+
+            foreach (Conta conta in banco.Contas)
+            {
+                comboContas.Items.Add(conta.Titular.Nome);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
