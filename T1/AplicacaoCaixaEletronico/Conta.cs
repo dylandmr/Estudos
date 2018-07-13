@@ -13,6 +13,16 @@ namespace AplicacaoCaixaEletronico
         public int Agencia { get; set; }
         public Cliente Titular { get; set; }
 
+        public Conta(Cliente titular)
+        {
+            this.Titular = titular;
+        }
+
+        public Conta()
+        {
+
+        }
+
         public bool Saca(double valor)
         {
 
