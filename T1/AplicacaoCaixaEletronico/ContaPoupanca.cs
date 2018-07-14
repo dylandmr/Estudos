@@ -11,6 +11,7 @@ namespace AplicacaoCaixaEletronico
         public ContaPoupanca(Cliente titular) : base(titular)
         {
             this.Titular = titular;
+            this.Titular.Idade = 18;
         }
 
         public override bool Saca(double valor)

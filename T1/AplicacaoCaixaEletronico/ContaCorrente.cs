@@ -17,6 +17,7 @@ namespace AplicacaoCaixaEletronico
         public ContaCorrente(Cliente titular) : base(titular)
         {
             this.Titular = titular;
+            this.Titular.Idade = 18;
             ContaCorrente.TotalDeContas++;
         }
 

@@ -11,6 +11,7 @@ namespace AplicacaoCaixaEletronico
         public ContaInvestimento(Cliente titular) : base(titular)
         {
             this.Titular = titular;
+            this.Titular.Idade = 18;
         }
 
         public double CalculaTributos()
