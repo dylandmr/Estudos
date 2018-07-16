@@ -18,7 +18,7 @@ namespace AplicacaoCaixaEletronico
             this.Titular = titular;
         }
 
-        public abstract bool Saca(double valor);
+        public abstract void Saca(double valor);
 
         public virtual void Deposita(double valor)
         {

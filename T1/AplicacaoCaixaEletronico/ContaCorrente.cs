@@ -21,15 +21,12 @@ namespace AplicacaoCaixaEletronico
             ContaCorrente.TotalDeContas++;
         }
 
-        public override bool Saca(double valor)
+        public override void Saca(double valor)
         {
-            if (valor <= this.Saldo && valor > 0)
-            {
-                if (!Titular.MaiordeIdade && valor > 200.0) this.Saldo -= 200.0;
-                else this.Saldo -= valor;
-                return true;
-            }
-            else return false;
+            if (valor > this.Saldo) throw new SaldoInsuficienteException();
+            else if (valor < 0) throw new ArgumentException();
+            else if (!Titular.MaiordeIdade && valor > 200.0) throw new SaqueMenorDeIdadeException();
+            else this.Saldo -= valor;
         }
     }
 }
