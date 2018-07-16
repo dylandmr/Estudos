@@ -72,16 +72,22 @@ namespace Benner.AplicacaoCaixaEletronico
             conta.Deposita(250.0);
             conta.Numero = 1;
 
+            comboContas.DisplayMember = "Nome";
+            destinoDaTransferencia.DisplayMember = "Nome";
+
             foreach (Conta conta in banco.Contas)
             {
-                comboContas.Items.Add(conta.Titular.Nome);
-                destinoDaTransferencia.Items.Add(conta.Titular.Nome);
+                comboContas.Items.Add(new ContaComNome(conta));
+                destinoDaTransferencia.Items.Add(new ContaComNome(conta));
             }
+
+     
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.banco.Contas[comboContas.SelectedIndex].Deposita(Convert.ToDouble(textoValor.Text));
+            ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
+            contacomnome.Conta.Deposita(Convert.ToDouble(textoValor.Text));
             //textoSaldo.Text = conta.Saldo.ToString("n2");
             this.AtualizaTexto();
         }
@@ -90,7 +96,8 @@ namespace Benner.AplicacaoCaixaEletronico
         {
             try
             {
-                this.banco.Contas[comboContas.SelectedIndex].Saca(Convert.ToDouble(textoValor.Text));
+                ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
+                contacomnome.Conta.Saca(Convert.ToDouble(textoValor.Text));
                 this.AtualizaTexto();
             }
             catch (ArgumentException exception)
