@@ -100,6 +100,10 @@ namespace AplicacaoCaixaEletronico
             {
                 MessageBox.Show("Valor acima do limite para menores de idade.");
             }
+            finally
+            {
+                textoValor.Text = null;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
