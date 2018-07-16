@@ -225,5 +225,22 @@ namespace Benner.AplicacaoCaixaEletronico
         {
             MessageBox.Show(ContaCorrente.TotalDeContas + " contas criadas. \nPróxima conta: " + ContaCorrente.ProximaConta() + ".");
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            foreach (Conta conta in banco.Contas)
+            {
+                MessageBox.Show(conta.ToString());
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Cliente cliente1 = new Cliente("João");
+            cliente1.Rg = "1.234.568";
+            Cliente cliente2 = new Cliente("Maria");
+            cliente2.Rg = "1.234.567";
+            MessageBox.Show( cliente1.Equals(cliente2) ? "Clientes iguais!" : "Clientes diferentes.");
+        }
     }
 }

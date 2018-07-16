@@ -49,7 +49,7 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
 
         public override string ToString()
         {
-            return "Número: " + this.Numero + "Agência: " + this.Agencia + "Saldo: " + this.Saldo + ".";
+            return "Número: " + this.Numero + " - Agência: " + this.Agencia + " - Saldo: " + this.Saldo + ".";
         }
     }
 }

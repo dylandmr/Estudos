@@ -40,7 +40,7 @@ namespace Benner.AplicacaoCaixaEletronico.Usuario
 
         public override string ToString()
         {
-            return "Nome: " + this.Nome + "RG: " + this.Rg + "CPF: " + this.Cpf + "Idade: " + this.Idade + ".";
+            return "Nome: " + this.Nome + " - RG: " + this.Rg + " - CPF: " + this.Cpf + " - Idade: " + this.Idade + ".";
         }
     }
 }

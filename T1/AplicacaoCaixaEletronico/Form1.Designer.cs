@@ -49,6 +49,8 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textoTitular
@@ -233,19 +235,41 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(136, 483);
+            this.button10.Location = new System.Drawing.Point(144, 483);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(96, 23);
+            this.button10.Size = new System.Drawing.Size(88, 23);
             this.button10.TabIndex = 21;
             this.button10.Text = "Total de Contas";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(46, 512);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(86, 23);
+            this.button11.TabIndex = 22;
+            this.button11.Text = "toString()";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(146, 512);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(86, 23);
+            this.button12.TabIndex = 23;
+            this.button12.Text = "Equals()";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 544);
+            this.ClientSize = new System.Drawing.Size(275, 565);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -298,6 +322,8 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }
 
