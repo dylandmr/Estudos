@@ -57,6 +57,7 @@ namespace AplicacaoCaixaEletronico
             }
 
             this.cliente = new Cliente("Victor");
+            this.cliente.Idade = 17;
             this.conta = new ContaCorrente(this.cliente);
             banco.Contas[0] = this.conta;
             this.contaPoupanca = new ContaPoupanca(new Cliente("Cliente Poupança"));
@@ -82,8 +83,23 @@ namespace AplicacaoCaixaEletronico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (this.banco.Contas[comboContas.SelectedIndex].Saca(Convert.ToDouble(textoValor.Text))) this.AtualizaTexto();
-            else MessageBox.Show("Saldo insuficiente.");
+            try
+            {
+                this.banco.Contas[comboContas.SelectedIndex].Saca(Convert.ToDouble(textoValor.Text));
+                this.AtualizaTexto();
+            }
+            catch (ArgumentException exception)
+            {
+                MessageBox.Show("Valor inválido.");
+            }
+            catch (SaldoInsuficienteException exception)
+            {
+                MessageBox.Show("Saldo insuficiente.");
+            }
+            catch (SaqueMenorDeIdadeException exception)
+            {
+                MessageBox.Show("Valor acima do limite para menores de idade.");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
