@@ -31,5 +31,16 @@ namespace Benner.AplicacaoCaixaEletronico.Usuario
                 return this.Idade >= 18;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            var cliente = (Cliente)obj;
+            return this.Rg == cliente.Rg;
+        }
+
+        public override string ToString()
+        {
+            return "Nome: " + this.Nome + "RG: " + this.Rg + "CPF: " + this.Cpf + "Idade: " + this.Idade + ".";
+        }
     }
 }

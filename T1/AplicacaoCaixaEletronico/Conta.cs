@@ -40,5 +40,16 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
             for (int i = 0; i < 12; i++) saldoprevisto *= 1.007;
             return (saldoprevisto - this.Saldo);
         }
+
+        public override bool Equals(object obj)
+        {
+            var conta = (Conta)obj;
+            return (this.Numero == conta.Numero) && (this.Agencia == conta.Agencia);
+        }
+
+        public override string ToString()
+        {
+            return "Número: " + this.Numero + "Agência: " + this.Agencia + "Saldo: " + this.Saldo + ".";
+        }
     }
 }
