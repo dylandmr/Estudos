@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AplicacaoCaixaEletronico
+using Benner.AplicacaoCaixaEletronico.Contas;
+
+namespace Benner.AplicacaoCaixaEletronico.Processamento
 {
     class Banco
     {

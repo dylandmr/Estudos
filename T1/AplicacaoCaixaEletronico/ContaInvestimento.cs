@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AplicacaoCaixaEletronico
+using Benner.AplicacaoCaixaEletronico.Interfaces;
+using Benner.AplicacaoCaixaEletronico.Usuario;
+using Benner.AplicacaoCaixaEletronico.Excecoes;
+
+namespace Benner.AplicacaoCaixaEletronico.Contas
 {
     class ContaInvestimento : Conta, ITributavel
     {

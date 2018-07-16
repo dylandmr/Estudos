@@ -8,7 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AplicacaoCaixaEletronico
+using Benner.AplicacaoCaixaEletronico.Contas;
+using Benner.AplicacaoCaixaEletronico.Processamento;
+using Benner.AplicacaoCaixaEletronico.Usuario;
+using Benner.AplicacaoCaixaEletronico.Excecoes;
+
+namespace Benner.AplicacaoCaixaEletronico
 {
     public partial class Form1 : Form
     {

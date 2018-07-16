@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AplicacaoCaixaEletronico
+using Benner.AplicacaoCaixaEletronico.Interfaces;
+
+namespace Benner.AplicacaoCaixaEletronico.Processamento
 {
     class GerenciadorDeImposto
     {

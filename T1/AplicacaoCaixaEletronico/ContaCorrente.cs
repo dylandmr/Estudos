@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AplicacaoCaixaEletronico
+using Benner.AplicacaoCaixaEletronico.Usuario;
+using Benner.AplicacaoCaixaEletronico.Excecoes;
+
+namespace Benner.AplicacaoCaixaEletronico.Contas
 {
     class ContaCorrente : Conta
     {

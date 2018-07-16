@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AplicacaoCaixaEletronico
+namespace Benner.AplicacaoCaixaEletronico.Excecoes
+
 {
     class SaldoInsuficienteException : Exception
     {

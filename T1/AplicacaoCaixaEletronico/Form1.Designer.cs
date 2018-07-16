@@ -1,4 +1,4 @@
-﻿namespace AplicacaoCaixaEletronico
+﻿namespace Benner.AplicacaoCaixaEletronico
 {
     partial class Form1
     {
