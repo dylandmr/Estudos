@@ -21,5 +21,20 @@ namespace Benner.AplicacaoCaixaEletronico.Processamento
         {
             this.Contas[Conta.TotalDeContas] = conta;
         }
+
+        public void Remove(Conta conta)
+        {
+            int i;
+            for (i = 0; i < Conta.TotalDeContas; i++)
+            {
+                if (this.Contas[i].Equals(conta)) break;
+            }
+            while (i+1 < Conta.TotalDeContas)
+            {
+                this.Contas[i] = this.Contas[i + 1];
+                i++;
+            }
+            Conta.RemoveConta();
+        }
     }
 }

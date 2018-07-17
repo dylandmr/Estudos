@@ -25,6 +25,11 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
             return Conta.TotalDeContas + 1;
         }
 
+        public static void RemoveConta()
+        {
+            Conta.TotalDeContas--;
+        }
+
         public abstract void Saca(double valor);
 
         public virtual void Deposita(double valor)

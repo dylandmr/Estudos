@@ -244,7 +244,7 @@ namespace Benner.AplicacaoCaixaEletronico
                 for (int i = 0; i < this.banco.Contas.Length; i++) novo.Contas[i] = this.banco.Contas[i];
                 this.banco = novo;
             }
-            this.banco.Contas[Conta.TotalDeContas] = conta;
+            this.banco.Contas[Conta.TotalDeContas-1] = conta;
             this.comboContas.Items.Add(new ContaComNome(conta));
             this.destinoDaTransferencia.Items.Add(new ContaComNome(conta));
             this.comboContas.SelectedIndex = this.comboContas.Items.Count - 1;
@@ -254,6 +254,14 @@ namespace Benner.AplicacaoCaixaEletronico
         {
             CadastroDeContas cadastro = new CadastroDeContas(this);
             cadastro.ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
+            banco.Remove(contacomnome.Conta);
+            comboContas.Items.Remove(comboContas.SelectedItem);
+            comboContas.ResetText();
         }
     }
 }
