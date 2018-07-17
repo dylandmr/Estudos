@@ -254,7 +254,7 @@ namespace Benner.AplicacaoCaixaEletronico
 
         private void button10_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Conta.TotalDeContas + " contas criadas. " + this.banco.Contas.Length + "\nPróxima conta: " + Conta.ProximaConta() + ".");
+            MessageBox.Show(Conta.TotalDeContas + " contas criadas. \nPróxima conta: " + Conta.ProximaConta() + ".");
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -276,16 +276,18 @@ namespace Benner.AplicacaoCaixaEletronico
 
         public void AdicionaConta(Conta conta)
         {
-            if (this.banco.Contas.Length <= Conta.TotalDeContas)
-            {
-                Banco novo = new Banco(Conta.TotalDeContas * 3);
-                for (int i = 0; i < this.banco.Contas.Length; i++) novo.Contas[i] = this.banco.Contas[i];
-                this.banco = novo;
-            }
-            this.banco.Contas[Conta.TotalDeContas-1] = conta;
-            this.comboContas.Items.Add(new ContaComNome(conta));
-            this.destinoDaTransferencia.Items.Add(new ContaComNome(conta));
-            this.comboContas.SelectedIndex = this.comboContas.Items.Count - 1;
+            //DEPRECADO - Antiga rotina para arrays:
+            //if (banco.Contas.Length <= Conta.TotalDeContas)
+            //{
+            //    Banco novo = new Banco(Conta.TotalDeContas * 3);
+            //    for (int i = 0; i < banco.Contas.Length; i++) novo.Contas[i] = this.banco.Contas[i];
+            //    banco = novo;
+            //}
+            //banco.Contas[Conta.TotalDeContas-1] = conta;
+            banco.Adiciona(conta);
+            comboContas.Items.Add(new ContaComNome(conta));
+            destinoDaTransferencia.Items.Add(new ContaComNome(conta));
+            comboContas.SelectedIndex = comboContas.Items.Count - 1;
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -301,7 +303,6 @@ namespace Benner.AplicacaoCaixaEletronico
             {
                 banco.Remove(contacomnome.Conta);
                 comboContas.Items.Remove(comboContas.SelectedItem);
-                destinoDaTransferencia.Items.RemoveAt(destinoDaTransferencia.FindStringExact(contacomnome.Conta.Titular.Nome));
                 this.LimpaTextos();
             }
             catch (NullReferenceException exception)

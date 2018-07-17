@@ -38,6 +38,9 @@ namespace Benner.AplicacaoCaixaEletronico
 
                 Conta conta_nova;
 
+                int agencia = Convert.ToInt32(textoAgencia.Text);
+                int numero = Convert.ToInt32(textoNumero.Text);
+
                 switch (comboTipoConta.SelectedIndex)
                 {
                     case 1: conta_nova = new ContaPoupanca(cliente_novo); break;
@@ -45,8 +48,6 @@ namespace Benner.AplicacaoCaixaEletronico
                     default: conta_nova = new ContaCorrente(cliente_novo); break;
                 }
             
-                conta_nova.Agencia = Convert.ToInt32(textoAgencia.Text);
-                conta_nova.Numero = Convert.ToInt32(textoNumero.Text);
                 this.AplicacaoPrincipal.AdicionaConta(conta_nova);
                 this.Close();
             }
