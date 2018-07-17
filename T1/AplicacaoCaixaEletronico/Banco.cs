@@ -10,30 +10,21 @@ namespace Benner.AplicacaoCaixaEletronico.Processamento
 {
     class Banco
     {
-        public Conta[] Contas { get; private set; }
+        public List<Conta> Contas { get; private set; }
 
-        public Banco(int tamanho)
+        public Banco()
         {
-            this.Contas = new Conta[tamanho];
+            this.Contas = new List<Conta>();
         }
 
         public void Adiciona(Conta conta)
         {
-            this.Contas[Conta.TotalDeContas] = conta;
+            this.Contas.Add(conta);
         }
 
         public void Remove(Conta conta)
         {
-            int i;
-            for (i = 0; i < Conta.TotalDeContas; i++)
-            {
-                if (this.Contas[i].Equals(conta)) break;
-            }
-            while (i+1 < Conta.TotalDeContas)
-            {
-                this.Contas[i] = this.Contas[i + 1];
-                i++;
-            }
+            this.Contas.Remove(conta);
             Conta.RemoveConta();
         }
     }

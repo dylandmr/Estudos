@@ -67,8 +67,8 @@ namespace Benner.AplicacaoCaixaEletronico
             comboContas.DisplayMember = "Nome";
             destinoDaTransferencia.DisplayMember = "Nome";
 
-            this.banco = new Banco(Conta.TotalDeContas);
-            banco.Contas[0] = this.conta;
+            this.banco = new Banco();
+            banco.Contas.Add(this.conta);
 
             comboContas.Items.Add(new ContaComNome(banco.Contas[0]));
             destinoDaTransferencia.Items.Add(new ContaComNome(banco.Contas[0]));
@@ -190,7 +190,7 @@ namespace Benner.AplicacaoCaixaEletronico
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Banco banco = new Banco(10);
+            Banco banco = new Banco();
 
             for (int i = 0; i < 10; i++)
             {
