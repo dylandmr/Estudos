@@ -76,10 +76,21 @@ namespace Benner.AplicacaoCaixaEletronico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
-            contacomnome.Conta.Deposita(Convert.ToDouble(textoValor.Text));
-            //textoSaldo.Text = conta.Saldo.ToString("n2");
-            this.AtualizaTexto();
+            try
+            {
+                ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
+                contacomnome.Conta.Deposita(Convert.ToDouble(textoValor.Text));
+                //textoSaldo.Text = conta.Saldo.ToString("n2");
+                this.AtualizaTexto();
+            }
+            catch (NullReferenceException exception)
+            {
+                MessageBox.Show("Selecione uma conta!");
+            }
+            catch (FormatException exception)
+            {
+                MessageBox.Show("Informe o valor.");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -101,6 +112,14 @@ namespace Benner.AplicacaoCaixaEletronico
             catch (SaqueMenorDeIdadeException exception)
             {
                 MessageBox.Show("Valor acima do limite para menores de idade.");
+            }
+            catch (FormatException exception)
+            {
+                MessageBox.Show("Informe um valor.");
+            }
+            catch (NullReferenceException exception)
+            {
+                MessageBox.Show("Selecione uma conta!");
             }
             finally
             {
@@ -185,14 +204,33 @@ namespace Benner.AplicacaoCaixaEletronico
         private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.AtualizaTexto();
+            destinoDaTransferencia.Items.Clear();
+            for (int i = 0; i < Conta.TotalDeContas; i++)
+            {
+                if (!banco.Contas[i].Equals(banco.Contas[comboContas.SelectedIndex]))
+                {
+                    destinoDaTransferencia.Items.Add(new ContaComNome(banco.Contas[i]));
+                }
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
-            ContaComNome alvo = (ContaComNome)destinoDaTransferencia.SelectedItem;
-            contacomnome.Conta.Transfere(Convert.ToDouble(textoValor.Text), alvo.Conta);
-            this.AtualizaTexto();
+            try
+            {
+                ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
+                ContaComNome alvo = (ContaComNome)destinoDaTransferencia.SelectedItem;
+                contacomnome.Conta.Transfere(Convert.ToDouble(textoValor.Text), alvo.Conta);
+                this.AtualizaTexto();
+            }
+            catch (NullReferenceException exception)
+            {
+                MessageBox.Show("Selecione ambas as contas, origem e destino.");
+            }
+            catch (FormatException exception)
+            {
+                MessageBox.Show("Informe um valor.");
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -233,7 +271,7 @@ namespace Benner.AplicacaoCaixaEletronico
             cliente1.Rg = "1.234.568";
             Cliente cliente2 = new Cliente("Maria");
             cliente2.Rg = "1.234.567";
-            MessageBox.Show( cliente1.Equals(cliente2) ? "Clientes iguais!" : "Clientes diferentes.");
+            MessageBox.Show(cliente1.Equals(cliente2) ? "Clientes iguais!" : "Clientes diferentes.");
         }
 
         public void AdicionaConta(Conta conta)
@@ -259,9 +297,27 @@ namespace Benner.AplicacaoCaixaEletronico
         private void button9_Click(object sender, EventArgs e)
         {
             ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
-            banco.Remove(contacomnome.Conta);
-            comboContas.Items.Remove(comboContas.SelectedItem);
-            comboContas.ResetText();
+            try
+            {
+                banco.Remove(contacomnome.Conta);
+                comboContas.Items.Remove(comboContas.SelectedItem);
+                destinoDaTransferencia.Items.RemoveAt(destinoDaTransferencia.FindStringExact(contacomnome.Conta.Titular.Nome));
+                this.LimpaTextos();
+            }
+            catch (NullReferenceException exception)
+            {
+                MessageBox.Show("Selecione uma conta!");
+            }
+        }
+
+        private void LimpaTextos()
+        {
+            this.comboContas.ResetText();
+            this.destinoDaTransferencia.ResetText();
+            this.textoNumero.ResetText();
+            this.textoSaldo.ResetText();
+            this.textoTitular.ResetText();
+            this.textoValor.ResetText();
         }
     }
 }

@@ -191,14 +191,14 @@
             // destinoDaTransferencia
             // 
             this.destinoDaTransferencia.FormattingEnabled = true;
-            this.destinoDaTransferencia.Location = new System.Drawing.Point(97, 290);
+            this.destinoDaTransferencia.Location = new System.Drawing.Point(97, 301);
             this.destinoDaTransferencia.Name = "destinoDaTransferencia";
             this.destinoDaTransferencia.Size = new System.Drawing.Size(156, 21);
             this.destinoDaTransferencia.TabIndex = 16;
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(97, 317);
+            this.button7.Location = new System.Drawing.Point(97, 328);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(156, 23);
             this.button7.TabIndex = 17;

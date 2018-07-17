@@ -25,28 +25,35 @@ namespace Benner.AplicacaoCaixaEletronico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Cliente cliente_novo = new Cliente()
+            try
             {
-                Nome = textoNome.Text,
-                Rg = textoRG.Text,
-                Cpf = textoCPF.Text,
-                Endereco = textoEndereco.Text,
-                Idade = Convert.ToInt32(textoIdade.Text)
-            };
+                Cliente cliente_novo = new Cliente()
+                {
+                    Nome = textoNome.Text,
+                    Rg = textoRG.Text,
+                    Cpf = textoCPF.Text,
+                    Endereco = textoEndereco.Text,
+                    Idade = Convert.ToInt32(textoIdade.Text)
+                };
 
-            Conta conta_nova;
+                Conta conta_nova;
 
-            switch (comboTipoConta.SelectedIndex)
-            {
-                case 1: conta_nova = new ContaPoupanca(cliente_novo); break;
-                case 2: conta_nova = new ContaInvestimento(cliente_novo); break;
-                default: conta_nova = new ContaCorrente(cliente_novo); break;
+                switch (comboTipoConta.SelectedIndex)
+                {
+                    case 1: conta_nova = new ContaPoupanca(cliente_novo); break;
+                    case 2: conta_nova = new ContaInvestimento(cliente_novo); break;
+                    default: conta_nova = new ContaCorrente(cliente_novo); break;
+                }
+            
+                conta_nova.Agencia = Convert.ToInt32(textoAgencia.Text);
+                conta_nova.Numero = Convert.ToInt32(textoNumero.Text);
+                this.AplicacaoPrincipal.AdicionaConta(conta_nova);
+                this.Close();
             }
-
-            conta_nova.Agencia = Convert.ToInt32(textoAgencia.Text);
-            conta_nova.Numero = Convert.ToInt32(textoNumero.Text);
-            this.AplicacaoPrincipal.AdicionaConta(conta_nova);
-            this.Close();
+            catch (FormatException exception)
+            {
+                MessageBox.Show("Idade, número da conta e/ou agência inválido(s).");
+            }
         }
 
         private void CadastroDeContas_Load(object sender, EventArgs e)
