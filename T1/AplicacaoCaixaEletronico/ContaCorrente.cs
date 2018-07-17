@@ -11,16 +11,10 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
 {
     public class ContaCorrente : Conta
     {
-        public static int TotalDeContas { get; private set; }
-
-        public static int ProximaConta()
-        {
-            return ContaCorrente.TotalDeContas + 1;
-        }
         public ContaCorrente(Cliente titular) : base(titular)
         {
             this.Titular = titular;
-            ContaCorrente.TotalDeContas++;
+            Conta.TotalDeContas++;
         }
 
         public override void Saca(double valor)

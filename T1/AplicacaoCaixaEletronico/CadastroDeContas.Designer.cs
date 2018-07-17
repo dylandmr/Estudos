@@ -43,6 +43,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.textoAgencia = new System.Windows.Forms.TextBox();
             this.textoNumero = new System.Windows.Forms.TextBox();
+            this.comboTipoConta = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textoNome
@@ -82,7 +84,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(66, 246);
+            this.button1.Location = new System.Drawing.Point(66, 262);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 23);
             this.button1.TabIndex = 5;
@@ -138,7 +140,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 206);
+            this.label8.Location = new System.Drawing.Point(27, 222);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 13);
             this.label8.TabIndex = 16;
@@ -147,7 +149,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 180);
+            this.label9.Location = new System.Drawing.Point(27, 196);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 13);
             this.label9.TabIndex = 15;
@@ -155,23 +157,43 @@
             // 
             // textoAgencia
             // 
-            this.textoAgencia.Location = new System.Drawing.Point(89, 203);
+            this.textoAgencia.Location = new System.Drawing.Point(89, 219);
             this.textoAgencia.Name = "textoAgencia";
             this.textoAgencia.Size = new System.Drawing.Size(100, 20);
             this.textoAgencia.TabIndex = 12;
             // 
             // textoNumero
             // 
-            this.textoNumero.Location = new System.Drawing.Point(89, 177);
+            this.textoNumero.Location = new System.Drawing.Point(89, 193);
             this.textoNumero.Name = "textoNumero";
             this.textoNumero.Size = new System.Drawing.Size(100, 20);
             this.textoNumero.TabIndex = 11;
+            // 
+            // comboTipoConta
+            // 
+            this.comboTipoConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboTipoConta.FormattingEnabled = true;
+            this.comboTipoConta.Location = new System.Drawing.Point(89, 158);
+            this.comboTipoConta.Name = "comboTipoConta";
+            this.comboTipoConta.Size = new System.Drawing.Size(101, 21);
+            this.comboTipoConta.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(28, 161);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Tipo:";
             // 
             // CadastroDeContas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(230, 285);
+            this.ClientSize = new System.Drawing.Size(230, 310);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comboTipoConta);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textoAgencia);
@@ -189,6 +211,7 @@
             this.Controls.Add(this.textoNome);
             this.Name = "CadastroDeContas";
             this.Text = "CadastroDeContas";
+            this.Load += new System.EventHandler(this.CadastroDeContas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,5 +234,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textoAgencia;
         private System.Windows.Forms.TextBox textoNumero;
+        private System.Windows.Forms.ComboBox comboTipoConta;
+        private System.Windows.Forms.Label label6;
     }
 }

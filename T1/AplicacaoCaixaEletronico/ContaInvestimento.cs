@@ -15,7 +15,7 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
         public ContaInvestimento(Cliente titular) : base(titular)
         {
             this.Titular = titular;
-            this.Titular.Idade = 18;
+            Conta.TotalDeContas++;
         }
 
         public double CalculaTributos()

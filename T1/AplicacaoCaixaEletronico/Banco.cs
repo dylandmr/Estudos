@@ -10,19 +10,16 @@ namespace Benner.AplicacaoCaixaEletronico.Processamento
 {
     class Banco
     {
-        private Conta[] contas = new Conta[10];
+        public Conta[] Contas { get; private set; }
 
-        public Conta[] Contas
+        public Banco(int tamanho)
         {
-            get
-            {
-                return this.contas;
-            }
+            this.Contas = new Conta[tamanho];
         }
 
         public void Adiciona(Conta conta)
         {
-            this.contas[Array.IndexOf(contas, null)] = conta;
+            this.Contas[Conta.TotalDeContas] = conta;
         }
     }
 }

@@ -53,12 +53,10 @@ namespace Benner.AplicacaoCaixaEletronico
             //var qualquer;    <- NÃO COMPILA | Pois a variável implícita requer atribuição de valor 
             //var nula = null; <- NÃO COMPILA | na declaração.
 
-            this.banco = new Banco();
-
             this.cliente = new Cliente("Victor");
             this.cliente.Idade = 17;
             this.conta = new ContaCorrente(this.cliente);
-            banco.Contas[0] = this.conta;
+            
             //this.contaPoupanca = new ContaPoupanca(new Cliente("Cliente Poupança"));
             //banco.Contas[1] = this.contaPoupanca;
 
@@ -69,7 +67,11 @@ namespace Benner.AplicacaoCaixaEletronico
             comboContas.DisplayMember = "Nome";
             destinoDaTransferencia.DisplayMember = "Nome";
 
+            this.banco = new Banco(Conta.TotalDeContas);
+            banco.Contas[0] = this.conta;
+
             comboContas.Items.Add(new ContaComNome(banco.Contas[0]));
+            destinoDaTransferencia.Items.Add(new ContaComNome(banco.Contas[0]));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -169,7 +171,7 @@ namespace Benner.AplicacaoCaixaEletronico
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Banco banco = new Banco();
+            Banco banco = new Banco(10);
 
             for (int i = 0; i < 10; i++)
             {
@@ -187,7 +189,9 @@ namespace Benner.AplicacaoCaixaEletronico
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.banco.Contas[comboContas.SelectedIndex].Transfere(Convert.ToDouble(textoValor.Text), this.banco.Contas[destinoDaTransferencia.SelectedIndex]);
+            ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
+            ContaComNome alvo = (ContaComNome)destinoDaTransferencia.SelectedItem;
+            contacomnome.Conta.Transfere(Convert.ToDouble(textoValor.Text), alvo.Conta);
             this.AtualizaTexto();
         }
 
@@ -210,15 +214,9 @@ namespace Benner.AplicacaoCaixaEletronico
             MessageBox.Show("Total de impostos: R$" + gerenciador.Total.ToString("n2") + ".");
         }
 
-        private void button9_Click(object sender, EventArgs e)
-        {
-            ContaCorrente cc = new ContaCorrente(new Cliente());
-            MessageBox.Show(ContaCorrente.TotalDeContas + "ª conta corrente criada com sucesso.");
-        }
-
         private void button10_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(ContaCorrente.TotalDeContas + " contas criadas. \nPróxima conta: " + ContaCorrente.ProximaConta() + ".");
+            MessageBox.Show(Conta.TotalDeContas + " contas criadas. " + this.banco.Contas.Length + "\nPróxima conta: " + Conta.ProximaConta() + ".");
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -240,9 +238,16 @@ namespace Benner.AplicacaoCaixaEletronico
 
         public void AdicionaConta(Conta conta)
         {
-            this.banco.Contas[ContaCorrente.ProximaConta()] = conta;
+            if (this.banco.Contas.Length <= Conta.TotalDeContas)
+            {
+                Banco novo = new Banco(Conta.TotalDeContas * 3);
+                for (int i = 0; i < this.banco.Contas.Length; i++) novo.Contas[i] = this.banco.Contas[i];
+                this.banco = novo;
+            }
+            this.banco.Contas[Conta.TotalDeContas] = conta;
             this.comboContas.Items.Add(new ContaComNome(conta));
-            this.comboContas.SelectedIndex = this.comboContas.SelectedIndex = this.comboContas.Items.Count - 1;
+            this.destinoDaTransferencia.Items.Add(new ContaComNome(conta));
+            this.comboContas.SelectedIndex = this.comboContas.Items.Count - 1;
         }
 
         private void button13_Click(object sender, EventArgs e)

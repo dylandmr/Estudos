@@ -34,14 +34,26 @@ namespace Benner.AplicacaoCaixaEletronico
                 Idade = Convert.ToInt32(textoIdade.Text)
             };
 
-            ContaCorrente conta_nova = new ContaCorrente(cliente_novo)
-            {
-                Agencia = Convert.ToInt32(textoAgencia.Text),
-                Numero = Convert.ToInt32(textoNumero.Text)
-            };
+            Conta conta_nova;
 
+            switch (comboTipoConta.SelectedIndex)
+            {
+                case 1: conta_nova = new ContaPoupanca(cliente_novo); break;
+                case 2: conta_nova = new ContaInvestimento(cliente_novo); break;
+                default: conta_nova = new ContaCorrente(cliente_novo); break;
+            }
+
+            conta_nova.Agencia = Convert.ToInt32(textoAgencia.Text);
+            conta_nova.Numero = Convert.ToInt32(textoNumero.Text);
             this.AplicacaoPrincipal.AdicionaConta(conta_nova);
             this.Close();
+        }
+
+        private void CadastroDeContas_Load(object sender, EventArgs e)
+        {
+            comboTipoConta.Items.Add("Conta Corrente");
+            comboTipoConta.Items.Add("Conta Poupança");
+            comboTipoConta.Items.Add("Conta Investimento");
         }
     }
 }

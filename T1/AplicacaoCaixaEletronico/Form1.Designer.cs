@@ -47,7 +47,6 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -224,21 +223,11 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(82, 483);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(86, 23);
-            this.button9.TabIndex = 20;
-            this.button9.Text = "Nova Conta";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(180, 483);
+            this.button10.Location = new System.Drawing.Point(82, 483);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(88, 23);
+            this.button10.Size = new System.Drawing.Size(186, 23);
             this.button10.TabIndex = 21;
             this.button10.Text = "Total de Contas";
             this.button10.UseVisualStyleBackColor = true;
@@ -283,7 +272,6 @@
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button7);
@@ -332,7 +320,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;

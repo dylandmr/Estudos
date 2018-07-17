@@ -15,7 +15,7 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
         public ContaPoupanca(Cliente titular) : base(titular)
         {
             this.Titular = titular;
-            this.Titular.Idade = 18;
+            Conta.TotalDeContas++;
         }
 
         public override void Saca(double valor)
@@ -23,7 +23,7 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
             if (valor > this.Saldo) throw new SaldoInsuficienteException();
             else if (valor < 0) throw new ArgumentException();
             else if (!Titular.MaiordeIdade && valor > 200.0) throw new SaqueMenorDeIdadeException();
-            else this.Saldo -= valor;
+            else this.Saldo -= valor + 0.1;
         }
 
         public override void Deposita(double valor)

@@ -13,10 +13,16 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
         public double Saldo { get; protected set; }
         public int Agencia { get; set; }
         public Cliente Titular { get; set; }
+        public static int TotalDeContas { get; protected set; }
 
         public Conta(Cliente titular)
         {
             this.Titular = titular;
+        }
+
+        public static int ProximaConta()
+        {
+            return Conta.TotalDeContas + 1;
         }
 
         public abstract void Saca(double valor);
