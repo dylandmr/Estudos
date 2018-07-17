@@ -9,7 +9,7 @@ using Benner.AplicacaoCaixaEletronico.Excecoes;
 
 namespace Benner.AplicacaoCaixaEletronico.Contas
 {
-    class ContaCorrente : Conta
+    public class ContaCorrente : Conta
     {
         public static int TotalDeContas { get; private set; }
 
@@ -20,7 +20,6 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
         public ContaCorrente(Cliente titular) : base(titular)
         {
             this.Titular = titular;
-            this.Titular.Idade = 18;
             ContaCorrente.TotalDeContas++;
         }
 

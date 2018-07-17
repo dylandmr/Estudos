@@ -7,10 +7,8 @@ using Benner.AplicacaoCaixaEletronico.Usuario;
 
 namespace Benner.AplicacaoCaixaEletronico.Contas
 {
-    abstract class Conta
+    public abstract class Conta
     {
-        private Cliente titular;
-
         public int Numero { get; set; }
         public double Saldo { get; protected set; }
         public int Agencia { get; set; }

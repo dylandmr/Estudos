@@ -28,9 +28,10 @@ namespace Benner.AplicacaoCaixaEletronico
         //Correção professor, para evitar repetição de códigos, cria-se o método AtualizaTexto()
         private void AtualizaTexto()
         {
-            textoTitular.Text = banco.Contas[comboContas.SelectedIndex].Titular.Nome;
-            textoNumero.Text = banco.Contas[comboContas.SelectedIndex].Numero.ToString();
-            textoSaldo.Text = "R$" + banco.Contas[comboContas.SelectedIndex].Saldo.ToString("n2");
+            ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
+            textoTitular.Text = contacomnome.Conta.Titular.ToString();
+            textoNumero.Text = contacomnome.Conta.Numero.ToString();
+            textoSaldo.Text = "R$" + contacomnome.Conta.Saldo.ToString("n2");
 
             //Deprecado - Código de exercícios anteriores:
             //textoTitular.Text = conta.Titular.Nome;
@@ -54,19 +55,12 @@ namespace Benner.AplicacaoCaixaEletronico
 
             this.banco = new Banco();
 
-            for (int i = 0; i < 10; i++)
-            {
-                banco.Adiciona(new ContaCorrente(new Cliente("Titular " + (i+1))));
-                banco.Contas[i].Deposita((i + 1) * 1000);
-                banco.Contas[i].Numero = i + 1;
-            }
-
             this.cliente = new Cliente("Victor");
             this.cliente.Idade = 17;
             this.conta = new ContaCorrente(this.cliente);
             banco.Contas[0] = this.conta;
-            this.contaPoupanca = new ContaPoupanca(new Cliente("Cliente Poupança"));
-            banco.Contas[1] = this.contaPoupanca;
+            //this.contaPoupanca = new ContaPoupanca(new Cliente("Cliente Poupança"));
+            //banco.Contas[1] = this.contaPoupanca;
 
             this.conta.Titular.Idade = 15;
             conta.Deposita(250.0);
@@ -75,13 +69,7 @@ namespace Benner.AplicacaoCaixaEletronico
             comboContas.DisplayMember = "Nome";
             destinoDaTransferencia.DisplayMember = "Nome";
 
-            foreach (Conta conta in banco.Contas)
-            {
-                comboContas.Items.Add(new ContaComNome(conta));
-                destinoDaTransferencia.Items.Add(new ContaComNome(conta));
-            }
-
-     
+            comboContas.Items.Add(new ContaComNome(banco.Contas[0]));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -248,6 +236,19 @@ namespace Benner.AplicacaoCaixaEletronico
             Cliente cliente2 = new Cliente("Maria");
             cliente2.Rg = "1.234.567";
             MessageBox.Show( cliente1.Equals(cliente2) ? "Clientes iguais!" : "Clientes diferentes.");
+        }
+
+        public void AdicionaConta(Conta conta)
+        {
+            this.banco.Contas[ContaCorrente.ProximaConta()] = conta;
+            this.comboContas.Items.Add(new ContaComNome(conta));
+            this.comboContas.SelectedIndex = this.comboContas.SelectedIndex = this.comboContas.Items.Count - 1;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            CadastroDeContas cadastro = new CadastroDeContas(this);
+            cadastro.ShowDialog();
         }
     }
 }
