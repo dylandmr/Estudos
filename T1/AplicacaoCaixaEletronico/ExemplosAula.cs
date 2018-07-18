@@ -225,5 +225,49 @@ namespace Benner.AplicacaoCaixaEletronico
                 MessageBox.Show(conta.ToString());
             }
         }
+
+        private void buttonStrings_Click(object sender, EventArgs e)
+        {
+            string exemplo = "Esta é " + "uma frase";
+            exemplo += "! ";
+            int nro = 22;
+            exemplo += nro;
+
+            MessageBox.Show(exemplo);
+
+            string nome = "Dylan";
+            exemplo = String.Format("{0} tem {1} anos de idade.", nome, nro);
+
+            MessageBox.Show(exemplo);
+
+            string cidade = "Blu,me,nau";
+
+            string[] silabas = cidade.Split(',');
+
+            foreach (string silaba in silabas)
+            {
+                MessageBox.Show(silaba);
+            }
+
+            exemplo = "maiúsculas!!11!!";
+
+            exemplo = exemplo.ToUpper();
+
+            MessageBox.Show(exemplo);
+
+            exemplo = exemplo.Replace("1", "2");
+
+            MessageBox.Show(exemplo);
+
+            exemplo = "Fulano de Tal";
+
+            nome = exemplo.Substring(0, 6);
+
+            MessageBox.Show(nome + "\nEspaço na posição: " + exemplo.IndexOf(" ").ToString());
+
+            string sobrenome = exemplo.Substring(exemplo.IndexOf("d"));
+
+            MessageBox.Show(sobrenome);
+        }
     }
 }

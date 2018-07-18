@@ -39,6 +39,7 @@
             this.botaoArrays = new System.Windows.Forms.Button();
             this.botaoPolim = new System.Windows.Forms.Button();
             this.botaoSaqueCP = new System.Windows.Forms.Button();
+            this.buttonStrings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BotaoSortedDicio
@@ -151,11 +152,22 @@
             this.botaoSaqueCP.UseVisualStyleBackColor = true;
             this.botaoSaqueCP.Click += new System.EventHandler(this.botaoSaqueCP_Click);
             // 
+            // buttonStrings
+            // 
+            this.buttonStrings.Location = new System.Drawing.Point(26, 272);
+            this.buttonStrings.Name = "buttonStrings";
+            this.buttonStrings.Size = new System.Drawing.Size(185, 23);
+            this.buttonStrings.TabIndex = 41;
+            this.buttonStrings.Text = "Manipulando Strings";
+            this.buttonStrings.UseVisualStyleBackColor = true;
+            this.buttonStrings.Click += new System.EventHandler(this.buttonStrings_Click);
+            // 
             // ExemplosAula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(237, 284);
+            this.ClientSize = new System.Drawing.Size(237, 342);
+            this.Controls.Add(this.buttonStrings);
             this.Controls.Add(this.BotaoSortedDicio);
             this.Controls.Add(this.BotaoDicionario);
             this.Controls.Add(this.botaoSortedSet);
@@ -187,5 +199,6 @@
         private System.Windows.Forms.Button botaoArrays;
         private System.Windows.Forms.Button botaoPolim;
         private System.Windows.Forms.Button botaoSaqueCP;
+        private System.Windows.Forms.Button buttonStrings;
     }
 }
