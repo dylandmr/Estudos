@@ -54,7 +54,6 @@
     </Compile>
     <Compile Include="Cliente.cs" />
     <Compile Include="Conta.cs" />
-    <Compile Include="ContaComNome.cs" />
     <Compile Include="ContaCorrente.cs" />
     <Compile Include="ContaInvestimento.cs" />
     <Compile Include="ContaPoupanca.cs" />

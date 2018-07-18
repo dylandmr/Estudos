@@ -17,10 +17,10 @@ namespace Benner.AplicacaoCaixaEletronico
 {
     public partial class Form1 : Form
     {
-        Banco banco;
         //Conta conta = new Conta();
         //Cliente cliente = new Cliente("Victor");
         //Correção professor - só precisa declarar o atributo, não é necessário inicializá-lo:
+        private Banco banco;
         private Cliente cliente;
         private Conta conta;
         private ContaPoupanca contaPoupanca;
@@ -28,10 +28,9 @@ namespace Benner.AplicacaoCaixaEletronico
         //Correção professor, para evitar repetição de códigos, cria-se o método AtualizaTexto()
         private void AtualizaTexto()
         {
-            ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
-            textoTitular.Text = contacomnome.Conta.Titular.ToString();
-            textoNumero.Text = contacomnome.Conta.Numero.ToString();
-            textoSaldo.Text = "R$" + contacomnome.Conta.Saldo.ToString("n2");
+            textoTitular.Text = banco.Contas[comboContas.SelectedIndex].Titular.ToString();
+            textoNumero.Text = banco.Contas[comboContas.SelectedIndex].Numero.ToString();
+            textoSaldo.Text = "R$" + banco.Contas[comboContas.SelectedIndex].Saldo.ToString("n2");
 
             //Deprecado - Código de exercícios anteriores:
             //textoTitular.Text = conta.Titular.Nome;
@@ -53,37 +52,36 @@ namespace Benner.AplicacaoCaixaEletronico
             //var qualquer;    <- NÃO COMPILA | Pois a variável implícita requer atribuição de valor 
             //var nula = null; <- NÃO COMPILA | na declaração.
 
-            this.cliente = new Cliente("Victor");
-            this.cliente.Idade = 17;
-            this.conta = new ContaCorrente(this.cliente);
+            cliente = new Cliente("Victor");
+            cliente.Idade = 17;
+            conta = new ContaCorrente(cliente);
             
             //this.contaPoupanca = new ContaPoupanca(new Cliente("Cliente Poupança"));
             //banco.Contas[1] = this.contaPoupanca;
 
-            this.conta.Titular.Idade = 15;
+            conta.Titular.Idade = 15;
             conta.Deposita(250.0);
             conta.Numero = 1;
 
-            comboContas.DisplayMember = "Nome";
-            destinoDaTransferencia.DisplayMember = "Nome";
+            //comboContas.DisplayMember = "Nome";
+            //destinoDaTransferencia.DisplayMember = "Nome";
 
-            this.banco = new Banco();
-            banco.Contas.Add(this.conta);
+            banco = new Banco();
+            banco.Contas.Add(conta);
 
-            comboContas.Items.Add(new ContaComNome(banco.Contas[0]));
-            destinoDaTransferencia.Items.Add(new ContaComNome(banco.Contas[0]));
+            comboContas.Items.Add(banco.Contas[0].Titular.Nome);
+            destinoDaTransferencia.Items.Add(banco.Contas[0].Titular.Nome);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
-                contacomnome.Conta.Deposita(Convert.ToDouble(textoValor.Text));
+                banco.Contas[comboContas.SelectedIndex].Deposita(Convert.ToDouble(textoValor.Text));
                 //textoSaldo.Text = conta.Saldo.ToString("n2");
                 this.AtualizaTexto();
             }
-            catch (NullReferenceException exception)
+            catch (ArgumentOutOfRangeException exception)
             {
                 MessageBox.Show("Selecione uma conta!");
             }
@@ -97,8 +95,7 @@ namespace Benner.AplicacaoCaixaEletronico
         {
             try
             {
-                ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
-                contacomnome.Conta.Saca(Convert.ToDouble(textoValor.Text));
+                banco.Contas[comboContas.SelectedIndex].Saca(Convert.ToDouble(textoValor.Text));
                 this.AtualizaTexto();
             }
             catch (ArgumentException exception)
@@ -116,10 +113,6 @@ namespace Benner.AplicacaoCaixaEletronico
             catch (FormatException exception)
             {
                 MessageBox.Show("Informe um valor.");
-            }
-            catch (NullReferenceException exception)
-            {
-                MessageBox.Show("Selecione uma conta!");
             }
             finally
             {
@@ -209,8 +202,8 @@ namespace Benner.AplicacaoCaixaEletronico
             {
                 if (!banco.Contas[i].Equals(banco.Contas[comboContas.SelectedIndex]))
                 {
-                    destinoDaTransferencia.Items.Add(new ContaComNome(banco.Contas[i]));
-                }
+                    destinoDaTransferencia.Items.Add(banco.Contas[i].Titular.Nome);
+                } 
             }
         }
 
@@ -218,18 +211,21 @@ namespace Benner.AplicacaoCaixaEletronico
         {
             try
             {
-                ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
-                ContaComNome alvo = (ContaComNome)destinoDaTransferencia.SelectedItem;
-                contacomnome.Conta.Transfere(Convert.ToDouble(textoValor.Text), alvo.Conta);
+                Conta alvo = banco.Contas[(int)destinoDaTransferencia.SelectedValue];
+                banco.Contas[comboContas.SelectedIndex].Transfere(Convert.ToDouble(textoValor.Text), alvo);
                 this.AtualizaTexto();
             }
-            catch (NullReferenceException exception)
+            catch (ArgumentOutOfRangeException exception)
             {
                 MessageBox.Show("Selecione ambas as contas, origem e destino.");
             }
             catch (FormatException exception)
             {
                 MessageBox.Show("Informe um valor.");
+            }
+            catch (NullReferenceException exception)
+            {
+                MessageBox.Show("Selecione as duas contas.");
             }
         }
 
@@ -285,8 +281,8 @@ namespace Benner.AplicacaoCaixaEletronico
             //}
             //banco.Contas[Conta.TotalDeContas-1] = conta;
             banco.Adiciona(conta);
-            comboContas.Items.Add(new ContaComNome(conta));
-            destinoDaTransferencia.Items.Add(new ContaComNome(conta));
+            comboContas.Items.Add(conta.Titular.Nome);
+            destinoDaTransferencia.Items.Add(conta.Titular.Nome);
             comboContas.SelectedIndex = comboContas.Items.Count - 1;
         }
 
@@ -298,14 +294,13 @@ namespace Benner.AplicacaoCaixaEletronico
 
         private void button9_Click(object sender, EventArgs e)
         {
-            ContaComNome contacomnome = (ContaComNome)comboContas.SelectedItem;
             try
             {
-                banco.Remove(contacomnome.Conta);
+                banco.Remove(banco.Contas[comboContas.SelectedIndex]);
                 comboContas.Items.Remove(comboContas.SelectedItem);
                 this.LimpaTextos();
             }
-            catch (NullReferenceException exception)
+            catch (ArgumentOutOfRangeException exception)
             {
                 MessageBox.Show("Selecione uma conta!");
             }

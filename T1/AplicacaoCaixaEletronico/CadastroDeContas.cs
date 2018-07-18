@@ -47,7 +47,10 @@ namespace Benner.AplicacaoCaixaEletronico
                     case 2: conta_nova = new ContaInvestimento(cliente_novo); break;
                     default: conta_nova = new ContaCorrente(cliente_novo); break;
                 }
-            
+
+                conta_nova.Agencia = agencia;
+                conta_nova.Numero = numero;
+
                 this.AplicacaoPrincipal.AdicionaConta(conta_nova);
                 this.Close();
             }
