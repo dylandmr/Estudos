@@ -52,6 +52,10 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textoTitular
@@ -275,11 +279,55 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(85, 541);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(87, 23);
+            this.button14.TabIndex = 26;
+            this.button14.Text = "HashSet";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(183, 541);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(87, 23);
+            this.button15.TabIndex = 27;
+            this.button15.Text = "SortedSet";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(85, 570);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(86, 40);
+            this.button16.TabIndex = 28;
+            this.button16.Text = "Dictionary";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(185, 570);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(86, 40);
+            this.button17.TabIndex = 29;
+            this.button17.Text = "Sorted Dictionary";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 565);
+            this.ClientSize = new System.Drawing.Size(357, 622);
+            this.Controls.Add(this.button17);
+            this.Controls.Add(this.button16);
+            this.Controls.Add(this.button15);
+            this.Controls.Add(this.button14);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
@@ -338,6 +386,10 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
     }
 }
 

@@ -315,5 +315,64 @@ namespace Benner.AplicacaoCaixaEletronico
             this.textoTitular.ResetText();
             this.textoValor.ResetText();
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //Exemplo HashSet - Lista sem valores repetidos e sem índices:
+            var hashset = new HashSet<Conta>();
+
+            hashset.Add(this.conta);
+            hashset.Add(this.conta);
+            hashset.Add(this.conta);
+            hashset.Add(this.conta);
+            hashset.Add(this.conta);
+            //Verifica a igualdade de cada novo elemento usando o método Equals();
+
+            foreach (var conta in hashset)
+            {
+                MessageBox.Show(hashset.Count + " item: \n" +conta.ToString());
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            //Listas (HashSets) ordenadas:
+            var sortedlist = new SortedSet<int>() { 5, 3, 7, 9, 4 };
+
+            foreach (int numero in sortedlist)
+            {
+                MessageBox.Show(numero.ToString());
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            //Dicionários, associam CHAVE com VALOR:
+            Dictionary<string, int> dicio = new Dictionary<string, int>();
+            dicio.Add("Exemplo", 13);
+
+            int numero = dicio["Exemplo"];
+
+            MessageBox.Show(numero.ToString());
+
+            foreach (KeyValuePair<string, int> i in dicio)
+            {
+                MessageBox.Show(i.Key + "->" + i.Value);
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            //Dicionário ordenado:
+            SortedDictionary<string, string> dicio_ordenado = new SortedDictionary<string, string>();
+            dicio_ordenado.Add("Maria", "João");
+            dicio_ordenado.Add("Afonso", "Rosângela");
+            dicio_ordenado.Add("Adilson", "Letícia");
+
+            foreach (var i in dicio_ordenado)
+            {
+                MessageBox.Show(i.Key + " " + i.Value);
+            }
+        }
     }
 }
