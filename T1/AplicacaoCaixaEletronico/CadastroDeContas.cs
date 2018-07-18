@@ -15,9 +15,9 @@ namespace Benner.AplicacaoCaixaEletronico
 {
     public partial class CadastroDeContas : Form
     {
-        private Form1 AplicacaoPrincipal;
+        private AppCaixaEletronico AplicacaoPrincipal;
 
-        public CadastroDeContas(Form1 aplicacaoPrincipal)
+        public CadastroDeContas(AppCaixaEletronico aplicacaoPrincipal)
         {
             this.AplicacaoPrincipal = aplicacaoPrincipal;
             InitializeComponent();

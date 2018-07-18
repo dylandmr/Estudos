@@ -57,11 +57,17 @@
     <Compile Include="ContaCorrente.cs" />
     <Compile Include="ContaInvestimento.cs" />
     <Compile Include="ContaPoupanca.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="AppCaixaEletronico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AppCaixaEletronico.Designer.cs">
+      <DependentUpon>AppCaixaEletronico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExemplosAula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExemplosAula.Designer.cs">
+      <DependentUpon>ExemplosAula.cs</DependentUpon>
     </Compile>
     <Compile Include="GerenciadorDeImposto.cs" />
     <Compile Include="ITributavel.cs" />
@@ -74,8 +80,11 @@
     <EmbeddedResource Include="CadastroDeContas.resx">
       <DependentUpon>CadastroDeContas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="AppCaixaEletronico.resx">
+      <DependentUpon>AppCaixaEletronico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExemplosAula.resx">
+      <DependentUpon>ExemplosAula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
