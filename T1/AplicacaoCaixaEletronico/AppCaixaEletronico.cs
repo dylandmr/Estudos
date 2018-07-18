@@ -213,8 +213,8 @@ namespace Benner.AplicacaoCaixaEletronico
 
         private void LimpaTextos()
         {
-            this.comboContas.ResetText();
-            this.destinoDaTransferencia.ResetText();
+            this.comboContas.SelectedIndex = -1;
+            this.destinoDaTransferencia.SelectedIndex = -1;
             this.textoNumero.ResetText();
             this.textoSaldo.ResetText();
             this.textoTitular.ResetText();

@@ -53,7 +53,9 @@ namespace Benner.AplicacaoCaixaEletronico.Contas
         public override bool Equals(object obj)
         {
             var conta = (Conta)obj;
-            return (this.Numero == conta.Numero) && (this.Agencia == conta.Agencia);
+            return (this.Numero == conta.Numero) 
+                && (this.Agencia == conta.Agencia) 
+                && (this.Titular.Nome == conta.Titular.Nome);
         }
 
         public override string ToString()
