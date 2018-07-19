@@ -299,6 +299,15 @@ namespace Benner.AplicacaoCaixaEletronico
             double somaSaldo = filtradas.Sum(c => c.Saldo);
             //                               ^ LAMBDA = Função que aponta (=>) um atributo de um elemento.
             MessageBox.Show("Total: R$" + somaSaldo.ToString("n2"));
+
+            MessageBox.Show("Menor: R$" + contas.Min(c => c.Saldo).ToString("n2"));
+
+            MessageBox.Show("Maior: R$" + contas.Max(c => c.Saldo).ToString("n2"));
+
+            //var filtrados = lista.Where(c => c.Numero < 1000 && c.Saldo > 5000.0);
+            //                     ^ Método que seleciona listas        ^ Exemplo de Lambda.
+
+            MessageBox.Show(contas.Count(c => c.Saldo > 2000) + " contas com saldo maior que R$2000,00.");
         }
     }
 }
