@@ -319,10 +319,26 @@ namespace Benner.AplicacaoCaixaEletronico
                 MessageBox.Show("Nome: " + c.Nome + "\nAgência: " + c.Agencia);
             }
 
+            //LINQ + Arrays:
             int[] nros = { 1, 20, 3, 87, 4, 9, 11 };
 
             MessageBox.Show(nros.Where(x => x > 10).Count() + " números maiores que 10 nesta array."
                             + "\nSoma: " + nros.Where(x => x > 10).Sum());
+
+            //orderby em LINQ:
+            var ordenadasPorSaldoDesc = from c in contas
+                                         where c.Saldo > 2000//, c.Numero <- Se adicionarmos outros critérios por virgula, 
+                                                                           //serão utilizados em caso de igualdade no primeiro.
+                                                            // ^ Alternativa em método: contas.Orderby(crit1).ThenBy(crit2);
+                                         orderby c.Saldo descending
+                                         select c;
+            //Alternativa - WHERE e ORDERBY em Métodos:
+            ordenadasPorSaldoDesc = contas.Where(c => c.Saldo > 2000).OrderByDescending(c => c.Saldo);
+
+            foreach (var c in ordenadasPorSaldoDesc)
+            {
+                MessageBox.Show(c.Saldo.ToString("n2"));
+            }
         }
     }
 }
