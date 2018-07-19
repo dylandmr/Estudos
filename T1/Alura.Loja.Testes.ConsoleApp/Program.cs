@@ -17,13 +17,18 @@ namespace Alura.Loja.Testes.ConsoleApp
         private static void GravarUsandoEntity()
         {
             Produto p = new Produto();
-            p.Nome = "Harry Potter e a Ordem da Fênix";
+            p.Nome = "Pai Rico, Pai Pobre";
             p.Categoria = "Livros";
-            p.Preco = 19.89;
+            p.Preco = 40.50;
+
+            Produto p2 = new Produto();
+            p2.Nome = "Bacon";
+            p2.Categoria = "Comida";
+            p2.Preco = 3.32;
 
             using (var contexto = new LojaContext())
             {
-                contexto.Produtos.Add(p);
+                contexto.Produtos.AddRange(p, p2);
                 contexto.SaveChanges();
             }
         }
