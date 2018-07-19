@@ -269,5 +269,36 @@ namespace Benner.AplicacaoCaixaEletronico
 
             MessageBox.Show(sobrenome);
         }
+
+        private Conta ContaComSaldo(double saldo)
+        {
+            Conta c = new ContaCorrente(new Cliente("Genérico"));
+            c.Deposita(saldo);
+            return c;
+        }
+
+        private void buttonLinqLambda_Click(object sender, EventArgs e)
+        {
+            var contas = new List<Conta>();
+
+            contas.Add(ContaComSaldo(2001));
+            contas.Add(ContaComSaldo(2800));
+            contas.Add(ContaComSaldo(1800));
+            contas.Add(ContaComSaldo(4000));
+            contas.Add(ContaComSaldo(200));
+
+            var filtradas = from c in contas
+                            where c.Saldo > 2000
+                            select c;
+            //               ^ LINQ = Uma espécie de comando de banco dentro de listas diretamente no código.
+            foreach (Conta c in filtradas)
+            {
+                MessageBox.Show("R$" + c.Saldo.ToString("n2"));
+            }
+
+            double somaSaldo = filtradas.Sum(c => c.Saldo);
+            //                               ^ LAMBDA = Função que aponta (=>) um atributo de um elemento.
+            MessageBox.Show("Total: R$" + somaSaldo.ToString("n2"));
+        }
     }
 }

@@ -40,6 +40,7 @@
             this.botaoPolim = new System.Windows.Forms.Button();
             this.botaoSaqueCP = new System.Windows.Forms.Button();
             this.buttonStrings = new System.Windows.Forms.Button();
+            this.buttonLinqLambda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BotaoSortedDicio
@@ -162,11 +163,22 @@
             this.buttonStrings.UseVisualStyleBackColor = true;
             this.buttonStrings.Click += new System.EventHandler(this.buttonStrings_Click);
             // 
+            // buttonLinqLambda
+            // 
+            this.buttonLinqLambda.Location = new System.Drawing.Point(26, 301);
+            this.buttonLinqLambda.Name = "buttonLinqLambda";
+            this.buttonLinqLambda.Size = new System.Drawing.Size(185, 23);
+            this.buttonLinqLambda.TabIndex = 42;
+            this.buttonLinqLambda.Text = "LINQ e Lambda";
+            this.buttonLinqLambda.UseVisualStyleBackColor = true;
+            this.buttonLinqLambda.Click += new System.EventHandler(this.buttonLinqLambda_Click);
+            // 
             // ExemplosAula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(237, 342);
+            this.Controls.Add(this.buttonLinqLambda);
             this.Controls.Add(this.buttonStrings);
             this.Controls.Add(this.BotaoSortedDicio);
             this.Controls.Add(this.BotaoDicionario);
@@ -200,5 +212,6 @@
         private System.Windows.Forms.Button botaoPolim;
         private System.Windows.Forms.Button botaoSaqueCP;
         private System.Windows.Forms.Button buttonStrings;
+        private System.Windows.Forms.Button buttonLinqLambda;
     }
 }
