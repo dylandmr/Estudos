@@ -308,6 +308,16 @@ namespace Benner.AplicacaoCaixaEletronico
             //                     ^ Método que seleciona listas        ^ Exemplo de Lambda.
 
             MessageBox.Show(contas.Count(c => c.Saldo > 2000) + " contas com saldo maior que R$2000,00.");
+
+            //PROJEÇÃO - Criando novo objeto na seleção apenas com atributos que queremos:
+            var nomeagenciafiltro = from c in contas
+                                    where c.Saldo > 2000
+            /* Cria novo objeto:*/  select new { c.Titular.Nome, c.Agencia };
+
+            foreach (var c in nomeagenciafiltro)
+            {
+                MessageBox.Show("Nome: " + c.Nome + "\nAgência: " + c.Agencia);
+            }
         }
     }
 }
