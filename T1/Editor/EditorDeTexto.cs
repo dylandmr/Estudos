@@ -7,14 +7,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Editor
 {
-    public partial class Form1 : Form
+    public partial class EditorDeTexto : Form
     {
-        public Form1()
+        public EditorDeTexto()
         {
             InitializeComponent();
+        }
+
+        private void EditorDeTexto_Load(object sender, EventArgs e)
+        {
+            if (File.Exists("texto.txt"))
+            {
+                Stream entrada = File.Open("texto.txt", FileMode.Open);
+
+                //byte b = entrada.ReadByte();
+
+                StreamReader leitor = new StreamReader(entrada);
+
+                texto.Text = leitor.ReadToEnd();
+
+                //String linha = leitor.ReadLine();
+
+                //while (linha != null)
+                //{
+                //    texto.Text += linha;
+                //    linha = leitor.ReadLine();
+                //}
+
+                leitor.Close();
+                entrada.Close();
+            }
+        }
+
+        private void botaoGravar_Click(object sender, EventArgs e)
+        {
+            Stream saida = File.Open("texto.txt", FileMode.Create);
+
+            StreamWriter escritor = new StreamWriter(saida);
+
+            escritor.Write(texto.Text);
+
+            escritor.Close();
+            saida.Close();
         }
     }
 }
