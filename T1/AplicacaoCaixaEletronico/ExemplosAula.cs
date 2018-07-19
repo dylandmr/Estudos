@@ -340,5 +340,13 @@ namespace Benner.AplicacaoCaixaEletronico
                 MessageBox.Show(c.Saldo.ToString("n2"));
             }
         }
+
+        private void buttonExtMethods_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("palavra".Pluralizar() + " " + "testes".Pluralizar());
+            //                          ^ Criado na classe StringUtils.cs!
+
+            MessageBox.Show(2.Somar(3).ToString());
+        }
     }
 }

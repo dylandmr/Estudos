@@ -41,6 +41,7 @@
             this.botaoSaqueCP = new System.Windows.Forms.Button();
             this.buttonStrings = new System.Windows.Forms.Button();
             this.buttonLinqLambda = new System.Windows.Forms.Button();
+            this.buttonExtMethods = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BotaoSortedDicio
@@ -173,11 +174,22 @@
             this.buttonLinqLambda.UseVisualStyleBackColor = true;
             this.buttonLinqLambda.Click += new System.EventHandler(this.buttonLinqLambda_Click);
             // 
+            // buttonExtMethods
+            // 
+            this.buttonExtMethods.Location = new System.Drawing.Point(26, 330);
+            this.buttonExtMethods.Name = "buttonExtMethods";
+            this.buttonExtMethods.Size = new System.Drawing.Size(185, 23);
+            this.buttonExtMethods.TabIndex = 43;
+            this.buttonExtMethods.Text = "Extention Methods!";
+            this.buttonExtMethods.UseVisualStyleBackColor = true;
+            this.buttonExtMethods.Click += new System.EventHandler(this.buttonExtMethods_Click);
+            // 
             // ExemplosAula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(237, 342);
+            this.ClientSize = new System.Drawing.Size(237, 372);
+            this.Controls.Add(this.buttonExtMethods);
             this.Controls.Add(this.buttonLinqLambda);
             this.Controls.Add(this.buttonStrings);
             this.Controls.Add(this.BotaoSortedDicio);
@@ -213,5 +225,6 @@
         private System.Windows.Forms.Button botaoSaqueCP;
         private System.Windows.Forms.Button buttonStrings;
         private System.Windows.Forms.Button buttonLinqLambda;
+        private System.Windows.Forms.Button buttonExtMethods;
     }
 }

@@ -76,6 +76,7 @@
     <Compile Include="SaldoInsuficienteException.cs" />
     <Compile Include="SaqueMenorDeIdadeException.cs" />
     <Compile Include="SeguroDeVida.cs" />
+    <Compile Include="StringUtils.cs" />
     <Compile Include="TotalizadorDeContas.cs" />
     <EmbeddedResource Include="CadastroDeContas.resx">
       <DependentUpon>CadastroDeContas.cs</DependentUpon>
