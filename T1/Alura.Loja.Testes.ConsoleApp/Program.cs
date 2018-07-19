@@ -10,7 +10,8 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            GravarUsandoAdoNet();
+            //GravarUsandoAdoNet();
+            GravarUsandoEntity();
         }
 
         private static void GravarUsandoAdoNet()
