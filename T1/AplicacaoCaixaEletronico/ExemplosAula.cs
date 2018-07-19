@@ -318,6 +318,11 @@ namespace Benner.AplicacaoCaixaEletronico
             {
                 MessageBox.Show("Nome: " + c.Nome + "\nAgência: " + c.Agencia);
             }
+
+            int[] nros = { 1, 20, 3, 87, 4, 9, 11 };
+
+            MessageBox.Show(nros.Where(x => x > 10).Count() + " números maiores que 10 nesta array."
+                            + "\nSoma: " + nros.Where(x => x > 10).Sum());
         }
     }
 }
