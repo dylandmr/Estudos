@@ -6,26 +6,41 @@ using System.Threading.Tasks;
 
 namespace Alura.Loja.Testes.ConsoleApp
 {
-    class ProdutoDAOEntity : IProdutoDAO
+    class ProdutoDAOEntity : IProdutoDAO, IDisposable
     {
+        private LojaContext contexto;
+
+        public ProdutoDAOEntity()
+        {
+            contexto = new LojaContext();
+        }
+
         public void Adicionar(Produto p)
         {
-            throw new NotImplementedException();
+            contexto.Produtos.Add(p);
+            contexto.SaveChanges();
         }
 
         public void Atualizar(Produto p)
         {
-            throw new NotImplementedException();
+            contexto.Produtos.Update(p);
+            contexto.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            contexto.Dispose();
         }
 
         public IList<Produto> Produtos()
         {
-            throw new NotImplementedException();
+            return contexto.Produtos.ToList();
         }
 
         public void Remover(Produto p)
         {
-            throw new NotImplementedException();
+            contexto.Produtos.Remove(p);
+            contexto.SaveChanges();
         }
     }
 }

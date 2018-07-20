@@ -20,35 +20,32 @@ namespace Alura.Loja.Testes.ConsoleApp
 
         private static void AtualizarProduto()
         {
-            using (var repo = new LojaContext())
+            using (var repo = new ProdutoDAOEntity())
             {
-                Produto produto = repo.Produtos.First();
+                Produto produto = repo.Produtos().First();
                 produto.Nome = produto.Nome + " - Alterado!";
 
-                repo.Produtos.Update(produto);
-
-                repo.SaveChanges();
+                repo.Atualizar(produto);
             }
         }
 
         private static void ExcluirProdutos()
         {
-            using (var repo = new LojaContext())
+            using (var repo = new ProdutoDAOEntity())
             {
-                List<Produto> produtos = repo.Produtos.ToList();
+                IList<Produto> produtos = repo.Produtos();
                 foreach (var produto in produtos)
                 {
-                    repo.Produtos.Remove(produto);
+                    repo.Remover(produto);
                 }
-                repo.SaveChanges();
             }
         }
 
         private static void RecuperarProdutos()
         {
-            using (var contexto = new LojaContext())
+            using (var contexto = new ProdutoDAOEntity())
             {
-                List<Produto> produtos = contexto.Produtos.ToList();
+                IList<Produto> produtos = contexto.Produtos();
                 Console.WriteLine("{0} produtos na base.", produtos.Count);
                 foreach (var produto in produtos)
                 {
@@ -69,10 +66,10 @@ namespace Alura.Loja.Testes.ConsoleApp
             p2.Categoria = "Comida";
             p2.Preco = 3.32;
 
-            using (var contexto = new LojaContext())
+            using (var contexto = new ProdutoDAOEntity())
             {
-                contexto.Produtos.AddRange(p, p2);
-                contexto.SaveChanges();
+                contexto.Adicionar(p);
+                contexto.Adicionar(p2);
             }
         }
 
