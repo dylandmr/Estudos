@@ -15,41 +15,51 @@ namespace Alura.Loja.Testes.ConsoleApp
         {
             using (var contexto = new LojaContext())
             {
-                var serviceProvider = contexto.GetInfrastructure<IServiceProvider>();
-                var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
-                loggerFactory.AddProvider(SqlLoggerProvider.Create());
+                //var serviceProvider = contexto.GetInfrastructure<IServiceProvider>();
+                //var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
+                //loggerFactory.AddProvider(SqlLoggerProvider.Create());
 
                 var produtos = contexto.Produtos.ToList();
-
                 ImprimeProdutos(produtos);
-                Console.WriteLine("------------------------");
-                foreach (var e in contexto.ChangeTracker.Entries())
-                {
-                    Console.WriteLine(e.State);
-                }
+                ImprimeChangeTracker(contexto);
 
                 var p = produtos.First();
-                p.Nome = "Banana";
+                Console.Write("Alterar nome: ");
+                p.Nome = Console.ReadLine();
                 ImprimeProdutos(produtos);
+                ImprimeChangeTracker(contexto);
+                contexto.SaveChanges();
 
-                Console.WriteLine("------------------------");
-                foreach (var e in contexto.ChangeTracker.Entries())
+                Console.WriteLine("Novo Produto - Nome [ENTER] - Preço [ENTER] - Categoria [ENTER] ");
+                var novoP = new Produto()
                 {
-                    Console.WriteLine(e.State);
-                }
-
+                    Nome = Console.ReadLine(),
+                    Preco = Convert.ToDouble(Console.ReadLine()),
+                    Categoria = Console.ReadLine()
+                };
+                contexto.Produtos.Add(novoP);
+                ImprimeChangeTracker(contexto);
                 contexto.SaveChanges();
             }
 
             void ImprimeProdutos(IList<Produto> prods)
             {
                 Console.WriteLine("------------------------");
-                    
                 foreach (var p in prods)
                 {
                     Console.WriteLine(p);
                 }
+                Console.WriteLine("------------------------");
+            }
 
+            void ImprimeChangeTracker(LojaContext contexto)
+            {
+                Console.WriteLine("------------------------");
+                foreach (var e in contexto.ChangeTracker.Entries())
+                {
+                    Console.WriteLine(e.Entity.ToString() + " - " +e.State);
+                }
+                Console.WriteLine("------------------------");
             }
         }        
     }
