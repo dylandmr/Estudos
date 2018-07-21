@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,19 +16,20 @@ namespace Alura.Loja.Testes.ConsoleApp
         {
             using (var contexto = new LojaContext())
             {
-                //var serviceProvider = contexto.GetInfrastructure<IServiceProvider>();
-                //var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
-                //loggerFactory.AddProvider(SqlLoggerProvider.Create());
+                var serviceProvider = contexto.GetInfrastructure<IServiceProvider>();
+                var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
+                loggerFactory.AddProvider(SqlLoggerProvider.Create());
 
                 var produtos = contexto.Produtos.ToList();
-                //ImprimeProdutos(produtos);
-                ImprimeChangeTracker(contexto);
 
-                var p = produtos.First();
+                ImprimeChangeTracker(contexto.ChangeTracker.Entries());
+
+                var p = contexto.Produtos.ToList().First();
                 Console.Write("Alterar nome: ");
                 p.Nome = Console.ReadLine();
-                //ImprimeProdutos(produtos);
-                ImprimeChangeTracker(contexto);
+
+                ImprimeChangeTracker(contexto.ChangeTracker.Entries());
+
                 contexto.SaveChanges();
 
                 Console.WriteLine("Novo Produto - Nome [ENTER] - Preço [ENTER] - Categoria [ENTER] ");
@@ -37,25 +39,18 @@ namespace Alura.Loja.Testes.ConsoleApp
                     Preco = Convert.ToDouble(Console.ReadLine()),
                     Categoria = Console.ReadLine()
                 };
+
                 contexto.Produtos.Add(novoP);
-                ImprimeChangeTracker(contexto);
+
+                ImprimeChangeTracker(contexto.ChangeTracker.Entries());
+
                 contexto.SaveChanges();
             }
 
-            //void ImprimeProdutos(IList<Produto> prods)
-            //{
-            //    Console.WriteLine("------------------------");
-            //    foreach (var p in prods)
-            //    {
-            //        Console.WriteLine(p);
-            //    }
-            //    Console.WriteLine("------------------------");
-            //}
-
-            void ImprimeChangeTracker(LojaContext contexto)
+            void ImprimeChangeTracker(IEnumerable<EntityEntry> entries)
             {
                 Console.WriteLine("------------------------");
-                foreach (var e in contexto.ChangeTracker.Entries())
+                foreach (var e in entries)
                 {
                     Console.WriteLine(e.Entity.ToString() + " - " +e.State);
                 }
