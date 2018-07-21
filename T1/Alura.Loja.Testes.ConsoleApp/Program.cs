@@ -20,13 +20,13 @@ namespace Alura.Loja.Testes.ConsoleApp
                 //loggerFactory.AddProvider(SqlLoggerProvider.Create());
 
                 var produtos = contexto.Produtos.ToList();
-                ImprimeProdutos(produtos);
+                //ImprimeProdutos(produtos);
                 ImprimeChangeTracker(contexto);
 
                 var p = produtos.First();
                 Console.Write("Alterar nome: ");
                 p.Nome = Console.ReadLine();
-                ImprimeProdutos(produtos);
+                //ImprimeProdutos(produtos);
                 ImprimeChangeTracker(contexto);
                 contexto.SaveChanges();
 
@@ -42,15 +42,15 @@ namespace Alura.Loja.Testes.ConsoleApp
                 contexto.SaveChanges();
             }
 
-            void ImprimeProdutos(IList<Produto> prods)
-            {
-                Console.WriteLine("------------------------");
-                foreach (var p in prods)
-                {
-                    Console.WriteLine(p);
-                }
-                Console.WriteLine("------------------------");
-            }
+            //void ImprimeProdutos(IList<Produto> prods)
+            //{
+            //    Console.WriteLine("------------------------");
+            //    foreach (var p in prods)
+            //    {
+            //        Console.WriteLine(p);
+            //    }
+            //    Console.WriteLine("------------------------");
+            //}
 
             void ImprimeChangeTracker(LojaContext contexto)
             {
