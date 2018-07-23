@@ -28,7 +28,7 @@ namespace Alura.Loja.Testes.ConsoleApp
             compra.Produto = banana;
             compra.Preco = compra.Quantidade * banana.PrecoUnitario;
 
-
+            
         }        
     }
 }
