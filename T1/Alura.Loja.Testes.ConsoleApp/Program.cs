@@ -24,13 +24,14 @@ namespace Alura.Loja.Testes.ConsoleApp
 
                 ImprimeChangeTracker(contexto.ChangeTracker.Entries());
 
-                var p = contexto.Produtos.ToList().First();
-                Console.Write("Alterar nome: ");
-                p.Nome = Console.ReadLine();
+                //var p = contexto.Produtos.ToList().First();
 
-                ImprimeChangeTracker(contexto.ChangeTracker.Entries());
+                //Console.Write("Alterar nome: ");
+                //p.Nome = Console.ReadLine();
 
-                contexto.SaveChanges();
+                //ImprimeChangeTracker(contexto.ChangeTracker.Entries());
+
+                //contexto.SaveChanges();
 
                 Console.WriteLine("Novo Produto - Nome [ENTER] - Preço [ENTER] - Categoria [ENTER] ");
                 var novoP = new Produto()
@@ -41,10 +42,16 @@ namespace Alura.Loja.Testes.ConsoleApp
                 };
 
                 contexto.Produtos.Add(novoP);
+                contexto.Produtos.Remove(novoP);
+
+                var entry = contexto.Entry(novoP);
+                Console.WriteLine("\n\n---\n" + entry.Entity.ToString() + " - " + entry.State + "\n---\n\n");
 
                 ImprimeChangeTracker(contexto.ChangeTracker.Entries());
 
                 contexto.SaveChanges();
+
+                ImprimeChangeTracker(contexto.ChangeTracker.Entries());
             }
 
             void ImprimeChangeTracker(IEnumerable<EntityEntry> entries)
