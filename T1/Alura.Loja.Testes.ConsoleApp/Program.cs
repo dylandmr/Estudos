@@ -15,10 +15,20 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            //using (var contexto = new LojaContext())
-            //{
-            //    contexto.Database.Migrate(); <- COMANDO MÁGICO, ATUALIZA A DB AUTOMATICAMENTE
-            //}
+            Produto banana = new Produto()
+            {
+                Nome = "Banana",
+                PrecoUnitario = 2.7,
+                Categoria = "Frutas",
+                Unidade = "Unidade"
+            };
+
+            Compra compra = new Compra();
+            compra.Quantidade = 5;
+            compra.Produto = banana;
+            compra.Preco = compra.Quantidade * banana.PrecoUnitario;
+
+
         }        
     }
 }
