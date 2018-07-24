@@ -33,10 +33,10 @@ namespace Alura.Loja.Testes.ConsoleApp
                 var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
                 loggerFactory.AddProvider(SqlLoggerProvider.Create());
 
-                contexto.Promocoes.Add(promocaoDePascoa);
+                var promo = contexto.Promocoes.Find(1);
 
-                ImprimeChangeTracker(contexto.ChangeTracker.Entries());
-
+                contexto.Promocoes.Remove(promo);
+                
                 contexto.SaveChanges();
             }
         }
