@@ -15,6 +15,36 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         static void Main(string[] args)
         {
+            var fulano = new Cliente();
+            fulano.Nome = "Fulano de Tal";
+            fulano.EnderecoDeEntrega = new Endereco()
+            {
+                Logradouro = "Rua São Paulo",
+                Numero = "593",
+                Complemento = "Casa 2",
+                Bairro = "Centro",
+                Cidade = "Blumenau"
+            };
+
+            using (var contexto = new LojaContext())
+            {
+                contexto.Clientes.Add(fulano);
+                contexto.SaveChanges();
+            }
+        }
+
+        private static void ImprimeChangeTracker(IEnumerable<EntityEntry> entries)
+        {
+            Console.WriteLine("------------------------");
+            foreach (var e in entries)
+            {
+                Console.WriteLine(e.Entity.ToString() + " - " + e.State);
+            }
+            Console.WriteLine("------------------------");
+        }
+
+        private static void MuitosParaMuitos()
+        {
             var chocolate = new Produto() { Nome = "Chocolate", Categoria = "Doce", PrecoUnitario = 4.5, Unidade = "Gramas" };
             var bala = new Produto() { Nome = "Bala", Categoria = "Doce", PrecoUnitario = 0.05, Unidade = "Unidade" };
             var caneta = new Produto() { Nome = "Caneta", Categoria = "Material", PrecoUnitario = 0.5, Unidade = "Unidade" };
@@ -36,19 +66,9 @@ namespace Alura.Loja.Testes.ConsoleApp
                 var promo = contexto.Promocoes.Find(1);
 
                 contexto.Promocoes.Remove(promo);
-                
+
                 contexto.SaveChanges();
             }
-        }
-
-        private static void ImprimeChangeTracker(IEnumerable<EntityEntry> entries)
-        {
-            Console.WriteLine("------------------------");
-            foreach (var e in entries)
-            {
-                Console.WriteLine(e.Entity.ToString() + " - " + e.State);
-            }
-            Console.WriteLine("------------------------");
         }
     }
 }
