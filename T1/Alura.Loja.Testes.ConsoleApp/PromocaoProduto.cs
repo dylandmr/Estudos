@@ -6,5 +6,10 @@
         public Produto  Produto { get; internal set; }
         public int PromocaoId { get; internal set; }
         public Promocao Promocao { get; internal set; }
+
+        public override string ToString()
+        {
+            return $"{Promocao.Descricao} - {Produto.Nome}";
+        }
     }
 }
