@@ -15,6 +15,24 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         static void Main(string[] args)
         {
+            using (var contexto = new LojaContext())
+            {
+
+            }
+        }
+
+        private static void ImprimeChangeTracker(IEnumerable<EntityEntry> entries)
+        {
+            Console.WriteLine("------------------------");
+            foreach (var e in entries)
+            {
+                Console.WriteLine(e.Entity.ToString() + " - " + e.State);
+            }
+            Console.WriteLine("------------------------");
+        }
+
+        private static void UmParaUm()
+        {
             var fulano = new Cliente();
             fulano.Nome = "Fulano de Tal";
             fulano.EnderecoDeEntrega = new Endereco()
@@ -31,16 +49,6 @@ namespace Alura.Loja.Testes.ConsoleApp
                 contexto.Clientes.Add(fulano);
                 contexto.SaveChanges();
             }
-        }
-
-        private static void ImprimeChangeTracker(IEnumerable<EntityEntry> entries)
-        {
-            Console.WriteLine("------------------------");
-            foreach (var e in entries)
-            {
-                Console.WriteLine(e.Entity.ToString() + " - " + e.State);
-            }
-            Console.WriteLine("------------------------");
         }
 
         private static void MuitosParaMuitos()
