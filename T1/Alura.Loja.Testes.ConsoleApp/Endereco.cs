@@ -8,5 +8,9 @@
         public string Bairro { get; internal set; }
         public string Cidade { get; internal set; }
         public Cliente Cliente { get; internal set; }
+        public override string ToString()
+        {
+            return $"{Logradouro}, {Numero}. ({Complemento}) - {Bairro} - {Cidade}";
+        }
     }
 }
