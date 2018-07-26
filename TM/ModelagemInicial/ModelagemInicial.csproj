@@ -42,11 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador.cs" />
+    <Compile Include="Cartucho.cs" />
+    <Compile Include="Categoria.cs" />
+    <Compile Include="CategoriaPeriferico.cs" />
+    <Compile Include="Cliente.cs" />
+    <Compile Include="Funcionario.cs" />
+    <Compile Include="IAdmin.cs" />
+    <Compile Include="IAtendente.cs" />
+    <Compile Include="MarcaCartucho.cs" />
+    <Compile Include="Periferico.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recarga.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="Venda.cs" />
+    <Compile Include="VendaProduto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DiagramaDeClasses.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
