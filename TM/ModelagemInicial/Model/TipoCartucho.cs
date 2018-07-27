@@ -5,7 +5,10 @@ using System.Text;
 
 namespace ModelagemInicial
 {
-    public class VendaProduto
+    public class TipoCartucho
     {
+        public int Id { get; set; }
+
+        public string Tipo { get; set; }
     }
 }

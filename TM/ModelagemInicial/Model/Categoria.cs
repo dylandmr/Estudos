@@ -5,7 +5,10 @@ using System.Text;
 
 namespace ModelagemInicial
 {
-    public class Recarga
+    public class Categoria
     {
+        public int Id { get; set; }
+
+        public string Nome { get; set; }
     }
 }

@@ -5,7 +5,10 @@ using System.Text;
 
 namespace ModelagemInicial
 {
-    public class Funcionario : Usuario, IAtendente
+    public class PessoaJuridica : Cliente
     {
+        public int Cnpj { get; set; }
+
+        public string RazaoSocial { get; set; }
     }
 }

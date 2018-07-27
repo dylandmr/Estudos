@@ -5,11 +5,13 @@ using System.Text;
 
 namespace ModelagemInicial
 {
-    public class Cliente
+    public abstract class Cliente
     {
-        public int Id
+        public int Id { get; set; }
+
+        public Endereco Endereco
         {
-            get => default(int);
+            get => default(Endereco);
             set
             {
             }
