@@ -9,12 +9,6 @@ namespace ModelagemInicial
     {
         public int Id { get; set; }
 
-        public Endereco Endereco
-        {
-            get => default(Endereco);
-            set
-            {
-            }
-        }
+        public Endereco Endereco { get; set; }
     }
 }
