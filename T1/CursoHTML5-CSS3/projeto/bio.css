@@ -1,11 +1,20 @@
-h1 {
-    font-size: 60px;
-    background-color: rgb(120, 30, 60);
-    color: #FAFFFA;
-    text-align: center;
-    font-family: "Open Sans", sans-serif;
+body {
+    font-size: 120%;
+    background-color: #F2FFFC;
+    font-family: "Crimson Text", "Times New Roman", serif;
 }
-h2 {
+h1 {
+    /*font-size: 60px;*/
+    background-color: #851944; /*rgb(133, 25, 68)*/
+    color: #FFF;
+    text-align: center;
+}
+/*fh2 {
     font-size: 40px;
-    font-family: "Open Sans", sans-serif;
+}*/
+h1, h2 {
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
+}
+p {
+    text-align: justify;  
 }
