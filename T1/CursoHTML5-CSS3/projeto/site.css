@@ -26,6 +26,7 @@ em {
 .subtitulos {
     font-size: 30px;
     font-family: "Open Sans Condensed", "Arial", sans-serif;
+    clear: both;
 }
 .texto {
     text-align: justify; 
@@ -39,6 +40,15 @@ em {
     /*margin: top right bottom left;*/
     margin: 20px 40px 20px 40px;
     box-sizing: border-box;
+    
+}
+.fiat {
+    float: right;
+    margin-right: 0;
+}
+.petrobras {
+    float: left;
+    margin-left: 0;
 }
 .navegacao-site {
     text-align: center;
@@ -46,11 +56,14 @@ em {
     color: #F2FFFC;
     padding: 20px;
     border: 10px solid black;
+    clear: right;
+    box-sizing: border-box;
 }
 #rodape-pagina {
     background-color: #000;
     color: #F2FFFC;
     padding: 20px;
+    clear: both;
 }
 .navegacao-site a {
     color: inherit;
@@ -105,4 +118,16 @@ em {
 }
 .linkedin {
     background-image: url(linkedin.png);
+}
+img {
+    border: 10px solid black;
+    box-sizing: border-box;
+}
+.navegacao-site, img {
+    width: 15%;
+    float: right;
+}
+main {
+    float: left;
+    width: 85%;
 }
