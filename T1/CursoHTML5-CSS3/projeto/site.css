@@ -5,34 +5,35 @@ body {
     font-family: "Crimson Text", "Times New Roman", serif;
 }
 main h1 {
-    /*font-size: 60px;*/
+    font-size: 60px;
     border-bottom: 10px solid black;
     padding: 25px;
     background-color: #851944; /*rgb(133, 25, 68)*/
     color: #FFF;
     text-align: center;
-    margin: 0;
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
 }
-/*fh2 {
-    font-size: 40px;
-}*/
-h1, h2 {
+h2 {
+    font-size: 30px;
     font-family: "Open Sans Condensed", "Arial", sans-serif;
 }
 p {
-    text-align: justify;  
+    text-align: justify; 
+    margin: 20px 0;
 }
 blockquote {
     border: 10px solid #C2CCCA;
     background-color: #D9E5E3;
     width: 250px;
-    margin: 0;
+    /*margin: top right bottom left;*/
+    margin: 20px 40px 20px 40px;
     box-sizing: border-box;
 }
 aside {
     text-align: center;
     background-color: #3C1D3D;
     color: #F2FFFC;
+    border: 10px solid black;
 }
 footer {
     background-color: #000;
@@ -44,6 +45,7 @@ main a {
 aside a {
     color: inherit;
     font-family: "Open Sans Condensed", "Arial", sans-serif;
+    text-decoration: none;
 }
 blockquote, aside, footer {
     padding: 20px;
@@ -51,4 +53,19 @@ blockquote, aside, footer {
 main div {
     width: 720px;
     margin: auto;
+    padding: 30px 0;
+}
+aside h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+strong {
+    font-weight: bold;
+}
+em {
+    font-style: italic;
+}
+aside .net_icons li {
+    margin-top:20px;
+    display: inline-block;
 }
