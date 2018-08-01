@@ -1,8 +1,12 @@
 body {
     line-height: 1.5;
-    font-size: 120%;
+    /*font-size: 120%;*/
     background-color: #F2FFFC;
     font-family: "Crimson Text", "Times New Roman", serif;
+}
+main {
+    float: left;
+    width: 85%;
 }
 main a {
     color: #851944;
@@ -21,6 +25,12 @@ em {
     color: #FFF;
     text-align: center;
     font-family: "Open Sans Condensed", "Arial", sans-serif;
+    text-transform: uppercase;
+}
+.titulo-navegacao {
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
+    font-size: 20px;
+    margin-bottom: 15px;
     text-transform: uppercase;
 }
 .subtitulos {
@@ -55,15 +65,19 @@ em {
     background-color: #3C1D3D;
     color: #F2FFFC;
     padding: 20px;
-    border: 10px solid black;
-    clear: right;
-    box-sizing: border-box;
+    width: 15%;
+    position: relative;
+    top: 310px;
 }
 #rodape-pagina {
     background-color: #000;
     color: #F2FFFC;
-    padding: 20px;
+    padding: 10px;
     clear: both;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 .navegacao-site a {
     color: inherit;
@@ -74,11 +88,8 @@ em {
 .conteudo {
     width: 720px;
     margin: auto;
-    padding: 30px 0;
-}
-.navegacao-site h1 {
-    font-size: 30px;
-    margin-bottom: 25px;
+    padding: 40px 0;
+    padding-bottom: 80px;
 }
 .icones-sociais li {
     margin-top:20px;
@@ -100,9 +111,6 @@ em {
     text-align: center;
     text-decoration: none;
 }
-.titulo-navegacao {
-    text-transform: uppercase;
-}
 .icones-sociais a {
     display: block;
     width: 40px;
@@ -119,15 +127,18 @@ em {
 .linkedin {
     background-image: url(linkedin.png);
 }
-img {
-    border: 10px solid black;
+.navegacao-site, .minha-foto {
+    border-left: 10px solid black;
+    border-bottom: 10px solid black;
+    float: right;
     box-sizing: border-box;
 }
-.navegacao-site, img {
-    width: 15%;
+.autor-citacao {
     float: right;
+    font-style: italic;
 }
-main {
-    float: left;
-    width: 85%;
+.minha-foto {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
