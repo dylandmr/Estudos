@@ -1,6 +1,6 @@
 body {
     line-height: 1.5;
-    /*font-size: 120%;*/
+    font-size: 120%;
     background-color: #F2FFFC;
     font-family: "Crimson Text", "Times New Roman", serif;
 }
@@ -72,6 +72,7 @@ em {
     margin: auto;
     padding: 40px 0;
     padding-bottom: 80px;
+    overflow: auto;
 }
 .icones-sociais li {
     margin-top:20px;
