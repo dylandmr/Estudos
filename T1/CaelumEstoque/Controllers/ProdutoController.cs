@@ -14,9 +14,25 @@ namespace CaelumEstoque.Controllers
         public ActionResult Index()
         {
             var produtoDAO = new ProdutosDAO();
-            IList<Produto> produtos = produtoDAO.Lista();
-            ViewBag.Produtos = produtos;
+            //IList<Produto> produtos = produtoDAO.Lista(); <- Desnecessário!
+            ViewBag.Produtos = produtoDAO.Lista();
             return View();
+        }
+
+        public ActionResult Form()
+        {
+            var categoriasDAO = new CategoriasDAO();
+            ViewBag.Categorias = categoriasDAO.Lista();
+            return View();
+        }
+
+        [HttpPost] // <- Anotação que informa que esse método só aceita form post.
+        public ActionResult Adiciona(Produto produto)  // <- Model Binder transforma os parâmetros em objetos!
+        {
+            var produtosDAO = new ProdutosDAO();
+            produtosDAO.Adiciona(produto);
+            //return View();
+            return RedirectToAction("Index", "Produto"); // <- Redirecionamento da action.
         }
     }
 }
