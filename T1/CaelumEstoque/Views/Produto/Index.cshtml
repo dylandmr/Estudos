@@ -1,4 +1,5 @@
-﻿
+﻿@model IList<CaelumEstoque.Models.Produto>
+
 @{
     Layout = null;
 }
@@ -12,25 +13,31 @@
 </head>
 <body>
     <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>Quantidade</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var produto in ViewBag.Produtos)
-                {
+        <center>
+            <table>
+                <thead>
                     <tr>
-                        <td>@produto.Id</td>
-                        <td>@produto.Nome</td>
-                        <td>@produto.Quantidade</td>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Quantidade</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var produto in Model)
+                    {
+                        <tr>
+                            <td>@produto.Id</td>
+                            <td>@Html.RouteLink(produto.Nome, "VisualizaProdutos", new { id = produto.Id })</td>
+                            <td>@produto.Quantidade</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br /><br />
+            @Html.RouteLink("Cadastrar novo produto", "CadastraProduto")
+            <br />
+            @Html.RouteLink("Categorias", "ListaCategoria") - @Html.RouteLink("Cadastrar nova categoria", "AdicionaCategoria")
+        </center>
     </div>
 </body>
 </html>

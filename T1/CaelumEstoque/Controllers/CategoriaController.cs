@@ -10,7 +10,7 @@ namespace CaelumEstoque.Controllers
 {
     public class CategoriaController : Controller
     {
-        // GET: Categoria
+        [Route("produtos/categorias", Name = "ListaCategoria")]
         public ActionResult Index()
         {
             var categoriaDAO = new CategoriasDAO();
@@ -24,6 +24,7 @@ namespace CaelumEstoque.Controllers
             return View();
         }
 
+        [Route("produtos/categorias/adiciona", Name = "AdicionaCategoria")]
         [HttpPost]
         public ActionResult Adiciona(CategoriaDoProduto categoria)
         {

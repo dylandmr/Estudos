@@ -1,0 +1,28 @@
+﻿@model CaelumEstoque.Models.Produto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Visualiza</title>
+</head>
+<body>
+    <div>
+        <center>
+            Id: @Model.Id <br />
+            Nome: @Model.Nome <br />
+            Categoria: @Model.Categoria.Nome <br />
+            Preço: @Model.Preco <br />
+            Descrição: @Model.Descricao <br />
+            Quantidade: @Model.Quantidade <br />
+            <br /><br />
+            @Html.RouteLink("Voltar", "ListaProdutos");
+        </center>
+    </div>
+</body>
+</html>

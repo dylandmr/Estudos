@@ -8,8 +8,7 @@ namespace CaelumEstoque.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /Home/
+        [Route("home", Name = "Home")]
         public ActionResult Index()
         {
             return View();
