@@ -21,18 +21,31 @@ namespace CaelumEstoque.Controllers
 
         public ActionResult Form()
         {
+            ViewBag.Produto = new Produto();
             var categoriasDAO = new CategoriasDAO();
             ViewBag.Categorias = categoriasDAO.Lista();
             return View();
         }
 
-        [HttpPost] // <- Anotação que informa que esse método só aceita form post.
-        public ActionResult Adiciona(Produto produto)  // <- Model Binder transforma os parâmetros em objetos!
+        [HttpPost]
+        public ActionResult Adiciona(Produto produto)
         {
-            var produtosDAO = new ProdutosDAO();
-            produtosDAO.Adiciona(produto);
-            //return View();
-            return RedirectToAction("Index", "Produto"); // <- Redirecionamento da action.
+            var id_Informatica = 1;
+            if (produto.CategoriaId.Equals(id_Informatica) && produto.Preco < 100)
+                ModelState.AddModelError("produto.InformaticaPrecoInvalido", "Produtos de informática tem preço mínimo de R$100,00.");
+
+            if (ModelState.IsValid)
+            {
+                var produtosDAO = new ProdutosDAO();
+                produtosDAO.Adiciona(produto);
+                return RedirectToAction("Index", "Produto");
+            } else
+            {
+                var categoriasDAO = new CategoriasDAO();
+                ViewBag.Categorias = categoriasDAO.Lista();
+                ViewBag.Produto = produto;
+                return View("Form");
+            }
         }
     }
 }
