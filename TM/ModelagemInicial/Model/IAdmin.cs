@@ -7,5 +7,6 @@ namespace ModelagemInicial
 {
     public interface IAdmin
     {
+        void CadastraFuncionario(Funcionario funcionario);
     }
 }

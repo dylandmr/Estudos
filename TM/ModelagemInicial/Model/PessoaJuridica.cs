@@ -7,8 +7,7 @@ namespace ModelagemInicial
 {
     public class PessoaJuridica : Cliente
     {
-        public int Cnpj { get; set; }
-
+        public string Cnpj { get; set; }
         public string RazaoSocial { get; set; }
     }
 }

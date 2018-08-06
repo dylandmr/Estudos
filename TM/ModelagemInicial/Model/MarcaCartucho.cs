@@ -5,10 +5,9 @@ using System.Text;
 
 namespace ModelagemInicial
 {
-    public class MarcaCartucho
+    public class MarcaCartuchoToner
     {
         public int Id { get; set; }
-
         public string Nome { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace ModelagemInicial
     public abstract class Cliente
     {
         public int Id { get; set; }
-
         public Endereco Endereco { get; set; }
+        public string Telefone { get; set; }
     }
 }

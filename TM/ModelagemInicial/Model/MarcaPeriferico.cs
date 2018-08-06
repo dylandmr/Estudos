@@ -5,10 +5,9 @@ using System.Text;
 
 namespace ModelagemInicial
 {
-    public class Categoria
+    public class MarcaPeriferico
     {
         public int Id { get; set; }
-
         public string Nome { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using ModelagemInicial;
 namespace ModelagemInicial.Migrations
 {
     [DbContext(typeof(TMContext))]
-    [Migration("20180727075841_InicialCreate")]
+    [Migration("20180806185930_InicialCreate")]
     partial class InicialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,19 +20,6 @@ namespace ModelagemInicial.Migrations
                 .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("ModelagemInicial.Categoria", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Nome");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categorias");
-                });
 
             modelBuilder.Entity("ModelagemInicial.CategoriaPeriferico", b =>
                 {
@@ -57,6 +44,8 @@ namespace ModelagemInicial.Migrations
                         .IsRequired();
 
                     b.Property<int?>("EnderecoId");
+
+                    b.Property<string>("Telefone");
 
                     b.HasKey("Id");
 
@@ -96,14 +85,12 @@ namespace ModelagemInicial.Migrations
 
                     b.Property<string>("Nome");
 
-                    b.Property<DateTime>("Previsao");
-
                     b.HasKey("Id");
 
                     b.ToTable("FormaDePagamento");
                 });
 
-            modelBuilder.Entity("ModelagemInicial.MarcaCartucho", b =>
+            modelBuilder.Entity("ModelagemInicial.MarcaCartuchoToner", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,7 +100,20 @@ namespace ModelagemInicial.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MarcaCartucho");
+                    b.ToTable("MarcaCartuchoToner");
+                });
+
+            modelBuilder.Entity("ModelagemInicial.MarcaPeriferico", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nome");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MarcaPeriferico");
                 });
 
             modelBuilder.Entity("ModelagemInicial.Produto", b =>
@@ -121,8 +121,6 @@ namespace ModelagemInicial.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CategoriaId");
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
@@ -133,14 +131,48 @@ namespace ModelagemInicial.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoriaId");
-
                     b.ToTable("Produtos");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Produto");
                 });
 
-            modelBuilder.Entity("ModelagemInicial.TipoCartucho", b =>
+            modelBuilder.Entity("ModelagemInicial.Recarga", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ClienteId");
+
+                    b.Property<DateTime>("DataEntrega");
+
+                    b.Property<int>("Status");
+
+                    b.Property<double>("ValorTotal");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.ToTable("Recargas");
+                });
+
+            modelBuilder.Entity("ModelagemInicial.RecargaCartucho", b =>
+                {
+                    b.Property<int>("RecargaId");
+
+                    b.Property<int>("CartuchoId");
+
+                    b.Property<double>("Valor");
+
+                    b.HasKey("RecargaId", "CartuchoId");
+
+                    b.HasIndex("CartuchoId");
+
+                    b.ToTable("RecargaCartucho");
+                });
+
+            modelBuilder.Entity("ModelagemInicial.TipoCartuchoToner", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,7 +182,22 @@ namespace ModelagemInicial.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TipoCartucho");
+                    b.ToTable("TipoCartuchoToner");
+                });
+
+            modelBuilder.Entity("ModelagemInicial.TiposCartucho", b =>
+                {
+                    b.Property<int>("TipoCartuchoTonerId");
+
+                    b.Property<int>("CartuchoId");
+
+                    b.Property<double>("Preco");
+
+                    b.HasKey("TipoCartuchoTonerId", "CartuchoId");
+
+                    b.HasIndex("CartuchoId");
+
+                    b.ToTable("TiposCartucho");
                 });
 
             modelBuilder.Entity("ModelagemInicial.Usuario", b =>
@@ -193,6 +240,12 @@ namespace ModelagemInicial.Migrations
 
                     b.Property<int?>("FuncionarioId");
 
+                    b.Property<int>("Parcelas");
+
+                    b.Property<DateTime>("Previsao");
+
+                    b.Property<double>("ValorTotal");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
@@ -209,6 +262,8 @@ namespace ModelagemInicial.Migrations
                     b.Property<int>("VendaId");
 
                     b.Property<int>("ProdutoId");
+
+                    b.Property<int>("Quantidade");
 
                     b.HasKey("VendaId", "ProdutoId");
 
@@ -234,7 +289,7 @@ namespace ModelagemInicial.Migrations
                 {
                     b.HasBaseType("ModelagemInicial.Cliente");
 
-                    b.Property<int>("Cnpj");
+                    b.Property<string>("Cnpj");
 
                     b.Property<string>("RazaoSocial");
 
@@ -247,15 +302,11 @@ namespace ModelagemInicial.Migrations
                 {
                     b.HasBaseType("ModelagemInicial.Produto");
 
-                    b.Property<int?>("MarcaCartuchoId");
+                    b.Property<int?>("MarcaCartuchoTonerId");
 
                     b.Property<string>("Modelo");
 
-                    b.Property<int?>("TipoCartuchoId");
-
-                    b.HasIndex("MarcaCartuchoId");
-
-                    b.HasIndex("TipoCartuchoId");
+                    b.HasIndex("MarcaCartuchoTonerId");
 
                     b.ToTable("Cartucho");
 
@@ -268,13 +319,38 @@ namespace ModelagemInicial.Migrations
 
                     b.Property<int?>("CategoriaPerifericoId");
 
+                    b.Property<int?>("MarcaPerifericoId");
+
                     b.Property<string>("Nome");
 
                     b.HasIndex("CategoriaPerifericoId");
 
+                    b.HasIndex("MarcaPerifericoId");
+
                     b.ToTable("Periferico");
 
                     b.HasDiscriminator().HasValue("Periferico");
+                });
+
+            modelBuilder.Entity("ModelagemInicial.Toner", b =>
+                {
+                    b.HasBaseType("ModelagemInicial.Produto");
+
+                    b.Property<int?>("MarcaCartuchoTonerId")
+                        .HasColumnName("Toner_MarcaCartuchoTonerId");
+
+                    b.Property<string>("Modelo")
+                        .HasColumnName("Toner_Modelo");
+
+                    b.Property<int?>("TipoCartuchoTonerId");
+
+                    b.HasIndex("MarcaCartuchoTonerId");
+
+                    b.HasIndex("TipoCartuchoTonerId");
+
+                    b.ToTable("Toner");
+
+                    b.HasDiscriminator().HasValue("Toner");
                 });
 
             modelBuilder.Entity("ModelagemInicial.Administrador", b =>
@@ -304,11 +380,37 @@ namespace ModelagemInicial.Migrations
                         .HasForeignKey("EnderecoId");
                 });
 
-            modelBuilder.Entity("ModelagemInicial.Produto", b =>
+            modelBuilder.Entity("ModelagemInicial.Recarga", b =>
                 {
-                    b.HasOne("ModelagemInicial.Categoria", "Categoria")
+                    b.HasOne("ModelagemInicial.Cliente", "Cliente")
                         .WithMany()
-                        .HasForeignKey("CategoriaId");
+                        .HasForeignKey("ClienteId");
+                });
+
+            modelBuilder.Entity("ModelagemInicial.RecargaCartucho", b =>
+                {
+                    b.HasOne("ModelagemInicial.Cartucho", "Cartucho")
+                        .WithMany("Recargas")
+                        .HasForeignKey("CartuchoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ModelagemInicial.Recarga", "Recarga")
+                        .WithMany("Cartuchos")
+                        .HasForeignKey("RecargaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ModelagemInicial.TiposCartucho", b =>
+                {
+                    b.HasOne("ModelagemInicial.Cartucho", "Cartucho")
+                        .WithMany("Tipos")
+                        .HasForeignKey("CartuchoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ModelagemInicial.TipoCartuchoToner", "TipoCartuchoToner")
+                        .WithMany("Cartuchos")
+                        .HasForeignKey("TipoCartuchoTonerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ModelagemInicial.Venda", b =>
@@ -341,13 +443,9 @@ namespace ModelagemInicial.Migrations
 
             modelBuilder.Entity("ModelagemInicial.Cartucho", b =>
                 {
-                    b.HasOne("ModelagemInicial.MarcaCartucho", "MarcaCartucho")
+                    b.HasOne("ModelagemInicial.MarcaCartuchoToner", "MarcaCartuchoToner")
                         .WithMany()
-                        .HasForeignKey("MarcaCartuchoId");
-
-                    b.HasOne("ModelagemInicial.TipoCartucho", "TipoCartucho")
-                        .WithMany()
-                        .HasForeignKey("TipoCartuchoId");
+                        .HasForeignKey("MarcaCartuchoTonerId");
                 });
 
             modelBuilder.Entity("ModelagemInicial.Periferico", b =>
@@ -355,6 +453,21 @@ namespace ModelagemInicial.Migrations
                     b.HasOne("ModelagemInicial.CategoriaPeriferico", "CategoriaPeriferico")
                         .WithMany()
                         .HasForeignKey("CategoriaPerifericoId");
+
+                    b.HasOne("ModelagemInicial.MarcaPeriferico", "MarcaPeriferico")
+                        .WithMany()
+                        .HasForeignKey("MarcaPerifericoId");
+                });
+
+            modelBuilder.Entity("ModelagemInicial.Toner", b =>
+                {
+                    b.HasOne("ModelagemInicial.MarcaCartuchoToner", "MarcaCartuchoToner")
+                        .WithMany()
+                        .HasForeignKey("MarcaCartuchoTonerId");
+
+                    b.HasOne("ModelagemInicial.TipoCartuchoToner", "TipoCartuchoToner")
+                        .WithMany()
+                        .HasForeignKey("TipoCartuchoTonerId");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,5 +7,9 @@ namespace ModelagemInicial
 {
     public class Administrador : Usuario, IAdmin
     {
+        public void CadastraFuncionario(Funcionario funcionario)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace ModelagemInicial
     public class Periferico : Produto
     {
         public CategoriaPeriferico CategoriaPeriferico { get; set; }
-
         public string Nome { get; set; }
+        public MarcaPeriferico MarcaPeriferico { get; set; }
     }
 }

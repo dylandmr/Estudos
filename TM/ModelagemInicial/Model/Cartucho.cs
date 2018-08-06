@@ -7,10 +7,20 @@ namespace ModelagemInicial
 {
     public class Cartucho : Produto
     {
-        public MarcaCartucho MarcaCartucho { get; set; }
-
         public string Modelo { get; set; }
+        public IList<RecargaCartucho> Recargas { get; set; }
+        public MarcaCartuchoToner MarcaCartuchoToner { get; set; }
+        public IList<TiposCartucho> Tipos { get; set; }
 
-        public TipoCartucho TipoCartucho { get; set; }
+        public Cartucho()
+        {
+            Recargas = new List<RecargaCartucho>();
+            Tipos = new List<TiposCartucho>();
+        }
+
+        public void IncluiTipo(TipoCartuchoToner tipo, double preco)
+        {
+            Tipos.Add(new TiposCartucho() { TipoCartuchoToner = tipo, Preco = preco });
+        }
     }
 }

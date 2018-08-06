@@ -8,7 +8,6 @@ namespace ModelagemInicial
     public class PessoaFisica : Cliente
     {
         public string Nome { get; set; }
-
         public string Cpf { get; set; }
     }
 }

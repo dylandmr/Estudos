@@ -8,35 +8,32 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ModelagemInicial.Funcionario">
-    <Position X="2.25" Y="3" Width="1.5" />
+    <Position X="1.75" Y="3" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAEAAACAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAEAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Model\Funcionario.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ModelagemInicial.Administrador">
-    <Position X="4" Y="3" Width="1.5" />
+    <Position X="4.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Administrador.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ModelagemInicial.Produto">
-    <Position X="9.5" Y="5.25" Width="1.5" />
+    <Position X="9.5" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAgAAAQAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAACAAAgAAAQAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Model\Produto.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Categoria" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="ModelagemInicial.Cliente">
-    <Position X="4.25" Y="7.5" Width="1.5" />
+    <Position X="4.25" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <HashCode>AAACAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
       <FileName>Model\Cliente.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -44,9 +41,9 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="ModelagemInicial.Venda">
-    <Position X="4.25" Y="5.5" Width="1.5" />
+    <Position X="4.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABKAAAAAAQAAAAAAACAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AABKAAABgAUAAIAAAACAAAAAAgAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Venda.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -56,9 +53,15 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="ModelagemInicial.Recarga">
-    <Position X="6.75" Y="7.25" Width="1.5" />
+    <Position X="4.5" Y="10.5" Width="1.5" />
+    <AssociationLine Name="Cliente" Type="ModelagemInicial.Cliente" FixedToPoint="true">
+      <Path>
+        <Point X="5.438" Y="10.5" />
+        <Point X="5.438" Y="9.546" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAACAAAECAAAAAAAAACACAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <HashCode>AAACAAAFCAAAAIAAAACACAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>Model\Recarga.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -66,30 +69,30 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="ModelagemInicial.Cartucho">
-    <Position X="11.75" Y="5.25" Width="1.5" />
+    <Position X="9.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAABgAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAiAAAAAABA=</HashCode>
       <FileName>Model\Cartucho.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="MarcaCartucho" />
-      <Property Name="TipoCartucho" />
+      <Property Name="MarcaCartuchoToner" />
     </ShowAsAssociation>
   </Class>
   <Class Name="ModelagemInicial.Periferico">
-    <Position X="9.5" Y="7.5" Width="1.5" />
+    <Position X="11.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <HashCode>AAgAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Model\Periferico.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="CategoriaPeriferico" />
+      <Property Name="MarcaPeriferico" />
     </ShowAsAssociation>
   </Class>
   <Class Name="ModelagemInicial.VendaProduto">
     <Position X="6.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAE=</HashCode>
+      <HashCode>AAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAIAAE=</HashCode>
       <FileName>Model\VendaProduto.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -97,73 +100,106 @@
       <Property Name="Venda" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="ModelagemInicial.Categoria">
-    <Position X="9.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
-      <FileName>Model\Categoria.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="ModelagemInicial.CategoriaPeriferico">
-    <Position X="12.75" Y="7.25" Width="1.75" />
+    <Position X="15" Y="5.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Model\CategoriaPeriferico.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ModelagemInicial.MarcaCartucho">
-    <Position X="14.5" Y="4.25" Width="1.5" />
+  <Class Name="ModelagemInicial.MarcaCartuchoToner">
+    <Position X="11.75" Y="9.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Model\MarcaCartucho.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ModelagemInicial.FormaDePagamento">
-    <Position X="2" Y="6.75" Width="1.5" />
+    <Position X="1" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Model\FormaDePagamento.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ModelagemInicial.PessoaFisica">
-    <Position X="3.25" Y="9.5" Width="1.5" />
+    <Position X="2.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAA=</HashCode>
-      <FileName>PessoaFisica.cs</FileName>
+      <FileName>Model\PessoaFisica.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ModelagemInicial.PessoaJuridica">
-    <Position X="1.5" Y="9.5" Width="1.5" />
+    <Position X="0.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PessoaJuridica.cs</FileName>
+      <FileName>Model\PessoaJuridica.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ModelagemInicial.Endereco">
-    <Position X="5.5" Y="9.75" Width="1.5" />
+    <Position X="6.75" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAACAAAAAAAAAAAEAAAAAAAAAAAAAAQAAAAAAAABAAI=</HashCode>
-      <FileName>Endereco.cs</FileName>
+      <FileName>Model\Endereco.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ModelagemInicial.TipoCartucho">
-    <Position X="14.5" Y="5.75" Width="1.5" />
+  <Class Name="ModelagemInicial.TipoCartuchoToner">
+    <Position X="15" Y="10.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>TipoCartucho.cs</FileName>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQ=</HashCode>
+      <FileName>Model\TipoCartucho.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="ModelagemInicial.RecargaCartucho">
+    <Position X="7" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAEAAAAEAAAAAAAQAAAAQA=</HashCode>
+      <FileName>Model\RecargaCartucho.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Recarga" />
+      <Property Name="Cartucho" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ModelagemInicial.Toner">
+    <Position X="13.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAiAAAAAAAA=</HashCode>
+      <FileName>Model\Toner.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MarcaCartuchoToner" />
+      <Property Name="TipoCartuchoToner" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ModelagemInicial.MarcaPeriferico">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Model\MarcaPeriferico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelagemInicial.TiposCartucho">
+    <Position X="12" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAEAAAEAAEAAAAAQA=</HashCode>
+      <FileName>Model\TiposCartucho.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cartucho" />
+      <Property Name="TipoCartuchoToner" />
+    </ShowAsAssociation>
   </Class>
   <Interface Name="ModelagemInicial.IAtendente">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+    <Position X="1" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAACAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAEAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Model\IAtendente.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="ModelagemInicial.IAdmin">
-    <Position X="5.75" Y="3" Width="1.5" />
+    <Position X="5" Y="0.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\IAdmin.cs</FileName>
     </TypeIdentifier>
   </Interface>

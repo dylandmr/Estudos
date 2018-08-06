@@ -7,10 +7,6 @@ namespace ModelagemInicial
 {
     public class Funcionario : Usuario, IAtendente
     {
-        public void CadastraCategoria(Categoria Categoria)
-        {
-            throw new NotImplementedException();
-        }
 
         public void CadastraCliente(Cliente cliente)
         {
