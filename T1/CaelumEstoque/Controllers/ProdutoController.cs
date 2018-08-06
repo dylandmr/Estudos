@@ -1,4 +1,5 @@
 ﻿using CaelumEstoque.DAO;
+using CaelumEstoque.Filtros;
 using CaelumEstoque.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace CaelumEstoque.Controllers
 {
+    [AutorizacaoFilter]
     public class ProdutoController : Controller
     {
         [Route("produtos", Name = "ListaProdutos")]
@@ -29,6 +31,7 @@ namespace CaelumEstoque.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Adiciona(Produto produto)
         {
             var id_Informatica = 1;
