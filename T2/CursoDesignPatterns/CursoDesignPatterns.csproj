@@ -73,6 +73,9 @@
     <Compile Include="Template Method\Exemplo - Novos Impostos\IHIT.cs" />
     <Compile Include="Template Method\Exemplo - Novos Impostos\IKCV.cs" />
     <Compile Include="Template Method\Exemplo - Novos Impostos\TemplateDeImpostoCondicional.cs" />
+    <Compile Include="Template Method\Exercício - Relatórios\RelatorioComplexo.cs" />
+    <Compile Include="Template Method\Exercício - Relatórios\RelatorioSimples.cs" />
+    <Compile Include="Template Method\Exercício - Relatórios\TemplateDeRelatorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

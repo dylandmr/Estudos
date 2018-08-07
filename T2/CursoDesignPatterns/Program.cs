@@ -1,6 +1,7 @@
 using CursoDesignPatterns.Chain_of_Responsibility.Exemplo___Descontos;
 using CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_Web;
 using CursoDesignPatterns.Template_Method.Exemplo___Novos_Impostos;
+using CursoDesignPatterns.Template_Method.Exercício___Relatórios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,23 @@ namespace CursoDesignPatterns
     public class Program
     {
         static void Main(string[] args)
+        {
+            var contas = new List<Conta>();
+            contas.Add(new Conta("Joãozinho", 1234, 56789));
+            contas.Add(new Conta("Pedrinho", 1002, 58673));
+            contas.Add(new Conta("Mariazinha", 3020, 09573));
+            int i = 1;
+            foreach (var conta in contas)
+            {
+                conta.Deposita(++i * 100);
+            }
+
+            Console.WriteLine(new RelatorioSimples().ImprimeRelatorio(contas));
+
+            Console.ReadKey();
+        }
+
+        private static void TestaTemplateMethodImpostoIHIT()
         {
             var orcamento = new Orcamento(100);
             orcamento.AdicionaItem(new Item("Item", 1));
