@@ -1,5 +1,6 @@
 using CursoDesignPatterns.Chain_of_Responsibility.Exemplo___Descontos;
 using CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_Web;
+using CursoDesignPatterns.Template_Method.Exemplo___Novos_Impostos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,18 @@ namespace CursoDesignPatterns
     public class Program
     {
         static void Main(string[] args)
+        {
+            var orcamento = new Orcamento(500);
+            orcamento.AdicionaItem(new Item("Item", 101));
+
+            var calculador = new CalculadorDeImpostos();
+
+            calculador.RealizaCalculo(orcamento, new ICPP());
+
+            Console.ReadKey();
+        }
+
+        private static void TestaChainOfResponsibilityRequisicaoWeb()
         {
             Conta conta = new Conta("José");
             conta.Deposita(500);
