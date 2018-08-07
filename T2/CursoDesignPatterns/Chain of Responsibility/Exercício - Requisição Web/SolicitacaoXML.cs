@@ -10,7 +10,11 @@ namespace CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_
 {
     public class SolicitacaoXML : ISolicitacao
     {
-        public ISolicitacao Proxima { get; set; }
+        public ISolicitacao Proxima { get; private set; }
+        public SolicitacaoXML(ISolicitacao proxima)
+        {
+            Proxima = proxima;
+        }
 
         public string Solicitacao(Conta conta, Requisicao requisicao)
         {
@@ -18,7 +22,7 @@ namespace CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_
             {
                 return $"<conta>\n\t<titular>{conta.Titular}</titular>\n\t<saldo>{conta.Saldo}<saldo>\n</conta>";
             }
-            return Proxima.Solicitacao(conta, requisicao);
+            return Proxima != null ? Proxima.Solicitacao(conta, requisicao) : "nulo";
         }
     }
 }

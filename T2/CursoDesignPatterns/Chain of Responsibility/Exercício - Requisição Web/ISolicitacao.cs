@@ -8,7 +8,7 @@ namespace CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_
 {
     public interface ISolicitacao
     {
-        ISolicitacao Proxima { get; set; }
+        //ISolicitacao Proxima { get; set; }
         string Solicitacao(Conta conta, Requisicao requisicao);
     }
 }

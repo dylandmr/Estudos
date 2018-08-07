@@ -51,7 +51,6 @@
     <Compile Include="Chain of Responsibility\Exercício - Requisição Web\ISolicitacao.cs" />
     <Compile Include="Chain of Responsibility\Exercício - Requisição Web\ProcessadorDeSolicitacao.cs" />
     <Compile Include="Chain of Responsibility\Exercício - Requisição Web\Requisicao.cs" />
-    <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SemSolicitacao.cs" />
     <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SolicitacaoCSV.cs" />
     <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SolicitacaoPorcento.cs" />
     <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SolicitacaoXML.cs" />

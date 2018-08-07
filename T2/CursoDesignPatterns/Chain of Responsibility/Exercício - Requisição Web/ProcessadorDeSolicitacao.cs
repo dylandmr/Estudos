@@ -10,16 +10,9 @@ namespace CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_
     {
         public string Processa(Conta conta, Requisicao requisicao)
         {
-            var s1 = new SolicitacaoCSV();
-            var s2 = new SolicitacaoPorcento();
-            var s3 = new SolicitacaoXML();
-            var s4 = new SemSolicitacao();
-
-            s1.Proxima = s2;
-            s2.Proxima = s3;
-            s3.Proxima = s4;
-
-            return s1.Solicitacao(conta, requisicao);
+            var solicitacoes = new SolicitacaoCSV(new SolicitacaoPorcento(new SolicitacaoXML(null)));
+                        
+            return solicitacoes.Solicitacao(conta, requisicao);
         }
     }
 }
