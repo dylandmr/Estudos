@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chain of Responsibility\Exemplo - Descontos\CalculadorDeDescontos.cs" />
+    <Compile Include="Chain of Responsibility\Exemplo - Descontos\DescontoPorCincoItens.cs" />
+    <Compile Include="Chain of Responsibility\Exemplo - Descontos\DescontoPorMaisDeQuinhentosReais.cs" />
+    <Compile Include="Chain of Responsibility\Exemplo - Descontos\IDesconto.cs" />
+    <Compile Include="Chain of Responsibility\Exemplo - Descontos\SemDesconto.cs" />
+    <Compile Include="Strategy\Exemplo - Imposto\Item.cs" />
     <Compile Include="Strategy\Exercício - Investimentos\Arrojado.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\CalculadorDeImpostos.cs" />
     <Compile Include="Strategy\Exercício - Investimentos\Conservador.cs" />

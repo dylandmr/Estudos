@@ -1,3 +1,4 @@
+using CursoDesignPatterns.Chain_of_Responsibility.Exemplo___Descontos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,33 @@ using System.Threading.Tasks;
 
 namespace CursoDesignPatterns
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
+        {
+            TestaChainOfResponsibilityDescontos();
+        }
+
+        private static void TestaChainOfResponsibilityDescontos()
+        {
+            CalculadorDeDescontos calculador = new CalculadorDeDescontos();
+
+            Orcamento orcamento = new Orcamento(500);
+            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
+            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
+            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
+            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
+            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
+
+
+            double desconto = calculador.Calcula(orcamento);
+
+            Console.WriteLine(desconto);
+
+            Console.ReadKey();
+        }
+
+        private static void TestaStrategyImpostoEInvesitmento()
         {
             var iss = new ISS();
             var icms = new ICMS();
