@@ -13,12 +13,13 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            var orcamento = new Orcamento(500);
-            orcamento.AdicionaItem(new Item("Item", 101));
+            var orcamento = new Orcamento(100);
+            orcamento.AdicionaItem(new Item("Item", 1));
+            orcamento.AdicionaItem(new Item("Itex", 1));
 
             var calculador = new CalculadorDeImpostos();
 
-            calculador.RealizaCalculo(orcamento, new ICPP());
+            calculador.RealizaCalculo(orcamento, new IHIT());
 
             Console.ReadKey();
         }

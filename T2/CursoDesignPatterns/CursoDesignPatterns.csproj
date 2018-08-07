@@ -70,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategy\Exercício - Investimentos\RealizadorDeInvestimentos.cs" />
     <Compile Include="Template Method\Exemplo - Novos Impostos\ICPP.cs" />
+    <Compile Include="Template Method\Exemplo - Novos Impostos\IHIT.cs" />
     <Compile Include="Template Method\Exemplo - Novos Impostos\IKCV.cs" />
     <Compile Include="Template Method\Exemplo - Novos Impostos\TemplateDeImpostoCondicional.cs" />
   </ItemGroup>
