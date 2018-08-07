@@ -1,4 +1,5 @@
 using CursoDesignPatterns.Chain_of_Responsibility.Exemplo___Descontos;
+using CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +12,25 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            TestaChainOfResponsibilityDescontos();
+            Conta conta = new Conta("José");
+            conta.Deposita(500);
+
+            Requisicao req = new Requisicao(Formato.XML);
+
+            var processador = new ProcessadorDeSolicitacao();
+
+            Console.WriteLine(processador.Processa(conta, req));
+
+            Console.ReadLine();
         }
 
         private static void TestaChainOfResponsibilityDescontos()
         {
             CalculadorDeDescontos calculador = new CalculadorDeDescontos();
 
-            Orcamento orcamento = new Orcamento(500);
-            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
-            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
-            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
-            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
-            orcamento.AdicionaItem(new Item("Qualquer coisa", 100));
-
+            Orcamento orcamento = new Orcamento(200);
+            orcamento.AdicionaItem(new Item("LaPiS", 100));
+            orcamento.AdicionaItem(new Item("caneta", 100));
 
             double desconto = calculador.Calcula(orcamento);
 

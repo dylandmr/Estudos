@@ -45,8 +45,16 @@
     <Compile Include="Chain of Responsibility\Exemplo - Descontos\CalculadorDeDescontos.cs" />
     <Compile Include="Chain of Responsibility\Exemplo - Descontos\DescontoPorCincoItens.cs" />
     <Compile Include="Chain of Responsibility\Exemplo - Descontos\DescontoPorMaisDeQuinhentosReais.cs" />
+    <Compile Include="Chain of Responsibility\Exemplo - Descontos\DescontoPorVendaCasada.cs" />
     <Compile Include="Chain of Responsibility\Exemplo - Descontos\IDesconto.cs" />
     <Compile Include="Chain of Responsibility\Exemplo - Descontos\SemDesconto.cs" />
+    <Compile Include="Chain of Responsibility\Exercício - Requisição Web\ISolicitacao.cs" />
+    <Compile Include="Chain of Responsibility\Exercício - Requisição Web\ProcessadorDeSolicitacao.cs" />
+    <Compile Include="Chain of Responsibility\Exercício - Requisição Web\Requisicao.cs" />
+    <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SemSolicitacao.cs" />
+    <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SolicitacaoCSV.cs" />
+    <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SolicitacaoPorcento.cs" />
+    <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SolicitacaoXML.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\Item.cs" />
     <Compile Include="Strategy\Exercício - Investimentos\Arrojado.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\CalculadorDeImpostos.cs" />
