@@ -56,6 +56,7 @@
     <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SolicitacaoXML.cs" />
     <Compile Include="Decorator\Exemplo - Impostos Compostos\D_ICCC.cs" />
     <Compile Include="Decorator\Exemplo - Impostos Compostos\D_ICMS.cs" />
+    <Compile Include="Decorator\Exemplo - Impostos Compostos\D_IMA.cs" />
     <Compile Include="Decorator\Exemplo - Impostos Compostos\D_Imposto.cs" />
     <Compile Include="Decorator\Exemplo - Impostos Compostos\D_ISS.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\CalculadorDeImpostos.cs" />
@@ -83,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

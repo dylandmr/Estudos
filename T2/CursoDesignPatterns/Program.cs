@@ -15,9 +15,9 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            var impostoComplexo = new D_ISS(new D_ICMS(new D_ICCC()));
+            var impostoComplexo = new D_ISS(new D_IMA());
 
-            Orcamento orcamento = new Orcamento(3001);
+            Orcamento orcamento = new Orcamento(500);
 
             Console.WriteLine(impostoComplexo.Calcula(orcamento));
 
