@@ -16,6 +16,31 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
+            var reforma = new Orcamento(500);
+
+            Console.WriteLine(reforma.Valor);
+
+            reforma.AplicaDescontoExtra();
+
+            Console.WriteLine(reforma.Valor);
+
+            reforma.Aprova();
+
+            reforma.AplicaDescontoExtra();
+
+            Console.WriteLine(reforma.Valor);
+
+            reforma.Finaliza();
+
+            reforma.AplicaDescontoExtra();
+
+            Console.WriteLine(reforma.Valor);
+
+            Console.ReadKey();
+        }
+
+        private static void TestaDecoratorFiltrosContas()
+        {
             var contas = new List<Conta>()
             {
                 new Conta("Conta 1", 1234, 56789, new DateTime(2018, 07, 09)),

@@ -66,6 +66,11 @@
     <Compile Include="Decorator\Exercício - Filtro Contas\FiltroContaAbertaNoMesCorrente.cs" />
     <Compile Include="Decorator\Exercício - Filtro Contas\FiltroSaldoMaiorQueQuinhentosMilReais.cs" />
     <Compile Include="Decorator\Exercício - Filtro Contas\FiltroSaldoMenorQueCemReais.cs" />
+    <Compile Include="State\Exemplo - Estados Orçamento\Aprovado.cs" />
+    <Compile Include="State\Exemplo - Estados Orçamento\EmAprovacao.cs" />
+    <Compile Include="State\Exemplo - Estados Orçamento\Finalizado.cs" />
+    <Compile Include="State\Exemplo - Estados Orçamento\IEstadoDeUmOrcamento.cs" />
+    <Compile Include="State\Exemplo - Estados Orçamento\Reprovado.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\CalculadorDeImpostos.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\Item.cs" />
     <Compile Include="Strategy\Exercício - Investimentos\Arrojado.cs" />
@@ -92,5 +97,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
