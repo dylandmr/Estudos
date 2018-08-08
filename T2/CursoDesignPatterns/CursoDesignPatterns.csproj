@@ -56,9 +56,16 @@
     <Compile Include="Chain of Responsibility\Exercício - Requisição Web\SolicitacaoXML.cs" />
     <Compile Include="Decorator\Exemplo - Impostos Compostos\D_ICCC.cs" />
     <Compile Include="Decorator\Exemplo - Impostos Compostos\D_ICMS.cs" />
+    <Compile Include="Decorator\Exemplo - Impostos Compostos\D_ICPP.cs" />
+    <Compile Include="Decorator\Exemplo - Impostos Compostos\D_IKCV.cs" />
     <Compile Include="Decorator\Exemplo - Impostos Compostos\D_IMA.cs" />
     <Compile Include="Decorator\Exemplo - Impostos Compostos\D_Imposto.cs" />
     <Compile Include="Decorator\Exemplo - Impostos Compostos\D_ISS.cs" />
+    <Compile Include="Decorator\Exemplo - Impostos Compostos\D_TemplateDeImpostoCondicional.cs" />
+    <Compile Include="Decorator\Exercício - Filtro Contas\Filtro.cs" />
+    <Compile Include="Decorator\Exercício - Filtro Contas\FiltroContaAbertaNoMesCorrente.cs" />
+    <Compile Include="Decorator\Exercício - Filtro Contas\FiltroSaldoMaiorQueQuinhentosMilReais.cs" />
+    <Compile Include="Decorator\Exercício - Filtro Contas\FiltroSaldoMenorQueCemReais.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\CalculadorDeImpostos.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\Item.cs" />
     <Compile Include="Strategy\Exercício - Investimentos\Arrojado.cs" />

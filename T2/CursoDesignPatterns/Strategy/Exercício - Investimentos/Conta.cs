@@ -12,6 +12,7 @@ namespace CursoDesignPatterns
         public double Saldo { get; private set; }
         public int Agencia { get; private set; }
         public int Numero { get; private set; }
+        public DateTime DataAbertura { get; private set; }
 
         public Conta() { }
         
@@ -26,6 +27,15 @@ namespace CursoDesignPatterns
             Agencia = agencia;
             Numero = numero;
         }
+
+        public Conta(string titular, int agencia, int numero, DateTime dataAbertura)
+        {
+            Titular = titular;
+            Agencia = agencia;
+            Numero = numero;
+            DataAbertura = dataAbertura;
+        }
+
         public void Deposita(double valor)
         {
             Saldo += valor;

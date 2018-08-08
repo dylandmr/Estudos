@@ -1,6 +1,7 @@
 using CursoDesignPatterns.Chain_of_Responsibility.Exemplo___Descontos;
 using CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_Web;
 using CursoDesignPatterns.Decorator.Exemplo___Impostos_Compostos;
+using CursoDesignPatterns.Decorator.Exercício___Filtro_Contas;
 using CursoDesignPatterns.Template_Method.Exemplo___Novos_Impostos;
 using CursoDesignPatterns.Template_Method.Exercício___Relatórios;
 using System;
@@ -15,9 +16,43 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            var impostoComplexo = new D_ISS(new D_IMA());
+            var contas = new List<Conta>()
+            {
+                new Conta("Conta 1", 1234, 56789, new DateTime(1999, 01, 01)),
+                new Conta("Conta 2", 1002, 58673, new DateTime(1999, 01, 01)),
+                new Conta("Conta 3", 3020, 09573, new DateTime(2018, 08, 07)),
+                new Conta("Conta 4", 1234, 56789, new DateTime(1999, 01, 01)),
+                new Conta("Conta 5", 1002, 58673, new DateTime(1999, 01, 01)),
+                new Conta("Conta 6", 3020, 09573, new DateTime(1999, 01, 01)),
+                new Conta("Conta 7", 1234, 56789, new DateTime(1999, 01, 01)),
+                new Conta("Conta 8", 1002, 58673, new DateTime(1999, 01, 01)),
+                new Conta("Conta 9", 3020, 09573, new DateTime(1999, 01, 01))
+            };
 
-            Orcamento orcamento = new Orcamento(500);
+            foreach (var conta in contas)
+            {
+                if (conta.Titular.Equals("Conta 6")) conta.Deposita(510000);
+                else if (!conta.Titular.Equals("Conta 9")) conta.Deposita(500);
+            }
+
+            var filtro = new FiltroContaAbertaNoMesCorrente(new FiltroSaldoMaiorQueQuinhentosMilReais(new FiltroSaldoMenorQueCemReais()));
+
+            var filtradas = filtro.Filtra(contas);
+
+            foreach (var conta in filtradas)
+            {
+                Console.WriteLine(conta.Titular);
+            }
+
+            Console.ReadKey();
+        }
+
+        private static void TestaDecoratorIKCVeICPP()
+        {
+            var impostoComplexo = new D_IKCV(new D_ICPP());
+
+            Orcamento orcamento = new Orcamento(501);
+            orcamento.AdicionaItem(new Item("Item", 101));
 
             Console.WriteLine(impostoComplexo.Calcula(orcamento));
 
