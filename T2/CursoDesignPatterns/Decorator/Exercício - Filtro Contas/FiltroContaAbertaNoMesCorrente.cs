@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CursoDesignPatterns.Decorator.Exercício___Filtro_Contas
 {
-    class FiltroContaAbertaNoMesCorrente : Filtro
+    public class FiltroContaAbertaNoMesCorrente : Filtro
     {
         public FiltroContaAbertaNoMesCorrente() : base() { }
 

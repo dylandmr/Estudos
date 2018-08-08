@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CursoDesignPatterns.Decorator.Exercício___Filtro_Contas
 {
-    class FiltroSaldoMenorQueCemReais : Filtro
+    public class FiltroSaldoMenorQueCemReais : Filtro
     {
         public FiltroSaldoMenorQueCemReais() : base() { }
 

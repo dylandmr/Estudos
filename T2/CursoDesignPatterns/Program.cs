@@ -18,7 +18,7 @@ namespace CursoDesignPatterns
         {
             var contas = new List<Conta>()
             {
-                new Conta("Conta 1", 1234, 56789, new DateTime(1999, 01, 01)),
+                new Conta("Conta 1", 1234, 56789, new DateTime(2018, 07, 09)),
                 new Conta("Conta 2", 1002, 58673, new DateTime(1999, 01, 01)),
                 new Conta("Conta 3", 3020, 09573, new DateTime(2018, 08, 07)),
                 new Conta("Conta 4", 1234, 56789, new DateTime(1999, 01, 01)),
@@ -32,7 +32,7 @@ namespace CursoDesignPatterns
             foreach (var conta in contas)
             {
                 if (conta.Titular.Equals("Conta 6")) conta.Deposita(510000);
-                else if (!conta.Titular.Equals("Conta 9")) conta.Deposita(500);
+                else if (!(conta.Titular.Equals("Conta 8") || conta.Titular.Equals("Conta 9"))) conta.Deposita(500);
             }
 
             var filtro = new FiltroContaAbertaNoMesCorrente(new FiltroSaldoMaiorQueQuinhentosMilReais(new FiltroSaldoMenorQueCemReais()));
