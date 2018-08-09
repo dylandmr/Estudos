@@ -1,3 +1,4 @@
+using CursoDesignPatterns.Builder.Exemplo___Nota_Fiscal;
 using CursoDesignPatterns.Chain_of_Responsibility.Exemplo___Descontos;
 using CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_Web;
 using CursoDesignPatterns.Decorator.Exemplo___Impostos_Compostos;
@@ -15,6 +16,27 @@ namespace CursoDesignPatterns
     public class Program
     {
         static void Main(string[] args)
+        {
+            var nf = new NotaFiscalBuilder()
+                .ParaEmpresa("MatrixMax")
+                .ComCnpj("12.345.678.0001-12")
+                .NaDataAtual()
+                .ComItem(new ItemDaNota("Banana", 30))
+                .ComItem(new ItemDaNota("Amendoim", 20))
+                .ComObservacao("Comprei bananas e amendoins.")
+                .Constroi();
+
+            Console.WriteLine($"{nf.DataDeEmissao.ToShortDateString()}\n{nf.ValorBruto} - {nf.Impostos}");
+            foreach (var item in nf.Itens)
+            {
+                Console.WriteLine(item.Nome);
+            }
+            Console.WriteLine(nf.Observavoes);
+
+            Console.ReadKey();
+        }
+
+        private static void TestaStatesEstadoSaldoConta()
         {
             var conta = new Conta();
             conta.Deposita(100);
