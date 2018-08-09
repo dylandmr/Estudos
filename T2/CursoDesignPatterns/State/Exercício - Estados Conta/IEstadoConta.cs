@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,4 +11,4 @@ namespace CursoDesignPatterns.State.Exercício___Estados_Conta
         void Saca(Conta conta, double valor);
         void Deposita(Conta conta, double valor);
     }
-}
+} MOVIDO PARA A PRÓPRIA CLASSE CONTA, PARA MANTER ENCAPSULAMENTO DO SALDO! */

@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,4 +19,4 @@ namespace CursoDesignPatterns.State.Exercício___Estados_Conta
             throw new Exception("Conta com saldo negativo não aceita saques!");
         }
     }
-}
+} MOVIDO PARA A PRÓPRIA CLASSE CONTA, PARA MANTER ENCAPSULAMENTO DO SALDO! */

@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,4 +19,4 @@ namespace CursoDesignPatterns.State.Exercício___Estados_Conta
             if (conta.Saldo < 0) conta.EstadoSaldo = new Negativo();
         }
     }
-}
+} MOVIDO PARA A PRÓPRIA CLASSE CONTA, PARA MANTER ENCAPSULAMENTO DO SALDO! */
