@@ -16,6 +16,26 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
+            var conta = new Conta();
+            conta.Deposita(100);
+            Console.WriteLine(conta.Saldo);
+
+            conta.Saca(100);
+            Console.WriteLine(conta.Saldo);
+
+            conta.Deposita(3);
+            Console.WriteLine(conta.Saldo);
+
+            conta.Saca(1);
+            Console.WriteLine(conta.Saldo);
+
+            //conta.Saca(0.1); <- Joga exceção :)
+
+            Console.ReadKey();
+        }
+
+        private static void TestaStateEstadosOrcamento()
+        {
             var reforma = new Orcamento(500);
 
             Console.WriteLine(reforma.Valor);
@@ -34,7 +54,7 @@ namespace CursoDesignPatterns
             reforma.Finaliza();
 
             //reforma.AplicaDescontoExtra(); -> Joga exceção.
-         
+
             Console.ReadKey();
         }
 

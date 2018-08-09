@@ -71,6 +71,9 @@
     <Compile Include="State\Exemplo - Estados Orçamento\Finalizado.cs" />
     <Compile Include="State\Exemplo - Estados Orçamento\IEstadoDeUmOrcamento.cs" />
     <Compile Include="State\Exemplo - Estados Orçamento\Reprovado.cs" />
+    <Compile Include="State\Exercício - Estados Conta\IEstadoConta.cs" />
+    <Compile Include="State\Exercício - Estados Conta\Negativo.cs" />
+    <Compile Include="State\Exercício - Estados Conta\Positivo.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\CalculadorDeImpostos.cs" />
     <Compile Include="Strategy\Exemplo - Imposto\Item.cs" />
     <Compile Include="Strategy\Exercício - Investimentos\Arrojado.cs" />
