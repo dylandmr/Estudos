@@ -4,6 +4,8 @@ using CursoDesignPatterns.Chain_of_Responsibility.Exemplo___Descontos;
 using CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_Web;
 using CursoDesignPatterns.Decorator.Exemplo___Impostos_Compostos;
 using CursoDesignPatterns.Decorator.Exercício___Filtro_Contas;
+using CursoDesignPatterns.Observer.Exemplo___Ações_Nota_Fiscal;
+using CursoDesignPatterns.Observer.Exercício___Ação_Multiplicador;
 using CursoDesignPatterns.Template_Method.Exemplo___Novos_Impostos;
 using CursoDesignPatterns.Template_Method.Exercício___Relatórios;
 using System;
@@ -18,7 +20,32 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            TestaItemDaNotaBuilder();
+            var nf = new NotaFiscalBuilder()
+            .ParaEmpresa("MatrixMax")
+            .ComCnpj("12.345.678.0001-12")
+            .Com(new ItemDaNota("Banana", 30))
+            .Com(new ItemDaNota("Amendoim", 20))
+            .ComObservacao("Comprei bananas e amendoins.")
+            .ComAcaoPosterior(new Multiplicador(3))
+            .Constroi();
+
+            Console.ReadKey();
+        }
+
+        private static void TestaObserverAcaoAposNota()
+        {
+            var nf = new NotaFiscalBuilder()
+                .ParaEmpresa("MatrixMax")
+                .ComCnpj("12.345.678.0001-12")
+                .Com(new ItemDaNota("Banana", 30))
+                .Com(new ItemDaNota("Amendoim", 20))
+                .ComObservacao("Comprei bananas e amendoins.")
+                .ComAcaoPosterior(new EnviadorDeEmail())
+                .ComAcaoPosterior(new EnviadorDeSms())
+                .ComAcaoPosterior(new NotaFiscalDao())
+                .Constroi();
+
+            Console.ReadKey();
         }
 
         private static void TestaDataOpcionalEDefaultNoNotaFiscalBuilder()
@@ -74,7 +101,7 @@ namespace CursoDesignPatterns
             var nf = new NotaFiscalBuilder()
                             .ParaEmpresa("MatrixMax")
                             .ComCnpj("12.345.678.0001-12")
-                          //.NaDataAtual() <- Substituído no exercício.
+                            //.NaDataAtual() <- Substituído no exercício.
                             .Com(new ItemDaNota("Banana", 30))
                             .Com(new ItemDaNota("Amendoim", 20))
                             .ComObservacao("Comprei bananas e amendoins.")
