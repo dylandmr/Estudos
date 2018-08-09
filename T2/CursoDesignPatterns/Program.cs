@@ -20,6 +20,27 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
+            var acoes = new List<IAcaoAposGerarNota>()
+            {
+                new Multiplicador(3.5),
+                new EnviadorDeSms(),
+                new EnviadorDeEmail(),
+                new NotaFiscalDao()
+            };
+
+            var nf = new NotaFiscalBuilder(acoes)
+            .ParaEmpresa("MatrixMax")
+            .ComCnpj("12.345.678.0001-12")
+            .Com(new ItemDaNota("Banana", 30))
+            .Com(new ItemDaNota("Amendoim", 20))
+            .ComObservacao("Comprei bananas e amendoins.")
+            .Constroi();
+
+            Console.ReadKey();
+        }
+
+        private static void TestaObserverMultiplicador()
+        {
             var nf = new NotaFiscalBuilder()
             .ParaEmpresa("MatrixMax")
             .ComCnpj("12.345.678.0001-12")

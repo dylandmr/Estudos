@@ -19,6 +19,13 @@ namespace CursoDesignPatterns.Builder.Exemplo___Nota_Fiscal
         private DateTime DataDeEmissao = DateTime.Now;
         private IList<IAcaoAposGerarNota> acoes = new List<IAcaoAposGerarNota>();
 
+        public NotaFiscalBuilder() { }
+
+        public NotaFiscalBuilder(IList<IAcaoAposGerarNota> acoes)
+        {
+            this.acoes = acoes;
+        }
+
         public NotaFiscalBuilder ParaEmpresa(string razaoSocial)
         {
             RazaoSocial = razaoSocial;
