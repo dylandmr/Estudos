@@ -8,9 +8,12 @@ namespace CursoDesignPatterns.State.Exemplo___Estados_Orçamento
 {
     public class EmAprovacao : IEstadoDeUmOrcamento
     {
+        public bool DescontoAplicado { get; set; }
+
         public void AplicaDescontoExtra(Orcamento orcamento)
         {
             orcamento.Valor = orcamento.Valor - (orcamento.Valor * 0.05);
+            DescontoAplicado = true;
         }
 
         public void Aprova(Orcamento orcamento)

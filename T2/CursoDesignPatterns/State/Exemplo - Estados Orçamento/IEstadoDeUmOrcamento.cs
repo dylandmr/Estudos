@@ -10,6 +10,8 @@ namespace CursoDesignPatterns.State.Exemplo___Estados_Orçamento
     {
         void AplicaDescontoExtra(Orcamento orcamento);
 
+        bool DescontoAplicado { get; set; }
+
         void Aprova(Orcamento orcamento);
         void Reprova(Orcamento orcamento);
         void Finaliza(Orcamento orcamento);

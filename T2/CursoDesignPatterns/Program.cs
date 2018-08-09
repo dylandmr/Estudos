@@ -21,6 +21,7 @@ namespace CursoDesignPatterns
             Console.WriteLine(reforma.Valor);
 
             reforma.AplicaDescontoExtra();
+            reforma.AplicaDescontoExtra();
 
             Console.WriteLine(reforma.Valor);
 
@@ -32,10 +33,8 @@ namespace CursoDesignPatterns
 
             reforma.Finaliza();
 
-            reforma.AplicaDescontoExtra();
-
-            Console.WriteLine(reforma.Valor);
-
+            //reforma.AplicaDescontoExtra(); -> Joga exceção.
+         
             Console.ReadKey();
         }
 

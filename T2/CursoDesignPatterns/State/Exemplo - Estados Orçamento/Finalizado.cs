@@ -8,6 +8,8 @@ namespace CursoDesignPatterns.State.Exemplo___Estados_Orçamento
 {
     public class Finalizado : IEstadoDeUmOrcamento
     {
+        public bool DescontoAplicado { get; set; }
+
         public void AplicaDescontoExtra(Orcamento orcamento)
         {
             throw new Exception("Orçamentos finalizados não recebem desconto.");

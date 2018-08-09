@@ -22,7 +22,8 @@ namespace CursoDesignPatterns
 
         public void AplicaDescontoExtra()
         {
-            EstadoAtual.AplicaDescontoExtra(this);
+            if (!EstadoAtual.DescontoAplicado) EstadoAtual.AplicaDescontoExtra(this);
+            else throw new Exception("Desconto já aplicado para este orçamento.");
         }
 
         public void AdicionaItem(Item item)
