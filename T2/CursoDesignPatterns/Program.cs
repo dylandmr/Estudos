@@ -17,14 +17,26 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            var nf = new NotaFiscalBuilder()
-                .ParaEmpresa("MatrixMax")
-                .ComCnpj("12.345.678.0001-12")
-                .NaDataAtual()
-                .ComItem(new ItemDaNota("Banana", 30))
-                .ComItem(new ItemDaNota("Amendoim", 20))
-                .ComObservacao("Comprei bananas e amendoins.")
+            var item = new ItemDaNotaBuilder()
+                .ComNome("Item 1")
+                .ComValor(33)
                 .Constroi();
+
+            Console.WriteLine(item.Nome + "\n" + item.Valor);
+
+            Console.ReadKey();
+        }
+
+        private static void TestaNotaFiscalBuilder()
+        {
+            var nf = new NotaFiscalBuilder()
+                            .ParaEmpresa("MatrixMax")
+                            .ComCnpj("12.345.678.0001-12")
+                            .NaDataAtual()
+                            .ComItem(new ItemDaNota("Banana", 30))
+                            .ComItem(new ItemDaNota("Amendoim", 20))
+                            .ComObservacao("Comprei bananas e amendoins.")
+                            .Constroi();
 
             Console.WriteLine($"{nf.DataDeEmissao.ToShortDateString()}\n{nf.ValorBruto} - {nf.Impostos}");
             foreach (var item in nf.Itens)
