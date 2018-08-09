@@ -10,12 +10,12 @@ namespace CursoDesignPatterns.Builder.Exemplo___Nota_Fiscal
     {
         public string RazaoSocial { get; private set; }
         public string Cnpj { get; private set; }
-        public DateTime DataDeEmissao { get; private set; }
         public double ValorTotal { get; private set; }
         public double Impostos { get; private set; }
         public String Observavoes { get; private set; }
 
         private IList<ItemDaNota> itens = new List<ItemDaNota>();
+        private DateTime DataDeEmissao = DateTime.Now;
 
         public NotaFiscalBuilder ParaEmpresa(string razaoSocial)
         {
@@ -27,12 +27,12 @@ namespace CursoDesignPatterns.Builder.Exemplo___Nota_Fiscal
             Cnpj = cnpj;
             return this;
         }
-        public NotaFiscalBuilder NaDataAtual()
+        public NotaFiscalBuilder NaData(DateTime data)
         {
-            DataDeEmissao = DateTime.Now;
+            DataDeEmissao = data;
             return this;
         }
-        public NotaFiscalBuilder ComItem(ItemDaNota item)
+        public NotaFiscalBuilder Com(ItemDaNota item)
         {
             itens.Add(item);
             ValorTotal += item.Valor;
