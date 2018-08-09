@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CursoDesignPatterns.Builder.Exemplo___Nota_Fiscal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CursoDesignPatterns.Builder.Exemplo___Nota_Fiscal
+namespace CursoDesignPatterns.Builder.Exercício___Builder_de_Itens
 {
     public class ItemDaNotaBuilder
     {

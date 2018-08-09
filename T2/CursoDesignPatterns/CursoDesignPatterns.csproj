@@ -43,9 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder\Exemplo - Nota Fiscal\ItemDaNota.cs" />
-    <Compile Include="Builder\Exemplo - Nota Fiscal\ItemDaNotaBuilder.cs" />
     <Compile Include="Builder\Exemplo - Nota Fiscal\NotaFiscal.cs" />
     <Compile Include="Builder\Exemplo - Nota Fiscal\NotaFiscalBuilder.cs" />
+    <Compile Include="Builder\Exercício - Builder de Itens\ItemDaNotaBuilder.cs" />
     <Compile Include="Chain of Responsibility\Exemplo - Descontos\CalculadorDeDescontos.cs" />
     <Compile Include="Chain of Responsibility\Exemplo - Descontos\DescontoPorCincoItens.cs" />
     <Compile Include="Chain of Responsibility\Exemplo - Descontos\DescontoPorMaisDeQuinhentosReais.cs" />
@@ -104,6 +104,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Observer\Exemplo - Ações Nota Fiscal\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

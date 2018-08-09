@@ -1,4 +1,5 @@
 using CursoDesignPatterns.Builder.Exemplo___Nota_Fiscal;
+using CursoDesignPatterns.Builder.Exercício___Builder_de_Itens;
 using CursoDesignPatterns.Chain_of_Responsibility.Exemplo___Descontos;
 using CursoDesignPatterns.Chain_of_Responsibility.Exercício___Requisição_Web;
 using CursoDesignPatterns.Decorator.Exemplo___Impostos_Compostos;
@@ -16,6 +17,11 @@ namespace CursoDesignPatterns
     public class Program
     {
         static void Main(string[] args)
+        {
+            TestaItemDaNotaBuilder();
+        }
+
+        private static void TestaDataOpcionalEDefaultNoNotaFiscalBuilder()
         {
             var nf = new NotaFiscalBuilder()
                 .ParaEmpresa("MatrixMax")
