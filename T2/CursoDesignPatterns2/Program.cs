@@ -1,6 +1,7 @@
 using CursoDesignPatterns2.Factory.Exemplo___Conexão_BD;
 using CursoDesignPatterns2.Flyweight.Exemplo___Notas_Musicais;
 using CursoDesignPatterns2.Flyweight.Singleton;
+using CursoDesignPatterns2.Memento.Exemplo___Contratos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,35 @@ namespace CursoDesignPatterns2
     {
         static void Main(string[] args)
         {
-            
+            var historico = new Historico();
+
+            var contrato = new Contrato(DateTime.Now, "Titular", TipoContrato.Novo);
+            historico.Adiciona(contrato.SalvaEstado());
+
+            Console.ReadKey();
+
+            contrato.Avanca();
+            historico.Adiciona(contrato.SalvaEstado());
+
+            Console.ReadKey();
+
+            contrato.Avanca();
+            historico.Adiciona(contrato.SalvaEstado());
+
+            Console.ReadKey();
+
+            contrato.Avanca();
+            historico.Adiciona(contrato.SalvaEstado());
+
+            Console.WriteLine(contrato.Tipo);
+
+            Console.ReadKey();
+
+            Console.WriteLine($"{historico.Recupera(0).Contrato.Tipo} - {historico.Recupera(0).AdicionadoEm.ToString()}");
+            Console.WriteLine($"{historico.Recupera(1).Contrato.Tipo} - {historico.Recupera(1).AdicionadoEm.ToString()}");
+            Console.WriteLine($"{historico.Recupera(2).Contrato.Tipo} - {historico.Recupera(2).AdicionadoEm.ToString()}");
+
+            Console.ReadKey();
         }
 
         private static void TestandoSingleton()

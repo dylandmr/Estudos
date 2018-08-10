@@ -54,6 +54,10 @@
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Si.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Sol.cs" />
     <Compile Include="Flyweight\Singleton\Singleton.cs" />
+    <Compile Include="Memento\Exemplo - Contratos\Contrato.cs" />
+    <Compile Include="Memento\Exemplo - Contratos\Estado.cs" />
+    <Compile Include="Memento\Exemplo - Contratos\Historico.cs" />
+    <Compile Include="Memento\Exemplo - Contratos\TipoContrato.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
