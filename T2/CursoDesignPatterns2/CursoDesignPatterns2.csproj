@@ -43,6 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factory\Exemplo - Conexão BD\ConnectionFactory.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\Do.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\Fa.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\INota.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\La.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\Mi.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\NotasMusicais.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\Piano.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\Re.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\Si.cs" />
+    <Compile Include="Flyweight\Exemplo - Notas Musicais\Sol.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
