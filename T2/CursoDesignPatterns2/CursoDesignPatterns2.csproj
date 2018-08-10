@@ -53,6 +53,7 @@
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Re.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Si.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Sol.cs" />
+    <Compile Include="Flyweight\Singleton\Singleton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

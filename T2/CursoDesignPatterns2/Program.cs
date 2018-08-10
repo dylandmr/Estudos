@@ -1,5 +1,6 @@
 using CursoDesignPatterns2.Factory.Exemplo___Conexão_BD;
 using CursoDesignPatterns2.Flyweight.Exemplo___Notas_Musicais;
+using CursoDesignPatterns2.Flyweight.Singleton;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,17 @@ namespace CursoDesignPatterns2
     class Program
     {
         static void Main(string[] args)
+        {
+            
+        }
+
+        private static void TestandoSingleton()
+        {
+            var singleton = Singleton.Instancia;
+            Console.ReadKey();
+        }
+
+        private static void TestandoFlyweightNotasMusicais()
         {
             var criadordenotas = new NotasMusicais();
 
@@ -28,7 +40,6 @@ namespace CursoDesignPatterns2
             var piano = new Piano();
 
             piano.Toca(notas);
-
         }
 
         private static void ExemploFactoryConexaoBD()
