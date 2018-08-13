@@ -67,6 +67,8 @@
     <Compile Include="Memento\Exemplo - Contratos\TipoContrato.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Visitor\Exemplo - Impressão de Expressões\ImpressoraVisitor.cs" />
+    <Compile Include="Visitor\Exemplo - Impressão de Expressões\IVisitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
