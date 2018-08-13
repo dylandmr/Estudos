@@ -8,9 +8,17 @@ namespace CursoDesignPatterns2.Interpreter.Exemplo___Calculadora
 {
     public class Divisao : IExpressao
     {
+        public IExpressao Esquerda { get; private set; }
+        public IExpressao Direita { get; private set; }
+
+        public Divisao(IExpressao esquerda, IExpressao direita)
+        {
+            Esquerda = esquerda;
+            Direita = direita;
+        }
         public int Avalia()
         {
-            throw new NotImplementedException();
+            return Esquerda.Avalia() / Direita.Avalia();
         }
     }
 }
