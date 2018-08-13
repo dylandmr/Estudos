@@ -2,6 +2,7 @@ using CursoDesignPatterns2.Factory.Exemplo___Conexão_BD;
 using CursoDesignPatterns2.Flyweight.Exemplo___Notas_Musicais;
 using CursoDesignPatterns2.Flyweight.Singleton;
 using CursoDesignPatterns2.Interpreter.Exemplo___Calculadora;
+using CursoDesignPatterns2.Interpreter.Exercício___Raiz_Quadrada;
 using CursoDesignPatterns2.Memento.Exemplo___Contratos;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,15 @@ namespace CursoDesignPatterns2
     class Program 
     {
         static void Main(string[] args)
+        {
+            var raizDeNove = new RaizQuadrada(new Numero(9));
+
+            Console.WriteLine(raizDeNove.Avalia());
+
+            Console.ReadKey();
+        }
+
+        private static void TestaInterpreterExemploMultiplicacao()
         {
             var esquerda = new Divisao(new Divisao(new Numero(8), new Numero(2)), new Numero(2)); // (8/2) / 2 = 4 / 2 = 2
             var direita = new Multiplicacao(new Numero(3), new Numero(2)); // 3 * 2 = 6

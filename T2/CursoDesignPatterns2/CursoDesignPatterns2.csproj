@@ -60,6 +60,7 @@
     <Compile Include="Interpreter\Exemplo - Calculadora\Numero.cs" />
     <Compile Include="Interpreter\Exemplo - Calculadora\Soma.cs" />
     <Compile Include="Interpreter\Exemplo - Calculadora\Subtracao.cs" />
+    <Compile Include="Interpreter\Exercício - Raiz Quadrada\RaizQuadrada.cs" />
     <Compile Include="Memento\Exemplo - Contratos\Contrato.cs" />
     <Compile Include="Memento\Exemplo - Contratos\Estado.cs" />
     <Compile Include="Memento\Exemplo - Contratos\Historico.cs" />
