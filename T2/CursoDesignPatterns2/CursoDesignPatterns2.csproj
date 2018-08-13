@@ -54,6 +54,10 @@
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Si.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Sol.cs" />
     <Compile Include="Flyweight\Singleton\Singleton.cs" />
+    <Compile Include="Interpreter\Exemplo - Calculadora\IExpressao.cs" />
+    <Compile Include="Interpreter\Exemplo - Calculadora\Numero.cs" />
+    <Compile Include="Interpreter\Exemplo - Calculadora\Soma.cs" />
+    <Compile Include="Interpreter\Exemplo - Calculadora\Subtracao.cs" />
     <Compile Include="Memento\Exemplo - Contratos\Contrato.cs" />
     <Compile Include="Memento\Exemplo - Contratos\Estado.cs" />
     <Compile Include="Memento\Exemplo - Contratos\Historico.cs" />
@@ -64,5 +68,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
