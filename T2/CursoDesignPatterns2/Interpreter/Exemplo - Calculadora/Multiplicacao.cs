@@ -24,7 +24,7 @@ namespace CursoDesignPatterns2.Interpreter.Exemplo___Calculadora
 
         public void Aceita(IVisitor impressora)
         {
-            impressora.ImprimeMultiplicacao(this);
+            impressora.VisitaMultiplicacao(this);
         }
     }
 }

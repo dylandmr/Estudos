@@ -10,7 +10,7 @@ namespace CursoDesignPatterns2.Visitor.Exemplo___Impressão_de_Expressões
 {
     public class ImpressoraVisitor : IVisitor
     {
-        public void ImprimeSoma(Soma soma)
+        public void VisitaSoma(Soma soma)
         {
             Console.Write("(");
             soma.Esquerda.Aceita(this);
@@ -19,7 +19,7 @@ namespace CursoDesignPatterns2.Visitor.Exemplo___Impressão_de_Expressões
             Console.Write(")");
         }
 
-        public void ImprimeSubtracao(Subtracao subtracao)
+        public void VisitaSubtracao(Subtracao subtracao)
         {
             Console.Write("(");
             subtracao.Esquerda.Aceita(this);
@@ -28,19 +28,19 @@ namespace CursoDesignPatterns2.Visitor.Exemplo___Impressão_de_Expressões
             Console.Write(")");
         }
 
-        public void ImprimeNumero(Numero numero)
+        public void VisitaNumero(Numero numero)
         {
             Console.Write(numero.Valor);
         }
 
-        public void ImprimeRaizQuadrada(RaizQuadrada raizquadrada)
+        public void VisitaRaizQuadrada(RaizQuadrada raizquadrada)
         {
             Console.Write("RaizQ(");
             raizquadrada.Numero.Aceita(this);
             Console.Write(")");
         }
 
-        public void ImprimeMultiplicacao(Multiplicacao multiplicacao)
+        public void VisitaMultiplicacao(Multiplicacao multiplicacao)
         {
             Console.Write("(");
             multiplicacao.Esquerda.Aceita(this);
@@ -49,7 +49,7 @@ namespace CursoDesignPatterns2.Visitor.Exemplo___Impressão_de_Expressões
             Console.Write(")");
         }
 
-        public void ImprimeDivisao(Divisao divisao)
+        public void VisitaDivisao(Divisao divisao)
         {
             Console.Write("(");
             divisao.Esquerda.Aceita(this);

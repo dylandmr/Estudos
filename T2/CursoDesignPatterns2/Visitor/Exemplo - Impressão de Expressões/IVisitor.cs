@@ -10,11 +10,11 @@ namespace CursoDesignPatterns2.Visitor.Exemplo___Impressão_de_Expressões
 {
     public interface IVisitor
     {
-        void ImprimeSoma(Soma soma);
-        void ImprimeSubtracao(Subtracao subtracao);
-        void ImprimeNumero(Numero numero);
-        void ImprimeRaizQuadrada(RaizQuadrada raizquadrada);
-        void ImprimeMultiplicacao(Multiplicacao multiplicacao);
-        void ImprimeDivisao(Divisao divisao);
+        void VisitaSoma(Soma soma);
+        void VisitaSubtracao(Subtracao subtracao);
+        void VisitaNumero(Numero numero);
+        void VisitaRaizQuadrada(RaizQuadrada raizquadrada);
+        void VisitaMultiplicacao(Multiplicacao multiplicacao);
+        void VisitaDivisao(Divisao divisao);
     }
 }

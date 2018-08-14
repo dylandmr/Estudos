@@ -24,7 +24,7 @@ namespace CursoDesignPatterns2.Interpreter.Exercício___Raiz_Quadrada
 
         public void Aceita(IVisitor impressora)
         {
-            impressora.ImprimeRaizQuadrada(this);
+            impressora.VisitaRaizQuadrada(this);
         }
     }
 }
