@@ -5,11 +5,13 @@ using System.Text;
 
 namespace ModelagemInicial
 {
-    public abstract class Produto
+    public class Produto
     {
         public int Id { get; set; }
-        public double Preco { get; set; }
         public int Estoque { get; set; }
-        public IList<VendaProduto> Vendas { get; set; }
+        public Subcategoria Subcategoria { get; set; }
+        public Marca Marca { get; set; }
+        public char TipoProduto { get; set; }
+        public double PrecoVenda { get; set; }
     }
 }

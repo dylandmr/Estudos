@@ -5,8 +5,9 @@ using System.Text;
 
 namespace ModelagemInicial
 {
-    public interface IAdmin
+    public class Marca
     {
-        void CadastraFuncionario(Funcionario funcionario);
+        public int Id { get; set; }
+        public string Nome { get; set; }
     }
 }

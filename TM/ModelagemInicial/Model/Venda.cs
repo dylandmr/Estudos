@@ -7,32 +7,25 @@ namespace ModelagemInicial
 {
     public class Venda
     {
-        public Cliente Cliente { get; set; }
-        public Funcionario Funcionario { get; set; }
         public int Id { get; set; }
-        public IList<VendaProduto> Produtos { get; set; }
+        public IList<ProdutosDaVenda> Produtos { get; set; }
         public FormaDePagamento FormaDePagamento { get; set; }
         public DateTime Data { get; set; }
         public double ValorTotal { get; set; }
         public int Parcelas { get; set; }
         public DateTime Previsao { get; set; }
+        public string Observacao { get; set; }
+        public Pessoa Pessoa { get; set; }
+        public DateTime DataEntrega { get; set; }
+        public int? Status { get; set; }
+        public string DescricaoStatus { get; set; }
 
-        public Venda()
+        public int TipoVenda
         {
-            Produtos = new List<VendaProduto>();
-            ValorTotal = 0;
-        }
-
-        public void IncluiProduto(Produto produto, int quantidade)
-        {
-            Produtos.Add(new VendaProduto() { Produto = produto, Quantidade = quantidade });
-            ValorTotal += produto.Preco * quantidade;
-        }
-
-        public void IncluiCartucho(Cartucho cartucho, double preco, int quantidade)
-        {
-            Produtos.Add(new VendaProduto { Produto = cartucho, Quantidade = quantidade });
-            ValorTotal += preco * quantidade;
+            get => default(int);
+            set
+            {
+            }
         }
     }
 }

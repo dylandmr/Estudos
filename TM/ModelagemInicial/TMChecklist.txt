@@ -1,5 +1,2 @@
--MarcaCartucho & MarcaPeriferico -> Marca;
--Cliente -> Pessoa;
--Adicionar observação na venda;
--Adicionar tabelas ocultas ao contexto;
--Analisar Abstração de Produtos;
+[MaxLength(10),MinLength(5)];
+[Required].

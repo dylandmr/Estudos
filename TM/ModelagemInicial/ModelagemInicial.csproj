@@ -125,44 +125,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\20180806185930_InicialCreate.cs" />
-    <Compile Include="Migrations\20180806185930_InicialCreate.designer.cs">
-      <DependentUpon>20180806185930_InicialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\TMContextModelSnapshot.cs" />
-    <Compile Include="Model\MarcaPeriferico.cs" />
+    <Compile Include="Model\Marca.cs" />
     <Compile Include="Model\Endereco.cs" />
-    <Compile Include="Model\Administrador.cs" />
-    <Compile Include="Model\Cartucho.cs" />
-    <Compile Include="Model\CategoriaPeriferico.cs" />
-    <Compile Include="Model\Cliente.cs" />
+    <Compile Include="Model\Categoria.cs" />
     <Compile Include="Model\FormaDePagamento.cs" />
-    <Compile Include="Model\Funcionario.cs" />
-    <Compile Include="Model\IAdmin.cs" />
-    <Compile Include="Model\IAtendente.cs" />
-    <Compile Include="Model\MarcaCartucho.cs" />
-    <Compile Include="Model\Periferico.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Model\PessoaFisica.cs" />
-    <Compile Include="Model\PessoaJuridica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Recarga.cs" />
-    <Compile Include="Model\Usuario.cs" />
+    <Compile Include="Model\Pessoa.cs" />
     <Compile Include="Model\Venda.cs" />
-    <Compile Include="Model\VendaProduto.cs" />
-    <Compile Include="Model\TipoCartucho.cs" />
-    <Compile Include="Model\RecargaCartucho.cs" />
-    <Compile Include="Model\TiposCartucho.cs" />
+    <Compile Include="Model\ProdutosDaVenda.cs" />
+    <Compile Include="Model\Subcategoria.cs" />
     <Compile Include="TMContext.cs" />
-    <Compile Include="Model\Toner.cs" />
+    <Compile Include="Model\Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="DiagramaDeClasses.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="TMChecklist.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

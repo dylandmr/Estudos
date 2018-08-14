@@ -5,44 +5,30 @@ namespace ModelagemInicial
 {
     public class TMContext : DbContext
     {
-        public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Funcionario> Funcionarios { get; set; }
-        public DbSet<Administrador> Administradores { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<FormaDePagamento> FormasDePagamento { get; set; }
+        public DbSet<Marca> Marcas { get; set; }
+        public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Periferico> Perifericos { get; set; }
-        public DbSet<Cartucho> Cartuchos { get; set; }
-        public DbSet<Toner> Toners { get; set; }
+        public DbSet<ProdutosDaVenda> ProdutosDasVendas { get; set; }
+        public DbSet<Subcategoria> Subcategorias { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Venda> Vendas { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<PessoaFisica> PessoasFisicas { get; set; }
-        public DbSet<PessoaJuridica> PessoasJuridicas { get; set; }
-        public DbSet<Recarga> Recargas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .Entity<VendaProduto>()
+                .Entity<ProdutosDaVenda>()
                 .HasKey(vp => new { vp.VendaId, vp.ProdutoId });
 
             modelBuilder
-                .Entity<RecargaCartucho>()
-                .HasKey(rc => new { rc.RecargaId, rc.CartuchoId});
+                .Entity<Endereco>()
+                .Property<int>("ClienteId");
 
             modelBuilder
-                .Entity<TiposCartucho>()
-                .HasKey(tc => new { tc.TipoCartuchoTonerId, tc.CartuchoId });
-
-            //modelBuilder
-            //    .Entity<Endereco>()
-            //    .ToTable("Enderecos");
-
-            //modelBuilder
-            //    .Entity<Endereco>()
-            //    .Property<int>("ClienteId");
-
-            //modelBuilder
-            //    .Entity<Endereco>()
-            //    .HasKey("ClienteId");
+                .Entity<Endereco>()
+                .HasKey("ClienteId");
         }
 
         public TMContext()
@@ -55,5 +41,6 @@ namespace ModelagemInicial
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TMDB;Trusted_Connection=true;");
         }
+
     }
 }

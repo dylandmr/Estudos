@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ModelagemInicial
 {
-    public class PessoaFisica : Cliente
+    public class Categoria
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
-        public string Cpf { get; set; }
     }
 }
