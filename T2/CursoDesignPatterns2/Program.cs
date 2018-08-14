@@ -5,6 +5,7 @@ using CursoDesignPatterns2.Interpreter.Exemplo___Calculadora;
 using CursoDesignPatterns2.Interpreter.Exercício___Raiz_Quadrada;
 using CursoDesignPatterns2.Memento.Exemplo___Contratos;
 using CursoDesignPatterns2.Visitor.Exemplo___Impressão_de_Expressões;
+using CursoDesignPatterns2.Visitor.Exercício___Visitor_Pré_fixo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,19 @@ namespace CursoDesignPatterns2
     class Program 
     {
         static void Main(string[] args)
+        {
+            var esquerda = new Soma(new Soma(new Numero(1), new Numero(100)), new Numero(10)); // (1+100) + 10 = 111
+            var direita = new Subtracao(new Numero(20), new Numero(10)); // 20 - 10 = 10
+            var soma = new Soma(esquerda, direita); // 111 + 10 = 121
+
+            var impressora = new ImpressoraPreFixaVisitor();
+            soma.Aceita(impressora); //Imprime expressão.
+            Console.WriteLine($" = {soma.Avalia()}."); //Imprime resultado.
+
+            Console.ReadKey();
+        }
+
+        private static void TestaVisitorExemploCalculadora()
         {
             var esquerda = new Soma(new Soma(new Numero(1), new Numero(100)), new Numero(10)); // (1+100) + 10 = 111
             var direita = new Subtracao(new Numero(20), new Numero(10)); // 20 - 10 = 10
