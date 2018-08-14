@@ -10,27 +10,21 @@ namespace CursoDesignPatterns2.Interpreter.Exercício___Raiz_Quadrada
 {
     public class RaizQuadrada : IExpressao
     {
-        private IExpressao numero;
+        public IExpressao Numero { get; set; }
 
         public RaizQuadrada(IExpressao numero)
         {
-            this.numero = numero;
-        }
-
-        public void Aceita(ImpressoraVisitor impressora)
-        {
-            throw new NotImplementedException();
-        }
-        
+            Numero = numero;
+        }        
 
         public int Avalia()
         {
-            return (int)Math.Sqrt(numero.Avalia());
+            return (int)Math.Sqrt(Numero.Avalia());
         }
 
         public void Aceita(IVisitor impressora)
         {
-            throw new NotImplementedException();
+            impressora.ImprimeRaizQuadrada(this);
         }
     }
 }

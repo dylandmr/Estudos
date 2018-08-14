@@ -1,10 +1,10 @@
-using CursoDesignPatterns2.Factory.Exemplo___Conex„o_BD;
+Ôªøusing CursoDesignPatterns2.Factory.Exemplo___Conex√£o_BD;
 using CursoDesignPatterns2.Flyweight.Exemplo___Notas_Musicais;
 using CursoDesignPatterns2.Flyweight.Singleton;
 using CursoDesignPatterns2.Interpreter.Exemplo___Calculadora;
-using CursoDesignPatterns2.Interpreter.ExercÌcio___Raiz_Quadrada;
+using CursoDesignPatterns2.Interpreter.Exerc√≠cio___Raiz_Quadrada;
 using CursoDesignPatterns2.Memento.Exemplo___Contratos;
-using CursoDesignPatterns2.Visitor.Exemplo___Impress„o_de_Expressıes;
+using CursoDesignPatterns2.Visitor.Exemplo___Impress√£o_de_Express√µes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +23,12 @@ namespace CursoDesignPatterns2
             var soma = new Soma(esquerda, direita); // 111 + 10 = 121
 
             var impressora = new ImpressoraVisitor();
-            soma.Aceita(impressora); //Imprime express„o.
+            soma.Aceita(impressora); //Imprime express√£o.
             Console.WriteLine($" = {soma.Avalia()}."); //Imprime resultado.
 
+            var multiplicacao = new Multiplicacao(new Subtracao(new RaizQuadrada(new Numero(9)), new Numero(2)), new Divisao(new Numero(6), new Numero(3))); // (((‚àö9)-2)*(6/3))
+            multiplicacao.Aceita(impressora);
+            Console.WriteLine($" = {multiplicacao.Avalia()}.");
             Console.ReadKey();
         }
 

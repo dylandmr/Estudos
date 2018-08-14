@@ -35,17 +35,27 @@ namespace CursoDesignPatterns2.Visitor.Exemplo___Impressão_de_Expressões
 
         public void ImprimeRaizQuadrada(RaizQuadrada raizquadrada)
         {
-            throw new NotImplementedException();
+            Console.Write("RaizQ(");
+            raizquadrada.Numero.Aceita(this);
+            Console.Write(")");
         }
 
         public void ImprimeMultiplicacao(Multiplicacao multiplicacao)
         {
-            throw new NotImplementedException();
+            Console.Write("(");
+            multiplicacao.Esquerda.Aceita(this);
+            Console.Write("*");
+            multiplicacao.Direita.Aceita(this);
+            Console.Write(")");
         }
 
         public void ImprimeDivisao(Divisao divisao)
         {
-            throw new NotImplementedException();
+            Console.Write("(");
+            divisao.Esquerda.Aceita(this);
+            Console.Write("/");
+            divisao.Direita.Aceita(this);
+            Console.Write(")");
         }
     }
 }

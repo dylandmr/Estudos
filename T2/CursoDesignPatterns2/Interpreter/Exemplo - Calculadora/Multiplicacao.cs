@@ -22,14 +22,9 @@ namespace CursoDesignPatterns2.Interpreter.Exemplo___Calculadora
             return Esquerda.Avalia() * Direita.Avalia();
         }
 
-        public void Aceita(ImpressoraVisitor impressora)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Aceita(IVisitor impressora)
         {
-            throw new NotImplementedException();
+            impressora.ImprimeMultiplicacao(this);
         }
     }
 }
