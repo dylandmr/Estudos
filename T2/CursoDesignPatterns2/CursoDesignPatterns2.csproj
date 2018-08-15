@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\Exemplo - XML Cliente\Cliente.cs" />
+    <Compile Include="Adapter\Exemplo - XML Cliente\GeradorDeXml.cs" />
     <Compile Include="Bridges\Exemplo - Mensagens\EnviaPorEmail.cs" />
     <Compile Include="Bridges\Exemplo - Mensagens\EnviaPorSMS.cs" />
     <Compile Include="Bridges\Exemplo - Mensagens\IEnviador.cs" />

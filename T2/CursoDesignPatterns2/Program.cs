@@ -1,4 +1,5 @@
-﻿using CursoDesignPatterns2.Bridges.Exemplo___Mensagens;
+﻿using CursoDesignPatterns2.Adapter.Exemplo___XML_Cliente;
+using CursoDesignPatterns2.Bridges.Exemplo___Mensagens;
 using CursoDesignPatterns2.Command.Exemplo___Pedidos;
 using CursoDesignPatterns2.Factory.Exemplo___Conexão_BD;
 using CursoDesignPatterns2.Flyweight.Exemplo___Notas_Musicais;
@@ -10,10 +11,12 @@ using CursoDesignPatterns2.Visitor.Exemplo___Impressão_de_Expressões;
 using CursoDesignPatterns2.Visitor.Exercício___Visitor_Pré_fixo;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CursoDesignPatterns2
 {
@@ -21,7 +24,21 @@ namespace CursoDesignPatterns2
     {
         static void Main(string[] args)
         {
-            TestaCommandExemploPedidos();
+            TestaExemploAdapterGeradorXML();
+        }
+
+        private static void TestaExemploAdapterGeradorXML()
+        {
+            var cliente = new Cliente
+            {
+                Nome = "Zé Ninguém",
+                Endereco = "Rua Tal, 3.",
+                DataDeNascimento = DateTime.Now
+            };
+
+            Console.WriteLine(new GeradorDeXml().GeraXml(cliente));
+
+            Console.ReadKey();
         }
 
         private static void TestaCommandExemploPedidos()
