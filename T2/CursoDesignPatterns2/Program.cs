@@ -1,4 +1,5 @@
 ﻿using CursoDesignPatterns2.Bridges.Exemplo___Mensagens;
+using CursoDesignPatterns2.Command.Exemplo___Pedidos;
 using CursoDesignPatterns2.Factory.Exemplo___Conexão_BD;
 using CursoDesignPatterns2.Flyweight.Exemplo___Notas_Musicais;
 using CursoDesignPatterns2.Flyweight.Singleton;
@@ -19,6 +20,26 @@ namespace CursoDesignPatterns2
     class Program 
     {
         static void Main(string[] args)
+        {
+            TestaCommandExemploPedidos();
+        }
+
+        private static void TestaCommandExemploPedidos()
+        {
+            var fila = new FilaDeTrabalho();
+            var pedido1 = new Pedido("José", 500.0);
+            var pedido2 = new Pedido("Maria", 200.0);
+
+            fila.Adiciona(new PagaPedido(pedido1));
+            fila.Adiciona(new PagaPedido(pedido2));
+            fila.Adiciona(new FinalizaPedido(pedido1));
+
+            fila.Processa();
+
+            Console.ReadKey();
+        }
+
+        private static void TestaBridgeExemploMensagensEEnviadores()
         {
             new MensagemAdministrativa("Fulano", new EnviaPorSMS()).Envia();
 

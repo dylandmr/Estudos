@@ -48,6 +48,12 @@
     <Compile Include="Bridges\Exemplo - Mensagens\IMensagem.cs" />
     <Compile Include="Bridges\Exemplo - Mensagens\MensagemAdministrativa.cs" />
     <Compile Include="Bridges\Exemplo - Mensagens\MensagemCliente.cs" />
+    <Compile Include="Command\Exemplo - Pedidos\FilaDeTrabalho.cs" />
+    <Compile Include="Command\Exemplo - Pedidos\FinalizaPedido.cs" />
+    <Compile Include="Command\Exemplo - Pedidos\IComando.cs" />
+    <Compile Include="Command\Exemplo - Pedidos\PagaPedido.cs" />
+    <Compile Include="Command\Exemplo - Pedidos\Pedido.cs" />
+    <Compile Include="Command\Exemplo - Pedidos\Status.cs" />
     <Compile Include="Factory\Exemplo - Conexão BD\ConnectionFactory.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Do.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Fa.cs" />
