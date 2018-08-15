@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bridges\Exemplo - Mensagens\EnviaPorEmail.cs" />
+    <Compile Include="Bridges\Exemplo - Mensagens\EnviaPorSMS.cs" />
+    <Compile Include="Bridges\Exemplo - Mensagens\IEnviador.cs" />
+    <Compile Include="Bridges\Exemplo - Mensagens\IMensagem.cs" />
+    <Compile Include="Bridges\Exemplo - Mensagens\MensagemAdministrativa.cs" />
+    <Compile Include="Bridges\Exemplo - Mensagens\MensagemCliente.cs" />
     <Compile Include="Factory\Exemplo - Conexão BD\ConnectionFactory.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Do.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Fa.cs" />

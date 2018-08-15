@@ -1,4 +1,5 @@
-﻿using CursoDesignPatterns2.Factory.Exemplo___Conexão_BD;
+﻿using CursoDesignPatterns2.Bridges.Exemplo___Mensagens;
+using CursoDesignPatterns2.Factory.Exemplo___Conexão_BD;
 using CursoDesignPatterns2.Flyweight.Exemplo___Notas_Musicais;
 using CursoDesignPatterns2.Flyweight.Singleton;
 using CursoDesignPatterns2.Interpreter.Exemplo___Calculadora;
@@ -18,6 +19,13 @@ namespace CursoDesignPatterns2
     class Program 
     {
         static void Main(string[] args)
+        {
+            new MensagemAdministrativa("Fulano", new EnviaPorSMS()).Envia();
+
+            Console.ReadKey();
+        }
+
+        private static void TestaVisitorExercicioImpressoraPreFixa()
         {
             var esquerda = new Soma(new Soma(new Numero(1), new Numero(100)), new Numero(10)); // (1+100) + 10 = 111
             var direita = new Subtracao(new Numero(20), new Numero(10)); // 20 - 10 = 10
