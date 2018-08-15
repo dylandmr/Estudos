@@ -1,2 +1,0 @@
-[MaxLength(10),MinLength(5)];
-[Required].

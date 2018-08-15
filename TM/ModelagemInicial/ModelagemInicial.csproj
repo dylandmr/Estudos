@@ -104,6 +104,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Interactive.Async, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Interactive.Async.3.1.1\lib\net46\System.Interactive.Async.dll</HintPath>
     </Reference>
@@ -125,6 +126,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\20180815210402_Inicial.cs" />
+    <Compile Include="Migrations\20180815210402_Inicial.designer.cs">
+      <DependentUpon>20180815210402_Inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180815221347_PrecosENomeProdutos.cs" />
+    <Compile Include="Migrations\20180815221347_PrecosENomeProdutos.designer.cs">
+      <DependentUpon>20180815221347_PrecosENomeProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180815221746_Precos_Produtos_2.cs" />
+    <Compile Include="Migrations\20180815221746_Precos_Produtos_2.designer.cs">
+      <DependentUpon>20180815221746_Precos_Produtos_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\TMContextModelSnapshot.cs" />
     <Compile Include="Model\Marca.cs" />
     <Compile Include="Model\Endereco.cs" />
     <Compile Include="Model\Categoria.cs" />
@@ -145,11 +159,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TMChecklist.txt" />
+    <Content Include="Anotações.txt" />
+    <Content Include="Imagens\imagemperfil.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

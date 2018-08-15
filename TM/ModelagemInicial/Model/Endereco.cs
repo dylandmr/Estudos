@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -7,10 +8,21 @@ namespace ModelagemInicial
 {
     public class Endereco
     {
+        [MaxLength(50)]
         public string Logradouro { get; set; }
+
         public int Numero { get; set; }
-        public int Cep { get; set; }
+        public string Cep { get; set; }
+
+        [MaxLength(100)]
         public string Referencia { get; set; }
+
+        [MaxLength(50)]
         public string Bairro { get; set; }
+
+        [MaxLength(50)]
+        public string Complemento { get; set; }
+
+        public Pessoa Pessoa { get; set; }
     }
 }

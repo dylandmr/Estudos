@@ -24,11 +24,16 @@ namespace ModelagemInicial
 
             modelBuilder
                 .Entity<Endereco>()
-                .Property<int>("ClienteId");
+                .Property<int>("PessoaId");
 
             modelBuilder
                 .Entity<Endereco>()
-                .HasKey("ClienteId");
+                .HasKey("PessoaId");
+
+            modelBuilder
+                .Entity<Venda>()
+                .Property(v => v.TipoStatusVenda)
+                .HasDefaultValue(0);
         }
 
         public TMContext()
