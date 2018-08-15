@@ -1,6 +1,7 @@
 ﻿using CursoDesignPatterns2.Adapter.Exemplo___XML_Cliente;
 using CursoDesignPatterns2.Bridges.Exemplo___Mensagens;
 using CursoDesignPatterns2.Command.Exemplo___Pedidos;
+using CursoDesignPatterns2.Facades_e_Singletons.Exemplo___Fachada_Empresa;
 using CursoDesignPatterns2.Factory.Exemplo___Conexão_BD;
 using CursoDesignPatterns2.Flyweight.Exemplo___Notas_Musicais;
 using CursoDesignPatterns2.Flyweight.Singleton;
@@ -24,7 +25,21 @@ namespace CursoDesignPatterns2
     {
         static void Main(string[] args)
         {
-            TestaExemploAdapterGeradorXML();
+            ExemploFacadeESingleton();
+        }
+
+        private static void ExemploFacadeESingleton()
+        {
+            var empresa = new EmpresaFacadeSingleton().Instancia;
+
+            empresa.BuscaCliente("1234");
+            empresa.CriaFatura(new Cliente(), 123.5);
+            empresa.FazContato();
+            empresa.GeraCobranca();
+
+            //Simulação de utilização da FACHADA com a instância SINGLETON.
+
+            Console.ReadKey();
         }
 
         private static void TestaExemploAdapterGeradorXML()

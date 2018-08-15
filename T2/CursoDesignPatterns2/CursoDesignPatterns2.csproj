@@ -56,6 +56,10 @@
     <Compile Include="Command\Exemplo - Pedidos\PagaPedido.cs" />
     <Compile Include="Command\Exemplo - Pedidos\Pedido.cs" />
     <Compile Include="Command\Exemplo - Pedidos\Status.cs" />
+    <Compile Include="Facades e Singletons\Exemplo - Fachada Empresa\EmpresaFacade.cs" />
+    <Compile Include="Facades e Singletons\Exemplo - Fachada Empresa\EmpresaFacadeSingleton.cs" />
+    <Compile Include="Facades e Singletons\Exercício - Singleton Serviço\Servico.cs" />
+    <Compile Include="Facades e Singletons\Exercício - Singleton Serviço\ServicoSingleton.cs" />
     <Compile Include="Factory\Exemplo - Conexão BD\ConnectionFactory.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Do.cs" />
     <Compile Include="Flyweight\Exemplo - Notas Musicais\Fa.cs" />
