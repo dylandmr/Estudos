@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelagemInicial", "ModelagemInicial\ModelagemInicial.csproj", "{9406281B-E701-444C-81BF-11A012D4F755}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixMax", "MatrixMax\MatrixMax.csproj", "{BC4D990A-B958-4637-8334-3FFEEE07E656}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixMax.Tests", "MatrixMax.Tests\MatrixMax.Tests.csproj", "{301F8E00-D025-4CD2-ACEC-DFFADD6B397E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9406281B-E701-444C-81BF-11A012D4F755}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9406281B-E701-444C-81BF-11A012D4F755}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9406281B-E701-444C-81BF-11A012D4F755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC4D990A-B958-4637-8334-3FFEEE07E656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC4D990A-B958-4637-8334-3FFEEE07E656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC4D990A-B958-4637-8334-3FFEEE07E656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC4D990A-B958-4637-8334-3FFEEE07E656}.Release|Any CPU.Build.0 = Release|Any CPU
+		{301F8E00-D025-4CD2-ACEC-DFFADD6B397E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301F8E00-D025-4CD2-ACEC-DFFADD6B397E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{301F8E00-D025-4CD2-ACEC-DFFADD6B397E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301F8E00-D025-4CD2-ACEC-DFFADD6B397E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

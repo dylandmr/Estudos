@@ -9,14 +9,15 @@ T = Toner.
 
 TipoStatusVenda:
 0 = Venda (Consumada);
-1 = Recarga - Recebida;
-2 = Recarga - Deixada pelo cliente;
-3 = Recarga - Em laboratório;
-4 = Recarga - Aguardando Cliente; -> Descrição status.
-5 = Recarga - Retornou Reciclado;
-6 = Recarga - Retornou Sem ser reciclado;
-7 = Recarga - (Consumada);
-8 = Serviço.
+1 = Troca (Consumada);
+2 = Recarga - Recebida;
+3 = Recarga - Deixada pelo cliente;
+4 = Recarga - Em laboratório;
+5 = Recarga - Aguardando Cliente; -> Descrição status.
+6 = Recarga - Retornou Reciclado;
+7 = Recarga - Retornou Sem ser reciclado;
+8 = Recarga - (Consumada);
+9 = Serviço.
 
 TipoPagamento:
 1 = Dinheiro;

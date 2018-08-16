@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MatrixMax.Models;
 
-namespace ModelagemInicial.DAO
+namespace MatrixMax.DAO
 {
     public class VendaDAO
     {
         public void Adiciona(Venda venda)
         {
-            using (var contexto = new TMContext())
+            using (var contexto = new MatrixMaxContext())
             {
                 contexto.Vendas.Add(venda);
                 contexto.SaveChanges();
@@ -20,7 +21,7 @@ namespace ModelagemInicial.DAO
 
         public void Atualiza(Venda venda)
         {
-            using (var contexto = new TMContext())
+            using (var contexto = new MatrixMaxContext())
             {
                 contexto.Entry(venda).State = EntityState.Modified;
                 contexto.SaveChanges();
@@ -29,7 +30,7 @@ namespace ModelagemInicial.DAO
 
         public Venda BuscaPorId(int id)
         {
-            using (var contexto = new TMContext())
+            using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Vendas
                     .Include(v => v.Produtos)
@@ -43,7 +44,7 @@ namespace ModelagemInicial.DAO
 
         public IList<Venda> ListaFInalizadas()
         {
-            using (var contexto = new TMContext())
+            using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Vendas
                     .Include(v => v.Produtos)
@@ -57,7 +58,7 @@ namespace ModelagemInicial.DAO
 
         public IList<Venda> ListaRecargas()
         {
-            using (var contexto = new TMContext())
+            using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Vendas
                     .Include(v => v.Produtos)
