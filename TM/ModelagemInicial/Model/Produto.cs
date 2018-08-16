@@ -13,6 +13,7 @@ namespace ModelagemInicial
         public Subcategoria Subcategoria { get; set; }
         public Marca Marca { get; set; }
         public char TipoProduto { get; set; }
+        public IList<ProdutosDaVenda> Vendas { get; set; }
 
         [MaxLength(50)]
         public string Nome { get; set; }
@@ -34,5 +35,10 @@ namespace ModelagemInicial
 
         [Range(1, int.MaxValue)]
         public double PrecoCompativel { get; set; }
+
+        public Produto()
+        {
+            Vendas = new List<ProdutosDaVenda>();
+        }
     }
 }

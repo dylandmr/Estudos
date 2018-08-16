@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using ModelagemInicial.DAO;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,13 +16,22 @@ namespace ModelagemInicial
         {
             using (var contexto = new TMContext())
             {
+                var toner = new ProdutoDAO().ListaPerifericos().First();
+                Console.WriteLine(toner.Marca.Nome);
+            }
+        }
+
+        private static void TestandoAutentificacao()
+        {
+            using (var contexto = new TMContext())
+            {
                 var dylan = contexto.Usuarios.First();
 
                 var imagem = byteArrayToImage(dylan.ImagemDePerfil);
 
                 byte[] senha = System.Text.Encoding.ASCII.GetBytes("admin");
                 senha = new System.Security.Cryptography.SHA256Managed().ComputeHash(senha);
-                
+
                 Console.WriteLine(System.Text.Encoding.ASCII.GetString(senha) == System.Text.Encoding.ASCII.GetString(dylan.Senha) ? "Deu bom" : "Deu ruim");
                 Console.ReadKey();
             }

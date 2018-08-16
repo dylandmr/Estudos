@@ -11,7 +11,6 @@ namespace ModelagemInicial
         public DbSet<Marca> Marcas { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<ProdutosDaVenda> ProdutosDasVendas { get; set; }
         public DbSet<Subcategoria> Subcategorias { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Venda> Vendas { get; set; }
@@ -44,7 +43,7 @@ namespace ModelagemInicial
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TMDB;Trusted_Connection=true;");
+            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\dylan\\Desktop\\estudos\\TM\\ModelagemInicial\\App_Data\\TMDB.mdf;Integrated Security=True");
         }
 
     }

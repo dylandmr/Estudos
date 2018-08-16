@@ -14,6 +14,21 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -126,6 +141,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\CategoriaDAO.cs" />
+    <Compile Include="DAO\EnderecoDAO.cs" />
+    <Compile Include="DAO\FormaDePagamentoDAO.cs" />
+    <Compile Include="DAO\IDAO.cs" />
+    <Compile Include="DAO\MarcaDAO.cs" />
+    <Compile Include="DAO\PessoaDAO.cs" />
+    <Compile Include="DAO\ProdutoDAO.cs" />
+    <Compile Include="DAO\SubcategoriaDAO.cs" />
+    <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="DAO\VendaDAO.cs" />
     <Compile Include="Migrations\20180815210402_Inicial.cs" />
     <Compile Include="Migrations\20180815210402_Inicial.designer.cs">
       <DependentUpon>20180815210402_Inicial.cs</DependentUpon>
@@ -137,6 +162,10 @@
     <Compile Include="Migrations\20180815221746_Precos_Produtos_2.cs" />
     <Compile Include="Migrations\20180815221746_Precos_Produtos_2.designer.cs">
       <DependentUpon>20180815221746_Precos_Produtos_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180816034215_ProdutosVenda.cs" />
+    <Compile Include="Migrations\20180816034215_ProdutosVenda.designer.cs">
+      <DependentUpon>20180816034215_ProdutosVenda.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\TMContextModelSnapshot.cs" />
     <Compile Include="Model\Marca.cs" />
@@ -160,9 +189,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anotações.txt" />
+    <Content Include="App_Data\TMDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\TMDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>TMDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Imagens\imagemperfil.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
