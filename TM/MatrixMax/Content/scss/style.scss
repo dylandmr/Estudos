@@ -33,7 +33,7 @@
 }
 
 body {
-    background: $container-bg;
+    background: linear-gradient(to left, #333333, #3AA17E, #333333);
     display: table;
     font-family: 'Open Sans' sans-serif !important;
     font-size: 16px;
@@ -498,7 +498,7 @@ header.fixed-top {
     position: inherit;
 }
 .menutoggle {
-    background: #e74c3c;
+    background: #4CAF50;
     border-radius: 50%;
     color: #fff !important;
     cursor: pointer;

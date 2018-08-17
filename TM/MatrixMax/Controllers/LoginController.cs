@@ -30,5 +30,11 @@ namespace MatrixMax.Controllers
                 return View("Index");
             }
         }
+
+        public ActionResult Logout()
+        {
+            Session["usuarioLogado"] = null;
+            return View("Index");
+        }
     }
 }

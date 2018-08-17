@@ -33,11 +33,12 @@
   transition: all 0.3s ease; }
 
 body {
-  background: #f1f2f7;
+  background: linear-gradient(to left, #333333, #3AA17E, #333333);
   display: table;
   font-family: 'Open Sans' sans-serif;
   font-size: 16px;
-  width: 100%; }
+  width: 100%;
+}
 
 div[class*="col-"] {
   float: left; }
@@ -370,7 +371,7 @@ header.fixed-top {
   position: inherit; }
 
 .menutoggle {
-  background: #e74c3c;
+  background: #4CAF50;
   border-radius: 50%;
   color: #fff !important;
   cursor: pointer;

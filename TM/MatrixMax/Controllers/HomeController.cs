@@ -13,6 +13,7 @@ namespace MatrixMax.Controllers
         public ActionResult Index()
         {
             var usuario = (Usuario)Session["usuarioLogado"];
+            ViewBag.Title = "Dashboard";
             return View(usuario);
         }
     }
