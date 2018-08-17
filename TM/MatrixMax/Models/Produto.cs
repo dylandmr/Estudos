@@ -10,7 +10,7 @@ namespace MatrixMax.Models
     {
         public int Id { get; set; }
         public int Estoque { get; set; }
-        public Subcategoria Subcategoria { get; set; }
+        public Categoria Subcategoria { get; set; }
         public Marca Marca { get; set; }
         public char TipoProduto { get; set; }
         public IList<ProdutosDaVenda> Vendas { get; set; }
@@ -18,23 +18,17 @@ namespace MatrixMax.Models
         [MaxLength(50)]
         public string Nome { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public double PrecoPeriferico { get; set; }
+        public double? PrecoPeriferico { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public double PrecoReciclado { get; set; }
+        public double? PrecoReciclado { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public double PrecoTroca { get; set; }
+        public double? PrecoTroca { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public double PrecoRecarga { get; set; }
+        public double? PrecoRecarga { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public double PrecoOriginal { get; set; }
+        public double? PrecoOriginal { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public double PrecoCompativel { get; set; }
+        public double? PrecoCompativel { get; set; }
 
         public Produto()
         {

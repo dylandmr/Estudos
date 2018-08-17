@@ -11,7 +11,7 @@ namespace MatrixMax.Models
         [MaxLength(50)]
         public string Logradouro { get; set; }
 
-        public int Numero { get; set; }
+        public int? Numero { get; set; }
         public string Cep { get; set; }
 
         [MaxLength(100)]

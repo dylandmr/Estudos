@@ -1,6 +1,9 @@
 ﻿using MatrixMax.DAO;
+using MatrixMax.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,7 +23,7 @@ namespace MatrixMax.Controllers
         {
             var usuario = new UsuarioDAO().Autentica(login, senha);
             if (usuario != null)
-            { 
+            {
                 Session["usuarioLogado"] = usuario;
                 return RedirectToAction("Index", "Home");
             }

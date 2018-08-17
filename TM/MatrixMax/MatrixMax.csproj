@@ -312,13 +312,17 @@
     <Compile Include="DAO\MatrixMaxContext.cs" />
     <Compile Include="DAO\PessoaDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
-    <Compile Include="DAO\SubcategoriaDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="DAO\VendaDAO.cs" />
     <Compile Include="Filtros\AutorizacaoFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180817210233_Inicial.cs" />
+    <Compile Include="Migrations\20180817210233_Inicial.designer.cs">
+      <DependentUpon>20180817210233_Inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\MatrixMaxContextModelSnapshot.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\FormaDePagamento.cs" />
@@ -326,7 +330,6 @@
     <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\ProdutosDaVenda.cs" />
-    <Compile Include="Models\Subcategoria.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

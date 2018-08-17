@@ -11,7 +11,6 @@ namespace MatrixMax.Models
         public DbSet<Marca> Marcas { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Subcategoria> Subcategorias { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Venda> Vendas { get; set; }
 
@@ -33,6 +32,10 @@ namespace MatrixMax.Models
                 .Entity<Venda>()
                 .Property(v => v.TipoStatusVenda)
                 .HasDefaultValue(0);
+
+            modelBuilder.Entity<Categoria>().HasOne(c => c.CategoriaDaSubcategoria)
+                                   .WithMany()
+                                   .HasForeignKey(c => c.CategoriaId);
         }
 
         public MatrixMaxContext()
