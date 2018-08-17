@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatrixMax.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,8 +12,8 @@ namespace MatrixMax.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var usuarioLogado = Session["usuarioLogado"];
-            return View();
+            var usuario = (Usuario)Session["usuarioLogado"];
+            return View(usuario);
         }
     }
 }
