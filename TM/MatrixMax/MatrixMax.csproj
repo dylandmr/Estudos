@@ -200,6 +200,7 @@
     <Content Include="Content\Css\lib\datatable\buttons.bootstrap.min.css" />
     <Content Include="Content\Css\lib\datatable\buttons.dataTables.min.css" />
     <Content Include="Content\Css\lib\datatable\dataTables.bootstrap.min.css" />
+    <Content Include="Content\Css\lib\datatable\select.bootstrap4.min.css" />
     <Content Include="Content\Css\lib\vector-map\jqvmap.min.css" />
     <Content Include="Content\Css\normalize.css" />
     <Content Include="Content\Css\style.css" />
@@ -238,6 +239,7 @@
     <Content Include="Content\js\lib\data-table\dataTables.bootstrap.min.js" />
     <Content Include="Content\js\lib\data-table\dataTables.buttons.min.js" />
     <Content Include="Content\js\lib\data-table\datatables.min.js" />
+    <Content Include="Content\js\lib\data-table\dataTables.select.min.js" />
     <Content Include="Content\js\lib\data-table\jquery-1.12.4.js" />
     <Content Include="Content\js\lib\data-table\jquery.dataTables.min.js" />
     <Content Include="Content\js\lib\data-table\jszip.min.js" />
@@ -305,6 +307,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
     <Compile Include="DAO\FormaDePagamentoDAO.cs" />
@@ -321,6 +324,10 @@
     <Compile Include="Migrations\20180817210233_Inicial.cs" />
     <Compile Include="Migrations\20180817210233_Inicial.designer.cs">
       <DependentUpon>20180817210233_Inicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180819181917_PrecosProdutos.cs" />
+    <Compile Include="Migrations\20180819181917_PrecosProdutos.designer.cs">
+      <DependentUpon>20180819181917_PrecosProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\MatrixMaxContextModelSnapshot.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -456,6 +463,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Produto\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

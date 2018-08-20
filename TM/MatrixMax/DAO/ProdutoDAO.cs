@@ -32,7 +32,7 @@ namespace ModelagemInicial.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).Where(p => p.TipoProduto == 'C').ToList();
+                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).Where(p => p.TipoProduto == 'C').ToList();
             }
         }
 
@@ -40,7 +40,7 @@ namespace ModelagemInicial.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).Where(p => p.TipoProduto == 'T').ToList();
+                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).Where(p => p.TipoProduto == 'T').ToList();
             }
         }
 
@@ -48,7 +48,15 @@ namespace ModelagemInicial.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).Where(p => p.TipoProduto == 'P').ToList();
+                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).Where(p => p.TipoProduto == 'P').ToList();
+            }
+        }
+
+        public IList<Produto> Lista()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).ToList();
             }
         }
 

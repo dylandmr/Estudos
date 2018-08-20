@@ -15,7 +15,7 @@ namespace MatrixMax.Filtros
             object usuario = filterContext.HttpContext.Session["usuarioLogado"];
             if (usuario == null && !login) filterContext.Result = new RedirectToRouteResult(
                 new RouteValueDictionary(
-                    new { controller = "Login", action = "Index" }
+                    new { controller = "Login", action = "Index"}
                 )
             );
 

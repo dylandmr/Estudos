@@ -133,17 +133,11 @@ namespace MatrixMax.Migrations
                     b.Property<string>("Nome")
                         .HasMaxLength(50);
 
-                    b.Property<double?>("PrecoCompativel");
-
-                    b.Property<double?>("PrecoOriginal");
-
-                    b.Property<double?>("PrecoPeriferico");
-
                     b.Property<double?>("PrecoRecarga");
 
-                    b.Property<double?>("PrecoReciclado");
-
                     b.Property<double?>("PrecoTroca");
+
+                    b.Property<double>("PrecoUnitario");
 
                     b.Property<int?>("SubcategoriaId");
 

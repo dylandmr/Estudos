@@ -19,7 +19,9 @@ namespace MatrixMax.App_Start
                 "~/Content/Css/flag-icon.min.css",
                 "~/Content/Css/cs-skin-elastic.css",
                 "~/Content/scss/style.css",
-                "~/Content/Css/lib/vector-map/jqvmap.min.css"));
+                "~/Content/Css/lib/vector-map/jqvmap.min.css",
+                "~/Content/Css/lib/datatable/dataTables.bootstrap.min.css",
+                "~/Content/Css/lib/datatable/select.bootstrap4.min.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/js")
                 .Include(
@@ -33,6 +35,21 @@ namespace MatrixMax.App_Start
                 "~/Content/js/lib/vector-map/jquery.vmap.min.js",
                 "~/Content/js/lib/vector-map/jquery.vmap.sampledata.js",
                 "~/Content/js/lib/vector-map/country/jquery.vmap.world.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tables/js")
+                .Include(
+                "~/Content/js/lib/data-table/datatables.min.js",
+                "~/Content/js/lib/data-table/dataTables.bootstrap.min.js",
+                "~/Content/js/lib/data-table/dataTables.buttons.min.js",
+                "~/Content/js/lib/data-table/buttons.bootstrap.min.js",
+                "~/Content/js/lib/data-table/jszip.min.js",
+                "~/Content/js/lib/data-table/pdfmake.min.js",
+                "~/Content/js/lib/data-table/vfs_fonts.js",
+                "~/Content/js/lib/data-table/buttons.html5.min.js",
+                "~/Content/js/lib/data-table/buttons.print.min.js",
+                "~/Content/js/lib/data-table/buttons.colVis.min.js",
+                "~/Content/js/lib/data-table/dataTables.select.min.js",
+                "~/Content/js/lib/data-table/datatables-init.js"));
         }
     }
 }

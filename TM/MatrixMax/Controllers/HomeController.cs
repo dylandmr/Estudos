@@ -14,7 +14,7 @@ namespace MatrixMax.Controllers
         {
             var usuario = (Usuario)Session["usuarioLogado"];
             ViewBag.Title = "Dashboard";
-            return View(usuario);
+            return View();
         }
     }
 }

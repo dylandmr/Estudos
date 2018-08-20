@@ -18,18 +18,16 @@ namespace MatrixMax.Models
         [MaxLength(50)]
         public string Nome { get; set; }
 
-        public double? PrecoPeriferico { get; set; }
 
-        public double? PrecoReciclado { get; set; }
+        [DisplayFormat(DataFormatString = "R${0:#,##0.00#}", ApplyFormatInEditMode = true)]
+        public double PrecoUnitario { get; set; }
 
-        public double? PrecoTroca { get; set; }
-
+        [DisplayFormat(DataFormatString = "R${0:#,##0.00#}", ApplyFormatInEditMode = true)]
         public double? PrecoRecarga { get; set; }
 
-        public double? PrecoOriginal { get; set; }
-
-        public double? PrecoCompativel { get; set; }
-
+        [DisplayFormat(DataFormatString = "R${0:#,##0.00#}", ApplyFormatInEditMode = true)]
+        public double? PrecoTroca { get; set; }
+        
         public Produto()
         {
             Vendas = new List<ProdutosDaVenda>();

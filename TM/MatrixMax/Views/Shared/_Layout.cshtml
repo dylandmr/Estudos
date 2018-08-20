@@ -1,4 +1,4 @@
-﻿@model MatrixMax.Models.Usuario
+﻿@{ MatrixMax.Models.Usuario usuarioLogado = (MatrixMax.Models.Usuario)HttpContext.Current.Session["usuarioLogado"]; }
 
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -6,7 +6,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="">
- <!--<![endif]-->
+<!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +16,7 @@
 
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="~/Content/Imagens/favicon.png">
-
+    
     @Styles.Render("~/bundles/css")
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
 
@@ -40,33 +40,15 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="#"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="/Home/Index"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">PRODUTOS</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Periféricos</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Categorias</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-bars"></i><a href="#">Cartões de Memória</a></li>
-                            <li><i class="fa fa-bars"></i><a href="#">Fones de Ouvido</a></li>
-                            <li><i class="fa fa-bars"></i><a href="#">Pendrives</a></li>
-                            <li><i class="fa fa-bars"></i><a href="#">Cabos</a></li>
-                            <li><i class="fa fa-bars"></i><a href="#">Teclados</a></li>
-                            <li><i class="fa fa-bars"></i><a href="#">Mouses</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-print"></i>Cartuchos</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-bars"></i><a href="#">Remanufaturados</a></li>
-                            <li><i class="fa fa-bars"></i><a href="#">Compatíveis</a></li>
-                            <li><i class="fa fa-bars"></i><a href="#">Originais</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-print"></i>Toners</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-bars"></i><a href="#">Reciclados</a></li>
-                            <li><i class="menu-icon fa fa-bars"></i><a href="#">Compatíveis</a></li>
+                            <li><i class="fa fa-laptop"></i><a href="/Produto/Index?C=P">Periféricos</a></li>
+                            <li><i class="fa fa-print"></i><a href="/Produto/Index?C=C">Cartuchos</a></li>
+                            <li><i class="fa fa-print"></i><a href="/Produto/Index?C=T">Toners</a></li>
                         </ul>
                     </li>
                     <li>
@@ -75,7 +57,9 @@
                     <li>
                         <a href="#"> <i class="menu-icon fa fa-truck"></i>Repor Estoque</a>
                     </li>
-
+                    <li>
+                        <a href="/Produto/Index?C=G"> <i class="menu-icon fa fa-list"></i>Ver todos</a>
+                    </li>
                     <h3 class="menu-title">Vendas</h3><!-- /.menu-title -->
 
                     <li>
@@ -92,12 +76,19 @@
                     <li>
                         <a href="#"> <i class="menu-icon fa fa-plus-square"></i>Registrar Nova</a>
                     </li>
+
+                    <h3 class="menu-title">Clientes</h3><!-- /.menu-title -->
+                    <li>
+                        <a href="#"> <i class="menu-icon fa fa-plus-square"></i>Cadastrar cliente</a>
+                    </li>
+                    <li>
+                        <a href="#"> <i class="menu-icon fa fa-users"></i>Atualizar dados</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside>
     <!-- BARRA LATERAL -->
-    
     <!-- HEADER E CONTENT -->
     <div id="right-panel" class="right-panel">
 
@@ -113,14 +104,14 @@
                                 <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar..." aria-label="Pesquisar">
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
-                        </div>                                            
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="data:image;base64,@System.Convert.ToBase64String(Model.ImagemDePerfil)" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="data:image;base64,@System.Convert.ToBase64String(usuarioLogado.ImagemDePerfil)" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">
@@ -138,26 +129,7 @@
     <!-- HEADER E CONTENT -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+
     @Scripts.Render("~/bundles/js")
-
-    <script>
-        (function ($) {
-            "use strict";
-
-            jQuery('#vmap').vectorMap({
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: ['#1de9b6', '#03a9f5'],
-                normalizeFunction: 'polynomial'
-            });
-        })(jQuery);
-    </script>
-
 </body>
 </html>
