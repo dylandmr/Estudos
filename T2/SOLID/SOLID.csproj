@@ -54,6 +54,9 @@
     <Compile Include="Encapsulamento\MeioDePagamento.cs" />
     <Compile Include="Encapsulamento\Pagamento.cs" />
     <Compile Include="Encapsulamento\ProcessadorDeBoletos.cs" />
+    <Compile Include="Liskov Substitutive Principle\ContaComum.cs" />
+    <Compile Include="Liskov Substitutive Principle\ContaEstudante.cs" />
+    <Compile Include="Liskov Substitutive Principle\GerenciadorDeSaldo.cs" />
     <Compile Include="Open Closed e Dependency Inversion\CalculadoraDePrecos.cs" />
     <Compile Include="Open Closed e Dependency Inversion\Compra.cs" />
     <Compile Include="Open Closed e Dependency Inversion\Frete.cs" />

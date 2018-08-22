@@ -1,5 +1,6 @@
 using SOLID.Acoplamento;
 using SOLID.Encapsulamento;
+using SOLID.Liskov_Substitutive_Principle;
 using SOLID.Open_Closed_e_Dependency_Inversion;
 using SOLID.Single_Responsibility_Principle;
 using System;
@@ -13,6 +14,33 @@ namespace SOLID
     class Program
     {
         static void Main(string[] args)
+        {
+            ContaComum conta1 = new ContaComum();
+            conta1.Deposita(100);
+            ContaComum conta2 = new ContaComum();
+            conta2.Deposita(150);
+            ContaEstudante conta3 = new ContaEstudante();
+            conta3.Deposita(100.5);
+
+            IList<ContaComum> contas = new List<ContaComum>()
+            {
+                conta1,
+                conta2,
+            };
+
+            foreach (ContaComum conta in contas)
+            {
+                conta.SomaInvestimento();
+
+                Console.WriteLine("Novo saldo: " + conta.Saldo);
+            }
+
+            Console.WriteLine("Milhas estudante: " + conta3.Milhas + "\nSaldo estudante: " + conta3.Saldo);
+
+            Console.ReadKey();
+        }
+
+        private static void TestaEncapsulamentoExemploProcessadorDeBoletos()
         {
             var boletos = new List<Boleto>()
             {
