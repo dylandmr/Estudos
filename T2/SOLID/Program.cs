@@ -1,4 +1,5 @@
 using SOLID.Acoplamento;
+using SOLID.Open_Closed_e_Dependency_Inversion;
 using SOLID.Single_Responsibility_Principle;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,21 @@ namespace SOLID
     {
         static void Main(string[] args)
         {
+            var calculadora = new CalculadoraDePrecos(new Frete(), new TabelaDePrecoPadrao());
+            var compra = new Compra() { Cidade = "sao paulo", Valor = 1000 };
+            Console.WriteLine("Preço final da compra: R$" + calculadora.Calcula(compra) + ",00.");
+            Console.ReadKey();
+        }
+
+        private static void TestaAula2Acoplamento()
+        {
             var acoes = new List<IAcaoAposGerarNota>()
             {
                 new NotaFiscalDao(),
                 new EnviadorDeEmail(),
                 new EnviadorDeSMS()
             };
-            
+
             var gerador = new GeradorDeNotaFiscal(acoes);
             var fatura = new Fatura(2000, "Fulano");
             var nf = gerador.Gera(fatura);

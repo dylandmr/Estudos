@@ -49,6 +49,12 @@
     <Compile Include="Acoplamento\IAcaoAposGerarNota.cs" />
     <Compile Include="Acoplamento\NotaFiscal.cs" />
     <Compile Include="Acoplamento\NotaFiscalDao.cs" />
+    <Compile Include="Open Closed e Dependency Inversion\CalculadoraDePrecos.cs" />
+    <Compile Include="Open Closed e Dependency Inversion\Compra.cs" />
+    <Compile Include="Open Closed e Dependency Inversion\Frete.cs" />
+    <Compile Include="Open Closed e Dependency Inversion\IServicoDeEntrega.cs" />
+    <Compile Include="Open Closed e Dependency Inversion\ITabelaDePreco.cs" />
+    <Compile Include="Open Closed e Dependency Inversion\TabelaDePrecoPadrao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Single Responsibility Principle\CalculadoraDeSalario.cs" />
