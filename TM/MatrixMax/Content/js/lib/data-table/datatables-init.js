@@ -16,8 +16,8 @@
             info: false
         },
         buttons: [
-            { extend: 'selectedSingle', text: '<i onclick="Editar()" class="fa fa-3x fa-edit"></i>' },
-            { text: '<i onclick="Adicionar()" class="fa fa-3x fa-plus-circle"></i>' }
+            { text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalAdicionar">Adicionar <i class="fa fa-plus-circle"></i></button>' },
+            { extend: 'selectedSingle', text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalEditar">Editar <i class="fa fa-edit"></i></button>' }
         ],
         "language":
             {
