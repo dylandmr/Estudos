@@ -1,4 +1,5 @@
 using SOLID.Acoplamento;
+using SOLID.Encapsulamento;
 using SOLID.Open_Closed_e_Dependency_Inversion;
 using SOLID.Single_Responsibility_Principle;
 using System;
@@ -12,6 +13,25 @@ namespace SOLID
     class Program
     {
         static void Main(string[] args)
+        {
+            var boletos = new List<Boleto>()
+            {
+                new Boleto(500),
+                new Boleto(200),
+                new Boleto(350)
+            };
+
+            var fatura = new EFatura("Fulano", 1000);
+
+            var processador = new ProcessadorDeBoletos();
+
+            processador.Processa(boletos, fatura);
+
+            Console.WriteLine(fatura.Pago ? "Pagou." : "Não pagou.");
+            Console.ReadKey();
+        }
+
+        private static void TestaDIPeOCPExemploCalculadoraDePrecos()
         {
             var calculadora = new CalculadoraDePrecos(new Frete(), new TabelaDePrecoPadrao());
             var compra = new Compra() { Cidade = "sao paulo", Valor = 1000 };

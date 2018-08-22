@@ -49,6 +49,11 @@
     <Compile Include="Acoplamento\IAcaoAposGerarNota.cs" />
     <Compile Include="Acoplamento\NotaFiscal.cs" />
     <Compile Include="Acoplamento\NotaFiscalDao.cs" />
+    <Compile Include="Encapsulamento\Boleto.cs" />
+    <Compile Include="Encapsulamento\Fatura.cs" />
+    <Compile Include="Encapsulamento\MeioDePagamento.cs" />
+    <Compile Include="Encapsulamento\Pagamento.cs" />
+    <Compile Include="Encapsulamento\ProcessadorDeBoletos.cs" />
     <Compile Include="Open Closed e Dependency Inversion\CalculadoraDePrecos.cs" />
     <Compile Include="Open Closed e Dependency Inversion\Compra.cs" />
     <Compile Include="Open Closed e Dependency Inversion\Frete.cs" />
