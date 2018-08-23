@@ -37,11 +37,12 @@ namespace Caelum.Leilao
         public void TestaCalculoDeMediaDosLances()
         {
             var joao = new Usuario("João");
+            var maria = new Usuario("Maria");
 
             var leilao = new Leilao("Ipad Air");
 
             leilao.Propoe(new Lance(joao, 897));
-            leilao.Propoe(new Lance(joao, 2039));
+            leilao.Propoe(new Lance(maria, 2039));
             leilao.Propoe(new Lance(joao, 183));
 
             var avaliador = new Avaliador();

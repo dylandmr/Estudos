@@ -21,7 +21,7 @@
         ],
         "language":
             {
-                "info": "Mostrando _TOTAL_ produtos.",
+                "info": "Mostrando preço _TOTAL_ produtos.",
                 "zeroRecords": "Nenhum resultado encontrado.",
                 "infoEmpty": "Mostrando 0 produtos.",
                 "infoFiltered": "(Filtrado de _MAX_ itens.)",

@@ -17,5 +17,12 @@ namespace Caelum.Leilao
             this.Nome = nome;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null | GetType() != obj.GetType()) return false;
+
+            Usuario outro = (Usuario)obj;
+            return outro.Id == Id && outro.Nome == Nome;
+        }
     }
 }
