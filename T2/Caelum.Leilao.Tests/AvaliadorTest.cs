@@ -45,7 +45,7 @@ namespace Caelum.Leilao
             leilao.Propoe(new Lance(joao, 183));
 
             var avaliador = new Avaliador();
-            avaliador.CalculaMedia(leilao);
+            avaliador.Avalia(leilao);
 
             Assert.AreEqual(1039.666666667, avaliador.LanceMedio, 0.00001);
         }

@@ -14,19 +14,12 @@ namespace Caelum.Leilao
 
         public void Avalia(Leilao leilao)
         {
-            foreach (var lance in leilao.Lances)
-            {
-                if (lance.Valor > maiorLance) maiorLance = lance.Valor;
-                if (lance.Valor < menorLance) menorLance = lance.Valor;
-            }
-        }
-
-        public void CalculaMedia(Leilao leilao)
-        {
             double soma = 0;
             foreach (var lance in leilao.Lances)
             {
                 soma += lance.Valor;
+                if (lance.Valor > maiorLance) maiorLance = lance.Valor;
+                if (lance.Valor < menorLance) menorLance = lance.Valor;
             }
             lanceMedio = soma / leilao.Lances.Count;
         }
