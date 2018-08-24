@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnoBissextoTest.cs" />
     <Compile Include="AvaliadorTest.cs" />
     <Compile Include="FiltroDeLancesTest.cs" />
     <Compile Include="LeilaoTest.cs" />

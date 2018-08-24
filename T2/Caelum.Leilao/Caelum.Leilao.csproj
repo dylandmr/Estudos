@@ -46,9 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Avaliador.cs" />
+    <Compile Include="Exercícios fora do escopo\AnoBissexto.cs" />
     <Compile Include="FiltroDeLances.cs" />
-    <Compile Include="MatematicaMaluca.cs" />
-    <Compile Include="Palindromo.cs" />
+    <Compile Include="Exercícios fora do escopo\MatematicaMaluca.cs" />
+    <Compile Include="Exercícios fora do escopo\Palindromo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
