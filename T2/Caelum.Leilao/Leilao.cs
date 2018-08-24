@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+
 namespace Caelum.Leilao
 {
     public class Leilao
@@ -40,6 +42,22 @@ namespace Caelum.Leilao
         private Lance UltimoLance()
         {
             return Lances[Lances.Count - 1];
+        }
+
+        public void DobraLance(Usuario usuario)
+        {
+            var ultimoLance = PegaUltimoLanceSeHouver(usuario);
+            if (ultimoLance != null) Propoe(new Lance(usuario, ultimoLance.Valor * 2));
+        }
+
+        private Lance PegaUltimoLanceSeHouver(Usuario usuario)
+        {
+            Lance ultimoLance = null;
+            foreach (var lance in Lances)
+            {
+                if (lance.Usuario.Equals(usuario)) ultimoLance = lance;
+            }
+            return ultimoLance ?? null;
         }
     }
 }

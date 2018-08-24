@@ -75,5 +75,57 @@ namespace Caelum.Leilao
             var ultimoLance = leilao.Lances[ultimoIndex];
             Assert.AreEqual(1000, ultimoLance.Valor, 0.00001);
         }
+
+        [Test]
+        public void DeveDuplicarUmLance()
+        {
+            var leilao = new Leilao("Ultrabook Acer");
+
+            var alguem = new Usuario("Uma Pessoa");
+            var outroalguem = new Usuario("Outra Pessoa");
+
+            leilao.Propoe(new Lance(alguem, 300));
+            leilao.Propoe(new Lance(outroalguem, 400));
+
+            leilao.DobraLance(alguem);
+
+            Assert.AreEqual(3, leilao.Lances.Count);
+            Assert.AreEqual(600, leilao.Lances.Last().Valor);
+        }
+
+        [Test]
+        public void NaoDeveDuplicarPoisNaoHaLancesAnteriores()
+        {
+            var leilao = new Leilao("Ultrabook Acer");
+
+            var alguem = new Usuario("Uma Pessoa");
+            var outroalguem = new Usuario("Outra Pessoa");
+
+            leilao.Propoe(new Lance(alguem, 300));
+
+            leilao.DobraLance(outroalguem);
+
+            Assert.AreEqual(1, leilao.Lances.Count);
+            Assert.AreEqual(300, leilao.Lances.Last().Valor);
+        }
+
+        [Test]
+        public void DeveDuplicarApenasOUltimoLanceEntreDois()
+        {
+            var leilao = new Leilao("Ultrabook Acer");
+
+            var alguem = new Usuario("Uma Pessoa");
+            var outroalguem = new Usuario("Outra Pessoa");
+
+            leilao.Propoe(new Lance(alguem, 300));
+            leilao.Propoe(new Lance(outroalguem, 400));
+            leilao.Propoe(new Lance(alguem, 500));
+            leilao.Propoe(new Lance(outroalguem, 600));
+
+            leilao.DobraLance(alguem);
+
+            Assert.AreEqual(5, leilao.Lances.Count);
+            Assert.AreEqual(1000, leilao.Lances.Last().Valor);
+        }
     }
 }
