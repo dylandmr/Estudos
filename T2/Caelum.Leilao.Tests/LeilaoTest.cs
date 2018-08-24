@@ -10,10 +10,28 @@ namespace Caelum.Leilao
     [TestFixture]
     public class LeilaoTest
     {
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            Console.WriteLine("Iniciando LeilaoTest.");
+        }
+
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
+        {
+            Console.WriteLine("Finalizando LeilaoTest.");
+        }
+
+        [SetUp]
+        public void SetUp()
+        {
+            Console.WriteLine("Iniciando teste.");
+        }
+
         [Test]
         public void DeveReceberUmLance()
         {
-            var leilao = new Leilao("Notebook Acer");
+            var leilao = new LeilaoTDBuilder().NovoLeilaoDe("Notebook Acer").Constroi();
             Assert.AreEqual(0, leilao.Lances.Count);
 
             leilao.Propoe(new Lance(new Usuario("Bill Gates"), 5000));
@@ -25,10 +43,11 @@ namespace Caelum.Leilao
         [Test]
         public void DeveReceberVariosLances()
         {
-            var leilao = new Leilao("Notebook Acer");
-            
-            leilao.Propoe(new Lance(new Usuario("Bill Gates"), 5000));
-            leilao.Propoe(new Lance(new Usuario("Rita Lee"), 4000));
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Notebook Avell")
+                .comLance(new Usuario("Bill Gates"), 5000)
+                .comLance(new Usuario("Rita Lee"), 4000)
+                .Constroi();
 
             Assert.AreEqual(2, leilao.Lances.Count());
             Assert.AreEqual(5000, leilao.Lances[0].Valor, 0.0001);
@@ -38,12 +57,13 @@ namespace Caelum.Leilao
         [Test]
         public void NaoDeveAceitarLancesSeguidosDoMesmoUsuario()
         {
-            var leilao = new Leilao("Notebook Dell");
-
             var michelTemer = new Usuario("Michel Temer");
 
-            leilao.Propoe(new Lance(michelTemer, 1500));
-            leilao.Propoe(new Lance(michelTemer, 4000));
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Notebook Positivo")
+                .comLance(michelTemer, 1500)
+                .comLance(michelTemer, 4000)
+                .Constroi();
 
             Assert.AreEqual(1, leilao.Lances.Count());
             Assert.AreEqual(1500, leilao.Lances[0].Valor, 0.0001);
@@ -52,22 +72,23 @@ namespace Caelum.Leilao
         [Test]
         public void NaoDeveAceitarMaisDeCincoLancesDoMesmoUsuario()
         {
-            var leilao = new Leilao("Notebook Dell");
-
             var michelTemer = new Usuario("Michel Temer");
             var dilmaRoussef = new Usuario("Dulma Roussef");
 
-            leilao.Propoe(new Lance(michelTemer, 100));
-            leilao.Propoe(new Lance(dilmaRoussef, 200));
-            leilao.Propoe(new Lance(michelTemer, 300));
-            leilao.Propoe(new Lance(dilmaRoussef, 400));
-            leilao.Propoe(new Lance(michelTemer, 500));
-            leilao.Propoe(new Lance(dilmaRoussef, 600));
-            leilao.Propoe(new Lance(michelTemer, 700));
-            leilao.Propoe(new Lance(dilmaRoussef, 800));
-            leilao.Propoe(new Lance(michelTemer, 900));
-            leilao.Propoe(new Lance(dilmaRoussef, 1000));
-            leilao.Propoe(new Lance(michelTemer, 1100));
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Notebook Positivo")
+                .comLance(michelTemer, 100)
+                .comLance(dilmaRoussef, 200)
+                .comLance(michelTemer, 300)
+                .comLance(dilmaRoussef, 400)
+                .comLance(michelTemer, 500)
+                .comLance(dilmaRoussef, 600)
+                .comLance(michelTemer, 700)
+                .comLance(dilmaRoussef, 800)
+                .comLance(michelTemer, 900)
+                .comLance(dilmaRoussef, 1000)
+                .comLance(michelTemer, 1100)
+                .Constroi();
 
             Assert.AreEqual(10, leilao.Lances.Count());
 
@@ -79,13 +100,14 @@ namespace Caelum.Leilao
         [Test]
         public void DeveDuplicarUmLance()
         {
-            var leilao = new Leilao("Ultrabook Acer");
-
             var alguem = new Usuario("Uma Pessoa");
             var outroalguem = new Usuario("Outra Pessoa");
 
-            leilao.Propoe(new Lance(alguem, 300));
-            leilao.Propoe(new Lance(outroalguem, 400));
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Ultrabook Acer")
+                .comLance(alguem, 300)
+                .comLance(outroalguem, 400)
+                .Constroi();
 
             leilao.DobraLance(alguem);
 
@@ -96,10 +118,13 @@ namespace Caelum.Leilao
         [Test]
         public void NaoDeveDuplicarPoisNaoHaLancesAnteriores()
         {
-            var leilao = new Leilao("Ultrabook Acer");
-
             var alguem = new Usuario("Uma Pessoa");
             var outroalguem = new Usuario("Outra Pessoa");
+
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Ipad 2")
+                .comLance(alguem, 300)
+                .Constroi();
 
             leilao.Propoe(new Lance(alguem, 300));
 
@@ -112,15 +137,16 @@ namespace Caelum.Leilao
         [Test]
         public void DeveDuplicarApenasOUltimoLanceEntreDois()
         {
-            var leilao = new Leilao("Ultrabook Acer");
-
             var alguem = new Usuario("Uma Pessoa");
             var outroalguem = new Usuario("Outra Pessoa");
 
-            leilao.Propoe(new Lance(alguem, 300));
-            leilao.Propoe(new Lance(outroalguem, 400));
-            leilao.Propoe(new Lance(alguem, 500));
-            leilao.Propoe(new Lance(outroalguem, 600));
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Laser Pointer")
+                .comLance(alguem, 300)
+                .comLance(outroalguem, 400)
+                .comLance(alguem, 500)
+                .comLance(outroalguem, 600)
+                .Constroi();
 
             leilao.DobraLance(alguem);
 

@@ -10,22 +10,39 @@ namespace Caelum.Leilao
     [TestFixture]
     public class AvaliadorTest
     {
+        private Avaliador avaliador;
+        private Usuario joao;
+        private Usuario maria;
+        private Usuario pedro;
+
+        [SetUp]
+        public void SetUp()
+        {
+            //1-CENÁRIO:
+            avaliador = new Avaliador();
+            joao = new Usuario("João");
+            maria = new Usuario("Maria");
+            pedro = new Usuario("Pedro");
+            Console.WriteLine("Iniciando teste...");
+        }
+
+        [TearDown]
+        public void Finaliza()
+        {
+            Console.WriteLine("Teste finalizano.");
+        }
+
         [Test]
         public void DeveEntenderLancesCrescentes()
         {
-            //1-CENÁRIO:
-            var joao = new Usuario("João");
-            var maria = new Usuario("Maria");
-            var pedro = new Usuario("Pedro");
-
-            var leilao = new Leilao("Galaxy S9+");
-
-            leilao.Propoe(new Lance(joao, 200));
-            leilao.Propoe(new Lance(pedro, 300));
-            leilao.Propoe(new Lance(maria, 500));
-
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Galaxy S9+")
+                .comLance(joao, 200)
+                .comLance(pedro, 300)
+                .comLance(maria, 500)
+                .Constroi();
+            
             //2-AÇÃO:
-            var avaliador = new Avaliador();
             avaliador.Avalia(leilao);
 
             //3-VALIDAÇÃO:
@@ -36,16 +53,13 @@ namespace Caelum.Leilao
         [Test]
         public void TestaCalculoDeMediaDosLances()
         {
-            var joao = new Usuario("João");
-            var maria = new Usuario("Maria");
-
-            var leilao = new Leilao("Ipad Air");
-
-            leilao.Propoe(new Lance(joao, 897));
-            leilao.Propoe(new Lance(maria, 2039));
-            leilao.Propoe(new Lance(joao, 183));
-
-            var avaliador = new Avaliador();
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Ipad Air")
+                .comLance(joao, 897)
+                .comLance(maria, 2039)
+                .comLance(joao, 183)
+                .Constroi();
+            
             avaliador.Avalia(leilao);
 
             Assert.AreEqual(1039.666666667, avaliador.LanceMedio, 0.00001);
@@ -54,12 +68,11 @@ namespace Caelum.Leilao
         [Test]
         public void TestaLeilaoComUmLance()
         {
-            var joao = new Usuario("João");
-            var leilao = new Leilao("Galaxy S9+");
-
-            leilao.Propoe(new Lance(joao, 200));
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Cadeira Gamer")
+                .comLance(joao, 200)
+                .Constroi();
             
-            var avaliador = new Avaliador();
             avaliador.Avalia(leilao);
             
             Assert.AreEqual(200, avaliador.MenorLance, 0.00001);
@@ -69,19 +82,16 @@ namespace Caelum.Leilao
         [Test]
         public void TestaLeilaoComLancesAleatorios()
         {
-            var joao = new Usuario("João");
-            var maria = new Usuario("Maria");
-
-            var leilao = new Leilao("Galaxy S9+");
-
-            leilao.Propoe(new Lance(joao, 200));
-            leilao.Propoe(new Lance(maria, 450));
-            leilao.Propoe(new Lance(joao, 120));
-            leilao.Propoe(new Lance(maria, 700));
-            leilao.Propoe(new Lance(joao, 630));
-            leilao.Propoe(new Lance(maria, 230));
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Net Gato")
+                .comLance(joao, 200)
+                .comLance(maria, 450)
+                .comLance(joao, 120)
+                .comLance(maria, 700)
+                .comLance(joao, 630)
+                .comLance(maria, 230)
+                .Constroi();
             
-            var avaliador = new Avaliador();
             avaliador.Avalia(leilao);
             
             Assert.AreEqual(120, avaliador.MenorLance, 0.00001);
@@ -91,17 +101,14 @@ namespace Caelum.Leilao
         [Test]
         public void TestaLeilaoComLancesDecrescentes()
         {
-            var joao = new Usuario("João");
-            var maria = new Usuario("Maria");
-
-            var leilao = new Leilao("Galaxy S9+");
-
-            leilao.Propoe(new Lance(joao, 400));
-            leilao.Propoe(new Lance(maria, 300));
-            leilao.Propoe(new Lance(joao, 200));
-            leilao.Propoe(new Lance(maria, 100));
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Guarda-chuva família")
+                .comLance(joao, 400)
+                .comLance(maria, 300)
+                .comLance(joao, 200)
+                .comLance(maria, 100)
+                .Constroi();
             
-            var avaliador = new Avaliador();
             avaliador.Avalia(leilao);
             
             Assert.AreEqual(100, avaliador.MenorLance, 0.00001);
@@ -111,17 +118,14 @@ namespace Caelum.Leilao
         [Test]
         public void TestaMaioresComQuatroLances()
         {
-            var joao = new Usuario("João");
-            var maria = new Usuario("Maria");
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Caneta de pena")
+                .comLance(joao, 400)
+                .comLance(maria, 200)
+                .comLance(joao, 300)
+                .comLance(maria, 100)
+                .Constroi();
 
-            var leilao = new Leilao("Galaxy S9+");
-
-            leilao.Propoe(new Lance(joao, 400));
-            leilao.Propoe(new Lance(maria, 200));
-            leilao.Propoe(new Lance(joao, 300));
-            leilao.Propoe(new Lance(maria, 100));
-
-            var avaliador = new Avaliador();
             avaliador.Avalia(leilao);
 
             Assert.AreEqual(3, avaliador.TresMaiores.Count);
@@ -133,15 +137,12 @@ namespace Caelum.Leilao
         [Test]
         public void TestaMaioresComDoisLances()
         {
-            var joao = new Usuario("João");
-            var maria = new Usuario("Maria");
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Pendrive 1TB")
+                .comLance(joao, 400)
+                .comLance(maria, 200)
+                .Constroi();
 
-            var leilao = new Leilao("Galaxy S9+");
-
-            leilao.Propoe(new Lance(joao, 400));
-            leilao.Propoe(new Lance(maria, 200));
-
-            var avaliador = new Avaliador();
             avaliador.Avalia(leilao);
 
             Assert.AreEqual(2, avaliador.TresMaiores.Count);
@@ -152,12 +153,10 @@ namespace Caelum.Leilao
         [Test]
         public void TestaMaioresSemNenhumLance()
         {
-            var joao = new Usuario("João");
-            var maria = new Usuario("Maria");
+            var leilao = new LeilaoTDBuilder()
+                .NovoLeilaoDe("Amendoim torrado")
+                .Constroi();
 
-            var leilao = new Leilao("Galaxy S9+");
-
-            var avaliador = new Avaliador();
             avaliador.Avalia(leilao);
 
             Assert.AreEqual(0, avaliador.TresMaiores.Count);
