@@ -156,10 +156,9 @@ namespace Caelum.Leilao
             var leilao = new LeilaoTDBuilder()
                 .NovoLeilaoDe("Amendoim torrado")
                 .Constroi();
-
-            avaliador.Avalia(leilao);
-
-            Assert.AreEqual(0, avaliador.TresMaiores.Count);
+          
+            Assert.That(() => avaliador.Avalia(leilao), Throws.TypeOf<Exception>());
+            //Assert.Throws<Exception>(() => avaliador.Avalia(leilao)); <- Alternativa da internet.
         }
     }
 }

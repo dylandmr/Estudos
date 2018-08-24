@@ -52,6 +52,7 @@
     <Compile Include="AnoBissextoTest.cs" />
     <Compile Include="AvaliadorTest.cs" />
     <Compile Include="FiltroDeLancesTest.cs" />
+    <Compile Include="LanceTest.cs" />
     <Compile Include="LeilaoTDBuilder.cs" />
     <Compile Include="LeilaoTest.cs" />
     <Compile Include="MatematicaMalucaTest.cs" />
