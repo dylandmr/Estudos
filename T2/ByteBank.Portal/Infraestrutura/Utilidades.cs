@@ -8,6 +8,14 @@ namespace ByteBank.Portal.Infraestrutura
 {
     public static class Utilidades
     {
+        public static bool VerificaArquivo(string path)
+        {
+            return path
+                .Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries)
+                .Last()
+                .Contains('.');
+        }
+
         public static string PathParaAssembly(string path)
         {
             return $"ByteBank.Portal{path.Replace('/','.')}";

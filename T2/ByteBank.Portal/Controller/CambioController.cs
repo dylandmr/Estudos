@@ -36,8 +36,17 @@ namespace ByteBank.Portal.Controller
 
         public string USD()
         {
+            var valorCambio = _cambioService.Calcular("MXN", "BRL", 10);
+            var assembly = Assembly.GetExecutingAssembly();
 
-            return null;
+            var streamPagina = assembly.GetManifestResourceStream("ByteBank.Portal.View.Cambio.USD.html");
+            var streamLeitura = new StreamReader(streamPagina);
+
+            var textoPagina = streamLeitura.ReadToEnd();
+
+            var textoCalculado = textoPagina.Replace("VALOR_EM_BRL", valorCambio.ToString());
+
+            return textoCalculado;
         }
     }
 }
