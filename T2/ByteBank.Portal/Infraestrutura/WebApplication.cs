@@ -40,30 +40,7 @@ namespace ByteBank.Portal.Infraestrutura
 
             if (Utilidades.VerificaArquivo(path))
             {
-                var assembly = Assembly.GetExecutingAssembly();
-                var resourceStream = assembly.GetManifestResourceStream(Utilidades.PathParaAssembly(path));
-
-                if (resourceStream == null)
-                {
-                    resposta.StatusCode = 404;
-                    resposta.OutputStream.Close();
-                }
-                else
-                {
-                    var bytesResource = new byte[resourceStream.Length];
-
-                    resourceStream.Read(bytesResource, 0, (int)resourceStream.Length);
-
-                    resposta.ContentType = Utilidades.TipoDeConteudo(path);
-
-                    resposta.StatusCode = 200;
-
-                    resposta.ContentLength64 = resourceStream.Length;
-
-                    resposta.OutputStream.Write(bytesResource, 0, bytesResource.Length);
-
-                    resposta.OutputStream.Close();
-                }
+                new ManipuladorRequisicaoArquivo().Manipular(resposta, path);
             }
             else if (path == "/Cambio/MXN")
             {

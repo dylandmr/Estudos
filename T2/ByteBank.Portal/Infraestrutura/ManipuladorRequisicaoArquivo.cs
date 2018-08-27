@@ -21,7 +21,6 @@ namespace ByteBank.Portal.Infraestrutura
                 resposta.OutputStream.Close();
             }
             else
-            {
                 using (resourceStream)
                 {
                     var bytesResource = new byte[resourceStream.Length];
@@ -38,7 +37,6 @@ namespace ByteBank.Portal.Infraestrutura
 
                     resposta.OutputStream.Close();
                 }
-            }
         }
     }
 }
