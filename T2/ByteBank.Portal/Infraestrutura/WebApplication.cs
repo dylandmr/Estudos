@@ -42,33 +42,9 @@ namespace ByteBank.Portal.Infraestrutura
             {
                 new ManipuladorRequisicaoArquivo().Manipular(resposta, path);
             }
-            else if (path == "/Cambio/MXN")
-            {
-                var paginaConteudo = new CambioController().MXN();
-
-                var bufferArquivo = Encoding.UTF8.GetBytes(paginaConteudo);
-
-                resposta.StatusCode = 200;
-                resposta.ContentType = "text/html; charset=utf-8";
-                resposta.ContentLength64 = bufferArquivo.Length;
-
-                resposta.OutputStream.Write(bufferArquivo, 0, bufferArquivo.Length);
-                resposta.OutputStream.Close();
-            }
-            else if (path == "/Cambio/USD")
-            {
-                var paginaConteudo = new CambioController().USD();
-
-                var bufferArquivo = Encoding.UTF8.GetBytes(paginaConteudo);
-
-                resposta.StatusCode = 200;
-                resposta.ContentType = "text/html; charset=utf-8";
-                resposta.ContentLength64 = bufferArquivo.Length;
-
-                resposta.OutputStream.Write(bufferArquivo, 0, bufferArquivo.Length);
-                resposta.OutputStream.Close();
-            }
-
+            else
+                new ManipuladorRequisicaoController().Manipular(resposta, path);
+            
             httpListener.Stop();
         }
     }
