@@ -1,4 +1,5 @@
-﻿using ByteBank.Service;
+﻿using ByteBank.Portal.Infraestrutura;
+using ByteBank.Service;
 using ByteBank.Service.Cambio;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Portal.Controller
 {
-    public class CambioController
+    public class CambioController : ControllerBase
     {
         private ICambioService _cambioService;
 
@@ -21,32 +22,12 @@ namespace ByteBank.Portal.Controller
 
         public string MXN()
         {
-            var valorCambio = _cambioService.Calcular("MXN", "BRL", 10);
-            var assembly = Assembly.GetExecutingAssembly();
-
-            var streamPagina = assembly.GetManifestResourceStream("ByteBank.Portal.View.Cambio.MXN.html");
-            var streamLeitura = new StreamReader(streamPagina);
-
-            var textoPagina = streamLeitura.ReadToEnd();
-
-            var textoCalculado = textoPagina.Replace("VALOR_EM_BRL", valorCambio.ToString());
-
-            return textoCalculado;
+            return View().Replace("VALOR_EM_BRL", _cambioService.Calcular("MXN", "BRL", 3).ToString());
         }
 
         public string USD()
         {
-            var valorCambio = _cambioService.Calcular("MXN", "BRL", 10);
-            var assembly = Assembly.GetExecutingAssembly();
-
-            var streamPagina = assembly.GetManifestResourceStream("ByteBank.Portal.View.Cambio.USD.html");
-            var streamLeitura = new StreamReader(streamPagina);
-
-            var textoPagina = streamLeitura.ReadToEnd();
-
-            var textoCalculado = textoPagina.Replace("VALOR_EM_BRL", valorCambio.ToString());
-
-            return textoCalculado;
+            return View().Replace("VALOR_EM_BRL", _cambioService.Calcular("USD", "BRL", 3).ToString());
         }
     }
 }
