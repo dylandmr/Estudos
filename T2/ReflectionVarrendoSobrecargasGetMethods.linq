@@ -9,22 +9,25 @@ void Main()
 						BindingFlags.Public | 
 						BindingFlags.DeclaredOnly;
 	
-	var methodInfo = controller.GetType().GetMethods(bindingFlags);
+	var metodos = controller.GetType().GetMethods(bindingFlags);
+	var argumentos = new string[] { "moedaOrigem", "moedaDestino", "valor" };
+	var argumentosCount = argumentos.Length;
+	var nomeAction = "Calculo";
+	var sobrecargas = metodos.Where(m => m.Name.Equals(nomeAction));
 	
-	var args = new string[] { "moedaOrigem", "moedaDestino" };
+	sobrecargas.Dump();
 	
-	foreach(var metodo in methodInfo)
+	foreach (var sobrecarga in sobrecargas)
 	{
-		var parametros = metodo.GetParameters();
+		var parametros = sobrecarga.GetParameters();
 		
-		if (!metodo.Name.Equals("Calcular")) continue;
-		if (parametros.Length != args.Length) continue;
+		if (argumentosCount != parametros.Length) continue;
 		
-		var match = parametros.All(parametro => args.Contains(parametro.Name));
+		var argumentosBatem = parametros.All(p => argumentos.Contains(p.Name));
 		
-		if (match)
+		if (argumentosBatem)
 		{
-			metodo.Dump();
+			sobrecarga.Dump();
 			break;
 		}
 	}
@@ -33,7 +36,13 @@ void Main()
 // Define other methods and classes here
 public class CambioController 
 {
-	public void Calcular(string moedaOrigem) {}
-	public void Calcular(string moedaOrigem, string moedaDestino) {}
-	public void Calcular(string moedaOrigem, string moedaDestino, decimal valor) {}
+    public string MXN() => null;
+
+    public string USD() => null;
+		
+    public string Calculo() => null;
+	
+	public string Calculo(string moedaOrigem, string moedaDestino, decimal valor) => null;
+
+    public string Calculo(string moedaDestino, decimal valor) => Calculo("BRL", moedaDestino, valor);
 }

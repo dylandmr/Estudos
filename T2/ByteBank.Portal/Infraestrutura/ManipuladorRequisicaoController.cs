@@ -12,6 +12,7 @@ namespace ByteBank.Portal.Infraestrutura
     public class ManipuladorRequisicaoController
     {
         private readonly ActionBinder _actionBinder = new ActionBinder();
+
         public void Manipular(HttpListenerResponse resposta, string path)
         {
             var caminhoDividido = path.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
@@ -22,9 +23,9 @@ namespace ByteBank.Portal.Infraestrutura
             var controllerWrapper = Activator.CreateInstance("ByteBank.Portal", controllerAssembly, new object[0]);
             var controller = controllerWrapper.Unwrap();
 
-            var methodInfo = _actionBinder.ObterMethodInfo(controller, path);
+            var methodInfo = _actionBinder.ObterActionBindInfo(controller, path);
 
-            var resultadoAction = (string)methodInfo.Invoke(controller, new object[0]);
+            var resultadoAction = (string)methodInfo.Invoke(controller);
 
             var bufferArquivo = Encoding.UTF8.GetBytes(resultadoAction);
 

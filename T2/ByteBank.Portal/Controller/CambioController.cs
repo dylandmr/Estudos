@@ -39,13 +39,12 @@ namespace ByteBank.Portal.Controller
                 .Replace("MOEDA_DESTINO", moedaDestino);
         }
 
-        public string Calculo(string moedaDestino, decimal valor)
-        {
-            return View()
-                .Replace("VALOR_MOEDA_ORIGEM", valor.ToString())
-                .Replace("MOEDA_ORIGEM", "BRL")
-                .Replace("VALOR_MOEDA_DESTINO", _cambioService.Calcular("BRL", moedaDestino, valor).ToString())
-                .Replace("MOEDA_DESTINO", moedaDestino);
-        }
+        public string Calculo(string moedaDestino, decimal valor) => Calculo("BRL", moedaDestino, valor);
+
+        public string Calculo(string moedaDestino) => Calculo("BRL", moedaDestino, 1);
+
+        public string Calculo(string moedaOrigem, string moedaDestino) => Calculo(moedaOrigem, moedaDestino, 1);
+
+        public string Calculo() => Calculo("BRL", "USD", 1);
     }
 }
