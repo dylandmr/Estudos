@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelagemInicial.DAO
+namespace MatrixMax.DAO
 {
     public class CategoriaDAO
     {
@@ -28,11 +28,27 @@ namespace ModelagemInicial.DAO
             }
         }
 
-        public IList<Categoria> Lista()
+        public IList<Categoria> ListaCategorias()
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.Categorias.ToList();
+                return contexto.Categorias.Where(c => c.CategoriaId == null).ToList();
+            }
+        }
+
+        public IList<Categoria> ListaSubcategorias(int categoriaId)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Categorias.Where(c => c.CategoriaId == categoriaId).ToList();
+            }
+        }
+
+        public Categoria BuscaPorId(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Categorias.Find(id);
             }
         }
     }

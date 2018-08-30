@@ -11,8 +11,10 @@ namespace MatrixMax.Models
         public int Id { get; set; }
         public int Estoque { get; set; }
         public Categoria Subcategoria { get; set; }
+        public int? SubcategoriaId { get; set; }
         public Marca Marca { get; set; }
-        public char TipoProduto { get; set; }
+        public int? MarcaId { get; set; }
+        public bool Ativo { get; set; }
         public IList<ProdutosDaVenda> Vendas { get; set; }
 
         [MaxLength(50)]

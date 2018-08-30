@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MatrixMax.Models;
 
-namespace ModelagemInicial.DAO
+namespace MatrixMax.DAO
 {
     public class ProdutoDAO
     {
@@ -32,7 +32,10 @@ namespace ModelagemInicial.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).Where(p => p.TipoProduto == 'C').ToList();
+                return contexto.Produtos
+                    .Include(p => p.Marca)
+                    .Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria)
+                    .Where(p => p.Subcategoria.CategoriaDaSubcategoria.Id == 2).ToList();
             }
         }
 
@@ -40,7 +43,10 @@ namespace ModelagemInicial.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).Where(p => p.TipoProduto == 'T').ToList();
+                return contexto.Produtos
+                    .Include(p => p.Marca)
+                    .Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria)
+                    .Where(p => p.Subcategoria.CategoriaDaSubcategoria.Id == 3).ToList();
             }
         }
 
@@ -48,7 +54,10 @@ namespace ModelagemInicial.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).Where(p => p.TipoProduto == 'P').ToList();
+                return contexto.Produtos
+                    .Include(p => p.Marca)
+                    .Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria)
+                    .Where(p => p.Subcategoria.CategoriaDaSubcategoria.Id == 1).ToList();
             }
         }
 
@@ -65,6 +74,28 @@ namespace ModelagemInicial.DAO
             using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).SingleOrDefault(p => p.Id == id);
+            }
+        }
+
+        public void Desativa(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var produto = contexto.Produtos.Find(id);
+                produto.Ativo = false;
+                contexto.Entry(produto).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
+        }
+
+        public void Ativa(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var produto = contexto.Produtos.Find(id);
+                produto.Ativo = true;
+                contexto.Entry(produto).State = EntityState.Modified;
+                contexto.SaveChanges();
             }
         }
     }

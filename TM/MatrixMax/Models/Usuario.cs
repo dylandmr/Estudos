@@ -20,5 +20,7 @@ namespace MatrixMax.Models
         public Pessoa Pessoa { get; set; }
 
         public byte[] ImagemDePerfil { get; set; }
+
+        public bool Ativo { get; set; }
     }
 }

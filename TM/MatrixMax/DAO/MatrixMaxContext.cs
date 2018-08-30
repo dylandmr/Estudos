@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MatrixMax.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace MatrixMax.Models
+namespace MatrixMax.DAO
 {
     public class MatrixMaxContext : DbContext
     {
@@ -36,6 +37,16 @@ namespace MatrixMax.Models
             modelBuilder.Entity<Categoria>().HasOne(c => c.CategoriaDaSubcategoria)
                                    .WithMany()
                                    .HasForeignKey(c => c.CategoriaId);
+
+            modelBuilder
+                .Entity<Usuario>()
+                .Property(u => u.Ativo)
+                .HasDefaultValue(true);
+
+            modelBuilder
+                .Entity<Produto>()
+                .Property(p => p.Ativo)
+                .HasDefaultValue(true);
         }
 
         public MatrixMaxContext()

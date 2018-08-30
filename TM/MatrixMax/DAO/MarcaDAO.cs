@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelagemInicial.DAO
+namespace MatrixMax.DAO
 {
     public class MarcaDAO
     {
@@ -33,6 +33,14 @@ namespace ModelagemInicial.DAO
             using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Marcas.ToList();
+            }
+        }
+
+        public Marca BuscaPorId(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Marcas.Find(id);
             }
         }
     }

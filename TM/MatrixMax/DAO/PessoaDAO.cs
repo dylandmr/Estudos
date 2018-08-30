@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelagemInicial.DAO
+namespace MatrixMax.DAO
 {
     public class PessoaDAO
     {

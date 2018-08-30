@@ -329,6 +329,14 @@
     <Compile Include="Migrations\20180819181917_PrecosProdutos.designer.cs">
       <DependentUpon>20180819181917_PrecosProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180829194651_AdicionandoBooleanosParaDesativarUsuarioeProduto.cs" />
+    <Compile Include="Migrations\20180829194651_AdicionandoBooleanosParaDesativarUsuarioeProduto.designer.cs">
+      <DependentUpon>20180829194651_AdicionandoBooleanosParaDesativarUsuarioeProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180830121001_RemovendoTipoProduto.cs" />
+    <Compile Include="Migrations\20180830121001_RemovendoTipoProduto.designer.cs">
+      <DependentUpon>20180830121001_RemovendoTipoProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\MatrixMaxContextModelSnapshot.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Endereco.cs" />
