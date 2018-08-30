@@ -289,6 +289,7 @@
     <Content Include="Content\js\vendor\index.html" />
     <Content Include="Content\js\vendor\jquery-1.11.3.min.js" />
     <Content Include="Content\js\vendor\jquery-2.1.4.min.js" />
+    <Content Include="Content\js\vendor\jquery.form.min.js" />
     <Content Include="Content\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="Content\js\widgets.js" />
     <Content Include="Content\scss\bootstrap\bootstrap-grid.css" />

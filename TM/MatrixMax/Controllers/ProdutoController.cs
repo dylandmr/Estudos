@@ -11,31 +11,18 @@ namespace MatrixMax.Controllers
     public class ProdutoController : Controller
     {
         // GET: Produto
-        public ActionResult Index(char C)
+        public ActionResult Index()
         {
-            switch (C)
+            ViewBag.Title = "Produtos";
+            return View();
+        }
+
+        public JsonResult getProdutos()
+        {
+            return Json(new
             {
-                default:
-                    var listaDeProdutos = new ProdutoDAO().Lista();
-                    ViewBag.Title = "Produtos - Todos";
-                    ViewBag.Categoria = "Todos";
-                    return View(listaDeProdutos);
-                case 'P':
-                    listaDeProdutos = new ProdutoDAO().ListaPerifericos();
-                    ViewBag.Title = "Produtos - Periféricos";
-                    ViewBag.Categoria = "Periféricos";
-                    return View(listaDeProdutos);
-                case 'T':
-                    listaDeProdutos = new ProdutoDAO().ListaToners();
-                    ViewBag.Title = "Produtos - Toners";
-                    ViewBag.Categoria = "Toners";
-                    return View(listaDeProdutos);
-                case ('C'):
-                    listaDeProdutos = new ProdutoDAO().ListaCartuchos();
-                    ViewBag.Title = "Produtos - Cartuchos";
-                    ViewBag.Categoria = "Cartuchos";
-                    return View(listaDeProdutos);
-            }
+                data = new ProdutoDAO().Lista()
+            }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult getCategorias()
@@ -69,7 +56,13 @@ namespace MatrixMax.Controllers
         public ActionResult Adiciona(Produto produto)
         {
             new ProdutoDAO().Adiciona(produto);
-            return RedirectToAction("Index", new { C = "G" });
+            return RedirectToAction("Index");
+        }
+        
+        public JsonResult Desativa(int id)
+        {
+            new ProdutoDAO().Desativa(id);
+            return Json(new { apagou = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }

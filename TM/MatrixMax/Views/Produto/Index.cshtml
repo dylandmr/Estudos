@@ -1,9 +1,8 @@
-﻿@model IList<MatrixMax.Models.Produto>
-<div class="breadcrumbs">
+﻿<div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Dashboard</h1>
+                <h1>Gerenciar produtos</h1>
             </div>
         </div>
     </div>
@@ -11,9 +10,8 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Produtos</a></li>
-                    <li class="active">@ViewBag.Categoria</li>
+                    <li><a href="/Home/Index">Dashboard</a></li>
+                    <li><a href="/Produto/Index">Produtos</a></li>
                 </ol>
             </div>
         </div>
@@ -28,10 +26,26 @@
                         <strong class="card-title">Produtos</strong>
                     </div>
                     <div class="card-body">
+                        <div class="col-sm-12" hidden id="msgProdutoAdicionado">
+                            <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                                <span class="badge badge-pill badge-success">sucesso</span> Produto adicionado.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" hidden id="msgProdutoRemovido">
+                            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                <span class="badge badge-pill badge-danger">sucesso</span> Produto removido.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
                         <table id="bootstrap-data-table" class="table table-striped table-hover table-bordered tab">
-
                             <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Nome</th>
                                     <th>Preço(s)</th>
                                     <th>Marca</th>
@@ -39,28 +53,7 @@
                                     <th>Categoria - Subcategoria</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @for (int i = 0; i < Model.Count; i++)
-                                {
-                                    <tr>
-                                        <td>@Model.ElementAt(i).Nome</td>
-                                        <td>
-                                            Unitário - @Html.DisplayFor(p => p.ElementAt(i).PrecoUnitario)
-                                            @if (Model.ElementAt(i).PrecoRecarga > 0)
-                                            {
-                                                <br /> @: Recarga - @Html.DisplayFor(p => p.ElementAt(i).PrecoRecarga)
-                                            }
-                                            @if (Model.ElementAt(i).PrecoTroca > 0)
-                                            {
-                                                <br /> @: Troca - @Html.DisplayFor(p => p.ElementAt(i).PrecoTroca)
-                                            }
-                                        </td>
-                                        <td>@Model.ElementAt(i).Marca.Nome</td>
-                                        <td>@Model.ElementAt(i).Estoque</td>
-                                        <td>@Model.ElementAt(i).Subcategoria.CategoriaDaSubcategoria.Nome - @Model.ElementAt(i).Subcategoria.Nome</td>
-                                    </tr>
-                                }
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
@@ -71,32 +64,38 @@
 
 @Scripts.Render("~/bundles/tables/js")
 
-<div class="modal fade" id="ModalRemover" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="smallmodalLabel">Small Modal</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Deseja realmente remover o produto {nome}?
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Confirm</button>
-            </div>
-        </div>
-    </div>
-</div>
-
+<script src="/Content/js/vendor/jquery.form.min.js"></script>
 <script>
+    function apagaProduto() {
+        var dados = $('#bootstrap-data-table').DataTable().rows('.selected').data();
+        var params = { id: dados[0].Id }; 
+        $.post("/Produto/Desativa", params , atualizaPagina);
+    }
+
+    function atualizaPagina(resposta) {
+        if (resposta.apagou == true) {
+            $('#fechaModalRemover').click(); $('#fechaModalRemover').click();
+            $('#bootstrap-data-table').DataTable().ajax.reload();
+            $("#msgProdutoRemovido").prop("hidden", false);
+        }
+    }
+
+    function pegaDados() {
+        var dados = $('#bootstrap-data-table').DataTable().rows('.selected').data();
+        $('#dialogoDesativar').text("Deseja realmente remover " + dados[0].Nome + "?");
+    }
+
+    $('#FormAdiciona').ajaxForm({
+        success: function() {
+            $('#fechaModalAdd').click(); $('#fechaModalAdd').click();
+            $('#bootstrap-data-table').DataTable().ajax.reload();
+            $("#msgProdutoAdicionado").prop("hidden", false);
+        }
+    });
+
     $.getJSON("/Produto/getCategorias", null, function (data) {
-        $.each(data.Categorias, function (index, item) { 
-            $("#categoriaAdd").append( 
+        $.each(data.Categorias, function (index, item) {
+            $("#categoriaAdd").append(
                 $("<option></option>")
                     .text(item.Nome)
                     .val(item.Id)
@@ -162,12 +161,32 @@
     }
 </script>
 
+<div class="modal fade" id="ModalRemover" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="smallmodalLabel">Desativar produto</h5>
+                <button type="button" id="fechaModalRemover" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="dialogoDesativar">111</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="apagaProduto()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="ModalAdicionar" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="largeModalLabel">Adicionar Produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" id="fechaModalAdd" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -175,7 +194,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body card-block">
-                            <form action="/Produto/Adiciona" method="post" class="">
+                            <form action="/Produto/Adiciona" method="post" id="FormAdiciona">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">Nome</div>

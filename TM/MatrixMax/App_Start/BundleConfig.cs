@@ -26,6 +26,7 @@ namespace MatrixMax.App_Start
             bundles.Add(new ScriptBundle("~/bundles/js")
                 .Include(
                 "~/Content/js/vendor/jquery-2.1.4.min.js",
+                "~/Content/js/vendor/jquery.form.min.js",
                 "~/Content/js/plugins.js",
                 "~/Content/js/main.js",
                 "~/Content/js/lib/chart-js/Chart.bundle.js",

@@ -18,20 +18,39 @@
         buttons: [
             { text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalAdicionar">Adicionar <i class="fa fa-plus-circle"></i></button>' },
             { extend: 'selectedSingle', text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalEditar">Editar <i class="fa fa-edit"></i></button>' },
-            { extend: 'selectedSingle', text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalRemover">Desativar <i class="fa fa-minus-circle"></i></button>' }
+            { extend: 'selectedSingle', text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalRemover" onclick="pegaDados()">Desativar <i class="fa fa-minus-circle"></i></button>' }
         ],
         "language":
             {
-                "info": "Mostrando _TOTAL_ produtos.",
+                "info": "Mostrando _TOTAL_ produto(s).",
                 "zeroRecords": "Nenhum resultado encontrado.",
                 "infoEmpty": "Mostrando 0 produtos.",
                 "infoFiltered": "(Filtrado de _MAX_ itens.)",
                 "decimal": ",",
                 "thousands": ".",
-                "search": "Buscar produto: ",
+                "search": "Buscar produto pelo nome: ",
                 "loadingRecords": "Carregando...",
                 "processing": "Processando..."
             },
+        "ajax": {
+            "url": "/Produto/getProdutos",
+            "type": "GET",
+            "datatype": "json",
+        },
+        columns: [
+            { data: "Id", visible: false, searchable: false },
+            { data: "Nome" },
+            { data: "PrecoUnitario", searchable: false },
+            { data: "Marca.Nome", searchable: false },
+            { data: "Estoque", searchable: false },
+            {
+                data: "Subcategoria.Nome",
+                searchable: false,
+                render: function (data, type, row) {
+                    return row.Subcategoria.CategoriaDaSubcategoria.Nome + " - " + row.Subcategoria.Nome;
+                }
+            },
+        ],
         lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
     });
 
