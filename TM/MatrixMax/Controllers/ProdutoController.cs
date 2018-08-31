@@ -10,11 +10,15 @@ namespace MatrixMax.Controllers
 {
     public class ProdutoController : Controller
     {
-        // GET: Produto
         public ActionResult Index()
         {
             ViewBag.Title = "Produtos";
             return View();
+        }
+
+        public JsonResult getProduto(int id)
+        {
+            return Json(new ProdutoDAO().BuscaPorId(id), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult getProdutos()
@@ -58,7 +62,14 @@ namespace MatrixMax.Controllers
             new ProdutoDAO().Adiciona(produto);
             return RedirectToAction("Index");
         }
-        
+
+        [HttpPost]
+        public ActionResult Atualiza(Produto produto)
+        {
+            new ProdutoDAO().Atualiza(produto);
+            return RedirectToAction("Index");
+        }
+
         public JsonResult Desativa(int id)
         {
             new ProdutoDAO().Desativa(id);

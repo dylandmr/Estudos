@@ -9,20 +9,20 @@
 
 
     $('#bootstrap-data-table').DataTable({
-        dom: 'Bfrtip',
-        paging: false,
+        dom: '<Bf<t>ilp>',
+        //paging: false,
         select: {
             style: 'single',
             info: false
         },
         buttons: [
             { text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalAdicionar">Adicionar <i class="fa fa-plus-circle"></i></button>' },
-            { extend: 'selectedSingle', text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalEditar">Editar <i class="fa fa-edit"></i></button>' },
+            { extend: 'selectedSingle', text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalEditar" onclick="populaEditar()">Editar <i class="fa fa-edit"></i></button>' },
             { extend: 'selectedSingle', text: '<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#ModalRemover" onclick="pegaDados()">Desativar <i class="fa fa-minus-circle"></i></button>' }
         ],
         "language":
             {
-                "info": "Mostrando _TOTAL_ produto(s).",
+                "info": "Total: _TOTAL_ produto(s) - Página _PAGE_ de _PAGES_.",
                 "zeroRecords": "Nenhum resultado encontrado.",
                 "infoEmpty": "Mostrando 0 produtos.",
                 "infoFiltered": "(Filtrado de _MAX_ itens.)",
@@ -30,7 +30,14 @@
                 "thousands": ".",
                 "search": "Buscar produto pelo nome: ",
                 "loadingRecords": "Carregando...",
-                "processing": "Processando..."
+                "processing": "Processando...",
+                "paginate": {
+                    "first": "Primeira",
+                    "last": "Última",
+                    "next": "Próxima",
+                    "previous": "Anterior"
+                },
+                "lengthMenu": "Mostrar _MENU_ itens por página.",
             },
         "ajax": {
             "url": "/Produto/getProdutos",
@@ -39,19 +46,37 @@
         },
         columns: [
             { data: "Id", visible: false, searchable: false },
+            { data: "Subcategoria.CategoriaId", visible: false, searchable: false },
+            { data: "SubcategoriaId", visible: false, searchable: false },
+            { data: "PrecoRecarga", visible: false, searchable: false },
+            { data: "PrecoTroca", visible: false, searchable: false },
+            { data: "MarcaId", visible: false, searchable: false },
             { data: "Nome" },
-            { data: "PrecoUnitario", searchable: false },
-            { data: "Marca.Nome", searchable: false },
-            { data: "Estoque", searchable: false },
+            {
+                data: "PrecoUnitario",
+                searchable: false,
+                orderable: false,
+                render: function (data, type, row) {
+                    if (row.PrecoRecarga != null && row.PrecoTroca != null) {
+                        return row.PrecoUnitario + " - " + row.PrecoRecarga + " - " + row.PrecoTroca;
+                    }
+                    else {
+                        return row.PrecoUnitario;
+                    }
+                }
+            },
+            { data: "Marca.Nome", searchable: false, orderable: false },
+            { data: "Estoque", searchable: false, orderable: false },
             {
                 data: "Subcategoria.Nome",
                 searchable: false,
+                orderable: false,
                 render: function (data, type, row) {
                     return row.Subcategoria.CategoriaDaSubcategoria.Nome + " - " + row.Subcategoria.Nome;
                 }
             },
         ],
-        lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
+        //lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
     });
 
 

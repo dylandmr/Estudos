@@ -73,7 +73,7 @@ namespace MatrixMax.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).SingleOrDefault(p => p.Id == id);
+                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).SingleOrDefault(p => p.Id == id);
             }
         }
 
