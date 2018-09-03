@@ -28,44 +28,19 @@ namespace MatrixMax.DAO
             }
         }
 
-        public IList<Produto> ListaCartuchos()
-        {
-            using (var contexto = new MatrixMaxContext())
-            {
-                return contexto.Produtos
-                    .Include(p => p.Marca)
-                    .Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria)
-                    .Where(p => p.Subcategoria.CategoriaDaSubcategoria.Id == 2).ToList();
-            }
-        }
-
-        public IList<Produto> ListaToners()
-        {
-            using (var contexto = new MatrixMaxContext())
-            {
-                return contexto.Produtos
-                    .Include(p => p.Marca)
-                    .Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria)
-                    .Where(p => p.Subcategoria.CategoriaDaSubcategoria.Id == 3).ToList();
-            }
-        }
-
-        public IList<Produto> ListaPerifericos()
-        {
-            using (var contexto = new MatrixMaxContext())
-            {
-                return contexto.Produtos
-                    .Include(p => p.Marca)
-                    .Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria)
-                    .Where(p => p.Subcategoria.CategoriaDaSubcategoria.Id == 1).ToList();
-            }
-        }
-
         public IList<Produto> Lista()
         {
             using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).Where(p => p.Ativo).ToList();
+            }
+        }
+
+        public IList<Produto> ListaDesativados()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).Where(p => !p.Ativo).ToList();
             }
         }
 

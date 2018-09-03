@@ -16,7 +16,7 @@
 
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="~/Content/Imagens/favicon.png">
-    
+
     @Styles.Render("~/bundles/css")
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
 
@@ -117,8 +117,7 @@
     </div>
     <!-- HEADER E CONTENT -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-
     @Scripts.Render("~/bundles/js")
+    @RenderSection("scriptsProduto", false)
 </body>
 </html>

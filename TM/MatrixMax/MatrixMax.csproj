@@ -284,6 +284,7 @@
     <Content Include="Content\js\lib\vector-map\jquery.vmap.sampledata.js" />
     <Content Include="Content\js\lib\vector-map\vector.init.js" />
     <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\modalFix.js" />
     <Content Include="Content\js\plugins.js" />
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Content\js\selectFx.js" />
@@ -307,8 +308,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MarcaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
@@ -481,7 +484,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Categoria\" />
+    <Folder Include="Views\Marca\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

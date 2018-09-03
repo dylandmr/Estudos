@@ -29,30 +29,11 @@ namespace MatrixMax.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult getCategorias()
+        public JsonResult getDesativados()
         {
             return Json(new
             {
-                Categorias = from c in new CategoriaDAO().ListaCategorias()
-                            select new { c.Nome, c.Id }
-            }, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult getSubcategorias(int id)
-        {
-            return Json(new
-            {
-                Subcategorias = from c in new CategoriaDAO().ListaSubcategorias(id)
-                             select new { c.Nome, c.Id }
-            }, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult getMarcas()
-        {
-            return Json(new
-            {
-                Marcas = from m in new MarcaDAO().Lista()
-                                select new { m.Nome, m.Id }
+                data = new ProdutoDAO().ListaDesativados()
             }, JsonRequestBehavior.AllowGet);
         }
 
@@ -74,6 +55,12 @@ namespace MatrixMax.Controllers
         {
             new ProdutoDAO().Desativa(id);
             return Json(new { apagou = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Ativa(int id)
+        {
+            new ProdutoDAO().Ativa(id);
+            return Json(new { ativou = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }
