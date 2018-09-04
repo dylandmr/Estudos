@@ -215,7 +215,7 @@
                                     $(".dataTables_filter").addClass('text-center mt-3 mb-3');
                                     $(".dataTables_filter input").removeClass('form-control-sm');
                                     $(".dataTables_filter input").prop('placeholder', 'Pesquisar por nome');
-                                    $(".dataTables_filter").append('<div class="col-4 text-center center"><select id="FiltroCategorias" class="form-control ml-4"><option value="0">Filtrar por categoria</option></select></div>');
+                                    $(".dataTables_filter").append('<div class="col-4 text-center center"><select id="FiltroCategorias" onclick="FiltraPorCategoria()" class="form-control ml-4"><option value="0">Filtrar por categoria</option></select></div>');
                                     $.getJSON("/Categoria/getCategorias", null, function (data) {
                                         $.each(data.Categorias, function (index, item) {
                                             $("#FiltroCategorias").append(
@@ -228,11 +228,12 @@
                                 }
                                 customizaPesquisa(); 
 
-                                $('#FiltroCategorias').on('change', function () {
+                                function FiltraPorCategoria() {
                                     if ($('#FiltroCategorias').val() > 0) {
                                         tabelaprodutos.column(1).search($('#FiltroCategorias').val()).draw();
                                     }
-                                });
+                                }
+
 
                                 $('#precoUnitarioAdd').mask("000,00", { reverse: true });
                                 $('#precoUnitarioEditar').mask("000,00", { reverse: true });
@@ -240,8 +241,36 @@
                                 $('#precoRecargaEditar').mask("000,00", { reverse: true });
                                 $('#precoTrocaAdd').mask("000,00", { reverse: true });
                                 $('#precoTrocaEditar').mask("000,00", { reverse: true });
+                                $('#estoqueAdd').mask("000");
+                                $('#estoqueEditar').mask("000");
 
                                 $('#FormAdiciona').ajaxForm({
+                                    beforeSubmit: function () {
+                                        var precoTrocaNull = $('#precoTrocaAdd').val() == null;
+                                        var precoRecargaNull = $('#precoRecargaAdd').val() == null;
+                                        if (!precoTrocaNull && Number.parseFloat($('#precoTrocaAdd').val()) < 1) {
+                                            $('#msgErroProdutoAdd p').text('Digite um valor válido para os preços (mínimo R$1,00).');
+                                            $('#msgErroProdutoAdd').prop('hidden', false);
+                                            return false;
+                                        }
+                                        if (!precoRecargaNull && Number.parseFloat($('#precoRecargaAdd').val()) < 1) {
+                                            $('#msgErroProdutoAdd p').text('Digite um valor válido para os preços (mínimo R$1,00).');
+                                            $('#msgErroProdutoAdd').prop('hidden', false);
+                                            return false;
+                                        }
+                                        if (Number.parseFloat($('#precoUnitarioAdd').val()) < 1) {
+                                            $('#msgErroProdutoAdd p').text('Digite um valor válido para os preços (mínimo R$1,00).');
+                                            $('#msgErroProdutoAdd').prop('hidden', false);
+                                            return false;
+                                        }
+                                        if (Number.parseInt($('#estoqueAdd').val()) < 1 || Number.parseInt($('#estoqueAdd').val()) > 100) {
+                                            $('#msgErroProdutoAdd p').text('Estoque inicial inválido (mínimo 1 e máximo 100).');
+                                            $('#msgErroProdutoAdd').prop('hidden', false);
+                                            return false;
+                                        }
+                                        $('#msgErroProdutoAdd').prop('hidden', true);
+                                        return true;
+                                    },
                                     success: function () {
                                         $('#fechaModalAdd').click(); $('#fechaModalAdd').click();
                                         tabelaprodutos.ajax.reload();
@@ -267,12 +296,13 @@
                                             $('#MarcaEditar').val() == dados[0].MarcaId &&
                                             $('#categoriaEditar').val() == dados[0].Subcategoria.CategoriaId) {
 
+                                            var precoTrocaNull = (dados[0].PrecoTroca == null) && ($('#precoTrocaEditar').val() == null);
+                                            var precoRecargaNull = (dados[0].PrecoRecarga == null) && ($('#precoRecargaEditar').val() == null);
                                             if (dados[0].PrecoRecarga == null && dados[0].PrecoTroca == null) {
+                                                $('#msgProdutoNaoAlterado p').text('Nenhuma alteração feita no produto.');
                                                 $('#msgProdutoNaoAlterado').prop('hidden', false);
                                                 return false;
                                             } else {
-                                                var precoTrocaNull = (dados[0].PrecoTroca == null) && ($('#precoTrocaEditar').val() == null);
-                                                var precoRecargaNull = (dados[0].PrecoRecarga == null) && ($('#precoRecargaEditar').val() == null);
                                                 var precoRecargaDigitado = $('#precoRecargaEditar').masked(Number.parseFloat(dados[0].PrecoRecarga).toFixed(2));
                                                 var precoTrocaDigitado = $('#precoTrocaEditar').masked(Number.parseFloat(dados[0].PrecoTroca).toFixed(2));
                                                 if (
@@ -281,9 +311,30 @@
                                                     ($('#precoRecargaEditar').val() == precoRecargaDigitado) && ($('#precoTrocaEditar').val() == precoTrocaDigitado)
                                                     )
                                                 {
+                                                    $('#msgProdutoNaoAlterado p').text('Nenhuma alteração feita no produto.');
                                                     $('#msgProdutoNaoAlterado').prop('hidden', false);
                                                     return false;
                                                 } else {
+                                                    if (Number.parseFloat($('#precoUnitarioEditar').val()) < 1) {
+                                                        $('#msgProdutoNaoAlterado p').text('Digite um valor válido para os preços (mínimo R$1,00).');
+                                                        $('#msgProdutoNaoAlterado').prop('hidden', false);
+                                                        return false;
+                                                    }
+                                                    if (!precoTrocaNull && Number.parseFloat($('#precoTrocaEditar').val()) < 1) {
+                                                        $('#msgProdutoNaoAlterado p').text('Digite um valor válido para os preços (mínimo R$1,00).');
+                                                        $('#msgProdutoNaoAlterado').prop('hidden', false);
+                                                        return false;
+                                                    }
+                                                    if (!precoRecargaNull && Number.parseFloat($('#precoRecargaEditar').val()) < 1) {
+                                                        $('#msgProdutoNaoAlterado p').text('Digite um valor válido para os preços (mínimo R$1,00).');
+                                                        $('#msgProdutoNaoAlterado').prop('hidden', false);
+                                                        return false;
+                                                    }
+                                                    if (Number.parseInt($('#estoqueEditar').val()) < 1 || Number.parseInt($('#estoqueEditar').val()) > 100) {
+                                                        $('#msgProdutoNaoAlterado p').text('Estoque inicial inválido (mínimo 1 e máximo 100).');
+                                                        $('#msgProdutoNaoAlterado').prop('hidden', false);
+                                                        return false;
+                                                    }
                                                     $('#msgProdutoNaoAlterado').prop('hidden', true);
                                                     return true;
                                                 }
@@ -558,6 +609,9 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 <div class="card-body card-block">
+                                                    <div class="alert alert-danger" id="msgErroProdutoAdd" hidden role="alert">
+                                                        <p></p>
+                                                    </div>
                                                     <form action="/Produto/Adiciona" method="post" id="FormAdiciona">
                                                         <div class="form-group">
                                                             <div class="input-group">
@@ -592,7 +646,7 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Estoque inicial</div>
-                                                                <input type="number" id="estoqueAdd" min="1" value="0" max="100" required name="produto.Estoque" class="form-control">
+                                                                <input type="text" id="estoqueAdd" required name="produto.Estoque" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -655,7 +709,7 @@
                                             <div class="card">
                                                 <div class="card-body card-block">
                                                     <div class="alert alert-danger" id="msgProdutoNaoAlterado" hidden role="alert">
-                                                        Nenhuma alteração feita no produto.
+                                                        <p></p>
                                                     </div>
                                                     <form action="/Produto/Atualiza" method="post" id="FormAtualiza">
                                                         <input type="text" id="IdEditar" name="produto.Id" hidden class="form-control">
@@ -693,7 +747,7 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Estoque inicial</div>
-                                                                <input type="number" id="estoqueEditar" min="1" value="1" required max="100" name="produto.Estoque" class="form-control">
+                                                                <input type="text" id="estoqueEditar" required name="produto.Estoque" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
