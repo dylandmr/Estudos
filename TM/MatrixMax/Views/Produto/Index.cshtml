@@ -127,10 +127,9 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 <div class="card-body card-block">
-                                                    <div class="alert alert-danger" id="msgErroProdutoAdd" hidden role="alert">
-                                                        <p></p>
-                                                    </div>
+                                                    <div class="alert alert-danger" id="msgErroProdutoAdd" hidden role="alert"><p id="textoMsgErroProdutoAdd"></p></div>
                                                     <form action="/Produto/Adiciona" method="post" id="FormAdiciona">
+                                                        <input type="text" name="produto.Ativo" value="true" hidden class="form-control">
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Nome</div>
@@ -156,7 +155,7 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Subcategoria</div>
-                                                                <select name="produto.SubcategoriaId" id="subcategoriaAdd" required disabled class="form-control">
+                                                                <select name="produto.SubcategoriaId" id="subcategoriaAdd" disabled class="form-control">
                                                                     <option value="">Selecione...</option>
                                                                 </select>
                                                             </div>
@@ -164,14 +163,14 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Estoque inicial</div>
-                                                                <input type="text" id="estoqueAdd" required name="produto.Estoque" class="form-control">
+                                                                <input type="text" id="estoqueAdd" name="produto.Estoque" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Preço unitário</div>
                                                                 <div class="input-group-addon">R$</div>
-                                                                <input type="text" id="precoUnitarioAdd" required name="produto.PrecoUnitario" class="form-control">
+                                                                <input type="text" id="precoUnitarioAdd" name="produto.PrecoUnitario" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group" id="precoRecargaDivAdd">
@@ -227,7 +226,7 @@
                                             <div class="card">
                                                 <div class="card-body card-block">
                                                     <div class="alert alert-danger" id="msgProdutoNaoAlterado" hidden role="alert">
-                                                        <p></p>
+                                                        <p id="textoMsgProdutoNaoAlterado"></p>
                                                     </div>
                                                     <form action="/Produto/Atualiza" method="post" id="FormAtualiza">
                                                         <input type="text" id="IdEditar" name="produtoedit.Id" hidden class="form-control">

@@ -4,7 +4,7 @@ var desativados = {
     dom: '<"tabelaprodutosbotoes"B><"tabelaprodutosfiltros"f><"tabelaprodutosinfo"il><tp>',
     select: true,
     buttons: [
-        { extend: 'selected', text: '<button type="button" class="btn btn-primary mb-1 rounded" data-toggle="modal" data-target="#ModalAtivar" onclick="pegaDados()">Ativar selecionados <i class="fa fa-minus-circle"></i></button>' }
+        { extend: 'selected', text: '<button type="button" class="btn btn-success mb-1 rounded" data-toggle="modal" data-target="#ModalAtivar" onclick="pegaDados()">Ativar selecionados <i class="fa fa-check"></i></button>' }
     ],
     "language":
         {
@@ -92,7 +92,7 @@ var ativados = {
     select: true,
     buttons: [
         { text: '<button type="button" class="btn btn-success rounded" data-toggle="modal" onclick="pegaCategoriasEMarcas(\'Add\')" data-target="#ModalAdicionar">Novo produto <i class="fa fa-plus-circle"></i></button>' },
-        { extend: 'selected', text: '<button type="button" class="btn btn-danger rounded" data-toggle="modal" data-target="#ModalRemover" onclick="pegaDados()">Desativar selecionados <i class="fa fa-minus-circle"></i></button>' }
+        { extend: 'selected', text: '<button type="button" class="btn btn-danger rounded" data-toggle="modal" data-target="#ModalRemover" onclick="pegaDados()">Desativar selecionados <i class="fa fa-ban"></i></button>' }
     ],
     "language":
         {

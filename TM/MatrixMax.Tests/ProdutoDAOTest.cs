@@ -37,5 +37,18 @@ namespace MatrixMax.DAO
 
             Assert.IsFalse(produto.Ativo);
         }
+
+        [Test]
+        public void TestaVerificaExistenciaDeProduto()
+        {
+            var dao = new ProdutoDAO();
+            var existe = dao.Existe(1);
+
+            Assert.IsTrue(existe);
+
+            var naoexiste = dao.Existe(999);
+
+            Assert.IsFalse(naoexiste);
+        }
     }
 }

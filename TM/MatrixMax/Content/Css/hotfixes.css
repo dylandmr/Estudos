@@ -23,3 +23,13 @@ table.dataTable.table-striped tbody > tr.odd > .selected {
     margin: 0;
     margin-top: 5px;
 }
+
+input.campoInvalido, input.campoInvalido:focus, select.campoInvalido, select.campoInvalido:focus {
+    border: 1px solid red;
+}
+
+.msgErroForm {
+    list-style-type: none;
+    color: red;
+    font-weight: bold;
+}

@@ -38,17 +38,30 @@ namespace MatrixMax.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adiciona(Produto produto)
+        public JsonResult Adiciona(Produto produto)
         {
-            new ProdutoDAO().Adiciona(produto);
-            return RedirectToAction("Index");
+            if (produto.Valida())
+            {
+                new ProdutoDAO().Adiciona(produto);
+                return Json(new { adicionou = true });
+            }
+            else return Json(new { adicionou = false, msg = "Dados inválidos informados." });
         }
 
         [HttpPost]
-        public ActionResult Atualiza(Produto produtoedit)
+        public JsonResult Atualiza(Produto produtoedit)
         {
-            new ProdutoDAO().Atualiza(produtoedit);
-            return RedirectToAction("Index");
+            if (produtoedit.Valida())
+            {
+                var dao = new ProdutoDAO();
+                if (dao.Existe(produtoedit.Id) && !dao.ExisteIgual(produtoedit))
+                {
+                    dao.Atualiza(produtoedit);
+                    return Json(new { atualizou = true });
+                }
+                else return Json(new { atualizou = false, msg = "Nenhuma alteração feita no produto." });
+            }
+            else return Json(new { atualizou = false, msg = "Dados inválidos informados." });
         }
 
         public JsonResult Desativa(int[] ids)

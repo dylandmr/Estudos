@@ -52,6 +52,14 @@ namespace MatrixMax.DAO
             }
         }
 
+        public bool Existe(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Produtos.Find(id) != null;
+            }
+        }
+
         public void Desativa(int id)
         {
             using (var contexto = new MatrixMaxContext())
@@ -71,6 +79,15 @@ namespace MatrixMax.DAO
                 produto.Ativo = true;
                 contexto.Entry(produto).State = EntityState.Modified;
                 contexto.SaveChanges();
+            }
+        }
+
+        public bool ExisteIgual(Produto produto)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var busca = contexto.Produtos.Find(produto.Id);
+                return busca.Equals(produto);
             }
         }
     }

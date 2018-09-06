@@ -8,15 +8,13 @@
 
 function processaAtivoDesativo() {
     if ($('input:radio[name=opcaoAtivoDesativo]:checked').val() == 'ativa') {
-        $('#RadioDesativos').removeClass('btn-danger');
-        $('#RadioDesativos').addClass('btn-secondary');
+        $('#RadioDesativos').removeClass('btn-danger').addClass('btn-secondary');
         $('#RadioAtivos').addClass('btn-success');
         tabelaprodutos.clear().destroy();
         tabelaprodutos = $('#bootstrap-data-table').DataTable(ativados);
     };
     if ($('input:radio[name=opcaoAtivoDesativo]:checked').val() == 'desativa') {
-        $('#RadioAtivos').removeClass('btn-success');
-        $('#RadioAtivos').addClass('btn-secondary');
+        $('#RadioAtivos').removeClass('btn-success').addClass('btn-secondary');
         $('#RadioDesativos').addClass('btn-danger');
         tabelaprodutos.clear().destroy();
         tabelaprodutos = $('#bootstrap-data-table').DataTable(desativados);
@@ -241,5 +239,6 @@ function processaTogglePrecos(preco, form) {
     } else {
         $('#preco' + preco + form).prop('disabled', true);
         $('#preco' + preco + form).val("Desabilitado");
+        $('#preco' + preco + form).removeClass("campoInvalido");
     }
 }
