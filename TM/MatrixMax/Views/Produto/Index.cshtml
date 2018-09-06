@@ -44,9 +44,8 @@
                                 <input type="radio" name="opcaoAtivoDesativo" onchange="processaAtivoDesativo()" value="desativa" autocomplete="off"> Desativados
                             </label>
                         </div>
-
-                        <table id="bootstrap-data-table" class="table table-secondary table-sm table-striped table-hover table-bordered tab">
-                            <thead class="thead-dark">
+                        <table id="bootstrap-data-table" class="table-striped table table-dark table-bordered ">
+                            <thead class="thead-light">
                                 <tr>
                                     <th>Id</th>
                                     <th>Subcategoria.CategoriaId</th>
@@ -69,491 +68,10 @@
                             <script src="~/Content/js/jquery.mask.js"></script>
                             <script src="~/Content/js/vendor/jquery.form.min.js"></script>
                             <script src="~/Content/js/modalFix.js"></script>
-                            <script>
-                                var desativados = {
-                                    dom: '<Bf<t>ilp>',
-                                    select: {
-                                        style: 'single',
-                                        info: false
-                                    },
-                                    buttons: [
-                                        { extend: 'selectedSingle', text: '<button type="button" class="btn btn-outline-primary mb-1" data-toggle="modal" data-target="#ModalAtivar" onclick="pegaDados()">Ativar <i class="fa fa-minus-circle"></i></button>' }
-                                    ],
-                                    "language":
-                                        {
-                                            "info": "Total: _TOTAL_ produto(s) - Página _PAGE_ de _PAGES_.",
-                                            "zeroRecords": "Nenhum resultado encontrado.",
-                                            "infoEmpty": "Mostrando 0 produtos.",
-                                            "infoFiltered": "(Filtrado de _MAX_ itens.)",
-                                            "decimal": ",",
-                                            "thousands": ".",
-                                            "search": "",
-                                            "loadingRecords": "Carregando...",
-                                            "processing": "Processando...",
-                                            "paginate": {
-                                                "first": "Primeira",
-                                                "last": "Última",
-                                                "next": "Próxima",
-                                                "previous": "Anterior"
-                                            },
-                                            "lengthMenu": "Mostrar _MENU_ itens por página.",
-                                        },
-                                    "ajax": {
-                                        "url": "/Produto/getDesativados",
-                                        "type": "GET",
-                                        "datatype": "json",
-                                    },
-                                    columns: [
-                                        { data: "Id", visible: false, searchable: false },
-                                        { data: "Subcategoria.CategoriaId", visible: false, searchable: true },
-                                        { data: "SubcategoriaId", visible: false, searchable: false },
-                                        { data: "PrecoRecarga", visible: false, searchable: false },
-                                        { data: "PrecoTroca", visible: false, searchable: false },
-                                        { data: "MarcaId", visible: false, searchable: false },
-                                        { data: "Nome" },
-                                        {
-                                            data: "PrecoUnitario",
-                                            searchable: false,
-                                            orderable: false,
-                                            render: function (data, type, row) {
-                                                if (row.PrecoRecarga != null && row.PrecoTroca != null) {
-                                                    return "UN - R$" + Number.parseFloat(row.PrecoUnitario).toFixed(2).replace('.', ',') +
-                                                        "<br/>TR - R$" + Number.parseFloat(row.PrecoTroca).toFixed(2).replace('.', ',') +
-                                                        "<br/>REC - R$" + Number.parseFloat(row.PrecoRecarga).toFixed(2).replace('.', ',');
-                                                }
-                                                else {
-                                                    return "UN - R$" + Number.parseFloat(row.PrecoUnitario).toFixed(2).replace('.', ',');
-                                                }
-                                            }
-                                        },
-                                        { data: "Marca.Nome", searchable: false, orderable: false },
-                                        { data: "Estoque", searchable: false, orderable: false },
-                                        {
-                                            data: "Subcategoria.Nome",
-                                            searchable: false,
-                                            orderable: false,
-                                            render: function (data, type, row) {
-                                                return row.Subcategoria.CategoriaDaSubcategoria.Nome + " - " + row.Subcategoria.Nome;
-                                            }
-                                        },
-                                    ],
-                                }
-                                var ativados = {
-                                    dom: '<Bf<t>ilp>',
-                                    select: {
-                                        style: 'single',
-                                        info: false
-                                    },
-                                    buttons: [
-                                        { text: '<button type="button" class="btn btn-outline-success mb-1" data-toggle="modal" onclick="pegaCategoriasEMarcas(\'Add\')" data-target="#ModalAdicionar">Adicionar <i class="fa fa-plus-circle"></i></button>' },
-                                        { extend: 'selectedSingle', text: '<button type="button" class="btn btn-outline-warning mb-1" data-toggle="modal" data-target="#ModalEditar" onclick="populaEditar()">Editar <i class="fa fa-edit"></i></button>' },
-                                        { extend: 'selectedSingle', text: '<button type="button" class="btn btn-outline-danger mb-1" data-toggle="modal" data-target="#ModalRemover" onclick="pegaDados()">Desativar <i class="fa fa-minus-circle"></i></button>' }
-                                    ],
-                                    "language":
-                                        {
-                                            "info": "Total: _TOTAL_ produto(s) - Página _PAGE_ de _PAGES_.",
-                                            "zeroRecords": "Nenhum resultado encontrado.",
-                                            "infoEmpty": "Mostrando 0 produtos.",
-                                            "infoFiltered": "(Filtrado de _MAX_ itens.)",
-                                            "decimal": ",",
-                                            "thousands": ".",
-                                            "search": "",
-                                            "loadingRecords": "Carregando...",
-                                            "processing": "Processando...",
-                                            "paginate": {
-                                                "first": "Primeira",
-                                                "last": "Última",
-                                                "next": "Próxima",
-                                                "previous": "Anterior"
-                                            },
-                                            "lengthMenu": "Mostrar _MENU_ itens por página.",
-                                        },
-                                    "ajax": {
-                                        "url": "/Produto/getProdutos",
-                                        "type": "GET",
-                                        "datatype": "json",
-                                    },
-                                    columns: [
-                                        { data: "Id", visible: false, searchable: false },
-                                        { data: "Subcategoria.CategoriaId", visible: false, searchable: true },
-                                        { data: "SubcategoriaId", visible: false, searchable: false },
-                                        { data: "PrecoRecarga", visible: false, searchable: false },
-                                        { data: "PrecoTroca", visible: false, searchable: false },
-                                        { data: "MarcaId", visible: false, searchable: false },
-                                        { data: "Nome" },
-                                        {
-                                            data: "PrecoUnitario",
-                                            searchable: false,
-                                            orderable: false,
-                                            render: function (data, type, row) {
-                                                var precos = "UN - R$" + Number.parseFloat(row.PrecoUnitario).toFixed(2).replace('.', ',');
-                                                if (row.PrecoRecarga != null) {
-                                                    precos += "<br/>REC - R$" + Number.parseFloat(row.PrecoRecarga).toFixed(2).replace('.', ',');
-                                                }
-                                                if (row.PrecoTroca != null) {
-                                                    precos += "<br/>TR - R$" + Number.parseFloat(row.PrecoTroca).toFixed(2).replace('.', ',');
-                                                }
-
-                                                return precos;
-                                            }
-                                        },
-                                        { data: "Marca.Nome", searchable: false, orderable: false },
-                                        { data: "Estoque", searchable: false, orderable: false },
-                                        {
-                                            data: "Subcategoria.Nome",
-                                            searchable: false,
-                                            orderable: false,
-                                            render: function (data, type, row) {
-                                                return row.Subcategoria.CategoriaDaSubcategoria.Nome + " - " + row.Subcategoria.Nome;
-                                            }
-                                        },
-                                    ],
-                                }
-                                var tabelaprodutos = $('#bootstrap-data-table').DataTable(ativados);
-
-                                function customizaPesquisa() {
-                                    $(".dataTables_filter").addClass('text-center mt-3 mb-3');
-                                    $(".dataTables_filter input").removeClass('form-control-sm');
-                                    $(".dataTables_filter input").prop('placeholder', 'Pesquisar por nome');
-                                    $(".dataTables_filter").append('<div class="col-4 text-center center"><select id="FiltroCategorias" onclick="FiltraPorCategoria()" class="form-control ml-4"><option value="0">Filtrar por categoria</option></select></div>');
-                                    $.getJSON("/Categoria/getCategorias", null, function (data) {
-                                        $.each(data.Categorias, function (index, item) {
-                                            $("#FiltroCategorias").append(
-                                                $("<option></option>")
-                                                    .text(item.Nome)
-                                                    .val(item.Id)
-                                            );
-                                        });
-                                    });
-                                }
-                                customizaPesquisa(); 
-
-                                function FiltraPorCategoria() {
-                                    if ($('#FiltroCategorias').val() > 0) {
-                                        tabelaprodutos.column(1).search($('#FiltroCategorias').val()).draw();
-                                    }
-                                }
-
-
-                                $('#precoUnitarioAdd').mask("000,00", { reverse: true });
-                                $('#precoUnitarioEditar').mask("000,00", { reverse: true });
-                                $('#precoRecargaAdd').mask("000,00", { reverse: true });
-                                $('#precoRecargaEditar').mask("000,00", { reverse: true });
-                                $('#precoTrocaAdd').mask("000,00", { reverse: true });
-                                $('#precoTrocaEditar').mask("000,00", { reverse: true });
-                                $('#estoqueAdd').mask("000");
-                                $('#estoqueEditar').mask("000");
-
-                                $('#FormAdiciona').ajaxForm({
-                                    beforeSubmit: function () {
-                                        var precoTrocaNull = $('#precoTrocaAdd').val() == null;
-                                        var precoRecargaNull = $('#precoRecargaAdd').val() == null;
-                                        if (!precoTrocaNull && Number.parseFloat($('#precoTrocaAdd').val()) < 1) {
-                                            $('#msgErroProdutoAdd p').text('Digite um valor válido para os preços (mínimo R$1,00).');
-                                            $('#msgErroProdutoAdd').prop('hidden', false);
-                                            return false;
-                                        }
-                                        if (!precoRecargaNull && Number.parseFloat($('#precoRecargaAdd').val()) < 1) {
-                                            $('#msgErroProdutoAdd p').text('Digite um valor válido para os preços (mínimo R$1,00).');
-                                            $('#msgErroProdutoAdd').prop('hidden', false);
-                                            return false;
-                                        }
-                                        if (Number.parseFloat($('#precoUnitarioAdd').val()) < 1) {
-                                            $('#msgErroProdutoAdd p').text('Digite um valor válido para os preços (mínimo R$1,00).');
-                                            $('#msgErroProdutoAdd').prop('hidden', false);
-                                            return false;
-                                        }
-                                        if (Number.parseInt($('#estoqueAdd').val()) < 1 || Number.parseInt($('#estoqueAdd').val()) > 100) {
-                                            $('#msgErroProdutoAdd p').text('Estoque inicial inválido (mínimo 1 e máximo 100).');
-                                            $('#msgErroProdutoAdd').prop('hidden', false);
-                                            return false;
-                                        }
-                                        $('#msgErroProdutoAdd').prop('hidden', true);
-                                        return true;
-                                    },
-                                    success: function () {
-                                        $('#fechaModalAdd').click(); $('#fechaModalAdd').click();
-                                        tabelaprodutos.ajax.reload();
-                                        $("#mensagensContainer").append(
-                                            '<div class="col-sm-12" id="msgProdutoAdicionado">'
-                                            + '<div class="alert  alert-success alert-dismissible fade show" role="alert">'
-                                            + '<span class="badge badge-pill badge-success">sucesso</span> Produto adicionado.'
-                                            + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-                                            + '<span aria-hidden="true">&times;</span>'
-                                            + '</button>'
-                                            + '</div>'
-                                            + '</div>');
-                                    }
-                                });
-
-                                $('#FormAtualiza').ajaxForm({
-                                    beforeSubmit: function () {
-                                        var dados = tabelaprodutos.rows('.selected').data();
-                                        if ($('#IdEditar').val() == dados[0].Id &&
-                                            $('#nomeEditar').val() == dados[0].Nome &&
-                                            $('#estoqueEditar').val() == dados[0].Estoque &&
-                                            $('#precoUnitarioEditar').val() == $('#precoUnitarioEditar').masked(Number.parseFloat(dados[0].PrecoUnitario).toFixed(2)) &&
-                                            $('#MarcaEditar').val() == dados[0].MarcaId &&
-                                            $('#categoriaEditar').val() == dados[0].Subcategoria.CategoriaId) {
-
-                                            var precoTrocaNull = (dados[0].PrecoTroca == null) && ($('#precoTrocaEditar').val() == null);
-                                            var precoRecargaNull = (dados[0].PrecoRecarga == null) && ($('#precoRecargaEditar').val() == null);
-                                            if (dados[0].PrecoRecarga == null && dados[0].PrecoTroca == null) {
-                                                $('#msgProdutoNaoAlterado p').text('Nenhuma alteração feita no produto.');
-                                                $('#msgProdutoNaoAlterado').prop('hidden', false);
-                                                return false;
-                                            } else {
-                                                var precoRecargaDigitado = $('#precoRecargaEditar').masked(Number.parseFloat(dados[0].PrecoRecarga).toFixed(2));
-                                                var precoTrocaDigitado = $('#precoTrocaEditar').masked(Number.parseFloat(dados[0].PrecoTroca).toFixed(2));
-                                                if (
-                                                    ($('#precoRecargaEditar').val() == precoRecargaDigitado) && precoTrocaNull ||
-                                                    ($('#precoTrocaEditar').val() == precoTrocaDigitado) && precoRecargaNull ||
-                                                    ($('#precoRecargaEditar').val() == precoRecargaDigitado) && ($('#precoTrocaEditar').val() == precoTrocaDigitado)
-                                                    )
-                                                {
-                                                    $('#msgProdutoNaoAlterado p').text('Nenhuma alteração feita no produto.');
-                                                    $('#msgProdutoNaoAlterado').prop('hidden', false);
-                                                    return false;
-                                                } else {
-                                                    if (Number.parseFloat($('#precoUnitarioEditar').val()) < 1) {
-                                                        $('#msgProdutoNaoAlterado p').text('Digite um valor válido para os preços (mínimo R$1,00).');
-                                                        $('#msgProdutoNaoAlterado').prop('hidden', false);
-                                                        return false;
-                                                    }
-                                                    if (!precoTrocaNull && Number.parseFloat($('#precoTrocaEditar').val()) < 1) {
-                                                        $('#msgProdutoNaoAlterado p').text('Digite um valor válido para os preços (mínimo R$1,00).');
-                                                        $('#msgProdutoNaoAlterado').prop('hidden', false);
-                                                        return false;
-                                                    }
-                                                    if (!precoRecargaNull && Number.parseFloat($('#precoRecargaEditar').val()) < 1) {
-                                                        $('#msgProdutoNaoAlterado p').text('Digite um valor válido para os preços (mínimo R$1,00).');
-                                                        $('#msgProdutoNaoAlterado').prop('hidden', false);
-                                                        return false;
-                                                    }
-                                                    if (Number.parseInt($('#estoqueEditar').val()) < 1 || Number.parseInt($('#estoqueEditar').val()) > 100) {
-                                                        $('#msgProdutoNaoAlterado p').text('Estoque inicial inválido (mínimo 1 e máximo 100).');
-                                                        $('#msgProdutoNaoAlterado').prop('hidden', false);
-                                                        return false;
-                                                    }
-                                                    $('#msgProdutoNaoAlterado').prop('hidden', true);
-                                                    return true;
-                                                }
-                                            }
-                                        }
-                                        else {
-                                            $('#msgProdutoNaoAlterado').prop('hidden', true);
-                                            return true;
-                                        }
-                                    },
-                                    success: function () {
-                                        $('#fechaModalEdita').click(); $('#fechaModalEdita').click();
-                                        tabelaprodutos.ajax.reload();
-                                        $("#mensagensContainer").append(
-                                            '<div class="col-sm-12" id="msgProdutoAtualizado">'
-                                            + '<div class="sufee-alert alert with-close alert-warning alert-dismissible fade show">'
-                                            + '<span class="badge badge-pill badge-warning">sucesso</span> Produto atualizado.'
-                                            + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-                                            + '<span aria-hidden="true">&times;</span>'
-                                            + '</button>'
-                                            + '</div>'
-                                            + '</div>');
-                                    }
-                                });
-
-                                function processaAtivoDesativo() {
-                                    if ($('input:radio[name=opcaoAtivoDesativo]:checked').val() == 'ativa') {
-                                        $('#RadioDesativos').removeClass('btn-danger');
-                                        $('#RadioDesativos').addClass('btn-secondary');
-                                        $('#RadioAtivos').addClass('btn-success');
-                                        tabelaprodutos.destroy();
-                                        tabelaprodutos = $('#bootstrap-data-table').DataTable(ativados);
-                                        customizaPesquisa();
-                                    };
-                                    if ($('input:radio[name=opcaoAtivoDesativo]:checked').val() == 'desativa') {
-                                        $('#RadioAtivos').removeClass('btn-success');
-                                        $('#RadioAtivos').addClass('btn-secondary');
-                                        $('#RadioDesativos').addClass('btn-danger');
-                                        tabelaprodutos.destroy();
-                                        tabelaprodutos = $('#bootstrap-data-table').DataTable(desativados);
-                                        customizaPesquisa();
-                                    };
-                                }
-
-                                function apagaProduto() {
-                                    var dados = tabelaprodutos.rows('.selected').data();
-                                    var params = { id: dados[0].Id };
-                                    $.post("/Produto/Desativa", params, atualizaPaginaRemover);
-                                }
-
-                                function reativaProduto() {
-                                    var dados = tabelaprodutos.rows('.selected').data();
-                                    var params = { id: dados[0].Id };
-                                    $.post("/Produto/Ativa", params, atualizaPaginaReativar);
-                                }
-
-                                function atualizaPaginaReativar(resposta) {
-                                    if (resposta.ativou == true) {
-                                        $('#fechaModalReativar').click(); $('#fechaModalReativar').click();
-                                        tabelaprodutos.ajax.reload();
-                                        $("#mensagensContainer").append(
-                                            '<div class="col-sm-12" id="msgProdutoReativado">'
-                                            + '<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">'
-                                            + '<span class="badge badge-pill badge-danger">sucesso</span> Produto reativado.'
-                                            + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-                                            + '<span aria-hidden="true">&times;</span>'
-                                            + '</button>'
-                                            + '</div>'
-                                            + '</div>');
-                                    }
-                                }
-
-                                function atualizaPaginaRemover(resposta) {
-                                    if (resposta.apagou == true) {
-                                        $('#fechaModalRemover').click(); $('#fechaModalRemover').click();
-                                        tabelaprodutos.ajax.reload();
-                                        $("#mensagensContainer").append(
-                                            '<div class="col-sm-12" id="msgProdutoRemovido">'
-                                            + '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">'
-                                            + '<span class="badge badge-pill badge-danger">sucesso</span> Produto removido.'
-                                            + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-                                            + '<span aria-hidden="true">&times;</span>'
-                                            + '</button>'
-                                            + '</div>'
-                                            + '</div>');
-                                    }
-                                }
-
-                                function pegaDados() {
-                                    var dados = tabelaprodutos.rows('.selected').data();
-                                    if (dados[0].Ativo == true) {
-                                        $('#dialogoDesativar').text("Deseja realmente remover " + dados[0].Nome + "?");
-                                    } else {
-                                        $('#dialogoReativar').text("Reativar o produto " + dados[0].Nome + "?");
-                                    }
-                                }
-                                
-                                function pegaCategoriasEMarcas(form) {
-                                    $.getJSON("/Categoria/getCategorias", null, function (data) {
-                                        $("#categoria"+form+" option").remove();
-                                        $("#categoria" + form).append(
-                                            $("<option></option>")
-                                                .text("Selecione...")
-                                                .val("")
-                                        );
-
-                                        $.each(data.Categorias, function (index, item) {
-                                            $("#categoria" + form).append(
-                                                $("<option></option>")
-                                                    .text(item.Nome)
-                                                    .val(item.Id)
-                                            );
-
-                                            if (form == 'Editar') {
-                                                var dados = tabelaprodutos.rows('.selected').data();
-                                                $("#categoria" + form).val(dados[0].Subcategoria.CategoriaId).change();
-                                            }
-                                        });
-                                    });
-
-                                    $.getJSON("/Marca/getMarcas", null, function (data) {
-                                        $("#Marca" + form + " option").remove();
-                                        $("#Marca" + form).append(
-                                            $("<option></option>")
-                                                .text("Selecione...")
-                                                .val("")
-                                        );
-
-                                        $.each(data.Marcas, function (index, item) {
-                                            $("#Marca" + form).append(
-                                                $("<option></option>")
-                                                    .text(item.Nome)
-                                                    .val(item.Id)
-                                            );
-                                        });
-
-                                        if (form == 'Editar') {
-                                            var dados = tabelaprodutos.rows('.selected').data();
-                                            $("#Marca" + form).val(dados[0].MarcaId).change();
-                                        } 
-                                    });
-                                }
-                                
-                                function pegaSubcategorias(form) {
-                                    var categoriaId = $("#categoria" + form).val();
-                                    if (categoriaId == 0) {
-                                        $("#subcategoria" + form + " option").remove();
-                                        $("#subcategoria" + form).prop("disabled", true);
-                                        $("#subcategoria" + form).append(
-                                            $("<option></option>")
-                                                .text("Selecione...")
-                                                .val("")
-                                        );
-                                    }
-                                    else {
-                                        $.getJSON("/Categoria/getSubcategorias/" + categoriaId, null, function (data) {
-                                            $("#subcategoria" + form + " option").remove();
-                                            $("#subcategoria" + form).prop("disabled", false);
-                                            $("#subcategoria" + form).append(
-                                                $("<option></option>")
-                                                    .text("Selecione...")
-                                                    .val("")
-                                            );
-                                            $.each(data.Subcategorias, function (index, item) {
-                                                $("#subcategoria" + form).append(
-                                                    $("<option></option>")
-                                                        .text(item.Nome)
-                                                        .val(item.Id)
-                                                );
-                                                if (form == 'Editar') {
-                                                    var dados = tabelaprodutos.rows('.selected').data();
-                                                    $("#subcategoria" + form).val(dados[0].SubcategoriaId).change();
-                                                }
-                                            });
-                                        });
-                                    }
-                                }
-
-                                function populaEditar() {
-                                    pegaCategoriasEMarcas('Editar');
-                                    var dados = tabelaprodutos.rows('.selected').data();
-                                    $('#IdEditar').val(dados[0].Id);
-                                    $('#nomeEditar').val(dados[0].Nome);
-                                    $('#estoqueEditar').val(dados[0].Estoque);
-                                    $('#precoUnitarioEditar')
-                                        .val($('#precoUnitarioEditar')
-                                            .masked(Number
-                                                .parseFloat(dados[0].PrecoUnitario)
-                                                .toFixed(2)));
-                                    if (dados[0].PrecoRecarga != null) {
-                                        $("#TogglePrecoRecargaEditar").prop('checked', true).change();
-                                        $('#precoRecargaEditar').val($('#precoRecargaEditar')
-                                            .masked(Number
-                                                .parseFloat(dados[0].PrecoRecarga)
-                                                .toFixed(2)));
-                                    }
-                                    if (dados[0].PrecoTroca != null) {
-                                        $("#TogglePrecoTrocaEditar").prop('checked', true).change();
-                                        $('#precoTrocaEditar').val($('#precoTrocaEditar')
-                                            .masked(Number
-                                                .parseFloat(dados[0].PrecoTroca)
-                                                .toFixed(2)));
-                                    }
-                                }
-
-                                function processaTogglePrecos(preco, form) {
-                                    if ($('#TogglePreco' + preco + form).prop('checked') == true)
-                                    {
-                                        $('#preco' + preco + form).prop('disabled', false);
-                                        $('#preco' + preco + form).prop('required', true);
-                                        $('#preco' + preco + form).val(null);
-                                    } else {
-                                        $('#preco' + preco + form).prop('disabled', true);
-                                        $('#preco' + preco + form).prop('required', false);
-                                        $('#preco' + preco + form).val(null);
-                                    }
-                                }
-
-                            </script>
+                            <script src="~/Content/js/validation/jquery.validate.min.js"></script>
+                            <script src="~/Content/js/produto/scriptsForms.js"></script>
+                            <script src="~/Content/js/produto/scriptsDataTables.js"></script>
+                            <script src="~/Content/js/produto/funcoesCrud.js"></script>
                         }
 
                         <div class="modal fade" id="ModalRemover" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
@@ -616,13 +134,13 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Nome</div>
-                                                                <input type="text" id="nomeAdd" name="produto.Nome" minlength="5" maxlength="50" required class="form-control">
+                                                                <input type="text" id="nomeAdd" name="produto.Nome" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Marca</div>
-                                                                <select name="produto.MarcaId" id="MarcaAdd" required class="form-control">
+                                                                <select name="produto.MarcaId" id="MarcaAdd" class="form-control">
                                                                     <option value="">Selecione...</option>
                                                                 </select>
                                                             </div>
@@ -630,7 +148,7 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Categoria</div>
-                                                                <select name="categoriaId" id="categoriaAdd" required onchange="pegaSubcategorias('Add')" class="form-control">
+                                                                <select name="CategoriaAdd" id="categoriaAdd" onchange="pegaSubcategorias('Add')" class="form-control">
                                                                     <option value="">Selecione...</option>
                                                                 </select>
                                                             </div>
@@ -712,18 +230,18 @@
                                                         <p></p>
                                                     </div>
                                                     <form action="/Produto/Atualiza" method="post" id="FormAtualiza">
-                                                        <input type="text" id="IdEditar" name="produto.Id" hidden class="form-control">
-                                                        <input type="text" name="produto.Ativo" value="true" hidden class="form-control">
+                                                        <input type="text" id="IdEditar" name="produtoedit.Id" hidden class="form-control">
+                                                        <input type="text" name="produtoedit.Ativo" value="true" hidden class="form-control">
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Nome</div>
-                                                                <input type="text" id="nomeEditar" required minlength="5" name="produto.Nome" class="form-control">
+                                                                <input type="text" id="nomeEditar" name="produtoedit.Nome" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Marca</div>
-                                                                <select name="produto.MarcaId" id="MarcaEditar" required class="form-control">
+                                                                <select name="produtoedit.MarcaId" id="MarcaEditar" class="form-control">
                                                                     <option value="">Selecione...</option>
                                                                 </select>
                                                             </div>
@@ -731,7 +249,7 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Categoria</div>
-                                                                <select name="categoriaId" id="categoriaEditar" required onchange="pegaSubcategorias('Editar')" class="form-control">
+                                                                <select name="CategoriaEdit" id="categoriaEditar" onchange="pegaSubcategorias('Editar')" class="form-control">
                                                                     <option value="">Selecione...</option>
                                                                 </select>
                                                             </div>
@@ -739,7 +257,7 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Subcategoria</div>
-                                                                <select name="produto.SubcategoriaId" id="subcategoriaEditar" required disabled class="form-control">
+                                                                <select name="produtoedit.SubcategoriaId" id="subcategoriaEditar" disabled class="form-control">
                                                                     <option value="">Selecione...</option>
                                                                 </select>
                                                             </div>
@@ -747,14 +265,14 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Estoque inicial</div>
-                                                                <input type="text" id="estoqueEditar" required name="produto.Estoque" class="form-control">
+                                                                <input type="text" id="estoqueEditar" name="produtoedit.Estoque" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon">Preço unitário</div>
                                                                 <div class="input-group-addon">R$</div>
-                                                                <input type="text" id="precoUnitarioEditar" required name="produto.PrecoUnitario" class="form-control">
+                                                                <input type="text" id="precoUnitarioEditar" name="produtoedit.PrecoUnitario" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group" id="precoRecargaDivEditar">
@@ -766,7 +284,7 @@
                                                                 </label>
                                                                 <div class="input-group-addon">Preço recarga</div>
                                                                 <div class="input-group-addon">R$</div>
-                                                                <input type="text" id="precoRecargaEditar" name="produto.PrecoRecarga" disabled class="form-control">
+                                                                <input type="text" id="precoRecargaEditar" name="produtoedit.PrecoRecarga" disabled class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group" id="precoTrocaDivEditar">
@@ -778,7 +296,7 @@
                                                                 </label>
                                                                 <div class="input-group-addon">Preço troca</div>
                                                                 <div class="input-group-addon">R$</div>
-                                                                <input type="text" id="precoTrocaEditar" name="produto.PrecoTroca" disabled class="form-control">
+                                                                <input type="text" id="precoTrocaEditar" name="produtoedit.PrecoTroca" disabled class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-actions form-group text-center">

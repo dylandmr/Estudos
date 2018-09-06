@@ -1,0 +1,25 @@
+﻿.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-link, .btn-link:hover, .btn-link:focus {
+    text-decoration: none;
+    color: white;
+}
+
+.tabelaprodutosbotoes div {
+    float: left;
+}
+
+table.dataTable.table-striped tbody > tr.odd.selected,
+table.dataTable.table-striped tbody > tr.odd > .selected {
+    background-color: #4CAF50;
+}
+
+.erroEditar, .erroAdd {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: 5px;
+}

@@ -20,14 +20,10 @@ namespace MatrixMax.Models
         [MaxLength(50)]
         public string Nome { get; set; }
 
-
-        [DisplayFormat(DataFormatString = "R${0:#,##0.00#}", ApplyFormatInEditMode = true)]
         public double PrecoUnitario { get; set; }
-
-        [DisplayFormat(DataFormatString = "R${0:#,##0.00#}", ApplyFormatInEditMode = true)]
+        
         public double? PrecoRecarga { get; set; }
 
-        [DisplayFormat(DataFormatString = "R${0:#,##0.00#}", ApplyFormatInEditMode = true)]
         public double? PrecoTroca { get; set; }
         
         public Produto()

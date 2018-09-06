@@ -45,21 +45,25 @@ namespace MatrixMax.Controllers
         }
 
         [HttpPost]
-        public ActionResult Atualiza(Produto produto)
+        public ActionResult Atualiza(Produto produtoedit)
         {
-            new ProdutoDAO().Atualiza(produto);
+            new ProdutoDAO().Atualiza(produtoedit);
             return RedirectToAction("Index");
         }
 
-        public JsonResult Desativa(int id)
+        public JsonResult Desativa(int[] ids)
         {
-            new ProdutoDAO().Desativa(id);
+            var dao = new ProdutoDAO();
+            foreach (var id in ids)
+                dao.Desativa(id);
             return Json(new { apagou = true }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Ativa(int id)
+        public JsonResult Ativa(int[] ids)
         {
-            new ProdutoDAO().Ativa(id);
+            var dao = new ProdutoDAO();
+            foreach (var id in ids)
+                dao.Ativa(id);
             return Json(new { ativou = true }, JsonRequestBehavior.AllowGet);
         }
     }

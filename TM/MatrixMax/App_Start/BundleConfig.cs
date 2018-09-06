@@ -19,7 +19,8 @@ namespace MatrixMax.App_Start
                 "~/Content/Css/flag-icon.min.css",
                 "~/Content/scss/style.css",
                 "~/Content/Css/lib/datatable/dataTables.bootstrap.min.css",
-                "~/Content/Css/lib/datatable/select.bootstrap4.min.css"));
+                "~/Content/Css/lib/datatable/select.bootstrap4.min.css",
+                "~/Content/Css/hotfixes.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/js")
                 .Include(
