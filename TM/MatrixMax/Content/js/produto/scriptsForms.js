@@ -1,131 +1,131 @@
 ﻿$(document).ready(function () {
-    //$("#FormAtualiza").validate({
-    //    rules: {
-    //        "produtoedit.Nome": {
-    //            required: true,
-    //            minlength: 5,
-    //            maxlength: 50,
-    //            valoresIguaisEditar: true
-    //        },
-    //        "produtoedit.MarcaId": "required",
-    //        CategoriaEdit: "required",
-    //        "produtoedit.SubcategoriaId": "required",
-    //        "produtoedit.Estoque": {
-    //            required: true,
-    //            estoqueInicial: true
-    //        },
-    //        "produtoedit.PrecoUnitario": {
-    //            required: true,
-    //            valorPrecos: true
-    //        },
-    //        "produtoedit.PrecoRecarga": {
-    //            required: "#TogglePrecoRecargaEditar:checked",
-    //            valorPrecos: true
-    //        },
-    //        "produtoedit.PrecoTroca": {
-    //            required: "#TogglePrecoTrocaEditar:checked",
-    //            valorPrecos: true
-    //        }
-    //    },
-    //    messages: {
-    //        "produtoedit.Nome": {
-    //            required: "Informe um nome.",
-    //            minlength: "O nome deve ter no mínimo 5 caracteres.",
-    //            maxlength: "O nome deve ter no máximo 50 caracteres."
-    //        },
-    //        "produtoedit.MarcaId": "Selecione a marca.",
-    //        CategoriaEdit: "Selecione a categoria.",
-    //        "produtoedit.SubcategoriaId": "Selecione a subcategoria.",
-    //        "produtoedit.Estoque": {
-    //            required: "Informe o estoque inicial."
-    //        },
-    //        "produtoedit.PrecoUnitario": {
-    //            required: "Informe o preço unitário."
-    //        },
-    //        "produtoedit.PrecoRecarga": {
-    //            required: "Informe o preço da recarga."
-    //        },
-    //        "produtoedit.PrecoTroca": {
-    //            required: "Informe o preço de troca."
-    //        },
-    //    },
-    //    errorPlacement: function (label, element) {
-    //        label.addClass('alert alert-danger erroEditar');
-    //        label.prop("role", "alert");
-    //        label.insertAfter(element);
-    //    },
-    //    wrapper: 'div',
-    //    errorClass: 'campoInvalido',
-    //    highlight: function (element, errorClass) {
-    //        $(element).addClass(errorClass);
-    //    },
-    //    unhighlight: function (element, errorClass) {
-    //        $(element).removeClass(errorClass);
-    //    }
-    //});
-    //$("#FormAdiciona").validate({
-    //    rules: {
-    //        "produto.Nome": {
-    //            required: true,
-    //            minlength: 5,
-    //            maxlength: 50
-    //        },
-    //        "produto.MarcaId": "required",
-    //        CategoriaAdd: "required",
-    //        "produto.SubcategoriaId": "required",
-    //        "produto.Estoque": {
-    //            required: true,
-    //            estoqueInicial: true
-    //        },
-    //        "produto.PrecoUnitario": {
-    //            required: true,
-    //            valorPrecos: true
-    //        },
-    //        "produto.PrecoRecarga": {
-    //            required: "#TogglePrecoRecargaAdd:checked",
-    //            valorPrecos: true
-    //        },
-    //        "produto.PrecoTroca": {
-    //            required: "#TogglePrecoTrocaAdd:checked",
-    //            valorPrecos: true
-    //        }
-    //    },
-    //    messages: {
-    //        "produto.Nome": {
-    //            required: "Informe um nome.",
-    //            minlength: "O nome deve ter no mínimo 5 caracteres.",
-    //            maxlength: "O nome deve ter no máximo 50 caracteres."
-    //        },
-    //        "produto.MarcaId": "Selecione a marca.",
-    //        CategoriaAdd: "Selecione a categoria.",
-    //        "produto.SubcategoriaId": "Selecione a subcategoria.",
-    //        "produto.Estoque": {
-    //            required: "Informe o estoque inicial."
-    //        },
-    //        "produto.PrecoUnitario": {
-    //            required: "Informe o preço unitário."
-    //        },
-    //        "produto.PrecoRecarga": {
-    //            required: "Informe o preço da recarga."
-    //        },
-    //        "produto.PrecoTroca": {
-    //            required: "Informe o preço de troca."
-    //        },
-    //    },
-    //    errorPlacement: function (label, element) {
-    //        label.addClass('alert alert-danger erroAdd');
-    //        label.prop("role", "alert");
-    //        label.insertAfter(element);
-    //    },
-    //    wrapper: 'div',
-    //    errorClass: 'campoInvalido',
-    //    highlight: function (element, errorClass) {
-    //        $(element).addClass(errorClass);
-    //    },
-    //    unhighlight: function (element, errorClass) {
-    //        $(element).removeClass(errorClass);
-    //    },
-    //});
+    $("#FormAtualiza").validate({
+        rules: {
+            "produtoedit.Nome": {
+                required: true,
+                minlength: 5,
+                maxlength: 50,
+                valoresIguaisEditar: true
+            },
+            "produtoedit.MarcaId": "required",
+            CategoriaEdit: "required",
+            "produtoedit.SubcategoriaId": "required",
+            "produtoedit.Estoque": {
+                required: true,
+                estoqueInicial: true
+            },
+            "produtoedit.PrecoUnitario": {
+                required: true,
+                valorPrecos: true
+            },
+            "produtoedit.PrecoRecarga": {
+                required: "#TogglePrecoRecargaEditar:checked",
+                valorPrecos: true
+            },
+            "produtoedit.PrecoTroca": {
+                required: "#TogglePrecoTrocaEditar:checked",
+                valorPrecos: true
+            }
+        },
+        messages: {
+            "produtoedit.Nome": {
+                required: "Informe um nome.",
+                minlength: "O nome deve ter no mínimo 5 caracteres.",
+                maxlength: "O nome deve ter no máximo 50 caracteres."
+            },
+            "produtoedit.MarcaId": "Selecione a marca.",
+            CategoriaEdit: "Selecione a categoria.",
+            "produtoedit.SubcategoriaId": "Selecione a subcategoria.",
+            "produtoedit.Estoque": {
+                required: "Informe o estoque inicial."
+            },
+            "produtoedit.PrecoUnitario": {
+                required: "Informe o preço unitário."
+            },
+            "produtoedit.PrecoRecarga": {
+                required: "Informe o preço da recarga."
+            },
+            "produtoedit.PrecoTroca": {
+                required: "Informe o preço de troca."
+            },
+        },
+        errorPlacement: function (label, element) {
+            label.addClass('alert alert-danger erroEditar');
+            label.prop("role", "alert");
+            label.insertAfter(element);
+        },
+        wrapper: 'div',
+        errorClass: 'campoInvalido',
+        highlight: function (element, errorClass) {
+            $(element).addClass(errorClass);
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass);
+        }
+    });
+    $("#FormAdiciona").validate({
+        rules: {
+            "produto.Nome": {
+                required: true,
+                minlength: 5,
+                maxlength: 50
+            },
+            "produto.MarcaId": "required",
+            CategoriaAdd: "required",
+            "produto.SubcategoriaId": "required",
+            "produto.Estoque": {
+                required: true,
+                estoqueInicial: true
+            },
+            "produto.PrecoUnitario": {
+                required: true,
+                valorPrecos: true
+            },
+            "produto.PrecoRecarga": {
+                required: "#TogglePrecoRecargaAdd:checked",
+                valorPrecos: true
+            },
+            "produto.PrecoTroca": {
+                required: "#TogglePrecoTrocaAdd:checked",
+                valorPrecos: true
+            }
+        },
+        messages: {
+            "produto.Nome": {
+                required: "Informe um nome.",
+                minlength: "O nome deve ter no mínimo 5 caracteres.",
+                maxlength: "O nome deve ter no máximo 50 caracteres."
+            },
+            "produto.MarcaId": "Selecione a marca.",
+            CategoriaAdd: "Selecione a categoria.",
+            "produto.SubcategoriaId": "Selecione a subcategoria.",
+            "produto.Estoque": {
+                required: "Informe o estoque inicial."
+            },
+            "produto.PrecoUnitario": {
+                required: "Informe o preço unitário."
+            },
+            "produto.PrecoRecarga": {
+                required: "Informe o preço da recarga."
+            },
+            "produto.PrecoTroca": {
+                required: "Informe o preço de troca."
+            },
+        },
+        errorPlacement: function (label, element) {
+            label.addClass('alert alert-danger erroAdd');
+            label.prop("role", "alert");
+            label.insertAfter(element);
+        },
+        wrapper: 'div',
+        errorClass: 'campoInvalido',
+        highlight: function (element, errorClass) {
+            $(element).addClass(errorClass);
+        },
+        unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass);
+        },
+    });
 
     $('#precoUnitarioAdd').mask("000,00", { reverse: true });
     $('#precoUnitarioEditar').mask("000,00", { reverse: true });
