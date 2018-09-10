@@ -3,6 +3,7 @@
 var desativados = {
     dom: '<"tabelaprodutosbotoes"B><"tabelaprodutosfiltros"f><"tabelaprodutosinfo"il><tp>',
     select: true,
+    "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
     buttons: [
         { extend: 'selected', text: '<button type="button" class="btn btn-success mb-1 rounded" data-toggle="modal" data-target="#ModalAtivar" onclick="pegaDados()">Ativar selecionados <i class="fa fa-check"></i></button>' }
     ],
@@ -90,6 +91,7 @@ var desativados = {
 var ativados = {
     dom: '<"tabelaprodutosbotoes"B><"tabelaprodutosfiltros"f><"tabelaprodutosinfo"il><tp>',
     select: true,
+    "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
     buttons: [
         { text: '<button type="button" class="btn btn-success rounded" data-toggle="modal" onclick="pegaCategoriasEMarcas(\'Add\')" data-target="#ModalAdicionar">Novo produto <i class="fa fa-plus-circle"></i></button>' },
         { extend: 'selected', text: '<button type="button" class="btn btn-danger rounded" data-toggle="modal" data-target="#ModalRemover" onclick="pegaDados()">Desativar selecionados <i class="fa fa-ban"></i></button>' }
