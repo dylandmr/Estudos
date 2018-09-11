@@ -11,9 +11,17 @@ botaoAdicionar.addEventListener("click", function(event) {
     
     var tabela = document.querySelector("#tabela-pacientes");
     
+    var erros = validaPaciente(paciente); 
+    if (erros.length > 0) {
+        exibeMensagensDeErro(erros);
+        return;
+    }
+    
     tabela.appendChild(pacienteTr);
     
     form.reset();
+    var mensagensErro = document.querySelector("#mensagens-erro");
+    mensagensErro.innerHTML = "";
 });
 
 function pegaValuesInputPaciente(form) {
@@ -47,4 +55,32 @@ function montaTd(valor, classe) {
     td.textContent = valor;
     
     return td;
+}
+
+function validaPaciente(paciente){
+    erros = [];
+    
+    if(paciente.peso.length == 0) erros.push("Informe um peso.");
+    
+    if(paciente.altura.length == 0) erros.push("Informe a altura.");
+    
+    if(paciente.nome.length == 0) erros.push("Informe o nome.");
+    
+    if(paciente.gordura.length == 0) erros.push("Informe um valor para a gordura corporal.");
+    
+    if(!validaPeso(paciente.peso)) erros.push("Peso inválido.");
+    
+    if(!validaAltura(paciente.altura)) erros.push("Altura inválida.");
+    
+    return erros;
+}
+
+function exibeMensagensDeErro(erros){
+    var ul = document.querySelector("#mensagens-erro");
+    ul.innerHTML = "";
+    erros.forEach(function (erro){
+        var li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
 }
