@@ -42,10 +42,9 @@ function inicializaCronometro() {
             tempoRestante--;
             $("#tempo-digitacao").text(tempoRestante);
             if (tempoRestante < 1) {
-                campo.attr("disabled", true);
+                
                 clearInterval(contador);
-                $("#botao-reiniciar").removeAttr("disabled");
-                campo.toggleClass("gameover");
+                finalizaJogo();
             }
         }, 1000);
     });
@@ -63,4 +62,11 @@ function inicializaMarcadores() {
             campo.removeClass("campo-certo");
         }
     });
+}
+
+function finalizaJogo() {
+    campo.attr("disabled", true);
+    $("#botao-reiniciar").removeAttr("disabled");
+    campo.toggleClass("gameover");
+    inserePlacar();
 }
