@@ -3,7 +3,7 @@ $("#botao-frase-id").click(buscaFrase);
 
 function fraseAleatoria() {
     $("#spinner").slideToggle();
-    $.get("http://localhost:3000/frases", trocaFraseAleatoria)
+    $.get("http://localhost:3001/frases", trocaFraseAleatoria)
     .fail(function(){
         $("#erro").slideToggle();
         setTimeout(function(){
@@ -25,7 +25,7 @@ function trocaFraseAleatoria(frases) {
 function buscaFrase() {
     $("#spinner").slideToggle();
     var dados = { id: $("#frase-id").val() };
-    $.get("http://localhost:3000/frases", dados, trocaFrase)
+    $.get("http://localhost:3001/frases", dados, trocaFrase)
     .fail(function() {
         $("#erro").slideToggle();
         setTimeout(function(){
