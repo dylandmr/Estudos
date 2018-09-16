@@ -9,6 +9,11 @@ $(function(){
     $("#botao-reiniciar").click(reiniciaJogo);
 });
 
+function atualizaTempoInicial(tempo) {
+    tempoInicial = tempo;
+    $("#tempo-digitacao").text(tempoInicial);
+}
+
 function reiniciaJogo() {
     campo.attr("disabled", false);
     campo.val("");
@@ -36,8 +41,8 @@ function inicializaContadores() {
 
 function inicializaCronometro() {
     $("#botao-reiniciar").attr("disabled", true);
-    var tempoRestante = $("#tempo-digitacao").text();
     campo.one("focus", function () {
+        var tempoRestante = $("#tempo-digitacao").text();
         var contador = setInterval(function () {
             tempoRestante--;
             $("#tempo-digitacao").text(tempoRestante);
@@ -50,9 +55,9 @@ function inicializaCronometro() {
     });
 }
 
-function inicializaMarcadores() {
-    var frase = $(".frase").text();
+function inicializaMarcadores() {    
     campo.on("input", function () {
+        var frase = $(".frase").text();
         if (frase.startsWith(campo.val())) {
             campo.addClass("campo-certo");
             campo.removeClass("campo-errado");
