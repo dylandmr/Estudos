@@ -1,6 +1,9 @@
 $("#botao-placar").click(function() {
-    $(".placar").stop().slideToggle(600);
+    $(".placar").stop().slideToggle(1000);
+    scrollPlacar();
 });
+
+$("#botao-sync").click(sincronizaPlacar);
 
 function inserePlacar() {
     var corpoTabela = $(".placar").find("tbody");
@@ -48,9 +51,35 @@ function removeLinha(event) {
 
 function scrollPlacar() {
     var posicaoPlacar = $(".placar").offset().top;
-    console.log(posicaoPlacar);
     $("html, body").animate(
     {
         scrollTop: posicaoPlacar+"px"
     }, 1000);
+}
+
+function sincronizaPlacar(){
+    var placar = [];
+    var linhas = $(".placar tbody>tr");
+    linhas.each(function() {
+        var score = {
+            usuario: $(this).find("td:nth-child(1)").text(),
+            pontos: $(this).find("td:nth-child(2)").text()
+        }
+        placar.push(score);
+    });
+
+    dados = { placar: placar };
+    $.post("http://localhost:3000/placar", dados, function(){
+        console.log("Score sincronizado.");
+    });
+}
+
+function atualizaPlacar() {
+    $.get("http://localhost:3000/placar", function(data) {
+        $(data).each(function() {
+            var linha = criaLinhaPlacar(this.usuario, this.pontos);
+            linha.find(".botao-remover").click(removeLinha);
+            $(".placar tbody").append(linha);
+        });
+    });
 }

@@ -1,13 +1,44 @@
 $("#botao-frase").click(fraseAleatoria);
+$("#botao-frase-id").click(buscaFrase);
 
 function fraseAleatoria() {
-    $.get("http://localhost:3000/frases", trocaFraseAleatoria);
+    $("#spinner").slideToggle();
+    $.get("http://localhost:3000/frases", trocaFraseAleatoria)
+    .fail(function(){
+        $("#erro").slideToggle();
+        setTimeout(function(){
+            $("#erro").slideToggle();
+        }, 3000);
+    })
+    .always(function(){
+        $("#spinner").slideToggle();
+    });
 }
 
-function trocaFraseAleatoria(data) {
-    var frase = $(".frase");
-    var randomIndex = Math.floor(Math.random() * data.length);
-    frase.text(data[randomIndex].texto);
+function trocaFraseAleatoria(frases) { 
+    var randomIndex = Math.floor(Math.random() * frases.length);
+    $(".frase").text(frases[randomIndex].texto);
     atualizaTamanhoFrase();
-    atualizaTempoInicial(data[randomIndex].tempo);
+    atualizaTempoInicial(frases[randomIndex].tempo);
+}
+
+function buscaFrase() {
+    $("#spinner").slideToggle();
+    var dados = { id: $("#frase-id").val() };
+    $.get("http://localhost:3000/frases", dados, trocaFrase)
+    .fail(function() {
+        $("#erro").slideToggle();
+        setTimeout(function(){
+            $("#erro").slideToggle();
+        }, 3000);
+    })
+    .always(function(){
+        $("#spinner").slideToggle();
+    });
+}
+
+function trocaFrase(frase) {
+    $(".frase").text(frase.texto);
+    atualizaTamanhoFrase();
+    atualizaTempoInicial(frase.tempo);
 }
