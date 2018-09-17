@@ -1,4 +1,4 @@
-var criaJogo = function() {
+var criaJogo = function(sprite) {
     var setPalavraSecreta = function(palavra) {
         palavraSeceta = palavra;
         
@@ -8,6 +8,21 @@ var criaJogo = function() {
         proximaEtapa();
     };
     
+    var processaChute = function(chute) {
+        if(palavraSeceta.toLowerCase().includes(chute.toLowerCase())) {
+            preencheLacunas(chute.toLowerCase());
+        } else {
+            sprite.nextFrame();
+        }
+    }
+
+    var preencheLacunas = function(chute) {
+        var regexChute = new RegExp(chute, 'gi');
+        while(resultado = regexChute.exec(palavraSeceta)) {
+            lacunas[resultado.index] = chute; 
+        }
+    };
+
     var proximaEtapa = function() {
         etapa++;
     };
@@ -34,6 +49,7 @@ var criaJogo = function() {
     return {
         setPalavraSecreta: setPalavraSecreta,
         getLacunas: getLacunas,
-        getEtapa: getEtapa
+        getEtapa: getEtapa,
+        processaChute: processaChute
     }
 }
