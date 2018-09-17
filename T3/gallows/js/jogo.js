@@ -7,6 +7,25 @@ var criaJogo = function(sprite) {
         // etapa++; <- Minha solução. Solução do instrutor:
         proximaEtapa();
     };
+
+    var ganhou = function() {
+        return !lacunas.some(l => l === "") && lacunas.length > 0;
+    };
+
+    var perdeu = function() {
+        return sprite.isFinished();
+    };
+
+    var ganhouOuPerdeu = function() {
+        return ganhou() || perdeu();
+    };
+
+    var reinicia = function() {
+        sprite.reset();
+        etapa--;
+        lacunas = [];
+        palavraSeceta = "";
+    };
     
     var processaChute = function(chute) {
         if(palavraSeceta.toLowerCase().includes(chute.toLowerCase())) {
@@ -14,7 +33,7 @@ var criaJogo = function(sprite) {
         } else {
             sprite.nextFrame();
         }
-    }
+    };
 
     var preencheLacunas = function(chute) {
         var regexChute = new RegExp(chute, 'gi');
@@ -50,6 +69,10 @@ var criaJogo = function(sprite) {
         setPalavraSecreta: setPalavraSecreta,
         getLacunas: getLacunas,
         getEtapa: getEtapa,
-        processaChute: processaChute
+        processaChute: processaChute,
+        ganhou: ganhou,
+        perdeu: perdeu,
+        ganhouOuPerdeu: ganhouOuPerdeu,
+        reinicia: reinicia
     }
 }
