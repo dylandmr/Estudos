@@ -1,18 +1,12 @@
-$(function() {
-    criaController(
-        criaJogo(
-            createSprite(".sprite")
-        )
-    ).inicia();
-});
+$(() => criaController(criaJogo(createSprite(".sprite"))).inicia());
 
-var criaController = function(jogo){
-    var $entrada = $(".entrada");
-    var $lacunas = $(".lacunas");
+const criaController = jogo => {
+    const $entrada = $(".entrada");
+    const $lacunas = $(".lacunas");
 
-    var exibeLacunas = function () {
+    const exibeLacunas = () => {
         $lacunas.empty(); //<- Correção instrutor, esqueci deste comando.
-        var listaLacunas = [];
+        let listaLacunas = [];
         $.each(jogo.getLacunas(), function(i, lacuna){
             // listaLacunas.push($("<li>").addClass("lacuna")); <- Minha resposta. Esqueci de setar o texto:
             listaLacunas.push($("<li>").addClass("lacuna").text(lacuna));
@@ -20,13 +14,13 @@ var criaController = function(jogo){
         $lacunas.append(listaLacunas);
     };
    
-    var mudaPlaceHolder = function (texto) {
+    const mudaPlaceHolder = texto => {
         // $entrada.attr("placeholder", "Chute"); <- Minha resposta. Esqueci do parâmetro. Correção:
         $entrada.attr("placeholder", texto);
         $entrada.val("");
     };
 
-    var guardaPalavraSecreta = function () {
+    const guardaPalavraSecreta = () => {
         // jogo.setPalavraSecreta($entrada.val()); <- Minha solução. Sugestão instrutor:
         try {
             jogo.setPalavraSecreta($entrada.val().trim());
@@ -37,7 +31,7 @@ var criaController = function(jogo){
         }
     };
 
-    var leChute = function() {
+    const leChute = () => {
         // jogo.processaChute($entrada.val());
         // exibeLacunas(); <- Minha solução. Faltaram algumas coisas. Correção instrutor:
         try {
@@ -67,14 +61,14 @@ var criaController = function(jogo){
         }
     };
 
-    var reinicia = function() {
+    const reinicia = () => {
         jogo.reinicia();
         $lacunas.empty();
         mudaPlaceHolder("Palavra secreta");    
     };
 
-    var inicia = function () {
-        $entrada.keypress(function (event) {
+    const inicia = () => {
+        $entrada.keypress(event => {
             if (event.which == 13) {
                 switch (jogo.getEtapa()) {
                     case 1:
@@ -87,5 +81,5 @@ var criaController = function(jogo){
             }
         });
     }; 
-    return { inicia: inicia };
+    return { inicia };
 };    

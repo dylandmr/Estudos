@@ -1,5 +1,9 @@
-var criaJogo = function(sprite) {
-    var setPalavraSecreta = function(palavra) {
+const criaJogo = sprite => {
+    let etapa = 1;
+    let lacunas = [];
+    let palavraSeceta;
+    
+    const setPalavraSecreta = palavra => {
         if (!palavra.trim()) throw Error("Palavra secreta inválida!");
         palavraSeceta = palavra;
         
@@ -9,26 +13,20 @@ var criaJogo = function(sprite) {
         proximaEtapa();
     };
 
-    var ganhou = function() {
-        return !lacunas.some(l => l === "") && lacunas.length > 0;
-    };
+    const ganhou = () => !lacunas.some(l => l === "") && lacunas.length > 0;
 
-    var perdeu = function() {
-        return sprite.isFinished();
-    };
+    const perdeu = () => sprite.isFinished();
 
-    var ganhouOuPerdeu = function() {
-        return ganhou() || perdeu();
-    };
+    const ganhouOuPerdeu = () => ganhou() || perdeu();
 
-    var reinicia = function() {
+    const reinicia = () => {
         sprite.reset();
         etapa--;
         lacunas = [];
         palavraSeceta = "";
     };
     
-    var processaChute = function(chute) {
+    const processaChute = chute => {
         if (!chute.trim()) throw Error("Chute inválido!");
         if(palavraSeceta.toLowerCase().includes(chute.toLowerCase())) {
             preencheLacunas(chute.toLowerCase());
@@ -37,44 +35,32 @@ var criaJogo = function(sprite) {
         }
     };
 
-    var preencheLacunas = function(chute) {
-        var regexChute = new RegExp(chute, 'gi');
+    const preencheLacunas = chute => {
+        const regexChute = new RegExp(chute, 'gi');
         while(resultado = regexChute.exec(palavraSeceta)) {
             lacunas[resultado.index] = chute; 
         }
     };
 
-    var proximaEtapa = function() {
-        etapa++;
-    };
+    const proximaEtapa = () => etapa++;
 
-    var geraLacunas = function(palavra){
+    const geraLacunas = () => lacunas = Array(palavraSeceta.length).fill("");
         // for (letra in palavra){
         //     lacunas.push("");
         // } <- Minha solução. Sugestão do instrutor:
-        lacunas = Array(palavraSeceta.length).fill("");
-    };
 
-    var getLacunas = function() {
-        return lacunas;
-    };
+    const getLacunas = () => lacunas;
 
-    var getEtapa = function() {
-        return etapa;
-    };
-
-    var etapa = 1;
-    var lacunas = [];
-    var palavraSeceta;
+    const getEtapa = () => etapa;
 
     return {
-        setPalavraSecreta: setPalavraSecreta,
-        getLacunas: getLacunas,
-        getEtapa: getEtapa,
-        processaChute: processaChute,
-        ganhou: ganhou,
-        perdeu: perdeu,
-        ganhouOuPerdeu: ganhouOuPerdeu,
-        reinicia: reinicia
+        setPalavraSecreta,
+        getLacunas,
+        getEtapa,
+        processaChute,
+        ganhou,
+        perdeu,
+        ganhouOuPerdeu,
+        reinicia
     }
 }
