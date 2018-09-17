@@ -1,5 +1,6 @@
 var criaJogo = function(sprite) {
     var setPalavraSecreta = function(palavra) {
+        if (!palavra.trim()) throw Error("Palavra secreta inválida!");
         palavraSeceta = palavra;
         
         geraLacunas(palavraSeceta);
@@ -28,6 +29,7 @@ var criaJogo = function(sprite) {
     };
     
     var processaChute = function(chute) {
+        if (!chute.trim()) throw Error("Chute inválido!");
         if(palavraSeceta.toLowerCase().includes(chute.toLowerCase())) {
             preencheLacunas(chute.toLowerCase());
         } else {

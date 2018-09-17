@@ -28,34 +28,42 @@ var criaController = function(jogo){
 
     var guardaPalavraSecreta = function () {
         // jogo.setPalavraSecreta($entrada.val()); <- Minha solução. Sugestão instrutor:
-        jogo.setPalavraSecreta($entrada.val().trim());
-        exibeLacunas();
-        mudaPlaceHolder('Chute');
+        try {
+            jogo.setPalavraSecreta($entrada.val().trim());
+            exibeLacunas();
+            mudaPlaceHolder('Chute');
+        } catch(error) {
+            alert(error.message);
+        }
     };
 
     var leChute = function() {
         // jogo.processaChute($entrada.val());
         // exibeLacunas(); <- Minha solução. Faltaram algumas coisas. Correção instrutor:
-        jogo.processaChute($entrada.val().trim().substr(0,1));
-        $entrada.val("");
-        exibeLacunas();
+        try {
+            jogo.processaChute($entrada.val().trim().substr(0,1));
+            $entrada.val("");
+            exibeLacunas();
 
-        if (jogo.ganhouOuPerdeu()){
-            // if (jogo.ganhou()) {
-            //     alert("Você ganhou!");
-            // } else {
-            //     alert("Tente novamente!");
-            // }
-            // jogo.reinicia();
-            // exibeLacunas(); <- Minha resposta, faltando algumas coisas - Correção:
-            setTimeout(function (){
-                if (jogo.ganhou()) {
-                    alert("Você ganhou!");
-                } else {
-                    alert("Tente novamente!");
-                }
-                reinicia();
-            }, 200);
+            if (jogo.ganhouOuPerdeu()){
+                // if (jogo.ganhou()) {
+                //     alert("Você ganhou!");
+                // } else {
+                //     alert("Tente novamente!");
+                // }
+                // jogo.reinicia();
+                // exibeLacunas(); <- Minha resposta, faltando algumas coisas - Correção:
+                setTimeout(function (){
+                    if (jogo.ganhou()) {
+                        alert("Você ganhou!");
+                    } else {
+                        alert("Tente novamente!");
+                    }
+                    reinicia();
+                }, 200);
+            }
+        } catch(error) {
+            alert(error.message);
         }
     };
 
