@@ -12,5 +12,7 @@ namespace MatrixMax.Models
 
         [MaxLength(50)]
         public string Nome { get; set; }
+
+        public bool Ativo { get; set; }
     }
 }

@@ -34,5 +34,35 @@ namespace MatrixMax.DAO
             Assert.IsTrue(devesertrue);
             Assert.AreEqual(3, subcategorias.Count);
         }
+
+        [Test]
+        public void DeveRetornarTodasAsSubcategorias()
+        {
+            var dao = new CategoriaDAO();
+            var subcategorias = dao.ListaTodasAsSubcategorias();
+
+            var devesertrue = subcategorias.Where(c => c.CategoriaId <= 0).ToList().Count == 0;
+
+            Assert.IsTrue(devesertrue);
+            Assert.AreEqual(12, subcategorias.Count);
+        }
+
+        [Test]
+        public void DeveRetornarSubcategoriasDesativadas()
+        {
+            var dao = new CategoriaDAO();
+            var subcategorias = dao.ListaTodasAsSubcategoriasDesativadas();
+
+            Assert.AreEqual(1, subcategorias.Count);
+        }
+
+        [Test]
+        public void DeveRetornarCategoriasDesativadas()
+        {
+            var dao = new CategoriaDAO();
+            var categorias = dao.ListaCategoriasDesativadas();
+
+            Assert.AreEqual(1, categorias.Count);
+        }
     }
 }

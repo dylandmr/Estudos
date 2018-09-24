@@ -27,7 +27,9 @@ namespace MatrixMax.App_Start
                 "~/Content/js/popper.min.js",
                 "~/Content/js/vendor/jquery-2.1.4.min.js",
                 "~/Content/js/plugins.js",
-                "~/Content/js/main.js"));
+                "~/Content/js/main.js",
+                "~/Content/js/lib/chart-js/Chart.bundle.js",
+                "~/Content/js/lib/chart-js/chartjs-init.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/tables/js")
                 .Include(
@@ -38,8 +40,7 @@ namespace MatrixMax.App_Start
                 "~/Content/js/lib/data-table/buttons.html5.min.js",
                 "~/Content/js/lib/data-table/buttons.print.min.js",
                 "~/Content/js/lib/data-table/buttons.colVis.min.js",
-                "~/Content/js/lib/data-table/dataTables.select.min.js",
-                "~/Content/js/lib/data-table/datatables-init.js"));
+                "~/Content/js/lib/data-table/dataTables.select.min.js"));
         }
     }
 }

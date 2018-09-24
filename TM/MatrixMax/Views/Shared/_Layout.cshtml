@@ -1,4 +1,7 @@
-﻿@{ MatrixMax.Models.Usuario usuarioLogado = (MatrixMax.Models.Usuario)HttpContext.Current.Session["usuarioLogado"]; }
+﻿@{
+    MatrixMax.Models.Usuario usuarioLogado = (MatrixMax.Models.Usuario)HttpContext.Current.Session["usuarioLogado"];
+    var nome = usuarioLogado.Pessoa.NomeRazaoSocial.Replace(" ", "+");
+}
 
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -42,9 +45,19 @@
                     <li class="active">
                         <a href="/Home/Index"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <h3 class="menu-title">PRODUTOS</h3><!-- /.menu-title -->
+                    @if (usuarioLogado.TipoUsuario == 'A')
+                    {
+                        <h3 class="menu-title">Administrador</h3><!-- /.menu-title -->
+                        <li>
+                            <a href="/Admin/Index"> <i class="menu-icon fa fa-bar-chart-o"></i>Relatórios</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Usuarios"> <i class="menu-icon fa fa-users"></i>Gerenciar usuários</a>
+                        </li>
+                    }
+                    <h3 class="menu-title">Produtos</h3><!-- /.menu-title -->
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-truck"></i>Repor Estoque</a>
+                        <a href="/Produto/Estoque"> <i class="menu-icon fa fa-truck"></i>Repor Estoque</a>
                     </li>
                     <li>
                         <a href="/Produto/Index"> <i class="menu-icon fa fa-list"></i>Gerenciar produtos</a>
@@ -52,26 +65,26 @@
                     <h3 class="menu-title">Vendas</h3><!-- /.menu-title -->
 
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-money"></i>Nova Venda</a>
+                        <a href="/Venda/Index"> <i class="menu-icon fa fa-money"></i>Nova Venda</a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-calendar"></i>Histórico</a>
+                        <a href="/Venda/Historico"> <i class="menu-icon fa fa-calendar"></i>Histórico</a>
                     </li>
 
                     <h3 class="menu-title">Recargas</h3><!-- /.menu-title -->
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-repeat"></i>Em Aberto</a>
+                        <a href="/Recarga/Index"> <i class="menu-icon fa fa-repeat"></i>Em Aberto</a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-plus-square"></i>Registrar Nova</a>
+                        <a href="/Recarga/Registrar"> <i class="menu-icon fa fa-plus-square"></i>Registrar Nova</a>
                     </li>
 
                     <h3 class="menu-title">Clientes</h3><!-- /.menu-title -->
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-plus-square"></i>Cadastrar cliente</a>
+                        <a href="/Cliente/Index"> <i class="menu-icon fa fa-plus-square"></i>Cadastrar cliente</a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-users"></i>Atualizar dados</a>
+                        <a href="/Cliente/Atualizar"> <i class="menu-icon fa fa-user"></i>Atualizar dados</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -100,7 +113,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="data:image;base64,@System.Convert.ToBase64String(usuarioLogado.ImagemDePerfil)" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="https://ui-avatars.com/api/?background=4CAF50&color=fff&length=@(usuarioLogado.Pessoa.NomeRazaoSocial.Split(' ').Length)&name=@usuarioLogado.Pessoa.NomeRazaoSocial.Replace(" ", "+")" alt="User Avatar">
                         </a>
 
                         <div class="user-menu dropdown-menu">

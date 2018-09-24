@@ -47,6 +47,16 @@ namespace MatrixMax.DAO
                 .Entity<Produto>()
                 .Property(p => p.Ativo)
                 .HasDefaultValue(true);
+
+            modelBuilder
+                .Entity<Categoria>()
+                .Property(c => c.Ativo)
+                .HasDefaultValue(true);
+
+            modelBuilder
+                .Entity<Marca>()
+                .Property(m => m.Ativo)
+                .HasDefaultValue(true);
         }
 
         public MatrixMaxContext()

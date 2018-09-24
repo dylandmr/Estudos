@@ -36,11 +36,35 @@ namespace MatrixMax.DAO
             }
         }
 
+        public IList<Categoria> ListaCategoriasDesativadas()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Categorias.Where(c => c.CategoriaId == null && !c.Ativo).ToList();
+            }
+        }
+
         public IList<Categoria> ListaSubcategorias(int categoriaId)
         {
             using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Categorias.Where(c => c.CategoriaId == categoriaId).ToList();
+            }
+        }
+
+        public IList<Categoria> ListaTodasAsSubcategorias()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Categorias.Include(c => c.CategoriaDaSubcategoria).Where(c => c.CategoriaId.HasValue).ToList();
+            }
+        }
+
+        public IList<Categoria> ListaTodasAsSubcategoriasDesativadas()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Categorias.Include(c => c.CategoriaDaSubcategoria).Where(c => c.CategoriaId.HasValue && !c.Ativo).ToList();
             }
         }
 

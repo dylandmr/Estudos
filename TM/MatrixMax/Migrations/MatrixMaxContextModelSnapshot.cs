@@ -25,6 +25,10 @@ namespace MatrixMax.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Ativo")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(true);
+
                     b.Property<int?>("CategoriaId");
 
                     b.Property<string>("Nome")
@@ -81,6 +85,10 @@ namespace MatrixMax.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(true);
 
                     b.Property<string>("Nome")
                         .HasMaxLength(50);
@@ -178,8 +186,6 @@ namespace MatrixMax.Migrations
                     b.Property<bool>("Ativo")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(true);
-
-                    b.Property<byte[]>("ImagemDePerfil");
 
                     b.Property<string>("Login")
                         .HasMaxLength(30);

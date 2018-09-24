@@ -13,7 +13,7 @@ namespace MatrixMax.Controllers
         {
             return Json(new
             {
-                Marcas = from m in new MarcaDAO().Lista()
+                data = from m in new MarcaDAO().Lista()
                          select new { m.Nome, m.Id }
             }, JsonRequestBehavior.AllowGet);
         }

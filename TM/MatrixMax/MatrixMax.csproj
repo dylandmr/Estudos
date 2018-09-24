@@ -221,6 +221,8 @@
     <Content Include="Content\Imagens\favicon.png" />
     <Content Include="Content\Imagens\matrix.png" />
     <Content Include="Content\Imagens\matrixhorizon.png" />
+    <Content Include="Content\js\categoria\funcoesCrud.js" />
+    <Content Include="Content\js\categoria\scriptsDataTables.js" />
     <Content Include="Content\js\chartjs.min.js" />
     <Content Include="Content\js\dashboard.js" />
     <Content Include="Content\js\index.html" />
@@ -285,6 +287,8 @@
     <Content Include="Content\js\lib\vector-map\jquery.vmap.sampledata.js" />
     <Content Include="Content\js\lib\vector-map\vector.init.js" />
     <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\marca\funcoesCrud.js" />
+    <Content Include="Content\js\marca\scriptsDataTables.js" />
     <Content Include="Content\js\modalFix.js" />
     <Content Include="Content\js\plugins.js" />
     <Content Include="Content\js\popper.min.js" />
@@ -318,11 +322,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MarcaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\RecargaController.cs" />
+    <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
     <Compile Include="DAO\FormaDePagamentoDAO.cs" />
@@ -332,6 +340,7 @@
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="DAO\VendaDAO.cs" />
+    <Compile Include="Filtros\AdminFilterAttribute.cs" />
     <Compile Include="Filtros\AutorizacaoFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -351,6 +360,10 @@
     <Compile Include="Migrations\20180830121001_RemovendoTipoProduto.cs" />
     <Compile Include="Migrations\20180830121001_RemovendoTipoProduto.designer.cs">
       <DependentUpon>20180830121001_RemovendoTipoProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180923204221_AdicionandoAtivoCaregoriasEMarcasERemovendoImagemUsuario.cs" />
+    <Compile Include="Migrations\20180923204221_AdicionandoAtivoCaregoriasEMarcasERemovendoImagemUsuario.designer.cs">
+      <DependentUpon>20180923204221_AdicionandoAtivoCaregoriasEMarcasERemovendoImagemUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\MatrixMaxContextModelSnapshot.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -487,6 +500,15 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Usuarios.cshtml" />
+    <Content Include="Views\Produto\Estoque.cshtml" />
+    <Content Include="Views\Venda\Historico.cshtml" />
+    <Content Include="Views\Venda\Index.cshtml" />
+    <Content Include="Views\Recarga\Registrar.cshtml" />
+    <Content Include="Views\Recarga\Index.cshtml" />
+    <Content Include="Views\Cliente\Atualizar.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

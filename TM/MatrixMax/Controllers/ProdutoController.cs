@@ -16,6 +16,11 @@ namespace MatrixMax.Controllers
             return View();
         }
 
+        public ActionResult Estoque()
+        {
+            return View();
+        }
+
         public JsonResult getProduto(int id)
         {
             return Json(new ProdutoDAO().BuscaPorId(id), JsonRequestBehavior.AllowGet);

@@ -172,11 +172,11 @@ var ativados = {
         },
     ],
     initComplete: function () {
-        $(".dataTables_filter input").removeClass('form-control-sm');
-        $(".dataTables_filter input").prop('placeholder', 'Pesquisar por nome');
-        $(".dataTables_filter").append('<label><select id="FiltroCategorias" onclick="FiltraPorCategoria()" class="mt-2 ml-1 form-control"><option value="0">Filtrar por categoria</option></select></label>');
-        $.getJSON("/Categoria/getCategorias", null, function (data) {
-            $.each(data.Categorias, function (index, item) {
+        $(".tabelaprodutosfiltros .dataTables_filter input").removeClass('form-control-sm');
+        $(".tabelaprodutosfiltros .dataTables_filter input").prop('placeholder', 'Pesquisar por nome');
+        $(".tabelaprodutosfiltros .dataTables_filter").append('<label><select id="FiltroCategorias" onclick="FiltraPorCategoria()" class="mt-2 ml-1 form-control"><option value="0">Filtrar por categoria</option></select></label>');
+        $.getJSON("/Categoria/getCategorias", null, function (response) {
+            $.each(response.data, function (index, item) {
                 $("#FiltroCategorias").append(
                     $("<option></option>")
                         .text(item.Nome)

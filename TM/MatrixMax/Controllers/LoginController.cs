@@ -24,8 +24,16 @@ namespace MatrixMax.Controllers
             var usuario = new UsuarioDAO().Autentica(login, senha);
             if (usuario != null)
             {
-                Session["usuarioLogado"] = usuario;
-                return RedirectToAction("Index", "Home");
+                if (usuario.Ativo)
+                {
+                    Session["usuarioLogado"] = usuario;
+                    Session["Alerta"] = "sim";
+                    return RedirectToAction("Index", "Home");
+                } else
+                {
+                    ModelState.AddModelError("UsuarioInativo", "Usuário inativo.");
+                    return View("Index");
+                }
             }
             else
             {

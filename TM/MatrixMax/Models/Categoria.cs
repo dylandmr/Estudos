@@ -16,5 +16,7 @@ namespace MatrixMax.Models
         public int? CategoriaId { get; set; }
 
         public virtual Categoria CategoriaDaSubcategoria { get; set; }
+
+        public bool Ativo { get; set; }
     }
 }

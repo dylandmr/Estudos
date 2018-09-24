@@ -10,7 +10,6 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="/Home/Index">Dashboard</a></li>
                     <li><a href="/Produto/Index">Produtos</a></li>
                 </ol>
             </div>
@@ -62,17 +61,6 @@
                             </thead>
                             <tbody></tbody>
                         </table>
-
-                        @section scriptsProduto {
-                            @Scripts.Render("~/bundles/tables/js")
-                            <script src="~/Content/js/jquery.mask.js"></script>
-                            <script src="~/Content/js/vendor/jquery.form.min.js"></script>
-                            <script src="~/Content/js/modalFix.js"></script>
-                            <script src="~/Content/js/validation/jquery.validate.min.js"></script>
-                            <script src="~/Content/js/produto/scriptsForms.js"></script>
-                            <script src="~/Content/js/produto/scriptsDataTables.js"></script>
-                            <script src="~/Content/js/produto/funcoesCrud.js"></script>
-                        }
 
                         <div class="modal fade" id="ModalRemover" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-sm" role="document">
@@ -314,16 +302,96 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-categorias" role="tabpanel" aria-labelledby="nav-categorias-tab">
-                        <p>Categorias</p>
+                        <div id="mensagensContainerCategorias"></div>
+                        <div class="btn-group-sm btn-group-toggle mb-3" data-toggle="buttons">
+                            <label class="btn btn-success active focus mr-0 rounded" id="RadioAtivosCategorias">
+                                <input type="radio" id="opcaoAtivoDesativoCategorias" value="ativa" checked> Ativas
+                            </label>
+                            <label class="btn btn-secondary rounded" id="RadioDesativosCategorias">
+                                <input type="radio" id="opcaoAtivoDesativoCategorias" value="desativa"> Desativadas
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-success rounded" id="BotaoAddCategorias">
+                            Nova categoria
+                            <i class="fa fa-plus-circle"></i>
+                        </button>
+                        <table id="bootstrap-data-table-Categorias" class="table-striped table table-dark table-bordered ">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nome</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
                     </div>
                     <div class="tab-pane fade" id="nav-subcategorias" role="tabpanel" aria-labelledby="nav-subcategorias-tab">
-                        <p>Subcategorias</p>
+                        <div id="mensagensContainerSubcategorias"></div>
+                        <div class="btn-group-sm btn-group-toggle mb-3" data-toggle="buttons">
+                            <label class="btn btn-success active focus mr-0 rounded" id="RadioAtivosSubcategorias">
+                                <input type="radio" id="opcaoAtivoDesativoSubcategorias" value="ativa" checked> Ativas
+                            </label>
+                            <label class="btn btn-secondary rounded" id="RadioDesativosSubcategorias">
+                                <input type="radio" id="opcaoAtivoDesativoSubcategorias" value="desativa"> Desativadas
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-success rounded" id="BotaoAddSubcategorias">
+                            Nova Subcategoria
+                            <i class="fa fa-plus-circle"></i>
+                        </button>
+                        <table id="bootstrap-data-table-Subcategorias" class="table-striped table table-dark table-bordered ">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nome</th>
+                                    <th>Categoria</th>
+                                    <th>CategoriaId</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
                     </div>
                     <div class="tab-pane fade" id="nav-marcas" role="tabpanel" aria-labelledby="nav-marcas-tab">
-                        <p>Marcas</p>
+                        <div id="mensagensContainerMarcas"></div>
+                        <div class="btn-group-sm btn-group-toggle mb-3" data-toggle="buttons">
+                            <label class="btn btn-success active focus mr-0 rounded" id="RadioAtivosMarcas">
+                                <input type="radio" id="opcaoAtivoDesativoMarcas" value="ativa" checked> Ativas
+                            </label>
+                            <label class="btn btn-secondary rounded" id="RadioDesativosMarcas">
+                                <input type="radio" id="opcaoAtivoDesativoMarcas" value="desativa"> Desativadas
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-success rounded" id="BotaoAddMarcas">
+                            Nova Marca
+                            <i class="fa fa-plus-circle"></i>
+                        </button>
+                        <table id="bootstrap-data-table-Marcas" class="table-striped table table-dark table-bordered ">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nome</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section scriptsProduto {
+    @Scripts.Render("~/bundles/tables/js")
+    <script src="~/Content/js/jquery.mask.js"></script>
+    <script src="~/Content/js/vendor/jquery.form.min.js"></script>
+    <script src="~/Content/js/modalFix.js"></script>
+    <script src="~/Content/js/validation/jquery.validate.min.js"></script>
+    <script src="~/Content/js/produto/scriptsForms.js"></script>
+    <script src="~/Content/js/produto/scriptsDataTables.js"></script>
+    <script src="~/Content/js/produto/funcoesCrud.js"></script>
+    <script src="~/Content/js/categoria/scriptsDataTables.js"></script>
+    <script src="~/Content/js/categoria/funcoesCrud.js"></script>
+    <script src="~/Content/js/marca/scriptsDataTables.js"></script>
+    <script src="~/Content/js/marca/funcoesCrud.js"></script>
+}

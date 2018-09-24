@@ -93,7 +93,7 @@ function pegaDados() {
 }
 
 function pegaCategoriasEMarcas(form) {
-    $.getJSON("/Categoria/getCategorias", null, function (data) {
+    $.getJSON("/Categoria/getCategorias", null, function (response) {
         $("#categoria" + form + " option").remove();
         $("#categoria" + form).append(
             $("<option></option>")
@@ -102,7 +102,7 @@ function pegaCategoriasEMarcas(form) {
         );
 
         var dados = (form == 'Editar') ? dados = tabelaprodutos.rows(indexproduto).data() : null;
-        $.each(data.Categorias, function (index, item) {
+        $.each(response.data, function (index, item) {
             if (dados != null && (item.Id == dados[0].Subcategoria.CategoriaId)) {
                 $("#categoria" + form).append(
                     $("<option selected></option>")
@@ -121,7 +121,7 @@ function pegaCategoriasEMarcas(form) {
         });
     });
 
-    $.getJSON("/Marca/getMarcas", null, function (data) {
+    $.getJSON("/Marca/getMarcas", null, function (response) {
         $("#Marca" + form + " option").remove();
         $("#Marca" + form).append(
             $("<option></option>")
@@ -131,7 +131,7 @@ function pegaCategoriasEMarcas(form) {
 
         var dados = (form == 'Editar') ? dados = tabelaprodutos.rows(indexproduto).data() : null;
 
-        $.each(data.Marcas, function (index, item) {
+        $.each(response.data, function (index, item) {
             if (dados != null && (item.Id == dados[0].MarcaId)) {
                 $("#Marca" + form).append(
                     $("<option selected></option>")
@@ -163,7 +163,7 @@ function pegaSubcategorias(form) {
         );
     }
     else {
-        $.getJSON("/Categoria/getSubcategorias/" + categoriaId, null, function (data) {
+        $.getJSON("/Categoria/getSubcategorias/" + categoriaId, null, function (response) {
             $("#subcategoria" + form + " option").remove();
             $("#subcategoria" + form).prop("disabled", false);
             $("#subcategoria" + form).append(
@@ -172,7 +172,7 @@ function pegaSubcategorias(form) {
                     .val("")
             );
             var dados = (form == 'Editar') ? dados = tabelaprodutos.rows(indexproduto).data() : null;
-            $.each(data.Subcategorias, function (index, item) {
+            $.each(response.data, function (index, item) {
                 if (dados != null && (item.Id == dados[0].SubcategoriaId)) {
                     $("#subcategoria" + form).append(
                         $("<option selected></option>")

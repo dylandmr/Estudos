@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriaDAOTest.cs" />
+    <Compile Include="MarcaDAOTest.cs" />
     <Compile Include="ProdutoTest.cs" />
     <Compile Include="ProdutoDAOTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

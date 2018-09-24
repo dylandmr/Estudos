@@ -13,7 +13,7 @@ namespace MatrixMax.Controllers
         {
             return Json(new
             {
-                Categorias = from c in new CategoriaDAO().ListaCategorias()
+                data = from c in new CategoriaDAO().ListaCategorias()
                              select new { c.Nome, c.Id }
             }, JsonRequestBehavior.AllowGet);
         }
@@ -22,8 +22,17 @@ namespace MatrixMax.Controllers
         {
             return Json(new
             {
-                Subcategorias = from c in new CategoriaDAO().ListaSubcategorias(id)
+                data = from c in new CategoriaDAO().ListaSubcategorias(id)
                                 select new { c.Nome, c.Id }
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult getTodasAsSubcategorias()
+        {
+            return Json(new
+            {
+                data = from c in new CategoriaDAO().ListaTodasAsSubcategorias()
+                       select new { c.Nome, c.Id, Categoria = c.CategoriaDaSubcategoria.Nome, c.CategoriaId}
             }, JsonRequestBehavior.AllowGet);
         }
     }
