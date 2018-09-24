@@ -311,10 +311,27 @@
                                 <input type="radio" id="opcaoAtivoDesativoCategorias" value="desativa"> Desativadas
                             </label>
                         </div>
-                        <button type="button" class="btn btn-success rounded" id="BotaoAddCategorias">
-                            Nova categoria
-                            <i class="fa fa-plus-circle"></i>
-                        </button>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-success rounded center-block" id="BotaoAddCategorias">
+                                    Nova categoria
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+                            </div>
+                            <div class="col" id="DivFormAddCategoria">
+                                <form action="/Categoria/Adiciona" method="post" id="FormAddCategoria" class="form-inline">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Nome</div>
+                                            <input type="text" id="nomeCategoriaAdd" name="categoria.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][a-záéíóúãõ]{2,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions form-group">
+                                        <button type="submit" id="BotaoSubmitCategoria" class="btn btn-success rounded">Salvar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <table id="bootstrap-data-table-Categorias" class="table-striped table table-dark table-bordered ">
                             <thead class="thead-light">
                                 <tr>
@@ -335,10 +352,27 @@
                                 <input type="radio" id="opcaoAtivoDesativoSubcategorias" value="desativa"> Desativadas
                             </label>
                         </div>
-                        <button type="button" class="btn btn-success rounded" id="BotaoAddSubcategorias">
-                            Nova Subcategoria
-                            <i class="fa fa-plus-circle"></i>
-                        </button>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-success rounded center-block" id="BotaoAddSubcategorias">
+                                    Nova Subcategoria
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+                            </div>
+                            <div class="col" id="DivFormAddSubcategoria">
+                                <form action="/Subcategoria/Adiciona" method="post" id="FormAddSubcategoria" class="form-inline">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Nome</div>
+                                            <input type="text" id="nomeSubcategoriaAdd" name="subcategoria.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][a-záéíóúãõ]{2,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions form-group">
+                                        <button type="submit" id="BotaoSubmitSubcategoria" class="btn btn-success rounded">Salvar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <table id="bootstrap-data-table-Subcategorias" class="table-striped table table-dark table-bordered ">
                             <thead class="thead-light">
                                 <tr>
@@ -361,10 +395,28 @@
                                 <input type="radio" id="opcaoAtivoDesativoMarcas" value="desativa"> Desativadas
                             </label>
                         </div>
-                        <button type="button" class="btn btn-success rounded" id="BotaoAddMarcas">
-                            Nova Marca
-                            <i class="fa fa-plus-circle"></i>
-                        </button>
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-success rounded center-block" id="BotaoAddMarcas">
+                                    Nova Marca
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+                            </div>
+                            <div class="col" id="DivFormAddMarca">
+                                <form action="/Marca/Adiciona" method="post" id="FormAddMarca" class="form-inline">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Nome</div>
+                                            <input type="text" id="nomeMarcaAdd" name="marca.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions form-group">
+                                        <button type="submit" id="BotaoSubmitMarca" class="btn btn-success rounded">Salvar</button>
+                                    </div>
+                                    <span class="ml-1 msgErroForm" hidden id="msgErroMarcaAdd"></span>
+                                </form>
+                            </div>
+                        </div>
                         <table id="bootstrap-data-table-Marcas" class="table-striped table table-dark table-bordered ">
                             <thead class="thead-light">
                                 <tr>

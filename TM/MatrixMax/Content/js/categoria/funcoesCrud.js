@@ -1,1 +1,8 @@
-﻿console.log("funcoescrud categorias");
+﻿$(function () {
+    $("#BotaoAddCategorias").click(function () {
+        $("#DivFormAddCategoria").toggle();
+    });
+    $("#BotaoAddSubcategorias").click(function () {
+        $("#DivFormAddSubcategoria").toggle();
+    });
+});
