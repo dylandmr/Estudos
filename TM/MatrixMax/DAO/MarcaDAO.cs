@@ -51,5 +51,27 @@ namespace MatrixMax.DAO
                 return contexto.Marcas.Find(id);
             }
         }
+
+        public void Ativa(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var marca = contexto.Marcas.Find(id);
+                marca.Ativo = true;
+                contexto.Entry(marca).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
+        }
+
+        public void Desativa(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var marca = contexto.Marcas.Find(id);
+                marca.Ativo = false;
+                contexto.Entry(marca).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
+        }
     }
 }

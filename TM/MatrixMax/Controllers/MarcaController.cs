@@ -15,8 +15,7 @@ namespace MatrixMax.Controllers
         {
             return Json(new
             {
-                data = from m in new MarcaDAO().Lista()
-                         select new { m.Nome, m.Id }
+                data = new MarcaDAO().Lista()
             }, JsonRequestBehavior.AllowGet);
         }
 
@@ -30,6 +29,39 @@ namespace MatrixMax.Controllers
             {
                 return Json(new { adicionou = false, msg = "Nome inválido." });
             }
+        }
+
+        public JsonResult Atualiza(Marca marca)
+        {
+            var dao = new MarcaDAO();
+            var oldMarca = dao.BuscaPorId(marca.Id);
+            if (oldMarca != null && new Regex(@"^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$").IsMatch(marca.Nome))
+            {
+                if (!oldMarca.Equals(marca))
+                { 
+                    dao.Atualiza(marca);
+                    return Json(new { atualizou = true });
+                } else
+                {
+                    return Json(new { atualizou = false, msg = "O nome não foi alterado." }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new { adicionou = false, msg = "Dados inválidos." }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult Ativa(int id)
+        {
+            new MarcaDAO().Ativa(id);
+            return Json(new { ativou = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Desativa(int id)
+        {
+            new MarcaDAO().Desativa(id);
+            return Json(new { desativou = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }

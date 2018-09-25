@@ -1,7 +1,6 @@
 ﻿var tabelamarcas = $('#bootstrap-data-table-Marcas').DataTable(
     {
-        dom: 'Biltp',
-        select: true,
+        dom: 'iltp',
         "language":
             {
                 "info": "Total: _TOTAL_ marcas(s) - Página _PAGE_ de _PAGES_.",
@@ -31,15 +30,25 @@
         "ajax": {
             "url": "/Marca/getMarcas",
             "type": "GET",
-            "datatype": "json",
+            "datatype": "json"
         },
         columns: [
             { data: "Id", visible: true, searchable: false, orderable: false },
-            { data: "Nome", visible: true, searchable: true, orderable: true }
-        ],
-        buttons: [
-            { extend: 'selected', text: '<button type="button" class="btn btn-success mb-1 rounded" id="BotaoAtivarMarcas" disabled>Ativar selecionadas <i class="fa fa-check"></i></button>' },
-            { extend: 'selected', text: '<button type="button" class="btn btn-danger rounded" id="BotaoDesativarMarcas">Desativar selecionadas <i class="fa fa-ban"></i></button>' }
-        ],
+            {
+                data: "Nome", visible: true, searchable: true, orderable: true,
+                render: function (data, type, row, meta) {
+                    return '<button type="button" class="btn btn-link mb-1 font-weight-bold" onclick="editaMarca(' + meta.row + ')">' + row.Nome + '<i class="fa ml-1 fa-edit"></i></button>';
+                }
+            },
+            {
+                data: "Ativo",
+                render: function (data, type, row, meta) {
+                    return row.Ativo ?
+                        '<button type="button" class="btn btn-danger rounded" onclick="desativaMarca(' + meta.row + ')"><i class="fa fa-ban"></i></button>'
+                        :
+                        '<button type="button" class="btn btn-success mb-1 rounded" onclick="ativaMarca(' + meta.row + ')"><i class="fa fa-check"></i></button>';
+                }
+            }
+        ]
     }
 );

@@ -14,5 +14,12 @@ namespace MatrixMax.Models
         public string Nome { get; set; }
 
         public bool Ativo { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var outraMarca = (Marca)obj;
+
+            return Id == outraMarca.Id && Nome == outraMarca.Nome;
+        }
     }
 }

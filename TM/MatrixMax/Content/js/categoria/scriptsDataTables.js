@@ -1,7 +1,6 @@
 ﻿var tabelacategorias = $('#bootstrap-data-table-Categorias').DataTable(
     {
-        dom: 'Biltp',
-        select: true,
+        dom: 'iltp',
         "language":
             {
                 "info": "Total: _TOTAL_ categoria(s) - Página _PAGE_ de _PAGES_.",
@@ -35,19 +34,28 @@
         },
         columns: [
             { data: "Id", visible: true, searchable: false, orderable: false },
-            { data: "Nome", visible: true, searchable: true, orderable: true }
-        ],
-        buttons: [
-            { extend: 'selected', text: '<button type="button" class="btn btn-success mb-1 rounded" id="BotaoAtivarCategorias" disabled>Ativar selecionadas <i class="fa fa-check"></i></button>' },
-            { extend: 'selected', text: '<button type="button" class="btn btn-danger rounded" id="BotaoDesativarCategorias">Desativar selecionadas <i class="fa fa-ban"></i></button>' }
-        ],
+            {
+                data: "Nome", visible: true, searchable: true, orderable: true,
+                render: function (data, type, row, meta) {
+                    return '<button type="button" class="btn btn-link mb-1 font-weight-bold" onclick="editaCategoria(' + meta.row + ')">' + row.Nome + '<i class="fa ml-1 fa-edit"></i></button>';
+                }
+            },
+            {
+                data: "Ativo",
+                render: function (data, type, row, meta) {
+                    return row.Ativo ?
+                        '<button type="button" class="btn btn-danger rounded" onclick="desativaCategoria(' + meta.row + ')"><i class="fa fa-ban"></i></button>'
+                        :
+                        '<button type="button" class="btn btn-success mb-1 rounded" onclick="ativaCategoria(' + meta.row + ')"><i class="fa fa-check"></i></button>';
+                }
+            }
+        ]
     }
 );
 
 var tabelasubcategorias = $('#bootstrap-data-table-Subcategorias').DataTable(
     {
-        dom: 'Biltp',
-        select: true,
+        dom: 'iltp',
         "language":
             {
                 "info": "Total: _TOTAL_ subcategoria(s) - Página _PAGE_ de _PAGES_.",
@@ -81,13 +89,23 @@ var tabelasubcategorias = $('#bootstrap-data-table-Subcategorias').DataTable(
         },
         columns: [
             { data: "Id", visible: true, searchable: false, orderable: false },
-            { data: "Nome", visible: true, searchable: true, orderable: true },
+            {
+                data: "Nome", visible: true, searchable: true, orderable: true,
+                render: function (data, type, row, meta) {
+                    return '<button type="button" class="btn btn-link mb-1 font-weight-bold" onclick="editaSubcategoria(' + meta.row + ')">' + row.Nome + '<i class="fa ml-1 fa-edit"></i></button>';
+                }
+            },
             { data: "Categoria", visible: true, searchable: false, orderable: false },
+            {
+                data: "Ativo",
+                render: function (data, type, row, meta) {
+                    return row.Ativo ?
+                        '<button type="button" class="btn btn-danger rounded" onclick="desativaSubcategoria(' + meta.row + ')"><i class="fa fa-ban"></i></button>'
+                        :
+                        '<button type="button" class="btn btn-success mb-1 rounded" onclick="ativaSubcategoria(' + meta.row + ')"><i class="fa fa-check"></i></button>';
+                }
+            },
             { data: "CategoriaId", visible: false, searchable: true }
-        ],
-        buttons: [
-            { extend: 'selected', text: '<button type="button" class="btn btn-success mb-1 rounded" id="BotaoAtivarSubcategorias" disabled>Ativar selecionadas <i class="fa fa-check"></i></button>' },
-            { extend: 'selected', text: '<button type="button" class="btn btn-danger rounded" id="BotaoDesativarSubcategorias">Desativar selecionadas <i class="fa fa-ban"></i></button>' }
-        ],
+        ]
     }
 );

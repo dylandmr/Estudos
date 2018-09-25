@@ -303,14 +303,6 @@
                     </div>
                     <div class="tab-pane fade" id="nav-categorias" role="tabpanel" aria-labelledby="nav-categorias-tab">
                         <div id="mensagensContainerCategorias"></div>
-                        <div class="btn-group-sm btn-group-toggle mb-3" data-toggle="buttons">
-                            <label class="btn btn-success active focus mr-0 rounded" id="RadioAtivosCategorias">
-                                <input type="radio" id="opcaoAtivoDesativoCategorias" value="ativa" checked> Ativas
-                            </label>
-                            <label class="btn btn-secondary rounded" id="RadioDesativosCategorias">
-                                <input type="radio" id="opcaoAtivoDesativoCategorias" value="desativa"> Desativadas
-                            </label>
-                        </div>
                         <div class="row">
                             <div class="col">
                                 <button type="button" class="btn btn-success rounded center-block" id="BotaoAddCategorias">
@@ -332,11 +324,30 @@
                                 </form>
                             </div>
                         </div>
-                        <table id="bootstrap-data-table-Categorias" class="table-striped table table-dark table-bordered ">
+                        <div class="row mt-2">
+                            <div class="col-4 mx-auto">
+                                <form action="/Categoria/Atualiza" method="post" id="FormEditCategoria" class="form-control">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Nome</div>
+                                            <input type="number" hidden name="categoria.Id" id="idCategoriaEdit" />
+                                            <input type="text" id="nomeCategoriaEdit" name="categoria.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions form-group">
+                                        <button type="submit" id="BotaoSubmitCategoriaEdit" class="btn btn-success rounded">Salvar</button>
+                                        <button class="btn btn-danger rounded" id="BotaoCancelaCategoriaEdit"><i class="fa fa-ban"></i>Cancelar</button>
+                                    </div>
+                                    <span class="ml-1 msgErroForm" hidden id="msgErroCategoriaEdit"></span>
+                                </form>
+                            </div>
+                        </div>
+                        <table id="bootstrap-data-table-Categorias" class="table-striped table-sm table table-dark table-bordered ">
                             <thead class="thead-light">
                                 <tr>
                                     <th>Id</th>
                                     <th>Nome</th>
+                                    <th>Ativar <i class="fa fa-check"></i> | Desativar <i class="fa fa-ban"></i></th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -344,14 +355,6 @@
                     </div>
                     <div class="tab-pane fade" id="nav-subcategorias" role="tabpanel" aria-labelledby="nav-subcategorias-tab">
                         <div id="mensagensContainerSubcategorias"></div>
-                        <div class="btn-group-sm btn-group-toggle mb-3" data-toggle="buttons">
-                            <label class="btn btn-success active focus mr-0 rounded" id="RadioAtivosSubcategorias">
-                                <input type="radio" id="opcaoAtivoDesativoSubcategorias" value="ativa" checked> Ativas
-                            </label>
-                            <label class="btn btn-secondary rounded" id="RadioDesativosSubcategorias">
-                                <input type="radio" id="opcaoAtivoDesativoSubcategorias" value="desativa"> Desativadas
-                            </label>
-                        </div>
                         <div class="row">
                             <div class="col">
                                 <button type="button" class="btn btn-success rounded center-block" id="BotaoAddSubcategorias">
@@ -373,12 +376,31 @@
                                 </form>
                             </div>
                         </div>
-                        <table id="bootstrap-data-table-Subcategorias" class="table-striped table table-dark table-bordered ">
+                        <div class="row mt-2">
+                            <div class="col-4 mx-auto">
+                                <form action="/Subcategoria/Atualiza" method="post" id="FormEditSubcategoria" class="form-control">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Nome</div>
+                                            <input type="number" hidden name="subcategoria.Id" id="idSubcategoriaEdit" />
+                                            <input type="text" id="nomeSubcategoriaEdit" name="subcategoria.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions form-group">
+                                        <button type="submit" id="BotaoSubmitSubcategoriaEdit" class="btn btn-success rounded">Salvar</button>
+                                        <button class="btn btn-danger rounded" id="BotaoCancelaSubcategoriaEdit"><i class="fa fa-ban"></i>Cancelar</button>
+                                    </div>
+                                    <span class="ml-1 msgErroForm" hidden id="msgErroSubcategoriaEdit"></span>
+                                </form>
+                            </div>
+                        </div>
+                        <table id="bootstrap-data-table-Subcategorias" class="table-striped table-sm table table-dark table-bordered ">
                             <thead class="thead-light">
                                 <tr>
                                     <th>Id</th>
                                     <th>Nome</th>
                                     <th>Categoria</th>
+                                    <th>Ativar <i class="fa fa-check"></i> | Desativar <i class="fa fa-ban"></i></th>
                                     <th>CategoriaId</th>
                                 </tr>
                             </thead>
@@ -387,14 +409,6 @@
                     </div>
                     <div class="tab-pane fade" id="nav-marcas" role="tabpanel" aria-labelledby="nav-marcas-tab">
                         <div id="mensagensContainerMarcas"></div>
-                        <div class="btn-group-sm btn-group-toggle mb-3" data-toggle="buttons">
-                            <label class="btn btn-success active focus mr-0 rounded" id="RadioAtivosMarcas">
-                                <input type="radio" id="opcaoAtivoDesativoMarcas" value="ativa" checked> Ativas
-                            </label>
-                            <label class="btn btn-secondary rounded" id="RadioDesativosMarcas">
-                                <input type="radio" id="opcaoAtivoDesativoMarcas" value="desativa"> Desativadas
-                            </label>
-                        </div>
                         <div class="row">
                             <div class="col">
                                 <button type="button" class="btn btn-success rounded center-block" id="BotaoAddMarcas">
@@ -417,11 +431,30 @@
                                 </form>
                             </div>
                         </div>
-                        <table id="bootstrap-data-table-Marcas" class="table-striped table table-dark table-bordered ">
+                        <div class="row mt-2">
+                            <div class="col-4 mx-auto">
+                                <form action="/Marca/Atualiza" method="post" id="FormEditMarca" class="form-control">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Nome</div>
+                                            <input type="number" hidden name="marca.Id" id="idMarcaEdit" />
+                                            <input type="text" id="nomeMarcaEdit" name="marca.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions form-group">
+                                        <button type="submit" id="BotaoSubmitMarcaEdit" class="btn btn-success rounded">Salvar</button>
+                                        <button class="btn btn-danger rounded" id="BotaoCancelaMarcaEdit"><i class="fa fa-ban"></i>Cancelar</button>
+                                    </div>
+                                    <span class="ml-1 msgErroForm" hidden id="msgErroMarcaEdit"></span>
+                                </form>
+                            </div>
+                        </div>
+                        <table id="bootstrap-data-table-Marcas" class="table-striped table table-sm table-dark table-bordered">
                             <thead class="thead-light">
                                 <tr>
                                     <th>Id</th>
                                     <th>Nome</th>
+                                    <th>Ativar <i class="fa fa-check"></i> | Desativar <i class="fa fa-ban"></i></th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
