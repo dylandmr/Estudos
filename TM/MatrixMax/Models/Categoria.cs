@@ -18,5 +18,14 @@ namespace MatrixMax.Models
         public virtual Categoria CategoriaDaSubcategoria { get; set; }
 
         public bool Ativo { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var outraCategoria = (Categoria)obj;
+
+            return Id == outraCategoria.Id &&
+                Nome == outraCategoria.Nome &&
+                CategoriaId == outraCategoria.CategoriaId;
+        }
     }
 }

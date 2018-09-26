@@ -8,31 +8,31 @@ var desativados = {
         { extend: 'selected', text: '<button type="button" class="btn btn-success mb-1 rounded" data-toggle="modal" data-target="#ModalAtivar" onclick="pegaDados()">Ativar selecionados <i class="fa fa-check"></i></button>' }
     ],
     "language":
-        {
-            "info": "Total: _TOTAL_ produto(s) - Página _PAGE_ de _PAGES_.",
-            "zeroRecords": "Nenhum resultado encontrado.",
-            "infoEmpty": "Mostrando 0 produtos.",
-            "infoFiltered": "(Filtrado de _MAX_ itens.)",
-            "decimal": ",",
-            "thousands": ".",
-            "search": "",
-            "loadingRecords": "Carregando...",
-            "processing": "Processando...",
-            "paginate": {
-                "first": "Primeira",
-                "last": "Última",
-                "next": "Próxima",
-                "previous": "Anterior"
-            },
-            "lengthMenu": "Produtos por página:  _MENU_",
-            select: {
-                rows: {
-                    _: "%d produtos selecionados.",
-                    0: "Clique em um produto para selecioná-lo.",
-                    1: "1 produto selecionado."
-                }
-            }
+    {
+        "info": "Total: _TOTAL_ produto(s) - Página _PAGE_ de _PAGES_.",
+        "zeroRecords": "Nenhum resultado encontrado.",
+        "infoEmpty": "Mostrando 0 produtos.",
+        "infoFiltered": "(Filtrado de _MAX_ itens.)",
+        "decimal": ",",
+        "thousands": ".",
+        "search": "",
+        "loadingRecords": "Carregando...",
+        "processing": "Processando...",
+        "paginate": {
+            "first": "Primeira",
+            "last": "Última",
+            "next": "Próxima",
+            "previous": "Anterior"
         },
+        "lengthMenu": "Produtos por página:  _MENU_",
+        select: {
+            rows: {
+                _: "%d produtos selecionados.",
+                0: "Clique em um produto para selecioná-lo.",
+                1: "1 produto selecionado."
+            }
+        }
+    },
     "ajax": {
         "url": "/Produto/getDesativados",
         "type": "GET",
@@ -86,7 +86,7 @@ var desativados = {
             });
         });
     }
-}
+};
 
 var ativados = {
     dom: '<"tabelaprodutosbotoes"B><"tabelaprodutosfiltros"f><"tabelaprodutosinfo"il><tp>',
@@ -97,31 +97,31 @@ var ativados = {
         { extend: 'selected', text: '<button type="button" class="btn btn-danger rounded" data-toggle="modal" data-target="#ModalRemover" onclick="pegaDados()">Desativar selecionados <i class="fa fa-ban"></i></button>' }
     ],
     "language":
-        {
-            "info": "Total: _TOTAL_ produto(s) - Página _PAGE_ de _PAGES_.",
-            "zeroRecords": "Nenhum resultado encontrado.",
-            "infoEmpty": "Mostrando 0 produtos.",
-            "infoFiltered": "(Filtrado de _MAX_ itens.)",
-            "decimal": ",",
-            "thousands": ".",
-            "search": "",
-            "loadingRecords": "Carregando...",
-            "processing": "Processando...",
-            "paginate": {
-                "first": "Primeira",
-                "last": "Última",
-                "next": "Próxima",
-                "previous": "Anterior"
-            },
-            "lengthMenu": "Produtos por página:  _MENU_",
-            select: {
-                rows: {
-                    _: "%d produtos selecionados.",
-                    0: "Clique em um produto para selecioná-lo.",
-                    1: "1 produto selecionado."
-                }
-            }
+    {
+        "info": "Total: _TOTAL_ produto(s) - Página _PAGE_ de _PAGES_.",
+        "zeroRecords": "Nenhum resultado encontrado.",
+        "infoEmpty": "Mostrando 0 produtos.",
+        "infoFiltered": "(Filtrado de _MAX_ itens.)",
+        "decimal": ",",
+        "thousands": ".",
+        "search": "",
+        "loadingRecords": "Carregando...",
+        "processing": "Processando...",
+        "paginate": {
+            "first": "Primeira",
+            "last": "Última",
+            "next": "Próxima",
+            "previous": "Anterior"
         },
+        "lengthMenu": "Produtos por página:  _MENU_",
+        select: {
+            rows: {
+                _: "%d produtos selecionados.",
+                0: "Clique em um produto para selecioná-lo.",
+                1: "1 produto selecionado."
+            }
+        }
+    },
     "ajax": {
         "url": "/Produto/getProdutos",
         "type": "GET",
@@ -185,6 +185,29 @@ var ativados = {
             });
         });
     }
-}
+};
 
 var tabelaprodutos = $('#bootstrap-data-table').DataTable(ativados);
+
+$(function () {
+    $("#nav-produtos-tab").click(function () {
+        tabelaprodutos.ajax.reload();
+
+        $("#FiltroCategorias option").remove();
+        $("#FiltroCategorias").append(
+            $("<option></option>")
+                .text("Filtrar por categoria")
+                .val("0")
+        );
+
+        $.getJSON("/Categoria/getCategorias", null, function (response) {
+            $.each(response.data, function (index, item) {
+                $("#FiltroCategorias").append(
+                    $("<option></option>")
+                        .text(item.Nome)
+                        .val(item.Id)
+                );
+            });
+        });
+    });
+});

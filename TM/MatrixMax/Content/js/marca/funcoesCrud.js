@@ -1,6 +1,10 @@
 ﻿$(function () {
+    $("#nav-marcas-tab").click(function () {
+        tabelamarcas.ajax.reload();
+    });
+
     $("#BotaoAddMarcas").click(function () {
-        $("#DivFormAddMarca").toggle();
+        $("#FormAddMarca").fadeIn();
     });
 
     $('#FormAddMarca').ajaxForm({
@@ -8,7 +12,7 @@
         success: function (resposta) {
             if (resposta.adicionou) {
                 $('#FormAddMarca').resetForm();
-                $('#DivFormAddMarca').toggle();
+                $('#FormAddMarca').fadeOut();
                 tabelamarcas.ajax.reload();
                 $("#mensagensContainerMarcas").append(
                     '<div class="col-sm-12" id="msgMarcaAdicionada">'
@@ -32,6 +36,13 @@
         $("#FormEditMarca").fadeOut();
         $('#FormEditMarca').resetForm();
         $("#msgErroMarcaEdit").prop("hidden", true);
+    });
+
+    $("#BotaoCancelaMarcaAdd").click(function (event) {
+        event.preventDefault();
+        $("#FormAddMarca").fadeOut();
+        $('#FormAddMarca').resetForm();
+        $("#msgErroMarcaAdd").prop("hidden", true);
     });
 
     $('#FormEditMarca').ajaxForm({

@@ -302,16 +302,23 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-categorias" role="tabpanel" aria-labelledby="nav-categorias-tab">
-                        <div id="mensagensContainerCategorias"></div>
+                        <div class="row" id="mensagensContainerCategorias"></div>
                         <div class="row">
-                            <div class="col">
-                                <button type="button" class="btn btn-success rounded center-block" id="BotaoAddCategorias">
+                            <div class="col w-25"></div>
+                            <div class="col-2">
+                                <button type="button" class="btn btn-success rounded" id="BotaoAddCategorias">
                                     Nova categoria
                                     <i class="fa fa-plus-circle"></i>
                                 </button>
                             </div>
-                            <div class="col" id="DivFormAddCategoria">
-                                <form action="/Categoria/Adiciona" method="post" id="FormAddCategoria" class="form-inline">
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="botaoPesquisaCategoria" placeholder="Pesquisar por nome..." />
+                            </div>
+                            <div class="col w-25"></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 mx-auto">
+                                <form action="/Categoria/Adiciona" method="post" id="FormAddCategoria" class="form-control">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon">Nome</div>
@@ -320,6 +327,7 @@
                                     </div>
                                     <div class="form-actions form-group">
                                         <button type="submit" id="BotaoSubmitCategoria" class="btn btn-success rounded">Salvar</button>
+                                        <button class="btn btn-danger rounded" id="BotaoCancelaCategoriaAdd"><i class="fa fa-ban"></i>Cancelar</button>
                                     </div>
                                 </form>
                             </div>
@@ -354,36 +362,49 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="nav-subcategorias" role="tabpanel" aria-labelledby="nav-subcategorias-tab">
-                        <div id="mensagensContainerSubcategorias"></div>
+                        <div class="row" id="mensagensContainerSubcategorias"></div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col w-25"></div>
+                            <div class="col-3">
                                 <button type="button" class="btn btn-success rounded center-block" id="BotaoAddSubcategorias">
                                     Nova Subcategoria
                                     <i class="fa fa-plus-circle"></i>
                                 </button>
                             </div>
-                            <div class="col" id="DivFormAddSubcategoria">
-                                <form action="/Subcategoria/Adiciona" method="post" id="FormAddSubcategoria" class="form-inline">
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="botaoPesquisaSubcategoria" placeholder="Pesquisar por nome..." />
+                            </div>
+                            <div class="col-3">
+                                <select class="form-control" id="selectFiltrarPorCategoria"></select>
+                            </div>
+                            <div class="col w-25"></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6 mx-auto">
+                                <form action="/Categoria/Adiciona" method="post" id="FormAddSubcategoria" class="form-control">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon">Nome</div>
-                                            <input type="text" id="nomeSubcategoriaAdd" name="subcategoria.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][a-záéíóúãõ]{2,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                            <input type="text" id="nomeSubcategoriaAdd" name="categoria.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][a-záéíóúãõ]{2,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                            <select required class="form-control" id="selectSubcategoriaAdd" name="categoria.CategoriaId"></select>
                                         </div>
                                     </div>
                                     <div class="form-actions form-group">
                                         <button type="submit" id="BotaoSubmitSubcategoria" class="btn btn-success rounded">Salvar</button>
+                                        <button class="btn btn-danger rounded" id="BotaoCancelaSubcategoriaAdd"><i class="fa fa-ban"></i>Cancelar</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-4 mx-auto">
-                                <form action="/Subcategoria/Atualiza" method="post" id="FormEditSubcategoria" class="form-control">
+                            <div class="col-6 mx-auto">
+                                <form action="/Categoria/Atualiza" method="post" id="FormEditSubcategoria" class="form-control">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon">Nome</div>
-                                            <input type="number" hidden name="subcategoria.Id" id="idSubcategoriaEdit" />
-                                            <input type="text" id="nomeSubcategoriaEdit" name="subcategoria.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                            <input type="number" hidden name="categoria.Id" id="idSubcategoriaEdit" />
+                                            <input type="text" id="nomeSubcategoriaEdit" name="categoria.Nome" required pattern="^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$" class="form-control">
+                                            <select required class="form-control" id="selectSubcategoriaEdit" name="categoria.CategoriaId"></select>
                                         </div>
                                     </div>
                                     <div class="form-actions form-group">
@@ -408,16 +429,23 @@
                         </table>
                     </div>
                     <div class="tab-pane fade" id="nav-marcas" role="tabpanel" aria-labelledby="nav-marcas-tab">
-                        <div id="mensagensContainerMarcas"></div>
+                        <div class="row" id="mensagensContainerMarcas"></div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col w-25"></div>
+                            <div class="col-2">
                                 <button type="button" class="btn btn-success rounded center-block" id="BotaoAddMarcas">
                                     Nova Marca
                                     <i class="fa fa-plus-circle"></i>
                                 </button>
                             </div>
-                            <div class="col" id="DivFormAddMarca">
-                                <form action="/Marca/Adiciona" method="post" id="FormAddMarca" class="form-inline">
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="botaoPesquisaMarca" placeholder="Pesquisar por nome..." />
+                            </div>
+                            <div class="col w-25"></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 mx-auto">
+                                <form action="/Marca/Adiciona" method="post" id="FormAddMarca" class="form-control">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-addon">Nome</div>
@@ -426,6 +454,7 @@
                                     </div>
                                     <div class="form-actions form-group">
                                         <button type="submit" id="BotaoSubmitMarca" class="btn btn-success rounded">Salvar</button>
+                                        <button class="btn btn-danger rounded" id="BotaoCancelaMarcaAdd"><i class="fa fa-ban"></i>Cancelar</button>
                                     </div>
                                     <span class="ml-1 msgErroForm" hidden id="msgErroMarcaAdd"></span>
                                 </form>
@@ -467,7 +496,13 @@
 </div>
 
 @section scriptsProduto {
+    <script src="~/Content/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/js/popper.min.js"></script>
+    <script src="~/Content/js/plugins.js"></script>
+    <script src="~/Content/js/main.js"></script>
+
     @Scripts.Render("~/bundles/tables/js")
+
     <script src="~/Content/js/jquery.mask.js"></script>
     <script src="~/Content/js/vendor/jquery.form.min.js"></script>
     <script src="~/Content/js/modalFix.js"></script>

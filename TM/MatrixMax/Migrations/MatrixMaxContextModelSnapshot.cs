@@ -50,7 +50,13 @@ namespace MatrixMax.Migrations
 
                     b.Property<string>("Cep");
 
+                    b.Property<string>("Cidade")
+                        .HasMaxLength(50);
+
                     b.Property<string>("Complemento")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Estado")
                         .HasMaxLength(50);
 
                     b.Property<string>("Logradouro")

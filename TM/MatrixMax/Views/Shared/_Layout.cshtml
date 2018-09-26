@@ -62,6 +62,14 @@
                     <li>
                         <a href="/Produto/Index"> <i class="menu-icon fa fa-list"></i>Gerenciar produtos</a>
                     </li>
+                    <h3 class="menu-title">Clientes</h3><!-- /.menu-title -->
+                    <li>
+                        <a href="/Cliente/Index"> <i class="menu-icon fa fa-plus-square"></i>Cadastrar cliente</a>
+                    </li>
+                    <li>
+                        <a href="/Cliente/Atualizar"> <i class="menu-icon fa fa-user"></i>Atualizar dados</a>
+                    </li>
+
                     <h3 class="menu-title">Vendas</h3><!-- /.menu-title -->
 
                     <li>
@@ -77,14 +85,6 @@
                     </li>
                     <li>
                         <a href="/Recarga/Registrar"> <i class="menu-icon fa fa-plus-square"></i>Registrar Nova</a>
-                    </li>
-
-                    <h3 class="menu-title">Clientes</h3><!-- /.menu-title -->
-                    <li>
-                        <a href="/Cliente/Index"> <i class="menu-icon fa fa-plus-square"></i>Cadastrar cliente</a>
-                    </li>
-                    <li>
-                        <a href="/Cliente/Atualizar"> <i class="menu-icon fa fa-user"></i>Atualizar dados</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -129,8 +129,9 @@
         @RenderBody()
     </div>
     <!-- HEADER E CONTENT -->
-
     @Scripts.Render("~/bundles/js")
     @RenderSection("scriptsProduto", false)
+    @RenderSection("scriptsCliente", false)
+    @RenderSection("scriptsRelatorios", false)
 </body>
 </html>

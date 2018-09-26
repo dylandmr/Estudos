@@ -224,6 +224,7 @@
     <Content Include="Content\js\categoria\funcoesCrud.js" />
     <Content Include="Content\js\categoria\scriptsDataTables.js" />
     <Content Include="Content\js\chartjs.min.js" />
+    <Content Include="Content\js\cliente\scriptsForms.js" />
     <Content Include="Content\js\dashboard.js" />
     <Content Include="Content\js\index.html" />
     <Content Include="Content\js\jquery.mask.js" />
@@ -297,8 +298,7 @@
     <Content Include="Content\js\produto\scriptsForms.js" />
     <Content Include="Content\js\selectFx.js" />
     <Content Include="Content\js\vendor\index.html" />
-    <Content Include="Content\js\vendor\jquery-1.11.3.min.js" />
-    <Content Include="Content\js\vendor\jquery-2.1.4.min.js" />
+    <Content Include="Content\js\vendor\jquery-3.3.1.js" />
     <Content Include="Content\js\vendor\jquery.form.min.js" />
     <Content Include="Content\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="Content\js\widgets.js" />
@@ -364,6 +364,10 @@
     <Compile Include="Migrations\20180923204221_AdicionandoAtivoCaregoriasEMarcasERemovendoImagemUsuario.cs" />
     <Compile Include="Migrations\20180923204221_AdicionandoAtivoCaregoriasEMarcasERemovendoImagemUsuario.designer.cs">
       <DependentUpon>20180923204221_AdicionandoAtivoCaregoriasEMarcasERemovendoImagemUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180926185925_CidadeEstado.cs" />
+    <Compile Include="Migrations\20180926185925_CidadeEstado.designer.cs">
+      <DependentUpon>20180926185925_CidadeEstado.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\MatrixMaxContextModelSnapshot.cs" />
     <Compile Include="Models\Categoria.cs" />

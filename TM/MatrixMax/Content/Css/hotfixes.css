@@ -34,6 +34,10 @@ input.campoInvalido, input.campoInvalido:focus, select.campoInvalido, select.cam
     font-weight: bold;
 }
 
-#DivFormAddCategoria, #DivFormAddSubcategoria, #DivFormAddMarca, #FormEditMarca, #FormEditCategoria, #FormEditSubcategoria {
+#FormAddCategoria, #FormAddSubcategoria, #FormAddMarca, #FormEditMarca, #FormEditCategoria, #FormEditSubcategoria {
+    display: none;
+}
+
+.inputsJuridicos {
     display: none;
 }

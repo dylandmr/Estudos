@@ -44,11 +44,27 @@ namespace MatrixMax.DAO
             }
         }
 
+        public IList<Categoria> ListaCategoriasAtivas()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Categorias.Where(c => c.CategoriaId == null && c.Ativo).ToList();
+            }
+        }
+
         public IList<Categoria> ListaSubcategorias(int categoriaId)
         {
             using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Categorias.Where(c => c.CategoriaId == categoriaId).ToList();
+            }
+        }
+
+        public IList<Categoria> ListaSubcategoriasAtivas(int categoriaId)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Categorias.Where(c => c.CategoriaId == categoriaId && c.Ativo).ToList();
             }
         }
 
@@ -73,6 +89,28 @@ namespace MatrixMax.DAO
             using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Categorias.Find(id);
+            }
+        }
+
+        public void Ativa(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var categoria = contexto.Categorias.Find(id);
+                categoria.Ativo = true;
+                contexto.Entry(categoria).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
+        }
+
+        public void Desativa(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var categoria = contexto.Categorias.Find(id);
+                categoria.Ativo = false;
+                contexto.Entry(categoria).State = EntityState.Modified;
+                contexto.SaveChanges();
             }
         }
     }

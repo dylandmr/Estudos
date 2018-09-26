@@ -44,6 +44,14 @@ namespace MatrixMax.DAO
             }
         }
 
+        public IList<Marca> ListaAtivas()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Marcas.Where(m => m.Ativo).ToList();
+            }
+        }
+
         public Marca BuscaPorId(int id)
         {
             using (var contexto = new MatrixMaxContext())

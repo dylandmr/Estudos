@@ -93,7 +93,7 @@ function pegaDados() {
 }
 
 function pegaCategoriasEMarcas(form) {
-    $.getJSON("/Categoria/getCategorias", null, function (response) {
+    $.getJSON("/Categoria/getCategoriasAtivas", null, function (response) {
         $("#categoria" + form + " option").remove();
         $("#categoria" + form).append(
             $("<option></option>")
@@ -121,7 +121,7 @@ function pegaCategoriasEMarcas(form) {
         });
     });
 
-    $.getJSON("/Marca/getMarcas", null, function (response) {
+    $.getJSON("/Marca/getMarcasAtivas", null, function (response) {
         $("#Marca" + form + " option").remove();
         $("#Marca" + form).append(
             $("<option></option>")
@@ -163,7 +163,7 @@ function pegaSubcategorias(form) {
         );
     }
     else {
-        $.getJSON("/Categoria/getSubcategorias/" + categoriaId, null, function (response) {
+        $.getJSON("/Categoria/getSubcategoriasAtivas/" + categoriaId, null, function (response) {
             $("#subcategoria" + form + " option").remove();
             $("#subcategoria" + form).prop("disabled", false);
             $("#subcategoria" + form).append(

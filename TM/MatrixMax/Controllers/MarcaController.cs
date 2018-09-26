@@ -19,6 +19,14 @@ namespace MatrixMax.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult getMarcasAtivas()
+        {
+            return Json(new
+            {
+                data = new MarcaDAO().ListaAtivas()
+            }, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult Adiciona(Marca marca)
         {
             if (new Regex(@"^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$").IsMatch(marca.Nome))
