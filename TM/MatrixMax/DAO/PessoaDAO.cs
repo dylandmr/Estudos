@@ -35,5 +35,13 @@ namespace MatrixMax.DAO
                 return contexto.Pessoas.Include(p => p.Endereco).ToList();
             }
         }
+
+        public Pessoa Existe(string cpfCnpj)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Pessoas.Where(p => p.CpfCnpj == cpfCnpj).FirstOrDefault();
+            }
+        }
     }
 }

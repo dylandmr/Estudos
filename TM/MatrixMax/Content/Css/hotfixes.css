@@ -38,6 +38,10 @@ input.campoInvalido, input.campoInvalido:focus, select.campoInvalido, select.cam
     display: none;
 }
 
-.inputsJuridicos {
+.divsJuridicas {
     display: none;
+}
+
+.scroll {
+    overflow-y: auto;
 }

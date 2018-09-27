@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MatrixMax.DAO;
+using MatrixMax.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,12 +12,19 @@ namespace MatrixMax.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Clientes";
             return View();
         }
 
         public ActionResult Atualizar()
         {
             return View();
+        }
+
+        public JsonResult Adiciona(Pessoa pessoa)
+        {
+            new PessoaDAO().Adiciona(pessoa);
+            return Json(new { adicionou = true });
         }
     }
 }
