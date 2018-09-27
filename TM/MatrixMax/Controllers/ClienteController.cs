@@ -23,8 +23,22 @@ namespace MatrixMax.Controllers
 
         public JsonResult Adiciona(Pessoa pessoa)
         {
-            new PessoaDAO().Adiciona(pessoa);
-            return Json(new { adicionou = true });
+            var dao = new PessoaDAO();
+            if (dao.Existe(pessoa.CpfCnpj) != null)
+            {
+                return Json(new { adicionou = false, msg = "Já existe um cliente cadastrado com este CPF/CNPJ." });
+            }
+            else
+            {
+                if (pessoa.Valida() && pessoa.Endereco.Valida())
+                {
+                    dao.Adiciona(pessoa);
+                    return Json(new { adicionou = true });
+                } else
+                {
+                    return Json(new { adicionou = false, msg = "Dados inválidos." });
+                }
+            }
         }
     }
 }

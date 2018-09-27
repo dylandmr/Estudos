@@ -12,7 +12,7 @@
             },
             "pessoa.Telefone": {
                 required: true,
-                minlength: 15
+                minlength: 14
             },
             "pessoa.CpfCnpj": {
                 required: true,
@@ -122,6 +122,34 @@
             event.preventDefault();
         }
     });
+
+    $('#FormDadosPessoa').ajaxForm({
+        dataType: 'json',
+        success: function (resposta) {
+            if (resposta.adicionou) {
+                $('#FormDadosPessoa').resetForm();
+                $("#mensagensContainerCliente").append(
+                    '<div class="col-sm-12" id="msgClienteAdicionado">'
+                    + '<div class="alert  alert-success alert-dismissible fade show" role="alert">'
+                    + '<span class="badge badge-pill badge-success">sucesso</span> Cliente adicionado.'
+                    + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                    + '<span aria-hidden="true">&times;</span>'
+                    + '</button>'
+                    + '</div>'
+                    + '</div>');
+            } else {
+                $("#mensagensContainerCliente").append(
+                    '<div class="col-sm-12" id="msgErroInternoCliente">'
+                    + '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">'
+                    + '<span class="badge badge-pill badge-danger">erro interno</span> ' + resposta.msg
+                    + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+                    + '<span aria-hidden="true">&times;</span>'
+                    + '</button>'
+                    + '</div>'
+                    + '</div>');
+            }
+        }
+    });
 });
 
 function validaCNPJ(cnpj) {
@@ -176,10 +204,9 @@ function validaCPF(cpf) {
 function limpaCEP() {
     // Limpa valores do formulário de cep.
     $("#logradouroEndereco").val("");
-    $("#bairro").val("");
-    $("#cidade").val("");
-    $("#uf").val("");
-    $("#ibge").val("");
+    $("#bairroEndereco").val("");
+    $("#cidadeEndereco").val("");
+    $("#estadoEndereco").val("");
 }
 
 $("#cepEndereco").blur(function () {

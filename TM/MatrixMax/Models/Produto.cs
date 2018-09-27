@@ -33,7 +33,9 @@ namespace MatrixMax.Models
 
         public override bool Equals(object obj)
         {
-            var outroProduto = (Produto)obj;
+            Produto outroProduto = obj as Produto;
+
+            if (outroProduto == null) return false;
 
             return outroProduto.Ativo == Ativo &&
                     outroProduto.Estoque == Estoque &&

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MatrixMax.Models
 {
@@ -25,12 +26,28 @@ namespace MatrixMax.Models
 
         public bool Valida()
         {
+            if (NomeRazaoSocial == null || Telefone == null || Email == null || CpfCnpj == null)
+                return false;
+
+            if (NomeRazaoSocial.Length < 5 || NomeRazaoSocial.Length > 50) return false;
+            if (Telefone.Length < 14 || Telefone.Length > 15) return false;
+            if (!Regex.IsMatch(Email, @"^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"))
+                return false;
+
             if (TipoPessoa == 'F')
             {
+                if (CpfCnpj.Length != 14) return false;
                 return true;
             }
             else if (TipoPessoa == 'J')
             {
+                if (CpfCnpj.Length != 18) return false;
+
+                if (InscricaoEstadual == null || NomeFantasia == null)
+                    return false;
+
+                if (InscricaoEstadual.Length != 15) return false;
+                if (NomeFantasia.Length < 5 || NomeRazaoSocial.Length > 50) return false;
                 return true;
             }
             else return false;
@@ -38,15 +55,18 @@ namespace MatrixMax.Models
 
         public override bool Equals(object obj)
         {
-            var outraPessoa = (Pessoa)obj;
+            Pessoa outraPessoa = obj as Pessoa;
+
+            if (outraPessoa == null) return false;
+
             return Id == outraPessoa.Id &&
-                Email == outraPessoa.Email &&
-                Telefone == outraPessoa.Telefone &&
-                TipoPessoa == outraPessoa.TipoPessoa &&
-                NomeRazaoSocial == outraPessoa.NomeRazaoSocial &&
-                CpfCnpj == outraPessoa.CpfCnpj &&
-                InscricaoEstadual == outraPessoa.InscricaoEstadual &&
-                NomeFantasia == outraPessoa.NomeFantasia;
+                    Email == outraPessoa.Email &&
+                    Telefone == outraPessoa.Telefone &&
+                    TipoPessoa == outraPessoa.TipoPessoa &&
+                    NomeRazaoSocial == outraPessoa.NomeRazaoSocial &&
+                    CpfCnpj == outraPessoa.CpfCnpj &&
+                    InscricaoEstadual == outraPessoa.InscricaoEstadual &&
+                    NomeFantasia == outraPessoa.NomeFantasia;
         }
 
         public bool ValidaCpf(string cpf)
