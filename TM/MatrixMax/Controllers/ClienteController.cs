@@ -40,5 +40,15 @@ namespace MatrixMax.Controllers
                 }
             }
         }
+
+        public JsonResult BuscaClienteVenda(string q)
+        {
+            var results = new List<object>();
+            foreach (var pessoa in new PessoaDAO().BuscaPessoas(q))
+            {
+                results.Add(new { id = pessoa.Id, text = pessoa.NomeRazaoSocial });
+            }
+            return Json(new { results }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

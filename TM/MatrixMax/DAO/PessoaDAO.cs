@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MatrixMax.DAO
@@ -41,6 +42,14 @@ namespace MatrixMax.DAO
             using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Pessoas.Where(p => p.CpfCnpj == cpfCnpj).FirstOrDefault();
+            }
+        }
+
+        public IList<Pessoa> BuscaPessoas(string query)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Pessoas.Where(p => Regex.IsMatch(p.NomeRazaoSocial, query, RegexOptions.IgnoreCase)).ToList();
             }
         }
     }

@@ -11,20 +11,28 @@ namespace MatrixMax.Models
         public int Id { get; set; }
 
         public IList<ProdutosDaVenda> Produtos { get; set; }
+
         public FormaDePagamento FormaDePagamento { get; set; }
+        public int? FormaDePagamentoId { get; set; }
+
         public Pessoa Pessoa { get; set; }
+        public int? PessoaId { get; set; }
 
         [Range(1,int.MaxValue)]
         public double ValorTotal { get; set; }
 
         public DateTime Data { get; set; }
+
         public int Parcelas { get; set; }
+
         public DateTime Previsao { get; set; }
+
         public string Observacao { get; set; }
-        public DateTime DataEntrega { get; set; }
-        public string DescricaoStatus { get; set; }
-        public int TipoStatusVenda { get; set; }
-        public int TipoPagamento { get; set; }
+
+        public DateTime DataEntregaRecarga { get; set; }
+
+        public int TipoVenda { get; set; }
+
         public int? DescontoPorcento { get; set; }
         public double DescontoValorFixo { get; set; }
 

@@ -28,11 +28,19 @@ namespace MatrixMax.DAO
             }
         }
 
-        public IList<FormaDePagamento> Lista()
+        public IList<FormaDePagamento> ListaFormasDePagamento()
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.FormasDePagamento.ToList();
+                return contexto.FormasDePagamento.Where(fp => fp.BandeiraCartaoId == null).ToList();
+            }
+        }
+
+        public IList<FormaDePagamento> ListaBandeiras()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.FormasDePagamento.Where(fp => fp.BandeiraCartaoId == 3).ToList();
             }
         }
     }

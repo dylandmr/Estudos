@@ -20,103 +20,191 @@
 <!-- TÍTULO CONTEÚDO-->
 <!--CONTEÚDO-->
 <div class="content mt-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-md m-1 border border-dark border-3 rounded infoVenda">
-                <form action="" method="post" class="form-control m-1">
+    <form action="" method="post" class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md m-1 border border-dark border-3 rounded infoVenda">
                     <div class="form-group mb-0">
                         <label for="venda.FormaDePagamento" class="pr-1  form-control-label">Forma de pagamento</label>
                         <select id="formaDePagamento" name="venda.FormaDePagamento" class="form-control">
                             <option value="">Selecione...</option>
+                            @foreach (var fp in ViewBag.FormasDePagamento)
+                            {
+                                <option value="@fp.Id">@fp.Nome</option>
+                            }
                         </select>
-                        <div class="row m-1 mt-2">
-                            <label class="switch switch-default switch-secondary-outline-alt switch-pill mt-2 mr-2">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-label"></span>
-                                <span class="switch-handle"></span>
-                            </label>
-                            <div class="col-3">
-                                <select id="parcelas" name="venda.Parcelas" class="form-control">
-                                    <option value="2">2x</option>
-                                    <option value="3">3x</option>
-                                </select>
+                        <div id="opcoesCartao">
+                            <div class="row m-1 mt-2">
+                                <div class="col-5">
+                                    <select id="bandeiraCartao" name="venda.FormaDePagamento" disabled class="form-control">
+                                        <option value="">Bandeira</option>
+                                        @foreach (var bandeira in ViewBag.Bandeiras)
+                                        {
+                                            <option value="@bandeira.Id">@bandeira.Nome</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-3">
+                                    <div class="row">
+                                        <label class="containerRadio mr-2">
+                                            Débito
+                                            <input type="radio" checked name="radioDebitoCredito" id="cartaoDebito">
+                                            <span class="spanRadio"></span>
+                                        </label>
+                                        <label class="containerRadio">
+                                            Crédito
+                                            <input type="radio" name="radioDebitoCredito" id="cartaoCredito">
+                                            <span class="spanRadio"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <select id="parcelasCartao" name="venda.Parcelas" disabled class="form-control">
+                                        <option value="2">2x</option>
+                                        <option value="3">3x</option>
+                                        <option value="4">4x</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="row m-1 mt-2">
-                            <label class="switch switch-default switch-secondary-outline-alt switch-pill mt-2 mr-2">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-label"></span>
-                                <span class="switch-handle"></span>
-                            </label>
-                            <div class="col-3">
-                                <div class="row">
-                                    <label class="containerRadio mr-2">
-                                        Valor fixo
-                                        <input type="radio" checked name="radioParcela" id="parceladoFixo">
-                                        <span class="spanRadio"></span>
-                                    </label>
-                                    <label class="containerRadio">
-                                        Porcentagem
-                                        <input type="radio" name="radioParcela" id="parceladoPorcentagem">
-                                        <span class="spanRadio"></span>
-                                    </label>
+                            <div class="col-6">
+                                <label for="venda.DescontoValorFixo" class="pr-1 mt-2 mr-4 form-control-label">Desconto</label>
+                                <label class="switch switch-default switch-secondary-outline-alt switch-pill mt-2 mr-2">
+                                    <input type="checkbox" id="toggleDesconto" class="switch-input">
+                                    <span class="switch-label"></span>
+                                    <span class="switch-handle"></span>
+                                </label>
+                            </div>
+                            <div id="opcoesDesconto" class="mt-2">
+                                <div class="col-5">
+                                    <div class="row">
+                                        <label class="containerRadio mr-2">
+                                            Valor fixo
+                                            <input type="radio" checked name="radioDesconto" id="descontoFixo">
+                                            <span class="spanRadio"></span>
+                                        </label>
+                                        <label class="containerRadio">
+                                            Porcentagem
+                                            <input type="radio" name="radioDesconto" id="descontoPorcentagem">
+                                            <span class="spanRadio"></span>
+                                        </label>
+                                    </div>
                                 </div>
+                                <div class="col-3"></div>
+                                <div class="col-4">
+                                    <select id="porcentagemDesconto" name="venda.DescontoPorcento" disabled class="form-control">
+                                        <option value="5">5%</option>
+                                        <option value="10">10%</option>
+                                        <option value="15">15%</option>
+                                        <option value="20">20%</option>
+                                        <option value="25">25%</option>
+                                        <option value="30">30%</option>
+                                    </select>
+                                    <input type="text" class="form-control" disabled id="valorDesconto" name="venda.DescontoValorFixo" placeholder="Valor..." />
+                                </div>
+
                             </div>
-                            <div class="col-3">
-                                <select id="parcelas" name="venda.Parcelas" class="ml-2 form-control">
-                                    <option value="5">5%</option>
-                                    <option value="10">10%</option>
-                                    <option value="15">15%</option>
-                                    <option value="20">20%</option>
-                                    <option value="25">25%</option>
-                                    <option value="30">30%</option>
-                                </select>
-                            </div>
-                            <div class="col-4"><input type="text" class="form-control" placeholder="Valor..." /></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="venda.FormaDePagamento" class="pr-1  form-control-label">Cliente</label>
-                        <select id="formaDePagamento" name="venda.FormaDePagamento" class="form-control">
-                            <option value="">Pesquisar...</option>
-                        </select>
+                        <select id="clienteVenda" name="venda.FormaDePagamento" class="form-control"></select>
                     </div>
                     <div class="form-group">
                         <label for="venda.Data" class="pr-1 form-control-label">Data (padrão - hoje)</label>
                         <div class="col w-100"></div>
-                        <div class="col-1 mr-2 pl-0">
-                            <label class="switch switch-default switch-secondary-outline-alt switch-pill mt-2 mr-2">
-                                <input type="checkbox" class="switch-input">
-                                <span class="switch-label"></span>
-                                <span class="switch-handle"></span>
-                            </label>
-                        </div>
-                        <div class="col-9">
-                            <div class=""><input type="date" name="venda.Data" class="form-control" /></div>
-                        </div>
+                        <input type="date" name="venda.Data" class="form-control" value="@DateTime.Now.ToString("yyyy'-'MM'-'dd")" />
                     </div>
                     <div class="form-group">
+                        <div class="col w-100"></div>
                         <label for="venda.Data" class="pr-1 form-control-label">Observações</label>
                         <textarea class="form-control" rows="3" name="venda.Observacao"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="venda.FormaDePagamento" class="pr-1  form-control-label">Tipo de venda</label>
-                        <select id="formaDePagamento" name="venda.FormaDePagamento" class="form-control">
-                            <option value="">Selecione...</option>
+                </div>
+                <div class="col-md m-1 border border-dark border-3 rounded tabelaProdutosVenda">
+                    <div class="form-group mb-0">
+                        <label for="venda.FormaDePagamento" class="pr-1  form-control-label">Adicionar  Produtos</label>
+                        <select id="produtosVenda" name="venda.Produtos" class="form-control">
+                            <option value="">.</option>
+                            @foreach (var categoria in ViewBag.Categorias)
+                            {
+                                <optgroup label="@categoria.Nome">
+                                    @foreach (var subcategoria in ViewBag.Subcategorias)
+                                    {
+                                        if (subcategoria.CategoriaId == categoria.Id)
+                                        {
+                                            <option class="subcategoriaSelectProdutos" disabled>
+                                                @subcategoria.Nome
+                                            </option>
+                                            foreach (var produto in ViewBag.Produtos)
+                                            {
+                                                if (subcategoria.Id == produto.SubcategoriaId)
+                                                {
+                                                    <option value="id=@produto.Id&pun=@produto.PrecoUnitario&prec=@produto.PrecoRecarga&ptr=@produto.PrecoTroca">@produto.Nome</option>
+                                                }
+                                            }
+                                        }
+                                    }
+                                </optgroup>
+                            }
                         </select>
                     </div>
-                </form>
+                    <div class="row mt-3 mb-5" id="detalhesProdutoVenda">
+                        <div class="col-4">
+                            <select id="produtoVendaTipoPreco" name="produtoVendaTipoPreco" class="form-control"></select>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="produtoVendaQuantidade" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <button class="btn btn-success rounded">Confirmar</button>
+                        </div>
+                    </div>
+                    <table id="tabelaProdutosVenda" class="table rounded table-sm table-bordered table-striped table-dark table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="col-md m-1 border border-dark border-3 rounded tabelaProdutosVenda">
+            <div class="row">
+                <div class="col-md m-1 border border-dark border-3 rounded valorTotalVenda">
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md m-1 border border-dark border-3 rounded selectProdutosVenda">
-            </div>
-            <div class="col-md m-1 border border-dark border-3 rounded valorTotalVenda">
-            </div>
-        </div>
-    </div>
+    </form>
     <!--/.col-->
 </div>
 <!--CONTEÚDO-->
+
+@section scriptsVendas {
+    <script src="~/Content/js/select2.full.min.js"></script>
+    <script src="~/Content/js/venda/scriptsVenda.js"></script>
+}

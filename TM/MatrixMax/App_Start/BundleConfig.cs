@@ -20,6 +20,8 @@ namespace MatrixMax.App_Start
                 "~/Content/scss/style.css",
                 "~/Content/Css/lib/datatable/dataTables.bootstrap.min.css",
                 "~/Content/Css/lib/datatable/select.bootstrap4.min.css",
+                "~/Content/Css/select2.min.css",
+                "~/Content/Css/select2-bootstrap.min.css",
                 "~/Content/Css/hotfixes.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/js")

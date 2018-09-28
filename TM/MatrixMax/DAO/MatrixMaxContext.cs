@@ -29,11 +29,6 @@ namespace MatrixMax.DAO
                 .Entity<Endereco>()
                 .HasKey("PessoaId");
 
-            modelBuilder
-                .Entity<Venda>()
-                .Property(v => v.TipoStatusVenda)
-                .HasDefaultValue(0);
-
             modelBuilder.Entity<Categoria>().HasOne(c => c.CategoriaDaSubcategoria)
                                    .WithMany()
                                    .HasForeignKey(c => c.CategoriaId);

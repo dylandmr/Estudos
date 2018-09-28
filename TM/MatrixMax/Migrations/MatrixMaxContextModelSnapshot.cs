@@ -78,10 +78,14 @@ namespace MatrixMax.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BandeiraCartaoId");
+
                     b.Property<string>("Nome")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BandeiraCartaoId");
 
                     b.ToTable("FormasDePagamento");
                 });
@@ -219,13 +223,11 @@ namespace MatrixMax.Migrations
 
                     b.Property<DateTime>("Data");
 
-                    b.Property<DateTime>("DataEntrega");
+                    b.Property<DateTime>("DataEntregaRecarga");
 
                     b.Property<int?>("DescontoPorcento");
 
                     b.Property<double>("DescontoValorFixo");
-
-                    b.Property<string>("DescricaoStatus");
 
                     b.Property<int?>("FormaDePagamentoId");
 
@@ -237,11 +239,7 @@ namespace MatrixMax.Migrations
 
                     b.Property<DateTime>("Previsao");
 
-                    b.Property<int>("TipoPagamento");
-
-                    b.Property<int>("TipoStatusVenda")
-                        .ValueGeneratedOnAdd()
-                        .HasDefaultValue(0);
+                    b.Property<int>("TipoVenda");
 
                     b.Property<double>("ValorTotal");
 
@@ -267,6 +265,13 @@ namespace MatrixMax.Migrations
                         .WithOne("Endereco")
                         .HasForeignKey("MatrixMax.Models.Endereco", "PessoaId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("MatrixMax.Models.FormaDePagamento", b =>
+                {
+                    b.HasOne("MatrixMax.Models.FormaDePagamento", "BandeiraCartao")
+                        .WithMany()
+                        .HasForeignKey("BandeiraCartaoId");
                 });
 
             modelBuilder.Entity("MatrixMax.Models.Produto", b =>

@@ -204,6 +204,8 @@
     <Content Include="Content\Css\lib\datatable\select.bootstrap4.min.css" />
     <Content Include="Content\Css\lib\vector-map\jqvmap.min.css" />
     <Content Include="Content\Css\normalize.css" />
+    <Content Include="Content\Css\select2-bootstrap.min.css" />
+    <Content Include="Content\Css\select2.min.css" />
     <Content Include="Content\Css\style.css" />
     <Content Include="Content\Css\themify-icons.css" />
     <Content Include="Content\Css\variables.css" />
@@ -296,7 +298,9 @@
     <Content Include="Content\js\produto\funcoesCrud.js" />
     <Content Include="Content\js\produto\scriptsDataTables.js" />
     <Content Include="Content\js\produto\scriptsForms.js" />
+    <Content Include="Content\js\select2.full.min.js" />
     <Content Include="Content\js\selectFx.js" />
+    <Content Include="Content\js\venda\scriptsVenda.js" />
     <Content Include="Content\js\vendor\index.html" />
     <Content Include="Content\js\vendor\jquery-3.3.1.js" />
     <Content Include="Content\js\vendor\jquery.form.min.js" />
@@ -325,6 +329,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\FormaDePagamentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MarcaController.cs" />
@@ -368,6 +373,14 @@
     <Compile Include="Migrations\20180926185925_CidadeEstado.cs" />
     <Compile Include="Migrations\20180926185925_CidadeEstado.designer.cs">
       <DependentUpon>20180926185925_CidadeEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180928003633_AlteracoesVendaEFormasDePagamento.cs" />
+    <Compile Include="Migrations\20180928003633_AlteracoesVendaEFormasDePagamento.designer.cs">
+      <DependentUpon>20180928003633_AlteracoesVendaEFormasDePagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180928004623_CorrigindoFormaDePagamento.cs" />
+    <Compile Include="Migrations\20180928004623_CorrigindoFormaDePagamento.designer.cs">
+      <DependentUpon>20180928004623_CorrigindoFormaDePagamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\MatrixMaxContextModelSnapshot.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -522,6 +535,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Categoria\" />
+    <Folder Include="Views\FormaDePagamento\" />
     <Folder Include="Views\Marca\" />
   </ItemGroup>
   <PropertyGroup>

@@ -15,13 +15,15 @@ namespace MatrixMax.Models
 
         public int? CategoriaId { get; set; }
 
-        public virtual Categoria CategoriaDaSubcategoria { get; set; }
+        public Categoria CategoriaDaSubcategoria { get; set; }
 
         public bool Ativo { get; set; }
 
         public override bool Equals(object obj)
         {
-            var outraCategoria = (Categoria)obj;
+            Categoria outraCategoria = obj as Categoria;
+
+            if (outraCategoria == null) return false;
 
             return Id == outraCategoria.Id &&
                 Nome == outraCategoria.Nome &&

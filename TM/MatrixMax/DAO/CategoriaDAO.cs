@@ -68,6 +68,14 @@ namespace MatrixMax.DAO
             }
         }
 
+        public IList<Categoria> ListaTodasAsSubcategoriasAtivas()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Categorias.Where(c => c.CategoriaId.HasValue && c.Ativo).ToList();
+            }
+        }
+
         public IList<Categoria> ListaTodasAsSubcategorias()
         {
             using (var contexto = new MatrixMaxContext())

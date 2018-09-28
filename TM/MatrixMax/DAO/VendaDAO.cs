@@ -41,33 +41,5 @@ namespace MatrixMax.DAO
                     .SingleOrDefault();
             }
         }
-
-        public IList<Venda> ListaFInalizadas()
-        {
-            using (var contexto = new MatrixMaxContext())
-            {
-                return contexto.Vendas
-                    .Include(v => v.Produtos)
-                    .ThenInclude(vp => vp.Produto)
-                    .Include(v => v.FormaDePagamento)
-                    .Include(v => v.Pessoa)
-                    .Where(v => v.TipoStatusVenda <= 1 || v.TipoStatusVenda > 7)
-                    .ToList();
-            }
-        }
-
-        public IList<Venda> ListaRecargas()
-        {
-            using (var contexto = new MatrixMaxContext())
-            {
-                return contexto.Vendas
-                    .Include(v => v.Produtos)
-                    .ThenInclude(vp => vp.Produto)
-                    .Include(v => v.FormaDePagamento)
-                    .Include(v => v.Pessoa)
-                    .Where(v => v.TipoStatusVenda > 1 && v.TipoStatusVenda < 7)
-                    .ToList();
-            }
-        }
     }
 }

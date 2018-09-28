@@ -50,44 +50,84 @@ input.campoInvalido, input.campoInvalido:focus, select.campoInvalido, select.cam
     border-width: 2px !important;
 }
 
-.selectProdutosVenda, .tabelaProdutosVenda, .infoVenda, .valorTotalVenda {
-    height: 200px;
-    background-color: rgba(25, 56, 47, 0.5); 
+.tabelaProdutosVenda, .infoVenda, .valorTotalVenda {
+    background-color: rgba(25, 56, 47, 0.5);
+    color: white;
 }
 
-.infoVenda {
+.valorTotalVenda {
+    height: 100px;
+}
+
+.infoVenda, .tabelaProdutosVenda {
     height: 600px;
 }
 
-.infoVenda .form-control {
+.infoVenda select, .infoVenda select:focus {
     background-color: transparent;
     color: white;
+    border: 1px solid white;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+
+    background-color: transparent;
+    color: white;
+}
+
+.select2-container--bootstrap .select2-selection--single span {
     border: none;
 }
 
-.infoVenda .form-control select {
+.select2-container--bootstrap .select2-selection {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+.select2-selection__rendered .form-control {
+    border: none;
+}
+
+.select2-container--bootstrap .select2-selection--single .select2-selection__placeholder {
+    color: white
+}
+
+.infoVenda input, .infoVenda input:focus {
     background-color: transparent;
     color: white;
     border: 1px solid white;
 }
 
-.infoVenda .form-control input {
+.infoVenda option {
+    color: black;
+}
+
+.infoVenda textarea, .infoVenda textarea:focus {
     background-color: transparent;
     color: white;
     border: 1px solid white;
 }
 
-.infoVenda .form-control textarea {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-}
-
-.infoVenda .form-control .switch-label {
+.switch.switch-default .switch-label {
     background-color: transparent;
 }
 
-.infoVenda .form-control input::placeholder {
+.switch.switch-default .switch-handle {
+    background-color: transparent;
+}
+
+.switch-secondary-outline-alt > .switch-input:checked ~ .switch-label {
+    background-color: transparent !important;
+    border-color: white;
+}
+
+.switch-secondary-outline-alt > .switch-input:checked ~ .switch-handle {
+    background: white !important;
+    border-color: white;
+}
+
+.infoVenda input::placeholder {
     color: white;
 }
 
@@ -153,4 +193,27 @@ input.campoInvalido, input.campoInvalido:focus, select.campoInvalido, select.cam
     height: 8px;
     border-radius: 50%;
     background: white;
+}
+
+#opcoesDesconto, #porcentagemDesconto, #opcoesCartao, #parcelasCartao, #detalhesProdutoVenda {
+    display: none;
+}
+
+.subcategoriaSelectProdutos {
+    font-weight: bold;
+    color: darkgray;
+}
+
+.dropdownSelect2.select2-container .select2-results {
+    max-height: 200px;
+}
+
+.dropdownSelect2 .select2-results {
+    max-height: 200px;
+}
+
+.dropdownSelect2 .select2-choices {
+    min-height: 150px;
+    max-height: 150px;
+    overflow-y: auto;
 }
