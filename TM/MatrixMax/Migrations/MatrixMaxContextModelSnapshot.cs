@@ -78,14 +78,14 @@ namespace MatrixMax.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BandeiraCartaoId");
+                    b.Property<bool>("BandeiraCartao");
 
                     b.Property<string>("Nome")
                         .HasMaxLength(50);
 
-                    b.HasKey("Id");
+                    b.Property<int>("Previsao");
 
-                    b.HasIndex("BandeiraCartaoId");
+                    b.HasKey("Id");
 
                     b.ToTable("FormasDePagamento");
                 });
@@ -178,6 +178,8 @@ namespace MatrixMax.Migrations
 
                     b.Property<int>("ProdutoId");
 
+                    b.Property<double>("PrecoSelecionado");
+
                     b.Property<int>("Quantidade");
 
                     b.HasKey("VendaId", "ProdutoId");
@@ -241,6 +243,8 @@ namespace MatrixMax.Migrations
 
                     b.Property<int>("TipoVenda");
 
+                    b.Property<int?>("UsuarioId");
+
                     b.Property<double>("ValorTotal");
 
                     b.HasKey("Id");
@@ -248,6 +252,8 @@ namespace MatrixMax.Migrations
                     b.HasIndex("FormaDePagamentoId");
 
                     b.HasIndex("PessoaId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Vendas");
                 });
@@ -265,13 +271,6 @@ namespace MatrixMax.Migrations
                         .WithOne("Endereco")
                         .HasForeignKey("MatrixMax.Models.Endereco", "PessoaId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("MatrixMax.Models.FormaDePagamento", b =>
-                {
-                    b.HasOne("MatrixMax.Models.FormaDePagamento", "BandeiraCartao")
-                        .WithMany()
-                        .HasForeignKey("BandeiraCartaoId");
                 });
 
             modelBuilder.Entity("MatrixMax.Models.Produto", b =>
@@ -314,6 +313,10 @@ namespace MatrixMax.Migrations
                     b.HasOne("MatrixMax.Models.Pessoa", "Pessoa")
                         .WithMany()
                         .HasForeignKey("PessoaId");
+
+                    b.HasOne("MatrixMax.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
                 });
 #pragma warning restore 612, 618
         }

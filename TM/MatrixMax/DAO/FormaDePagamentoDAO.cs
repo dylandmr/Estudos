@@ -32,7 +32,7 @@ namespace MatrixMax.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.FormasDePagamento.Where(fp => fp.BandeiraCartaoId == null).ToList();
+                return contexto.FormasDePagamento.Where(fp => !fp.BandeiraCartao).ToList();
             }
         }
 
@@ -40,7 +40,15 @@ namespace MatrixMax.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.FormasDePagamento.Where(fp => fp.BandeiraCartaoId == 3).ToList();
+                return contexto.FormasDePagamento.Where(fp => fp.BandeiraCartao).ToList();
+            }
+        }
+
+        public FormaDePagamento BuscaPorId(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.FormasDePagamento.Find(id);
             }
         }
     }

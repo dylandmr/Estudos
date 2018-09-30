@@ -18,6 +18,9 @@ namespace MatrixMax.Models
         public Pessoa Pessoa { get; set; }
         public int? PessoaId { get; set; }
 
+        public Usuario Usuario { get; set; }
+        public int? UsuarioId { get; set; }
+
         [Range(1,int.MaxValue)]
         public double ValorTotal { get; set; }
 
@@ -39,11 +42,6 @@ namespace MatrixMax.Models
         public Venda()
         {
             Produtos = new List<ProdutosDaVenda>();
-        }
-
-        public void IncluiProduto(Produto produto)
-        {
-            Produtos.Add(new ProdutosDaVenda() { Produto = produto });
         }
     }
 }

@@ -382,6 +382,18 @@
     <Compile Include="Migrations\20180928004623_CorrigindoFormaDePagamento.designer.cs">
       <DependentUpon>20180928004623_CorrigindoFormaDePagamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180928124748_TipoPrecoProdutosDaVenda.cs" />
+    <Compile Include="Migrations\20180928124748_TipoPrecoProdutosDaVenda.designer.cs">
+      <DependentUpon>20180928124748_TipoPrecoProdutosDaVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180929180509_FuncionarioNaVendaEPrecoSelecionadoProdutosDaVenda.cs" />
+    <Compile Include="Migrations\20180929180509_FuncionarioNaVendaEPrecoSelecionadoProdutosDaVenda.designer.cs">
+      <DependentUpon>20180929180509_FuncionarioNaVendaEPrecoSelecionadoProdutosDaVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180930130741_AlterandoFormaDePagamento.cs" />
+    <Compile Include="Migrations\20180930130741_AlterandoFormaDePagamento.designer.cs">
+      <DependentUpon>20180930130741_AlterandoFormaDePagamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\MatrixMaxContextModelSnapshot.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Endereco.cs" />

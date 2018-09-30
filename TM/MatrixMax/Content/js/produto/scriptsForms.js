@@ -127,7 +127,7 @@
         },
     });
 
-    $('#precoUnitarioAdd').mask("000,00", { reverse: true });
+    $('#valorDesconto').mask("000,00", { reverse: true });
     $('#precoUnitarioEditar').mask("000,00", { reverse: true });
     $('#precoRecargaAdd').mask("000,00", { reverse: true });
     $('#precoRecargaEditar').mask("000,00", { reverse: true });

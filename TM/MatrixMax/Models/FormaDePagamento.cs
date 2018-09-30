@@ -13,8 +13,8 @@ namespace MatrixMax.Models
         [MaxLength(50)]
         public string Nome { get; set; }
 
-        public int? BandeiraCartaoId { get; set; }
+        public bool BandeiraCartao { get; set; }
 
-        public FormaDePagamento BandeiraCartao { get; set; }
+        public int Previsao { get; set; }
     }
 }

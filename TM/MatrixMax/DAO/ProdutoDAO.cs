@@ -90,5 +90,38 @@ namespace MatrixMax.DAO
                 return busca.Equals(produto);
             }
         }
+
+        public void DecrementaEstoqueDos(List<ProdutosDaVenda> produtosDaVenda)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                foreach (var produtoDaVenda in produtosDaVenda)
+                {
+                    DecrementaEstoque(produtoDaVenda.ProdutoId, produtoDaVenda.Quantidade);
+                }
+            }
+        }
+
+        public void DecrementaEstoque(int id, int quantidade)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var produto = contexto.Produtos.Find(id);
+                produto.Estoque -= quantidade;
+                contexto.Entry(produto).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
+        }
+
+        public void IncrementaEstoque(int id, int quantidade)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var produto = contexto.Produtos.Find(id);
+                produto.Estoque += quantidade;
+                contexto.Entry(produto).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
+        }
     }
 }

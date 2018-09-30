@@ -68,6 +68,10 @@
             }
         }
     });
+
+    $('#botaoPesquisaMarca').on('keyup', function () {
+        tabelamarcas.search(this.value).draw();
+    }); 
 });
 
 function editaMarca(index) {
