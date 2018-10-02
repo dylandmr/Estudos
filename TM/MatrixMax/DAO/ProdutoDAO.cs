@@ -36,6 +36,14 @@ namespace MatrixMax.DAO
             }
         }
 
+        public IList<Produto> ListaComEstoque()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Produtos.Include(p => p.Marca).Include(p => p.Subcategoria).ThenInclude(c => c.CategoriaDaSubcategoria).Where(p => p.Ativo && p.Estoque >= 1).ToList();
+            }
+        }
+
         public IList<Produto> ListaDesativados()
         {
             using (var contexto = new MatrixMaxContext())

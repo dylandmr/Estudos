@@ -9,6 +9,7 @@ namespace MatrixMax.DAO
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<FormaDePagamento> FormasDePagamento { get; set; }
+        public DbSet<ProdutosDaVenda> ProdutosDaVenda { get; set; }
         public DbSet<Marca> Marcas { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Produto> Produtos { get; set; }

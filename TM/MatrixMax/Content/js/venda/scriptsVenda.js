@@ -107,11 +107,14 @@
             return;
         }
 
-        var precosProduto = $(this).val().match(/pun=(.*)&prec=(.*)&ptr=(.*)/);
+        var precosProduto = $(this).val().match(/pun=(.*)&prec=(.*)&ptr=(.*)&est=(.*)/);
 
         var precoUnitario = precosProduto[1];
         var precoRecarga = precosProduto[2];
         var precoTroca = precosProduto[3];
+        var quantMax = precosProduto[4];
+
+        $("#produtoVendaQuantidade").prop("max", quantMax);
 
         $("#produtoVendaTipoPreco option.precosProduto").remove();
 
@@ -146,6 +149,11 @@
     $("#botaoAdicionaProdutoVenda").click(function (event) {
         event.preventDefault();
 
+        if (produtosDaVenda.findIndex(pv => pv.id == $("#produtosVenda").val().match(/id=(\d+)/)[1]) >= 0) {
+            exibeErro("Produto já está presente na venda!");
+            return;
+        }
+
         if ($("#produtoVendaTipoPreco").val() === "") {
             exibeErro("Selecione o preço do produto escolhido.");
             return;
@@ -155,6 +163,13 @@
         
         if (Number.isNaN(quantidade) || quantidade <= 0 || quantidade > 99) {
             exibeErro("Quantidade inválida.");
+            return;
+        }
+
+        var quantMax = $("#produtosVenda").val().match(/est=(\d+)/)[1];
+
+        if (quantidade > quantMax) {
+            exibeErro("Quantidade informada excede o valor em estoque do produto.");
             return;
         }
 
@@ -214,7 +229,7 @@
 
         atualizaLabelsValorTotaleDesconto();
         $("#detalhesProdutoVenda").fadeOut();
-        $("#produtoVendaTipoPreco option").remove();
+        $("#produtoVendaTipoPreco option.precosProduto").remove();
         $("#produtoVendaQuantidade").val("");
         $("#produtosVenda").val("").change();
 
@@ -412,7 +427,8 @@ function resetaVenda() {
 }
 
 function exibeErro(mensagem) {
-    $("#containerMensagensVenda").append(
+    $("#containerMensagensVenda").html("");
+    $("#containerMensagensVenda").hide().append(
         '<div class="col-sm-12" id="msgErroVenda">'
         + '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">'
         + '<span class="badge badge-pill badge-danger">alerta</span> ' + mensagem
@@ -420,11 +436,12 @@ function exibeErro(mensagem) {
         + '<span aria-hidden="true">&times;</span>'
         + '</button>'
         + '</div>'
-        + '</div>');
+        + '</div>').fadeIn();
 }
 
 function exibeAviso(mensagem) {
-    $("#containerMensagensVenda").append(
+    $("#containerMensagensVenda").html("");
+    $("#containerMensagensVenda").hide().append(
         '<div class="col-sm-12" id="msgAlertaVenda">'
         + '<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">'
         + '<span class="badge badge-pill badge-success">alerta</span> ' + mensagem
@@ -432,5 +449,5 @@ function exibeAviso(mensagem) {
         + '<span aria-hidden="true">&times;</span>'
         + '</button>'
         + '</div>'
-        + '</div>');
+        + '</div>').fadeIn();
 }

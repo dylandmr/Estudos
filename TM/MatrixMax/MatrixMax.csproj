@@ -293,6 +293,7 @@
     <Content Include="Content\js\marca\funcoesCrud.js" />
     <Content Include="Content\js\marca\scriptsDataTables.js" />
     <Content Include="Content\js\modalFix.js" />
+    <Content Include="Content\js\moment-with-locales.js" />
     <Content Include="Content\js\plugins.js" />
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Content\js\produto\funcoesCrud.js" />
@@ -300,6 +301,8 @@
     <Content Include="Content\js\produto\scriptsForms.js" />
     <Content Include="Content\js\select2.full.min.js" />
     <Content Include="Content\js\selectFx.js" />
+    <Content Include="Content\js\venda\scriptsDataTables.js" />
+    <Content Include="Content\js\venda\scriptsHistorico.js" />
     <Content Include="Content\js\venda\scriptsVenda.js" />
     <Content Include="Content\js\vendor\index.html" />
     <Content Include="Content\js\vendor\jquery-3.3.1.js" />
@@ -343,6 +346,7 @@
     <Compile Include="DAO\MatrixMaxContext.cs" />
     <Compile Include="DAO\PessoaDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
+    <Compile Include="DAO\ProdutosDaVendaDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="DAO\VendaDAO.cs" />
     <Compile Include="Filtros\AdminFilterAttribute.cs" />

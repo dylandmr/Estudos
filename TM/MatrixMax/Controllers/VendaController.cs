@@ -16,7 +16,7 @@ namespace MatrixMax.Controllers
             var categoriaDAO = new CategoriaDAO();
             ViewBag.FormasDePagamento = formaPagamentoDAO.ListaFormasDePagamento();
             ViewBag.Bandeiras = formaPagamentoDAO.ListaBandeiras();
-            ViewBag.Produtos = new ProdutoDAO().Lista();
+            ViewBag.Produtos = new ProdutoDAO().ListaComEstoque();
             ViewBag.Categorias = categoriaDAO.ListaCategoriasAtivas();
             ViewBag.Subcategorias = categoriaDAO.ListaTodasAsSubcategoriasAtivas();
             ViewBag.Title = "Vendas";
@@ -25,7 +25,18 @@ namespace MatrixMax.Controllers
 
         public ActionResult Historico()
         {
+            ViewBag.Title = "Histórico";
             return View();
+        }
+
+        public JsonResult getVendas()
+        {
+            return Json(new { data = new VendaDAO().Lista() }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult getProdutosDaVenda(int id)
+        {
+            return Json(new { data = new ProdutosDaVendaDAO().ListaPorVenda(id) }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Cadastra(List<ProdutosDaVenda> produtosDaVenda, Venda venda)

@@ -41,5 +41,30 @@ namespace MatrixMax.DAO
                     .SingleOrDefault();
             }
         }
+
+        public IList<Venda> Lista()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Vendas
+                    .Include(v => v.FormaDePagamento)
+                    .Include(v => v.Pessoa)
+                    .Include(v => v.Usuario)
+                    .OrderByDescending(v => v.Data)
+                    .ToList();
+            }
+        }
+
+        public IList<ProdutosDaVenda> ListaProdutos(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Vendas
+                    .Include(v => v.Produtos)
+                    .ThenInclude(vp => vp.Produto)
+                    .Where(v => v.Id == id)
+                    .SingleOrDefault().Produtos; 
+            }
+        }
     }
 }

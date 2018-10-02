@@ -3,6 +3,10 @@
     box-shadow: none;
 }
 
+body:not(.modal-open) {
+    padding-right: 0px !important;
+}
+
 .btn-link, .btn-link:hover, .btn-link:focus {
     text-decoration: none;
     color: white;

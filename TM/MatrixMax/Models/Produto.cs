@@ -15,7 +15,6 @@ namespace MatrixMax.Models
         public Marca Marca { get; set; }
         public int? MarcaId { get; set; }
         public bool Ativo { get; set; }
-        public IList<ProdutosDaVenda> Vendas { get; set; }
 
         [MaxLength(50)]
         public string Nome { get; set; }
@@ -25,11 +24,6 @@ namespace MatrixMax.Models
         public double? PrecoRecarga { get; set; }
 
         public double? PrecoTroca { get; set; }
-        
-        public Produto()
-        {
-            Vendas = new List<ProdutosDaVenda>();
-        }
 
         public override bool Equals(object obj)
         {
