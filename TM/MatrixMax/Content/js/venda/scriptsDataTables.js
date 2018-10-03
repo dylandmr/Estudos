@@ -29,13 +29,34 @@ var tabelavendas = $('#bootstrap-data-table-Vendas').DataTable(
         columns: [
             { data: "Id", visible: false, searchable: false, orderable: false },
             {
-                data: "Data", visible: true, searchable: false, orderable: true,
+                data: "Data", visible: true, searchable: true, orderable: true,
                 render: function (data, type, row, meta) {
                     return moment(row.Data).format('L');
                 }
             },
-            { data: "Pessoa.NomeRazaoSocial", visible: true, searchable: false, orderable: false, className: "text-left" },
-            { data: "Usuario.Pessoa.NomeRazaoSocial", visible: true, searchable: false, orderable: false, className: "text-left" },
+            { data: "Pessoa.NomeRazaoSocial", visible: true, searchable: true, orderable: false, className: "text-left" },
+            { data: "Usuario.Pessoa.NomeRazaoSocial", visible: true, searchable: true, orderable: false, className: "text-left" },
+            {
+                data: "FormaDePagamentoId", visible: true, searchable: false, orderable: false,
+                render: function (data, type, row, meta) {
+                    if (row.FormaDePagamento.BandeiraCartao) {
+                        if (row.Parcelas > 0) {
+                            return "Crédito - " + row.Parcelas + "x - " + row.FormaDePagamento.Nome;
+                        } else {
+                            return "Débito - " + row.FormaDePagamento.Nome;
+                        }
+                    } else {
+                        switch (row.FormaDePagamentoId) {
+                            case 2:
+                                return "Boleto";
+                            case 5:
+                                return "Cheque";
+                            default:
+                                return "Dinheiro";
+                        }
+                    }
+                }
+            },
             {
                 data: "ValorTotal", visible: true, searchable: false, orderable: false,
                 render: function (data, type, row, meta) {

@@ -11,7 +11,7 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li class="active">Novo cliente</li>
+                    <li class="active">Gerenciar</li>
                 </ol>
             </div>
         </div>
@@ -22,12 +22,154 @@
 <div class="p-3">
     <div class="card">
         <div class="card-header">
-            <h4>Cadstro de Clientes</h4>
+            <h4>Gerenciamento de Clientes</h4>
         </div>
         <div class="card-body">
-            <div class="default-tab">
+            <div class="default-tab text-center">
                 <div class="row" id="mensagensContainerCliente"></div>
-                <form action="/Cliente/Adiciona" method="post" id="FormDadosPessoa" class="">
+                <table id="bootstrap-data-table-Clientes" class="table-striped table table-dark table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>CpfCnpj</th>
+                            <th>InscricaoEstadual</th>
+                            <th>NomeFantasia</th>
+                            <th>Logradouro</th>
+                            <th>Numero</th>
+                            <th>Cep</th>
+                            <th>Referencia</th>
+                            <th>Bairro</th>
+                            <th>Complemento</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>Nome | Razão Social</th>
+                            <th>Tipo</th>
+                            <th>Dados</th>
+                            <th>Endereco</th>
+                            <th>Compras</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalEndereco" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largeModalLabel">Endereço do cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="containerEndereco">
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">CEP:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoCEP">Fulano de Tal</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Logradouro:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoLogradouro">000.000.000-11</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Número:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoNro">000.000.000-11</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Complemento:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoComplemento">000.000.000-11</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Bairro:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoBairro">000.000.000-11</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Cidade:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoCidade">000.000.000-11</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Estado:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoEstado">000.000.000-11</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Referência:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoReferencia">000.000.000-11</h6></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalDados" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largeModalLabel">Dados do cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="containerFisica">
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Nome:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoNome">Fulano de Tal</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">CPF:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoCPF">000.000.000-11</h6></div>
+                    </div>
+                </div>
+                <div id="containerJuridica">
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Razão social:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoRazaoSocial">Enchendo o saco S.A.</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">CNPJ:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoCNPJ">000.000.0000-11</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Nome fantasia:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoNomeFantasia">Nome aqui</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><h6 class="pb-4 display-5">Inscrição estadual:</h6></div>
+                        <div class="col"><h6 class="pb-4 display-5" id="infoInscricaoEstadual">111.111.111.111</h6></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><h6 class="pb-4 display-5">Telefone:</h6></div>
+                    <div class="col"><h6 class="pb-4 display-5" id="infoTelefone">47 3189 8379</h6></div>
+                </div>
+                <div class="row">
+                    <div class="col"><h6 class="pb-4 display-5">Email:</h6></div>
+                    <div class="col"><h6 class="pb-4 display-5" id="infoEmail">email@benner.com</h6></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalEditar" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg mw-100 w-75" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title" id="largeModalLabel">Editar Cliente</h5>
+                <button type="button" id="fechaModalEditar" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="mensagensContainerClienteForm"></div>
+                <form action="/Cliente/Atualiza" method="post" id="FormDadosPessoa" class="">
                     <div class="col-lg-6">
                         <div class="card rounded">
                             <div class="card-header text-center"><h6 class="display-5">Etapa 1: Dados Pessoais</h6></div>
@@ -35,15 +177,16 @@
                                 <div class="row text-center mt-2 mb-3">
                                     <div class="col">
                                         <div class="btn-group btn-group-sm btn-group-toggle mb-2" data-toggle="buttons">
-                                            <label class="btn btn-secondary rounded-left text-center active">
+                                            <label class="btn btn-secondary rounded-left text-center active" id="labelRadioPessoaFisica" onclick="toggleFisica()">
                                                 <input type="radio" name="radioPessoaFisica" id="radioPessoaFisica" checked> Pessoa física
                                             </label>
-                                            <label class="btn btn-secondary rounded-right">
+                                            <label class="btn btn-secondary rounded-right" id="labelRadioPessoaJuridica" onclick="toggleJuridica()">
                                                 <input type="radio" name="radioPessoaJuridica" id="radioPessoaJuridica"> Pessoa jurídica
                                             </label>
                                         </div>
                                     </div>
                                 </div>
+                                <input type="text" id="idPessoa" hidden name="pessoa.Id" class="form-control">
                                 <input type="text" id="tipoPessoa" hidden name="pessoa.TipoPessoa" value="F" class="form-control">
                                 <div class="form-group">
                                     <div class="input-group">
@@ -170,7 +313,6 @@
                             </div>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -180,9 +322,11 @@
 <!--CONTEÚDO-->
 
 @section scriptsCliente {
+    @Scripts.Render("~/bundles/tables/js")
     <script src="~/Content/js/jquery.mask.js"></script>
     <script src="~/Content/js/vendor/jquery.form.min.js"></script>
     <script src="~/Content/js/modalFix.js"></script>
     <script src="~/Content/js/validation/jquery.validate.min.js"></script>
-    <script src="~/Content/js/cliente/scriptsForms.js"></script>
+    <script src="~/Content/js/cliente/scriptsDataTables.js"></script>
+    <script src="~/Content/js/cliente/scriptsIndex.js"></script>
 }

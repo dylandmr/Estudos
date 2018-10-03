@@ -24,7 +24,7 @@ namespace MatrixMax.DAO
         {
             using (var contexto = new MatrixMaxContext())
             {
-                contexto.Entry(pessoa).State = EntityState.Modified;
+                contexto.Pessoas.Update(pessoa);
                 contexto.SaveChanges();
             }
         }
@@ -42,6 +42,14 @@ namespace MatrixMax.DAO
             using (var contexto = new MatrixMaxContext())
             {
                 return contexto.Pessoas.Where(p => p.CpfCnpj == cpfCnpj).FirstOrDefault();
+            }
+        }
+
+        public Pessoa BuscaPorId(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Pessoas.Find(id);
             }
         }
 

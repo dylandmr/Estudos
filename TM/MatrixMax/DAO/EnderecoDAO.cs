@@ -19,6 +19,14 @@ namespace MatrixMax.DAO
             }
         }
 
+        public Endereco BuscaPorId(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Enderecos.Find(id);
+            }
+        }
+
         public void Atualiza(Endereco endereco)
         {
             using (var contexto = new MatrixMaxContext())
@@ -35,5 +43,7 @@ namespace MatrixMax.DAO
                 return contexto.Enderecos.ToList();
             }
         }
+
+        
     }
 }

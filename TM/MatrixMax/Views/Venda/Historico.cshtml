@@ -24,27 +24,42 @@
         <div class="card-header">
             <h3>Histórico de Vendas</h3>
         </div>
-        <div class="card-body">
-            <div class="default-tab">
-                <table id="bootstrap-data-table-Vendas" class="table-striped table table-dark table-bordered">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Id</th>
-                            <th>Data</th>
-                            <th>Cliente</th>
-                            <th>Funcionário</th>
-                            <th>Desconto</th>
-                            <th>Valor Total</th>
-                            <th>Itens - Observações</th>
-                            <th>Observações</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <!--/.col-->
+        <div class="card-body pb-0">
+            <div class="form-group mb-0">
+                <div class="row text-center">
+                    <div class="col w-50"></div>
+                    <div class="col-3"><input type="text" id="filtroFuncionario" placeholder="Filtrar por funcionário" class="form-control" /></div>
+                    <div class="input-group col-5">
+                        <div class="input-group-addon">Filtrar por data</div>
+                        <input id="filtroData" type="date" value="@DateTime.Now.ToString("yyyy'-'MM'-'dd")" class="form-control" />
+                        <button class="btn btn-success rounded" id="botaoFiltroData">Buscar</button>
+                    </div>
+                    <div class="col-3"><input type="text" id="filtroCliente" placeholder="Filtrar por cliente" class="form-control" /></div>
+                    <div class="col w-50"></div>
+                </div>
             </div>
         </div>
+        <div class="default-tab">
+            <table id="bootstrap-data-table-Vendas" class="table-striped table table-dark table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Data</th>
+                        <th>Cliente</th>
+                        <th>Funcionário</th>
+                        <th>Forma de Pagamento</th>
+                        <th>Desconto</th>
+                        <th>Valor Total</th>
+                        <th>Itens - Observações</th>
+                        <th>Observações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <!--/.col-->
+        </div>
     </div>
+</div>
 </div>
 
 <div class="modal fade" id="ModalDetalhes" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
@@ -52,7 +67,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="largeModalLabel">Detalhes da venda</h5>
-                <button type="button" id="fechaModalRemover" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

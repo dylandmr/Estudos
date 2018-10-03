@@ -29,7 +29,7 @@ namespace MatrixMax.Models
         [MaxLength(50)]
         public string Estado { get; set; }
 
-        public Pessoa Pessoa { get; set; }
+        //public Pessoa Pessoa { get; set; }
         public int PessoaId { get; set; }
 
         public bool Valida()

@@ -226,6 +226,8 @@
     <Content Include="Content\js\categoria\funcoesCrud.js" />
     <Content Include="Content\js\categoria\scriptsDataTables.js" />
     <Content Include="Content\js\chartjs.min.js" />
+    <Content Include="Content\js\cliente\scriptsDataTables.js" />
+    <Content Include="Content\js\cliente\scriptsIndex.js" />
     <Content Include="Content\js\cliente\scriptsForms.js" />
     <Content Include="Content\js\dashboard.js" />
     <Content Include="Content\js\index.html" />
@@ -540,8 +542,8 @@
     <Content Include="Views\Venda\Index.cshtml" />
     <Content Include="Views\Recarga\Registrar.cshtml" />
     <Content Include="Views\Recarga\Index.cshtml" />
-    <Content Include="Views\Cliente\Atualizar.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cliente\Novo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -117,12 +117,6 @@
     $('#cepEndereco').mask('00000-000');
     $('#numeroEndereco').mask('0#');
 
-    $("#botaoAvancarPessoa").click(function (event) {
-        if ($("#FormDadosPessoa").valid()) {
-            event.preventDefault();
-        }
-    });
-
     $('#FormDadosPessoa').ajaxForm({
         dataType: 'json',
         success: function (resposta) {
