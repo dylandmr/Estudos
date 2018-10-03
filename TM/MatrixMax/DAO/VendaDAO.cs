@@ -42,6 +42,17 @@ namespace MatrixMax.DAO
             }
         }
 
+        public IList<Venda> BuscaPorCliente(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Vendas
+                    .Include(v => v.Produtos)
+                    .Where(v => v.PessoaId == id)
+                    .ToList();
+            }
+        }
+
         public IList<Venda> Lista()
         {
             using (var contexto = new MatrixMaxContext())

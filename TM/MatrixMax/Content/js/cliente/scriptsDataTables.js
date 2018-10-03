@@ -1,4 +1,5 @@
-﻿var tabelaclientes = $('#bootstrap-data-table-Clientes').DataTable(
+﻿moment.locale("pt-br");
+var tabelaclientes = $('#bootstrap-data-table-Clientes').DataTable(
     {
         dom: 'iltp',
         "language":
@@ -81,3 +82,50 @@
         ]
     }
 );
+
+var tabelaVendas = null;
+
+function buscaVendas(index) {
+    var dados = tabelaclientes.rows(index).data();
+
+    if ($.fn.DataTable.isDataTable('#bootstrap-data-table-Vendas')) {
+        tabelaVendas.ajax.url("/Venda/getVendasDoCliente/" + dados[0].Id).load();
+    }
+    else {
+        tabelaVendas = $('#bootstrap-data-table-Vendas').DataTable(
+            {
+                dom: 't',
+                "ajax": {
+                    "url": "/Venda/getVendasDoCliente/" + dados[0].Id,
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "language":
+                {
+                    "zeroRecords": "Nenhum resultado encontrado.",
+                    "infoEmpty": "Mostrando 0 vendas.",
+                    "infoFiltered": "(Filtrado de _MAX_ itens.)",
+                    "decimal": ",",
+                    "thousands": ".",
+                    "loadingRecords": "Carregando...",
+                    "processing": "Processando...",
+                    "emptyTable": "Este cliente não possui nenhuma compra."
+                },
+                columns: [
+                    {
+                        render: function (data, type, row, meta) {
+                            return moment(row.Data).format('L');
+                        }, orderable: false
+                    },
+                    { data: "Produtos", orderable: false },
+                    {
+                        render: function (data, type, row, meta) {
+                            return "R$ " + Number.parseFloat(row.ValorTotal).toFixed(2).replace(".", ",");
+                        }, orderable: false
+                    }
+                ]
+            }
+        );
+    }
+
+}

@@ -66,7 +66,7 @@ namespace MatrixMax.Controllers
                 else
                 {
 
-                    return Json(new { adicionou = false, msg = "Dados inválidos."+pessoa.Valida().ToString()+ " - " +pessoa.Endereco.Valida().ToString() });
+                    return Json(new { adicionou = false, msg = "Dados inválidos." + pessoa.Valida().ToString() + " - " + pessoa.Endereco.Valida().ToString() });
                 }
             }
             else

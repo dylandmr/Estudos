@@ -69,5 +69,31 @@ namespace MatrixMax.Controllers
                 return Json(new { adicionou = false, msg = e.Message });
             }
         }
+
+        public JsonResult getVendasDoCliente(int id)
+        {
+            var vendas = new VendaDAO().BuscaPorCliente(id);
+            var resumoVendas = new List<object>();
+
+            foreach (var venda in vendas)
+            {
+                var ValorTotal = venda.ValorTotal;
+
+                if (venda.DescontoPorcento > 0)
+                    ValorTotal -= (ValorTotal * (int)venda.DescontoPorcento) / 100;
+                else if (venda.DescontoValorFixo > 0)
+                    ValorTotal -= venda.DescontoValorFixo;
+
+                resumoVendas.Add(
+                    new
+                    {
+                        venda.Data,
+                        Produtos = venda.Produtos.Sum(p => p.Quantidade),
+                        ValorTotal,
+                    });
+            }
+
+            return Json(new { data = resumoVendas }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
