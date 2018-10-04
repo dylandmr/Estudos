@@ -49,10 +49,7 @@
                     {
                         <h3 class="menu-title">Administrador</h3><!-- /.menu-title -->
                         <li>
-                            <a href="/Admin/Index"> <i class="menu-icon fa fa-bar-chart-o"></i>Relatórios</a>
-                        </li>
-                        <li>
-                            <a href="/Admin/Usuarios"> <i class="menu-icon fa fa-users"></i>Gerenciar usuários</a>
+                            <a href="/Admin/Index"> <i class="menu-icon fa fa-users"></i>Gerenciar usuários</a>
                         </li>
                     }
                     <h3 class="menu-title">Produtos</h3><!-- /.menu-title -->
@@ -87,31 +84,19 @@
     <div id="right-panel" class="right-panel">
 
         <!-- TOPO PÁGINA-->
-        <header id="header" class="header">
+        <header id="header" class="header pb-0 pt-1">
             <div class="header-menu">
-                <div class="col-sm-7">
-                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
-                    <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
-                        <div class="form-inline">
-                            <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar..." aria-label="Pesquisar">
-                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-                            </form>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="user-area float-left">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="user-avatar rounded-circle pb-1" src="https://ui-avatars.com/api/?background=4CAF50&color=fff&length=@(usuarioLogado.Pessoa.NomeRazaoSocial.Split(' ').Length)&name=@usuarioLogado.Pessoa.NomeRazaoSocial.Replace(" ", "+")" alt="User Avatar">
+                            </a>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="https://ui-avatars.com/api/?background=4CAF50&color=fff&length=@(usuarioLogado.Pessoa.NomeRazaoSocial.Split(' ').Length)&name=@usuarioLogado.Pessoa.NomeRazaoSocial.Replace(" ", "+")" alt="User Avatar">
-                        </a>
-
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Perfil</a>
-
-                            <a class="nav-link" href="/Login/Logout"><i class="fa fa-power -off"></i>Logout</a>
+                    <div class="col-10">
+                        <div class="user-area float-right mt-2">
+                            <div><a class="col w-25" href="/Login/Logout"><i class="fa fa-power-off"></i> Logout</a></div>
                         </div>
                     </div>
                 </div>
@@ -127,5 +112,6 @@
     @RenderSection("scriptsRelatorios", false)
     @RenderSection("scriptsVendas", false)
     @RenderSection("scriptsHistoricoVendas", false)
+    @RenderSection("scriptsUsuarios", false)
 </body>
 </html>

@@ -39,6 +39,28 @@ namespace MatrixMax.DAO
             } 
         }
 
+        public void TrocaAtivo(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var usuario = contexto.Usuarios.Find(id);
+                usuario.Ativo = !usuario.Ativo;
+                contexto.Entry(usuario).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
+        }
+
+        public void TrocaPrivilegio(int id)
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var usuario = contexto.Usuarios.Find(id);
+                usuario.TipoUsuario = usuario.TipoUsuario == 'F' ? 'A' : 'F';
+                contexto.Entry(usuario).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
+        }
+
         public IList<Usuario> Lista()
         {
             using (var contexto = new MatrixMaxContext())

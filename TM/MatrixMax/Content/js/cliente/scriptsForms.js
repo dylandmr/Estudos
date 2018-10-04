@@ -37,7 +37,7 @@
         },
         messages: {
             "pessoa.NomeRazaoSocial": {
-                required: "Informe um nome.",
+                required: "Informe um nome/razão social.",
                 minlength: "O nome deve ter no mínimo 5 caracteres.",
                 maxlength: "O nome deve ter no máximo 50 caracteres."
             },
@@ -52,11 +52,11 @@
                 required: "Informe um CPF/CNPJ."
             },
             "pessoa.InscricaoEstadual": {
-                required: "Informe um nome.",
+                required: "Informe a inscrição estadual.",
                 minlength: "Inscrição estadual inválida."
             },
             "pessoa.NomeFantasia": {
-                required: "Informe um nome.",
+                required: "Informe o nome fantasia.",
                 minlength: "O nome deve ter no mínimo 5 caracteres.",
                 maxlength: "O nome deve ter no máximo 50 caracteres."
             },

@@ -224,3 +224,8 @@ input.campoInvalido, input.campoInvalido:focus, select.campoInvalido, select.cam
     max-height: 150px;
     overflow-y: auto;
 }
+
+aside.left-panel {
+    width: 240px !important;
+}
+

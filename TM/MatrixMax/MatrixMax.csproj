@@ -303,6 +303,8 @@
     <Content Include="Content\js\produto\scriptsForms.js" />
     <Content Include="Content\js\select2.full.min.js" />
     <Content Include="Content\js\selectFx.js" />
+    <Content Include="Content\js\usuarios\scriptsDataTables.js" />
+    <Content Include="Content\js\usuarios\scriptsForms.js" />
     <Content Include="Content\js\venda\scriptsDataTables.js" />
     <Content Include="Content\js\venda\scriptsHistorico.js" />
     <Content Include="Content\js\venda\scriptsVenda.js" />
@@ -340,6 +342,7 @@
     <Compile Include="Controllers\MarcaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\RecargaController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\EnderecoDAO.cs" />
@@ -536,7 +539,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Usuarios.cshtml" />
     <Content Include="Views\Produto\Estoque.cshtml" />
     <Content Include="Views\Venda\Historico.cshtml" />
     <Content Include="Views\Venda\Index.cshtml" />
@@ -555,6 +557,7 @@
     <Folder Include="Views\Categoria\" />
     <Folder Include="Views\FormaDePagamento\" />
     <Folder Include="Views\Marca\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

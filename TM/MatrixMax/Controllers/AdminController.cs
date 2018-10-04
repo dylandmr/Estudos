@@ -12,11 +12,7 @@ namespace MatrixMax.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult Usuarios()
-        {
+            ViewBag.Title = "Usuários";
             return View();
         }
     }
