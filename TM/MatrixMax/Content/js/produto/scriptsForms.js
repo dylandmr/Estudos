@@ -10,7 +10,7 @@
             "produtoedit.MarcaId": "required",
             CategoriaEdit: "required",
             "produtoedit.SubcategoriaId": "required",
-            "produtoedit.Estoque": {
+            "produtoedit.EstoqueMinimo": {
                 required: true,
                 estoqueInicial: true
             },
@@ -36,8 +36,8 @@
             "produtoedit.MarcaId": "Selecione a marca.",
             CategoriaEdit: "Selecione a categoria.",
             "produtoedit.SubcategoriaId": "Selecione a subcategoria.",
-            "produtoedit.Estoque": {
-                required: "Informe o estoque inicial."
+            "produtoedit.EstoqueMinimo": {
+                required: "Informe o estoque mínimo."
             },
             "produtoedit.PrecoUnitario": {
                 required: "Informe o preço unitário."
@@ -77,6 +77,10 @@
                 required: true,
                 estoqueInicial: true
             },
+            "produto.EstoqueMinimo": {
+                required: true,
+                estoqueInicial: true
+            },
             "produto.PrecoUnitario": {
                 required: true,
                 valorPrecos: true
@@ -101,6 +105,9 @@
             "produto.SubcategoriaId": "Selecione a subcategoria.",
             "produto.Estoque": {
                 required: "Informe o estoque inicial."
+            },
+            "produto.EstoqueMinimo": {
+                required: "Informe o estoque mínimo."
             },
             "produto.PrecoUnitario": {
                 required: "Informe o preço unitário."
@@ -128,13 +135,15 @@
     });
 
     $('#valorDesconto').mask("000,00", { reverse: true });
+    $('#precoUnitarioAdd').mask("000,00", { reverse: true });
     $('#precoUnitarioEditar').mask("000,00", { reverse: true });
     $('#precoRecargaAdd').mask("000,00", { reverse: true });
     $('#precoRecargaEditar').mask("000,00", { reverse: true });
     $('#precoTrocaAdd').mask("000,00", { reverse: true });
     $('#precoTrocaEditar').mask("000,00", { reverse: true });
     $('#estoqueAdd').mask("000");
-    $('#estoqueEditar').mask("000");
+    $('#estoqueMinimoAdd').mask("000");
+    $('#estoqueMinimoEditar').mask("000");
 
     $('#FormAdiciona').ajaxForm({
         dataType: 'json',
@@ -196,7 +205,7 @@
         var MarcaIgual = document.getElementById('MarcaEditar')[document.getElementById("MarcaEditar").selectedIndex].defaultSelected;
         var CategoriaIgual = document.getElementById('categoriaEditar')[document.getElementById("categoriaEditar").selectedIndex].defaultSelected;
         var SubcategoriaIgual = document.getElementById('subcategoriaEditar')[document.getElementById("subcategoriaEditar").selectedIndex].defaultSelected;
-        var EstoqueIgual = jQuery('#estoqueEditar').val() == document.getElementById('estoqueEditar').defaultValue;
+        var EstoqueIgual = jQuery('#estoqueMinimoEditar').val() == document.getElementById('estoqueMinimoEditar').defaultValue;
         precoUnitario = Number.parseFloat(jQuery('#precoUnitarioEditar').val().replace(',', '.'));
         precoUnitarioPadrao = Number.parseFloat(document.getElementById('precoUnitarioEditar').defaultValue.replace(',', '.'));
         var PrecoUnitarioIgual = precoUnitario == precoUnitarioPadrao;

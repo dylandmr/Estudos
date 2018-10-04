@@ -198,8 +198,9 @@ function populaEditar() {
     $('#IdEditar').val(dados[0].Id);
     $('#nomeEditar').val(dados[0].Nome);
     document.getElementById('nomeEditar').defaultValue = dados[0].Nome;
+    $('#estoqueMinimoEditar').val(dados[0].EstoqueMinimo);
     $('#estoqueEditar').val(dados[0].Estoque);
-    document.getElementById('estoqueEditar').defaultValue = dados[0].Estoque;
+    document.getElementById('estoqueMinimoEditar').defaultValue = dados[0].EstoqueMinimo;
     $('#precoUnitarioEditar')
         .val($('#precoUnitarioEditar')
             .masked(Number
@@ -209,6 +210,10 @@ function populaEditar() {
         .masked(Number
             .parseFloat(dados[0].PrecoUnitario)
             .toFixed(2));
+
+    console.log(dados[0].PrecoRecarga);
+    console.log(dados[0].PrecoTroca);
+
     if (dados[0].PrecoRecarga != null) {
         $("#TogglePrecoRecargaEditar").prop('checked', true).change();
         $('#precoRecargaEditar').val($('#precoRecargaEditar')
@@ -217,7 +222,10 @@ function populaEditar() {
                 .toFixed(2)));
         document.getElementById('precoRecargaEditar').defaultValue = dados[0].PrecoRecarga;
     } else {
-        document.getElementById('precoRecargaEditar').defaultValue = "Desabilitado";
+        $("#precoRecargaEditar").prop("defaultValue", "Desabilitado");
+        $("#precoRecargaEditar").val($("#precoRecargaEditar").prop("defaultValue"));
+        $("#precoRecargaEditar").prop('disabled', true);
+        $('#TogglePrecoRecargaEditar').prop('checked', false);
     }
 
     if (dados[0].PrecoTroca != null) {
@@ -228,7 +236,12 @@ function populaEditar() {
                 .toFixed(2)));
         document.getElementById('precoTrocaEditar').defaultValue = dados[0].PrecoTroca;
     } else {
-        document.getElementById('precoTrocaEditar').defaultValue = "Desabilitado";
+        //$("#precoTrocaEditar").val("");
+        $("#precoTrocaEditar").prop("defaultValue", "Desabilitado");
+        $("#precoTrocaEditar").val($("#precoTrocaEditar").prop("defaultValue"));
+        $("#precoTrocaEditar").prop('disabled', true);
+        $('#TogglePrecoTrocaEditar').prop('checked', false);
+        //document.getElementById('precoTrocaEditar').defaultValue = "Desabilitado";
     }
 }
 

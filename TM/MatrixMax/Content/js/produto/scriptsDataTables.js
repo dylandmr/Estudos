@@ -62,7 +62,8 @@ var desativados = {
             }
         },
         { data: "Marca.Nome", searchable: false, orderable: false },
-        { data: "Estoque", searchable: false, orderable: false },
+        { data: "EstoqueMinimo", searchable: false, orderable: false },
+        { data: "Estoque", visible: false, searchable: false, orderable: false },
         {
             data: "Subcategoria.Nome",
             searchable: false,
@@ -161,7 +162,8 @@ var ativados = {
             }
         },
         { data: "Marca.Nome", searchable: false, orderable: false },
-        { data: "Estoque", searchable: false, orderable: false },
+        { data: "EstoqueMinimo", searchable: false, orderable: false },
+        { data: "Estoque", visible: false, searchable: false, orderable: false },
         {
             data: "Subcategoria.Nome",
             searchable: false,

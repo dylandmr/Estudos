@@ -55,6 +55,7 @@
                                     <th>Nome</th>
                                     <th>Preço(s)</th>
                                     <th>Marca</th>
+                                    <th>Estoque Mínimo</th>
                                     <th>Estoque</th>
                                     <th>Categoria - Subcategoria</th>
                                 </tr>
@@ -156,6 +157,12 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="input-group">
+                                                                <div class="input-group-addon">Estoque mínimo</div>
+                                                                <input type="text" id="estoqueMinimoAdd" name="produto.EstoqueMinimo" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="input-group">
                                                                 <div class="input-group-addon">Preço unitário</div>
                                                                 <div class="input-group-addon">R$</div>
                                                                 <input type="text" id="precoUnitarioAdd" name="produto.PrecoUnitario" class="form-control">
@@ -251,8 +258,9 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="input-group">
-                                                                <div class="input-group-addon">Estoque inicial</div>
-                                                                <input type="text" id="estoqueEditar" name="produtoedit.Estoque" class="form-control">
+                                                                <div class="input-group-addon">Estoque mínimo</div>
+                                                                <input type="text" id="estoqueEditar" name="produtoedit.Estoque" hidden class="form-control">
+                                                                <input type="text" id="estoqueMinimoEditar" name="produtoedit.EstoqueMinimo" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group">

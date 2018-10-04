@@ -27,7 +27,9 @@ namespace MatrixMax.App_Start
             bundles.Add(new ScriptBundle("~/bundles/js")
                 .Include(
                 "~/Content/js/vendor/jquery-3.3.1.js",
-                "~/Content/js/main.js"));
+                "~/Content/js/main.js",
+                "~/Content/js/popper.min.js",
+                "~/Content/js/plugins.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/tables/js")
                 .Include(

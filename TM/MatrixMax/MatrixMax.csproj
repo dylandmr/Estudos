@@ -403,6 +403,10 @@
     <Compile Include="Migrations\20180930130741_AlterandoFormaDePagamento.designer.cs">
       <DependentUpon>20180930130741_AlterandoFormaDePagamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20181004085102_EstoqueMinimo.cs" />
+    <Compile Include="Migrations\20181004085102_EstoqueMinimo.designer.cs">
+      <DependentUpon>20181004085102_EstoqueMinimo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\MatrixMaxContextModelSnapshot.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Endereco.cs" />

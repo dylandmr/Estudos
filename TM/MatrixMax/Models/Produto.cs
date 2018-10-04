@@ -10,6 +10,7 @@ namespace MatrixMax.Models
     {
         public int Id { get; set; }
         public int Estoque { get; set; }
+        public int EstoqueMinimo { get; set; }
         public Categoria Subcategoria { get; set; }
         public int? SubcategoriaId { get; set; }
         public Marca Marca { get; set; }
@@ -33,6 +34,7 @@ namespace MatrixMax.Models
 
             return outroProduto.Ativo == Ativo &&
                     outroProduto.Estoque == Estoque &&
+                    outroProduto.EstoqueMinimo == EstoqueMinimo &&
                     outroProduto.Id == Id &&
                     outroProduto.MarcaId == MarcaId &&
                     outroProduto.Nome == Nome &&
@@ -54,7 +56,9 @@ namespace MatrixMax.Models
 
             if (Nome.Length < 5 || Nome.Length > 50) return false;
 
-            if (Estoque <= 0 || Estoque > 100) return false;
+            //if (Estoque <= 0 || Estoque > 100) return false;
+
+            if (EstoqueMinimo <= 0 || EstoqueMinimo > 100) return false;
 
             if (PrecoUnitario < 1) return false;
 

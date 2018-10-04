@@ -150,6 +150,8 @@ namespace MatrixMax.Migrations
 
                     b.Property<int>("Estoque");
 
+                    b.Property<int>("EstoqueMinimo");
+
                     b.Property<int?>("MarcaId");
 
                     b.Property<string>("Nome")
@@ -267,7 +269,7 @@ namespace MatrixMax.Migrations
 
             modelBuilder.Entity("MatrixMax.Models.Endereco", b =>
                 {
-                    b.HasOne("MatrixMax.Models.Pessoa", "Pessoa")
+                    b.HasOne("MatrixMax.Models.Pessoa")
                         .WithOne("Endereco")
                         .HasForeignKey("MatrixMax.Models.Endereco", "PessoaId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -287,7 +289,7 @@ namespace MatrixMax.Migrations
             modelBuilder.Entity("MatrixMax.Models.ProdutosDaVenda", b =>
                 {
                     b.HasOne("MatrixMax.Models.Produto", "Produto")
-                        .WithMany("Vendas")
+                        .WithMany()
                         .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade);
 
