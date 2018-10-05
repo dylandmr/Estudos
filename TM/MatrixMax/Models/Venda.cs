@@ -43,5 +43,14 @@ namespace MatrixMax.Models
         {
             Produtos = new List<ProdutosDaVenda>();
         }
+
+        public Venda ProcessaDesconto()
+        {
+            if (DescontoPorcento > 0)
+                ValorTotal -= (ValorTotal * (int)DescontoPorcento) / 100;
+            else if (DescontoValorFixo > 0)
+                ValorTotal -= DescontoValorFixo;
+            return this;
+        }
     }
 }

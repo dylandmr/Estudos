@@ -19,7 +19,7 @@ namespace MatrixMax.Controllers
             ViewBag.Produtos = new ProdutoDAO().ListaComEstoque();
             ViewBag.Categorias = categoriaDAO.ListaCategoriasAtivas();
             ViewBag.Subcategorias = categoriaDAO.ListaTodasAsSubcategoriasAtivas();
-            ViewBag.Title = "Vendas";
+            ViewBag.Title = "Nova Venda";
             return View();
         }
 

@@ -20,6 +20,7 @@ namespace MatrixMax.Controllers
 
         public ActionResult Estoque()
         {
+            ViewBag.Title = "Estoque";
             return View();
         }
 
@@ -34,12 +35,7 @@ namespace MatrixMax.Controllers
 
             foreach (var produto in new ProdutoDAO().Lista())
             {
-                string estadoEstoque;
-
-                if (produto.Estoque == 0) estadoEstoque = "Sem estoque";
-                else if (produto.Estoque <= produto.EstoqueMinimo) estadoEstoque = "Alerta";
-                else if (produto.Estoque <= (produto.EstoqueMinimo * 1.5)) estadoEstoque = "Neutro";
-                else estadoEstoque = "Positivo";
+                string estadoEstoque = produto.ProcessaEstoque();
 
                 listaEstoque.Add(
                     new

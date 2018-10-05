@@ -131,5 +131,13 @@ namespace MatrixMax.DAO
                 contexto.SaveChanges();
             }
         }
+
+        public int ItensEmAlerta()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Produtos.Where(p => p.ProcessaEstoque() == "Alerta" && p.Ativo).Count();
+            }
+        }
     }
 }

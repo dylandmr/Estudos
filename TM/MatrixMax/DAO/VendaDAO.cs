@@ -77,5 +77,43 @@ namespace MatrixMax.DAO
                     .SingleOrDefault().Produtos; 
             }
         }
+
+        public double TotalBrutoHoje()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Vendas.Where(v => v.Data == DateTime.Today).ToList().Sum(v => v.ProcessaDesconto().ValorTotal);
+            }
+        }
+
+        public int TotalVendasHoje()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Vendas.Where(v => v.Data == DateTime.Today).ToList().Count;
+            }
+        }
+
+        public int TotalProdutosVendidosHoje()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                return contexto.Vendas.Include(v => v.Produtos).Where(v => v.Data == DateTime.Today).ToList().Sum(v => v.Produtos.Sum(pv => pv.Quantidade));
+            }
+        }
+
+        public List<int> VendasHojePorCategoria()
+        {
+            using (var contexto = new MatrixMaxContext())
+            {
+                var lista = new List<int>();
+                var vendas = contexto.Vendas.Where(v => v.Data == DateTime.Today).ToList();
+                lista.Add(vendas.Where(v => v.FormaDePagamentoId == 1).Count());
+                lista.Add(vendas.Where(v => v.FormaDePagamentoId == 2).Count());
+                lista.Add(vendas.Where(v => v.FormaDePagamento.BandeiraCartao).Count());
+                lista.Add(vendas.Where(v => v.FormaDePagamentoId == 5).Count());
+                return lista;
+            }
+        }
     }
 }
