@@ -33,23 +33,40 @@
         dropdownCssClass: "dropdownSelect2"
     });
 
-    $("#produtosVenda").select2({
-        theme: "bootstrap",
-        placeholder: "Selecione um produto",
-        language: {
-            searching: function () {
-                return "Buscando...";
-            },
-            inputTooShort: function (args) {
-                return "Pesquise pelo nome do produto";
-            },
-            noResults: function () {
-                return "Nenhum resultado encontrado";
-            }
-        },
-        minimumInputLength: 1,
-        dropdownCssClass: "dropdownSelect2"
-    });
+    populaProdutos();
+
+    //$("#produtosVenda").select2({
+    //    ajax: {
+    //        url: "/Produto/BuscaProdutosVenda",
+    //        dataType: 'json',
+    //        delay: 250,
+    //        data: function (params) {
+    //            return {
+    //                q: params.term
+    //            };
+    //        },
+    //        processResults: function (data, params) {
+    //            return {
+    //                results: data.results
+    //            };
+    //        }
+    //    },
+    //    theme: "bootstrap",
+    //    placeholder: "Selecione um produto",
+    //    language: {
+    //        searching: function () {
+    //            return "Buscando...";
+    //        },
+    //        inputTooShort: function (args) {
+    //            return "Pesquise pelo nome do produto";
+    //        },
+    //        noResults: function () {
+    //            return "Nenhum resultado encontrado";
+    //        }
+    //    },
+    //    minimumInputLength: 1,
+    //    dropdownCssClass: "dropdownSelect2"
+    //});
 
     $(".select2-selection__rendered").addClass("rounded").addClass("form-control");
 
@@ -421,6 +438,7 @@ function resetaVenda() {
     cartaoDeCredito = false;
     cartaoDeDebito = false;
 
+    populaProdutos();
     desativaDesconto();
     if ($("#toggleDesconto").prop("checked")) $("#toggleDesconto").prop("checked", false);
     $("#blocoDescontosVenda").fadeOut();
@@ -450,4 +468,27 @@ function exibeAviso(mensagem) {
         + '</button>'
         + '</div>'
         + '</div>').fadeIn();
+}
+
+function populaProdutos() {
+    $.getJSON("/Produto/BuscaProdutosVenda", function (response) {
+        $("#produtosVenda").html($("<option>")).select2({
+            data: response,
+            theme: "bootstrap",
+            placeholder: "Selecione um produto",
+            language: {
+                searching: function () {
+                    return "Buscando...";
+                },
+                inputTooShort: function (args) {
+                    return "Pesquise pelo nome do produto";
+                },
+                noResults: function () {
+                    return "Nenhum resultado encontrado";
+                }
+            },
+            minimumInputLength: 1,
+            dropdownCssClass: "dropdownSelect2"
+        });
+    });
 }

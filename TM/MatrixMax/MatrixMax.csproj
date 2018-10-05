@@ -190,6 +190,7 @@
     <Content Include="Content\Css\bootstrap.css" />
     <Content Include="Content\Css\bootstrap.min.css" />
     <Content Include="Content\Css\cs-skin-elastic.css" />
+    <Content Include="Content\Css\dataTables.rowGroup.min.js" />
     <Content Include="Content\Css\estilo_login.css" />
     <Content Include="Content\Css\flag-icon.min.css" />
     <Content Include="Content\Css\font-awesome.min.css" />
@@ -204,6 +205,7 @@
     <Content Include="Content\Css\lib\datatable\select.bootstrap4.min.css" />
     <Content Include="Content\Css\lib\vector-map\jqvmap.min.css" />
     <Content Include="Content\Css\normalize.css" />
+    <Content Include="Content\Css\rowGroup.dataTables.min.css" />
     <Content Include="Content\Css\select2-bootstrap.min.css" />
     <Content Include="Content\Css\select2.min.css" />
     <Content Include="Content\Css\style.css" />
@@ -248,6 +250,7 @@
     <Content Include="Content\js\lib\data-table\dataTables.bootstrap.min.js" />
     <Content Include="Content\js\lib\data-table\dataTables.buttons.min.js" />
     <Content Include="Content\js\lib\data-table\datatables.min.js" />
+    <Content Include="Content\js\lib\data-table\dataTables.rowGroup.min.js" />
     <Content Include="Content\js\lib\data-table\dataTables.select.min.js" />
     <Content Include="Content\js\lib\data-table\jquery-1.12.4.js" />
     <Content Include="Content\js\lib\data-table\jquery.dataTables.min.js" />
@@ -300,6 +303,7 @@
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Content\js\produto\funcoesCrud.js" />
     <Content Include="Content\js\produto\scriptsDataTables.js" />
+    <Content Include="Content\js\produto\scriptsEstoque.js" />
     <Content Include="Content\js\produto\scriptsForms.js" />
     <Content Include="Content\js\select2.full.min.js" />
     <Content Include="Content\js\selectFx.js" />

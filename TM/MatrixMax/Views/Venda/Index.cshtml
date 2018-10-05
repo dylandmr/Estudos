@@ -1,4 +1,8 @@
-﻿<!-- TÍTULO CONTEÚDO-->
+﻿@using System.Threading
+@using System.Globalization
+@{ Thread.CurrentThread.CurrentCulture = new CultureInfo("");}
+
+<!-- TÍTULO CONTEÚDO-->
 <div class="breadcrumbs">
     <div class="col-sm-4">
         <div class="page-header float-left">
@@ -79,30 +83,7 @@
             <div class="col-md m-1">
                 <div class="form-group blocoVenda p-2 border border-dark border-3 rounded mb-2 mt-3">
                     <h5 class="text-center pb-2 display-5">ADICIONAR PRODUTOS</h5>
-                    <select id="produtosVenda" name="venda.Produtos" class="form-control">
-                        <option value=""></option>
-                        @foreach (var categoria in ViewBag.Categorias)
-                        {
-                            <optgroup label="@categoria.Nome">
-                                @foreach (var subcategoria in ViewBag.Subcategorias)
-                                {
-                                    if (subcategoria.CategoriaId == categoria.Id)
-                                    {
-                                        <option class="subcategoriaSelectProdutos" disabled>
-                                            @subcategoria.Nome
-                                        </option>
-                                        foreach (var produto in ViewBag.Produtos)
-                                        {
-                                            if (subcategoria.Id == produto.SubcategoriaId)
-                                            {
-                                                <option value="id=@produto.Id&pun=@produto.PrecoUnitario&prec=@produto.PrecoRecarga&ptr=@produto.PrecoTroca&est=@produto.Estoque">@produto.Nome</option>
-                                            }
-                                        }
-                                    }
-                                }
-                            </optgroup>
-                        }
-                    </select>
+                    <select id="produtosVenda" name="venda.Produtos" class="form-control"></select>
 
                     <div class="form-group mt-3" id="detalhesProdutoVenda">
                         <div class="row">

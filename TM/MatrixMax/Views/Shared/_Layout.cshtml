@@ -37,7 +37,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/Home/Index"><img src="~/Content/Imagens/matrix.png" alt="Logo"></a>
+                <a class="navbar-brand p-2 pb-3" href="/Home/Index"><img src="~/Content/Imagens/matrix.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -54,7 +54,7 @@
                     }
                     <h3 class="menu-title">Produtos</h3><!-- /.menu-title -->
                     <li>
-                        <a href="/Produto/Estoque"> <i class="menu-icon fa fa-truck"></i>Repor Estoque</a>
+                        <a href="/Produto/Estoque"> <i class="menu-icon fa fa-truck"></i>Controle de Estoque</a>
                     </li>
                     <li>
                         <a href="/Produto/Index"> <i class="menu-icon fa fa-list"></i>Gerenciar produtos</a>
@@ -89,9 +89,7 @@
                 <div class="row">
                     <div class="col-2">
                         <div class="user-area float-left">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="user-avatar rounded-circle pb-1" src="https://ui-avatars.com/api/?background=4CAF50&color=fff&length=@(usuarioLogado.Pessoa.NomeRazaoSocial.Split(' ').Length)&name=@usuarioLogado.Pessoa.NomeRazaoSocial.Replace(" ", "+")" alt="User Avatar">
-                            </a>
+                            <img class="user-avatar rounded-circle pb-1" src="https://ui-avatars.com/api/?background=4CAF50&color=fff&length=@(usuarioLogado.Pessoa.NomeRazaoSocial.Split(' ').Length)&name=@usuarioLogado.Pessoa.NomeRazaoSocial.Replace(" ", "+")" alt="User Avatar">
                         </div>
                     </div>
                     <div class="col-10">
@@ -113,5 +111,6 @@
     @RenderSection("scriptsVendas", false)
     @RenderSection("scriptsHistoricoVendas", false)
     @RenderSection("scriptsUsuarios", false)
+    @RenderSection("scriptsEstoque", false)
 </body>
 </html>

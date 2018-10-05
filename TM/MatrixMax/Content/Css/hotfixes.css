@@ -211,21 +211,41 @@ input.campoInvalido, input.campoInvalido:focus, select.campoInvalido, select.cam
     font-weight: bold;
 }
 
-.dropdownSelect2.select2-container .select2-results {
-    max-height: 200px;
-}
-
-.dropdownSelect2 .select2-results {
-    max-height: 200px;
-}
-
 .dropdownSelect2 .select2-choices {
     min-height: 150px;
-    max-height: 150px;
     overflow-y: auto;
 }
 
 aside.left-panel {
-    width: 240px !important;
+    width: 220px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }
 
+tr.group td {
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+.table-responsive {
+    max-height: 400px;
+    overflow-x: hidden;
+}
+
+.table td {
+    border-top: none;
+}
+
+#dialogReporEstoque {
+    display: none;
+}
+
+.botaoEstoque {
+    text-decoration: none;
+    color: black;
+}
+
+.select2-container--bootstrap .select2-results__group {
+    font-size: 15px;
+    color: darkgreen;
+}
