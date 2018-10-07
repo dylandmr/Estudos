@@ -63,6 +63,7 @@ namespace MatrixMax.DAO
                     .Include(v => v.FormaDePagamento)
                     .Include(v => v.Pessoa)
                     .Include(v => v.Usuario)
+                    .ThenInclude(u => u.Pessoa)
                     .OrderByDescending(v => v.Data)
                     .ToList();
             }

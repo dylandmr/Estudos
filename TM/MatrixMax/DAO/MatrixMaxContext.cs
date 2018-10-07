@@ -63,7 +63,7 @@ namespace MatrixMax.DAO
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|MMDB.mdf;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|MMDB.mdf;Integrated Security=True;Initial Catalog=BancoMatrix;");
         }
 
     }

@@ -58,7 +58,7 @@ namespace MatrixMax.Controllers
 
         public JsonResult Adiciona(Categoria categoria)
         {
-            if (new Regex(@"^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$").IsMatch(categoria.Nome))
+            if (new Regex(@"^[A-ZÁÉÍÓÚÇÃÕ][A-záçéíóúãõ]{1,}(\s[A-zÁÉÇÍÓÚÃÕáéçíóúãõ]{2,})*$").IsMatch(categoria.Nome))
             {
                 new CategoriaDAO().Adiciona(categoria);
                 return Json(new { adicionou = true });
@@ -73,7 +73,7 @@ namespace MatrixMax.Controllers
         {
             var dao = new CategoriaDAO();
             var oldCategoria = dao.BuscaPorId(categoria.Id);
-            if (oldCategoria != null && new Regex(@"^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$").IsMatch(categoria.Nome))
+            if (oldCategoria != null && new Regex(@"^[A-ZÁÉÍÓÚÇÃÕ][A-záçéíóúãõ]{1,}(\s[A-zÁÉÇÍÓÚÃÕáéçíóúãõ]{2,})*$").IsMatch(categoria.Nome))
             {
                 if (!oldCategoria.Equals(categoria))
                 {

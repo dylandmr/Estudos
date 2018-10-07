@@ -29,7 +29,7 @@ namespace MatrixMax.Controllers
 
         public JsonResult Adiciona(Marca marca)
         {
-            if (new Regex(@"^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$").IsMatch(marca.Nome))
+            if (new Regex(@"^[A-ZÁÉÍÓÇÚÃÕ][A-záéçíóúãõ]{1,}(\s[A-zÁÉÍÓÚÇÃÕáéçíóúãõ]{2,})*$").IsMatch(marca.Nome))
             {
                 new MarcaDAO().Adiciona(marca);
                 return Json(new { adicionou = true });
@@ -43,7 +43,7 @@ namespace MatrixMax.Controllers
         {
             var dao = new MarcaDAO();
             var oldMarca = dao.BuscaPorId(marca.Id);
-            if (oldMarca != null && new Regex(@"^[A-ZÁÉÍÓÚÃÕ][A-záéíóúãõ]{1,}(\s[A-zÁÉÍÓÚÃÕáéíóúãõ]{2,})*$").IsMatch(marca.Nome))
+            if (oldMarca != null && new Regex(@"^[A-ZÁÉÍÓÇÚÃÕ][A-záéçíóúãõ]{1,}(\s[A-zÁÉÍÓÚÇÃÕáéçíóúãõ]{2,})*$").IsMatch(marca.Nome))
             {
                 if (!oldMarca.Equals(marca))
                 { 

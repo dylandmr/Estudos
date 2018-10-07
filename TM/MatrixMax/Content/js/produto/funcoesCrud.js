@@ -93,7 +93,9 @@ function pegaDados() {
 }
 
 function pegaCategoriasEMarcas(form) {
-    $.getJSON("/Categoria/getCategoriasAtivas", null, function (response) {
+    var actionCategorias = (form == 'Editar') ? "getCategorias" : "getCategoriasAtivas";
+    var actionMarcas = (form == 'Editar') ? "getMarcas" : "getMarcasAtivas";
+    $.getJSON("/Categoria/" + actionCategorias, null, function (response) {
         $("#categoria" + form + " option").remove();
         $("#categoria" + form).append(
             $("<option></option>")
@@ -121,7 +123,7 @@ function pegaCategoriasEMarcas(form) {
         });
     });
 
-    $.getJSON("/Marca/getMarcasAtivas", null, function (response) {
+    $.getJSON("/Marca/" + actionMarcas, null, function (response) {
         $("#Marca" + form + " option").remove();
         $("#Marca" + form).append(
             $("<option></option>")
@@ -236,12 +238,10 @@ function populaEditar() {
                 .toFixed(2)));
         document.getElementById('precoTrocaEditar').defaultValue = dados[0].PrecoTroca;
     } else {
-        //$("#precoTrocaEditar").val("");
         $("#precoTrocaEditar").prop("defaultValue", "Desabilitado");
         $("#precoTrocaEditar").val($("#precoTrocaEditar").prop("defaultValue"));
         $("#precoTrocaEditar").prop('disabled', true);
         $('#TogglePrecoTrocaEditar').prop('checked', false);
-        //document.getElementById('precoTrocaEditar').defaultValue = "Desabilitado";
     }
 }
 

@@ -50,6 +50,7 @@ var desativados = {
             data: "PrecoUnitario",
             searchable: false,
             orderable: false,
+            width: "14%",
             render: function (data, type, row) {
                 if (row.PrecoRecarga != null && row.PrecoTroca != null) {
                     return "UN - R$" + Number.parseFloat(row.PrecoUnitario).toFixed(2).replace('.', ',') +
@@ -61,7 +62,7 @@ var desativados = {
                 }
             }
         },
-        { data: "Marca.Nome", searchable: false, orderable: false },
+        { data: "Marca.Nome", searchable: false, orderable: false, width: "15%" },
         { data: "EstoqueMinimo", searchable: false, orderable: false },
         { data: "Estoque", visible: false, searchable: false, orderable: false },
         {
@@ -77,8 +78,8 @@ var desativados = {
         $(".dataTables_filter input").removeClass('form-control-sm');
         $(".dataTables_filter input").prop('placeholder', 'Pesquisar por nome');
         $(".dataTables_filter").append('<label><select id="FiltroCategorias" onclick="FiltraPorCategoria()" class="mt-2 ml-1 form-control"><option value="0">Filtrar por categoria</option></select></label>');
-        $.getJSON("/Categoria/getCategorias", null, function (data) {
-            $.each(data.Categorias, function (index, item) {
+        $.getJSON("/Categoria/getCategorias", null, function (response) {
+            $.each(response.data, function (index, item) {
                 $("#FiltroCategorias").append(
                     $("<option></option>")
                         .text(item.Nome)
@@ -143,12 +144,13 @@ var ativados = {
                     '<i class="fa ml-1 fa-edit"></i>' +
                     '</button> ';
             },
-            width: "30%",
+            width: "30%"
         },
         {
             data: "PrecoUnitario",
             searchable: false,
             orderable: false,
+            width: "14%",
             render: function (data, type, row) {
                 var precos = "UN - R$" + Number.parseFloat(row.PrecoUnitario).toFixed(2).replace('.', ',');
                 if (row.PrecoRecarga != null) {
@@ -161,7 +163,7 @@ var ativados = {
                 return precos;
             }
         },
-        { data: "Marca.Nome", searchable: false, orderable: false },
+        { data: "Marca.Nome", searchable: false, orderable: false, width: "15%" },
         { data: "EstoqueMinimo", searchable: false, orderable: false },
         { data: "Estoque", visible: false, searchable: false, orderable: false },
         {

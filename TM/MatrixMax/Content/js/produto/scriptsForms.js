@@ -151,6 +151,14 @@
             if (resposta.adicionou) {
                 $("#msgErroProdutoAdd").prop("hidden", true);
                 $('#FormAdiciona').resetForm();
+                $("#precoRecargaAdd").prop("defaultValue", "Desabilitado");
+                $("#precoRecargaAdd").val($("#precoRecargaEditar").prop("defaultValue"));
+                $("#precoRecargaAdd").prop('disabled', true);
+                $('#TogglePrecoRecargaAdd').prop('checked', false);
+                $("#precoTrocaAdd").prop("defaultValue", "Desabilitado");
+                $("#precoTrocaAdd").val($("#precoTrocaEditar").prop("defaultValue"));
+                $("#precoTrocaAdd").prop('disabled', true);
+                $('#TogglePrecoTrocaAdd').prop('checked', false);
                 $('#fechaModalAdd').click(); $('#fechaModalAdd').click();
                 tabelaprodutos.ajax.reload();
                 $("#mensagensContainer").append(
