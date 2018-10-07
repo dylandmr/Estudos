@@ -95,5 +95,21 @@ namespace MatrixMax.Controllers
 
             return Json(new { data = resumoVendas }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult getRelatorioVendasPorCategoria()
+        {
+            return Json(new VendaDAO().RelatorioVendasPorCategoria(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult getRelatorioVendasPorMesAnual(List<int> anos)
+        {
+            var lista = new List<List<double>>();
+            var dao = new VendaDAO();
+            foreach (var ano in anos)
+            {
+                lista.Add(dao.RelatorioVendasPorMesAnual(ano));
+            }
+            return Json(lista, JsonRequestBehavior.AllowGet);
+        }
     }
 }

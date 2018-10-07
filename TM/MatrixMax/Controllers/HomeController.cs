@@ -20,8 +20,9 @@ namespace MatrixMax.Controllers
             ViewBag.TotalBrutoDia = vendaDAO.TotalBrutoHoje();
             ViewBag.ProdutosVendidosDia = vendaDAO.TotalProdutosVendidosHoje();
             ViewBag.ContaVendasDia = vendaDAO.TotalVendasHoje();
-            ViewBag.ContaAlerta = new ProdutoDAO().ItensEmAlerta();
-
+            ViewBag.WidgetEstoque = new ProdutoDAO().WidgetsEstoqueDashboard();
+            ViewBag.WidgetPorcentagem = vendaDAO.VendasHojeFormasDePagamentoPorcentagem();
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
             return View();
         }
     }

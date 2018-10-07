@@ -1,74 +1,132 @@
-﻿( function ( $ ) {
+﻿(function ($) {
     "use strict";
-
-
     //bar chart
-    var ctx = document.getElementById( "barChart" );
-    //    ctx.height = 200;
-    var myChart = new Chart( ctx, {
-        type: 'bar',
-        data: {
-            labels: [ "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho" ],
-            datasets: [
-                {
-                    label: "2018",
-                    data: [ 65, 59, 80, 81, 56, 55, 40 ],
-                    borderColor: "#4C9950",
-                    borderWidth: "0",
-                    backgroundColor: "#4CAF50"
+
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        type: 'POST',
+        url: '/Venda/getRelatorioVendasPorMesAnual',
+        data: JSON.stringify({ anos: [2017, 2018] }),
+        success: function (response) {
+            new Chart("barChart", {
+                type: 'bar',
+                data: {
+                    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+
+                    datasets: [
+                        {
+                            label: "2017",
+                            data: response[0],
+                            backgroundColor: geraCor()
+
+                        },
+                        {
+                            label: "2018",
+                            data: response[1],
+                            backgroundColor: geraCor(),
+                            fontColor: "#FFF"
+                        }]
+                },
+                options: {
+                    plugins: {
+                        datalabels: {
+                            display: false
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            fontColor: "white",
+                            fontSize: 16
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: "white"
                             },
-                {
-                    label: "2017",
-                    data: [ 28, 48, 40, 19, 86, 27, 90 ],
-                    borderColor: "rgba(0,0,0,0.09)",
-                    borderWidth: "0",
-                    backgroundColor: "rgba(0,0,0,0.07)"
+                            gridLines: {
+                                color: "#555"
                             }
-                        ]
-        },
-        options: {
-            scales: {
-                yAxes: [ {
-                    ticks: {
-                        beginAtZero: true
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: "white",
+                                fontSize: 11
+                            },
+                            gridLines: {
+                                display: false,
+                                color: "#555"
+                            }
+                        }]
                     }
-                                } ]
+                }
+            });
+        }
+    });
+
+    $.ajax({
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        type: 'POST',
+        url: '/Venda/getRelatorioVendasPorCategoria',
+        success: function (response) {
+            var nomes = [];
+            var dados = [];
+            var cores = [];
+
+            for (var i in response) {
+                nomes.push(response[i].Nome);
+                dados.push(response[i].Soma);
+                cores.push(geraCor());
             }
+            
+            new Chart("pieChart", {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: dados,
+                        borderWidth: "0",
+                        backgroundColor: cores
+                    }],
+                    labels: nomes
+                },
+                options: {
+                    plugins: {
+                        datalabels: {
+                            formatter: (value, ctx) => {
+                                let sum = 0;
+                                let dataArr = ctx.chart.data.datasets[0].data;
+                                dataArr.map(data => {
+                                    sum += data;
+                                });
+                                let percentage = (value * 100 / sum).toFixed(2) + "%";
+                                return percentage;
+                            },
+                            backgroundColor: "#000",
+                            borderRadius: "10",
+                            color: "white",
+                            anchor: "end"
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            fontColor: "white",
+                            fontSize: 14
+                        }
+                    },
+                    responsive: true
+                }
+            });
         }
-    } );
+    });
+})(jQuery);
 
-
-    //pie chart
-    var ctx = document.getElementById( "pieChart" );
-    ctx.height = 300;
-    var myChart = new Chart( ctx, {
-        type: 'pie',
-        data: {
-            datasets: [ {
-                data: [ 100, 300, 20 ],
-                backgroundColor: [
-                                    "#4CAF50",
-                                    "#330000",
-                                    "#CCCCCC"
-                                ],
-                hoverBackgroundColor: [
-                                    "#4CAF50",
-                                    "#330000",
-                                    "#CCCCCC"
-                                ]
-
-                            } ],
-            labels: [
-                            "cartuchos",
-                            "periféricos",
-                            "toners"
-                        ]
-        },
-        options: {
-            responsive: true
-        }
-    } );
-
-
-
-} )( jQuery );
+function geraCor() {
+    var r = Math.floor(Math.random() * 255);
+    var g = Math.floor(Math.random() * 255);
+    var b = Math.floor(Math.random() * 255);
+    return "rgb(" + r + "," + g + "," + b + ")";
+}

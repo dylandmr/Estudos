@@ -128,7 +128,6 @@ namespace MatrixMax.Controllers
 
         public JsonResult BuscaProdutosVenda()
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("");
             var catDAO = new CategoriaDAO();
             var produtos = new ProdutoDAO().ListaComEstoque();
 
@@ -143,7 +142,9 @@ namespace MatrixMax.Controllers
                         var children = new List<object>();
                         foreach (var produto in new ProdutoDAO().ListaComEstoque().Where(p => p.SubcategoriaId == subcategoria.Id))
                         {
-                            children.Add(new { id = $"id={produto.Id}&pun={produto.PrecoUnitario}&prec={produto.PrecoRecarga}&ptr={produto.PrecoTroca}&est={produto.Estoque}", text = produto.Nome });
+                            var precoRecarga = produto.PrecoRecarga.HasValue ? produto.PrecoRecarga.Value.ToString(CultureInfo.InvariantCulture) : "";
+                            var precoTroca = produto.PrecoTroca.HasValue ? produto.PrecoTroca.Value.ToString(CultureInfo.InvariantCulture) : "";
+                            children.Add(new { id = $"id={produto.Id}&pun={produto.PrecoUnitario.ToString(CultureInfo.InvariantCulture)}&prec={precoRecarga}&ptr={precoTroca}&est={produto.Estoque}", text = produto.Nome });
                         }
                         if (children.Count > 0) results.Add(new { text = $"{categoria.Nome} - {subcategoria.Nome}", children });
                     }

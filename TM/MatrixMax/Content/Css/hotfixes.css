@@ -58,7 +58,7 @@ input.campoInvalido, input.campoInvalido:focus, select.campoInvalido, select.cam
     color: white;
 }
 
-.blocoVenda {
+.blocoVenda, .blocoDash {
     background-color: rgba(25, 56, 47, 0.5);
 }
 
@@ -87,8 +87,8 @@ input.campoInvalido, input.campoInvalido:focus, select.campoInvalido, select.cam
     border: none;
 }
 
-.select2-container--bootstrap .select2-selection--single .select2-selection__placeholder {
-    color: white
+.select2-container--bootstrap .select2-selection--single .select2-selection__placeholder, .statsDash, .stat-text, .stat-digit {
+    color: white !important;
 }
 
 .formVenda input, .formVenda input:focus {
@@ -248,4 +248,17 @@ tr.group td {
 .select2-container--bootstrap .select2-results__group {
     font-size: 15px;
     color: darkgreen;
+}
+
+.bg-laranjaEscuro {
+    background-color: #C16815;
+}
+
+.fontePorcentagem{
+    font-size: 15px;
+}
+
+.stat-digit {
+    font-size: 30px;
+    font-weight: bold;
 }

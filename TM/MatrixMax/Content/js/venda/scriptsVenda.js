@@ -35,39 +35,6 @@
 
     populaProdutos();
 
-    //$("#produtosVenda").select2({
-    //    ajax: {
-    //        url: "/Produto/BuscaProdutosVenda",
-    //        dataType: 'json',
-    //        delay: 250,
-    //        data: function (params) {
-    //            return {
-    //                q: params.term
-    //            };
-    //        },
-    //        processResults: function (data, params) {
-    //            return {
-    //                results: data.results
-    //            };
-    //        }
-    //    },
-    //    theme: "bootstrap",
-    //    placeholder: "Selecione um produto",
-    //    language: {
-    //        searching: function () {
-    //            return "Buscando...";
-    //        },
-    //        inputTooShort: function (args) {
-    //            return "Pesquise pelo nome do produto";
-    //        },
-    //        noResults: function () {
-    //            return "Nenhum resultado encontrado";
-    //        }
-    //    },
-    //    minimumInputLength: 1,
-    //    dropdownCssClass: "dropdownSelect2"
-    //});
-
     $(".select2-selection__rendered").addClass("rounded").addClass("form-control");
 
     $(".select2-selection select2-selection--single").addClass("rounded").addClass("form-control");
@@ -110,11 +77,7 @@
             cartaoDeDebito = !cartaoDeCredito;
             $("#parcelasCartao").prop("disabled", !cartaoDeCredito);
         } else {
-            $("#opcoesCartao").fadeOut();
-            cartaoDeCredito = false;
-            cartaoDeDebito = false;
-            $("#bandeiraCartao").prop("disabled", true);
-            $("#parcelasCartao").prop("disabled", true);
+            escondeCartoes();
         }
     });
 
@@ -432,14 +395,14 @@ function resetaVenda() {
         DescontoValorFixo: 0,
         DescontoPorcento: 0
     };
-
-    descontoFixo = false;
-    descontoPorPorcentagem = false;
+    
     cartaoDeCredito = false;
     cartaoDeDebito = false;
 
     populaProdutos();
     desativaDesconto();
+    escondeCartoes();
+
     if ($("#toggleDesconto").prop("checked")) $("#toggleDesconto").prop("checked", false);
     $("#blocoDescontosVenda").fadeOut();
 }
@@ -491,4 +454,12 @@ function populaProdutos() {
             dropdownCssClass: "dropdownSelect2"
         });
     });
+}
+
+function escondeCartoes() {
+    $("#opcoesCartao").fadeOut();
+    cartaoDeCredito = false;
+    cartaoDeDebito = false;
+    $("#bandeiraCartao").prop("disabled", true);
+    $("#parcelasCartao").prop("disabled", true);
 }

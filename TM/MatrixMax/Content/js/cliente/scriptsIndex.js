@@ -1,4 +1,12 @@
-﻿$(document).ready(function () {
+﻿$(function () {
+    $('#filtroNome').on('keyup', function () {
+        tabelaclientes.columns(14).search(this.value).draw();
+    });
+
+    $('#filtroTipoPessoa').on('change', function () {
+        tabelaclientes.columns(15).search(this.value).draw();
+    });
+
     var validacoes = $("#FormDadosPessoa").validate({
         rules: {
             "pessoa.NomeRazaoSocial": {

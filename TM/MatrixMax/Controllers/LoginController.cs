@@ -44,7 +44,7 @@ namespace MatrixMax.Controllers
 
         public ActionResult Logout()
         {
-            Session["usuarioLogado"] = null;
+            Session.Abandon();
             return View("Index");
         }
     }

@@ -52,6 +52,13 @@
                             <a href="/Admin"> <i class="menu-icon fa fa-users"></i>Gerenciar usuários</a>
                         </li>
                     }
+                    <h3 class="menu-title">Vendas</h3><!-- /.menu-title -->
+                    <li class="@(Request.Url.AbsolutePath.EndsWith("/Venda") ? "active" : "")">
+                        <a href="/Venda"> <i class="menu-icon fa fa-money"></i>Nova Venda</a>
+                    </li>
+                    <li class="@(Request.Url.AbsolutePath.EndsWith("/Venda/Historico") ? "active" : "")">
+                        <a href="/Venda/Historico"> <i class="menu-icon fa fa-calendar"></i>Histórico</a>
+                    </li>
                     <h3 class="menu-title">Produtos</h3><!-- /.menu-title -->
                     <li class="@(Request.Url.AbsolutePath.EndsWith("/Produto/Estoque") ? "active" : "")">
                         <a href="/Produto/Estoque"> <i class="menu-icon fa fa-truck"></i>Controle de Estoque</a>
@@ -65,13 +72,6 @@
                     </li>
                     <li class="@(Request.Url.AbsolutePath.EndsWith("/Cliente") ? "active" : "")">
                         <a href="/Cliente"> <i class="menu-icon fa fa-users"></i>Gerenciar Clientes</a>
-                    </li>
-                    <h3 class="menu-title">Vendas</h3><!-- /.menu-title -->
-                    <li class="@(Request.Url.AbsolutePath.EndsWith("/Venda") ? "active" : "")">
-                        <a href="/Venda"> <i class="menu-icon fa fa-money"></i>Nova Venda</a>
-                    </li>
-                    <li class="@(Request.Url.AbsolutePath.EndsWith("/Venda/Historico") ? "active" : "")">
-                        <a href="/Venda/Historico"> <i class="menu-icon fa fa-calendar"></i>Histórico</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

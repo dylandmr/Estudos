@@ -235,8 +235,9 @@
     <Content Include="Content\js\index.html" />
     <Content Include="Content\js\jquery.mask.js" />
     <Content Include="Content\js\less.min.js" />
-    <Content Include="Content\js\lib\chart-js\Chart.bundle.js" />
+    <Content Include="Content\js\lib\chart-js\Chart.bundle.min.js" />
     <Content Include="Content\js\lib\chart-js\chartjs-init.js" />
+    <Content Include="Content\js\lib\chart-js\chartjs-plugin-datalabels.min.js" />
     <Content Include="Content\js\lib\chosen\chosen.jquery.js" />
     <Content Include="Content\js\lib\chosen\chosen.jquery.min.js" />
     <Content Include="Content\js\lib\chosen\chosen.proto.js" />

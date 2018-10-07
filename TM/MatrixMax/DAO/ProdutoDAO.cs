@@ -132,11 +132,41 @@ namespace MatrixMax.DAO
             }
         }
 
-        public int ItensEmAlerta()
+        public List<object> WidgetsEstoqueDashboard()
         {
             using (var contexto = new MatrixMaxContext())
             {
-                return contexto.Produtos.Where(p => p.ProcessaEstoque() == "Alerta" && p.Ativo).Count();
+                return new List<object>
+                {
+                    new
+                    {
+                        Quantidade = contexto.Produtos.Where(p => p.ProcessaEstoque() == "Sem estoque" && p.Ativo).Count(),
+                        ClasseWidget = "bg-secondary",
+                        Descricao = "Produtos fora de estoque",
+                        IconeWidget = "fa-minus-square"
+                    },
+                    new
+                    {
+                        Quantidade = contexto.Produtos.Where(p => p.ProcessaEstoque() == "Alerta" && p.Ativo).Count(),
+                        ClasseWidget = "bg-flat-color-4",
+                        Descricao = "Produtos em alerta",
+                        IconeWidget = "fa-warning"
+                    },
+                    new
+                    {
+                        Quantidade = contexto.Produtos.Where(p => p.ProcessaEstoque() == "Neutro" && p.Ativo).Count(),
+                        ClasseWidget = "bg-flat-color-3",
+                        Descricao = "Produtos com estoque neutro",
+                        IconeWidget = "fa-square"
+                    },
+                    new
+                    {
+                        Quantidade = contexto.Produtos.Where(p => p.ProcessaEstoque() == "Positivo" && p.Ativo).Count(),
+                        ClasseWidget = "bg-flat-color-5",
+                        Descricao = "Produtos com estoque positivo",
+                        IconeWidget = "fa-check-square"
+                    }
+                };
             }
         }
     }

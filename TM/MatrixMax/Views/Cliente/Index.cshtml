@@ -19,12 +19,26 @@
 </div>
 <!-- TÍTULO CONTEÚDO-->
 <!--CONTEÚDO-->
-<div class="p-3">
+<div class="p-3 text-center">
     <div class="card">
         <div class="card-header">
-            <h4>Gerenciamento de Clientes</h4>
+            <h3>Gerenciamento de Clientes</h3>
         </div>
         <div class="card-body">
+            <div class="form-group mb-0">
+                <div class="row text-center">
+                    <div class="col w-50"></div>
+                    <div class="col-3"><input type="text" id="filtroNome" placeholder="Filtrar por nome" class="form-control" /></div>
+                    <div class="col-3">
+                        <select class="form-control" id="filtroTipoPessoa">
+                            <option value="">Filtrar por tipo de pessoa</option>
+                            <option value="Física">Pessoa Física</option>
+                            <option value="Jurídica">Pessoa Jurídica</option>
+                        </select>
+                    </div>
+                    <div class="col w-50"></div>
+                </div>
+            </div>
             <div class="default-tab text-center">
                 <div class="row" id="mensagensContainerCliente"></div>
                 <table id="bootstrap-data-table-Clientes" class="table-striped table table-dark table-bordered">
