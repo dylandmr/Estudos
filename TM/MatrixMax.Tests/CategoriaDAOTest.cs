@@ -11,28 +11,12 @@ namespace MatrixMax.DAO
     public class CategoriaDAOTest
     {
         [Test]
-        public void DeveRetornarCategorias()
+        public void DeveRetornarTodasAsCategorias()
         {
             var dao = new CategoriaDAO();
             var categorias = dao.ListaCategorias();
 
-            var devesertrue = categorias.Where(c => c.Nome == "Cartuchos").ToList().Count == 1;
-            var deveserfalse = categorias.Where(c => c.Nome == "Compatíveis").ToList().Count >= 1;
-
-            Assert.IsTrue(devesertrue);
-            Assert.IsFalse(deveserfalse);
-        }
-
-        [Test]
-        public void DeveRetornarSubcategoriasCartucho()
-        {
-            var dao = new CategoriaDAO();
-            var subcategorias = dao.ListaSubcategorias(2);
-
-            var devesertrue = subcategorias.Where(c => c.Nome == "Compatíveis").ToList().Count == 1;
-
-            Assert.IsTrue(devesertrue);
-            Assert.AreEqual(3, subcategorias.Count);
+            Assert.IsTrue(categorias.Count > 0);
         }
 
         [Test]
@@ -40,11 +24,9 @@ namespace MatrixMax.DAO
         {
             var dao = new CategoriaDAO();
             var subcategorias = dao.ListaTodasAsSubcategorias();
-
-            var devesertrue = subcategorias.Where(c => c.CategoriaId <= 0).ToList().Count == 0;
-
-            Assert.IsTrue(devesertrue);
-            Assert.AreEqual(12, subcategorias.Count);
+            
+            Assert.IsTrue(subcategorias.Where(s => s.CategoriaId.HasValue).Count() > 0);
+            Assert.AreEqual(0, subcategorias.Where(s => !s.CategoriaId.HasValue).Count());
         }
 
         [Test]
@@ -53,7 +35,7 @@ namespace MatrixMax.DAO
             var dao = new CategoriaDAO();
             var subcategorias = dao.ListaTodasAsSubcategoriasDesativadas();
 
-            Assert.AreEqual(1, subcategorias.Count);
+            Assert.AreEqual(0, subcategorias.Count);
         }
 
         [Test]
@@ -62,7 +44,7 @@ namespace MatrixMax.DAO
             var dao = new CategoriaDAO();
             var categorias = dao.ListaCategoriasDesativadas();
 
-            Assert.AreEqual(1, categorias.Count);
+            Assert.AreEqual(0, categorias.Count);
         }
     }
 }

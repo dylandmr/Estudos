@@ -52,7 +52,7 @@ namespace MatrixMax.Models
             produto.Id = 1;
             produto.Nome = "Teste";
             produto.Ativo = true;
-            produto.Estoque = 10;
+            produto.EstoqueMinimo = 10;
             produto.MarcaId = 1;
             produto.SubcategoriaId = 2;
             produto.PrecoUnitario = 20;

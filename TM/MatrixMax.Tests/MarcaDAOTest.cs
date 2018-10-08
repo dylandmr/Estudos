@@ -15,7 +15,7 @@ namespace MatrixMax.DAO
         {
             var marcas = new MarcaDAO().ListaDesativadas();
 
-            Assert.AreEqual(1, marcas.Count);
+            Assert.AreEqual(0, marcas.Where(m => m.Ativo).Count());
         }
     }
 }
