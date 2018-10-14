@@ -3,9 +3,52 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCodeSample", "CleanCodeSample\CleanCodeSample.csproj", "{B4306587-686E-44D6-B367-702BD57CD990}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharpRefatoracaoParteI", "CSharpRefatoracaoParteI", "{47F37122-F02B-4429-AA5C-6DE4326264E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "caelum-stella-csharp", "caelum-stella-csharp\caelum-stella-csharp.csproj", "{8BC2E2BA-67C7-42B9-AAC8-EC79D0ED55B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "caelum-stella-csharp-netcore-test", "caelum-stella-csharp-test\caelum-stella-csharp-netcore-test.csproj", "{343849DD-E473-41AF-82AF-1856E1081E54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "refatoracao", "refatoracao\refatoracao.csproj", "{F36AEC6E-8EDF-4092-9E7A-19EF26311758}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{592EA9E1-ECE4-422C-A8A9-42A4AB0EC57A}"
+	ProjectSection(SolutionItems) = preProject
+		CSharp RefatorandoCódigo Parte 1.pdf = CSharp RefatorandoCódigo Parte 1.pdf
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4306587-686E-44D6-B367-702BD57CD990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4306587-686E-44D6-B367-702BD57CD990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4306587-686E-44D6-B367-702BD57CD990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4306587-686E-44D6-B367-702BD57CD990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BC2E2BA-67C7-42B9-AAC8-EC79D0ED55B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BC2E2BA-67C7-42B9-AAC8-EC79D0ED55B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BC2E2BA-67C7-42B9-AAC8-EC79D0ED55B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BC2E2BA-67C7-42B9-AAC8-EC79D0ED55B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{343849DD-E473-41AF-82AF-1856E1081E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{343849DD-E473-41AF-82AF-1856E1081E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{343849DD-E473-41AF-82AF-1856E1081E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{343849DD-E473-41AF-82AF-1856E1081E54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F36AEC6E-8EDF-4092-9E7A-19EF26311758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F36AEC6E-8EDF-4092-9E7A-19EF26311758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F36AEC6E-8EDF-4092-9E7A-19EF26311758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F36AEC6E-8EDF-4092-9E7A-19EF26311758}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8BC2E2BA-67C7-42B9-AAC8-EC79D0ED55B4} = {47F37122-F02B-4429-AA5C-6DE4326264E6}
+		{343849DD-E473-41AF-82AF-1856E1081E54} = {47F37122-F02B-4429-AA5C-6DE4326264E6}
+		{F36AEC6E-8EDF-4092-9E7A-19EF26311758} = {47F37122-F02B-4429-AA5C-6DE4326264E6}
+		{592EA9E1-ECE4-422C-A8A9-42A4AB0EC57A} = {47F37122-F02B-4429-AA5C-6DE4326264E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99C45347-BAF6-4352-9567-186E552A9F5B}
