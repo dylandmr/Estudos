@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaWinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,22 @@ using System.Windows.Forms;
 
 namespace DuplicateObservedData
 {
-    public partial class FormCalculadoraAntes : Form
+    public partial class FormCalculadoraAntes : Form, ICalculadoraObserver
     {
+        private CalculadoraIMC calculadora;
+
         public FormCalculadoraAntes()
         {
             InitializeComponent();
+
+            calculadora = new CalculadoraIMC();
+
+            calculadora.AdicionaObservador(this);
+        }
+
+        public void ResultadoIMC(double imc)
+        {
+            txtIMC.Text = $"IMC calculado: {imc:0.00}";
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -22,14 +34,14 @@ namespace DuplicateObservedData
             double.TryParse(txtAltura.Text, out double altura);
             double.TryParse(txtPeso.Text, out double peso);
 
-            if (altura == 0 || peso == 0)
+            try
             {
-                MessageBox.Show("Altura ou peso inválidos!");
-                return;
+                calculadora.CalculaIMC(altura, peso);
             }
-
-            double imc = peso / (Math.Pow(altura, 2));
-            txtIMC.Text = $"IMC calculado: {imc:0.00}";
+            catch (Exception excessao)
+            {
+                MessageBox.Show(excessao.Message);
+            }
         }
     }
 }

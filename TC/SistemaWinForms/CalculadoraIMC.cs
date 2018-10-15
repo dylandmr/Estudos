@@ -6,32 +6,30 @@ using System.Threading.Tasks;
 
 namespace SistemaWinForms
 {
-    public interface ICalculadoraObserver
+    interface ICalculadoraObserver
     {
         void ResultadoIMC(double imc);
     }
 
     class CalculadoraIMC
     {
-        IList<ICalculadoraObserver> observadores =
+        private IList<ICalculadoraObserver> observadores =
             new List<ICalculadoraObserver>();
 
-        public void Adicionar(ICalculadoraObserver observador)
+        public void AdicionaObservador(ICalculadoraObserver observer)
         {
-            observadores.Add(observador);
+            observadores.Add(observer);
         }
 
-        public void Remover(ICalculadoraObserver observador)
+        public void RemoveObservador(ICalculadoraObserver observer)
         {
-            observadores.Remove(observador);
+            observadores.Remove(observer);
         }
 
-        public void Calcular(double altura, double peso)
+        public void CalculaIMC(double altura, double peso)
         {
             if (altura == 0 || peso == 0)
-            {
-                throw new ArgumentException("Altura ou peso inválidos!");
-            }
+                throw new ArgumentException("Peso ou altura inválidos!");
 
             double imc = peso / (Math.Pow(altura, 2));
 

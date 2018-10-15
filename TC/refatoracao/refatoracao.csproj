@@ -8,8 +8,6 @@
   <ItemGroup>
     <Compile Remove="Aula01\R03.ExtractVariable\**" />
     <Compile Remove="Aula01\R04.InlineTemp\**" />
-    <Compile Remove="Aula03\R07.RemoveAssignmentsToParameters\**" />
-    <Compile Remove="Aula04\**" />
     <Compile Remove="R05.ReplaceTempWithQuery\**" />
     <Compile Remove="R06.SplitTemporaryVariable\**" />
     <Compile Remove="R07.RemoveAssignmentsToParameters\**" />
@@ -73,8 +71,6 @@
     <Compile Remove="R64.ReplaceDelegationWithInheritance\**" />
     <EmbeddedResource Remove="Aula01\R03.ExtractVariable\**" />
     <EmbeddedResource Remove="Aula01\R04.InlineTemp\**" />
-    <EmbeddedResource Remove="Aula03\R07.RemoveAssignmentsToParameters\**" />
-    <EmbeddedResource Remove="Aula04\**" />
     <EmbeddedResource Remove="R05.ReplaceTempWithQuery\**" />
     <EmbeddedResource Remove="R06.SplitTemporaryVariable\**" />
     <EmbeddedResource Remove="R07.RemoveAssignmentsToParameters\**" />
@@ -138,8 +134,6 @@
     <EmbeddedResource Remove="R64.ReplaceDelegationWithInheritance\**" />
     <None Remove="Aula01\R03.ExtractVariable\**" />
     <None Remove="Aula01\R04.InlineTemp\**" />
-    <None Remove="Aula03\R07.RemoveAssignmentsToParameters\**" />
-    <None Remove="Aula04\**" />
     <None Remove="R05.ReplaceTempWithQuery\**" />
     <None Remove="R06.SplitTemporaryVariable\**" />
     <None Remove="R07.RemoveAssignmentsToParameters\**" />

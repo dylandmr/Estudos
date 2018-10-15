@@ -16,7 +16,7 @@ namespace DuplicateObservedData
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormCalculadoraDepois());
+            Application.Run(new FormCalculadoraAntes());
         }
     }
 }

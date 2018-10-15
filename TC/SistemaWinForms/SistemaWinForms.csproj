@@ -52,19 +52,10 @@
     <Compile Include="FormCalculadoraAntes.Designer.cs">
       <DependentUpon>FormCalculadoraAntes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCalculadoraDepois.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormCalculadoraDepois.Designer.cs">
-      <DependentUpon>FormCalculadoraDepois.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormCalculadoraAntes.resx">
       <DependentUpon>FormCalculadoraAntes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormCalculadoraDepois.resx">
-      <DependentUpon>FormCalculadoraDepois.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
